@@ -414,8 +414,13 @@
     var service_categorys;
     var dataTable;
 
+    function setid(ob) {
+      
+      console.log(ob)
+      deleteid = ob.id; editname = ob.service_name; 
+      
+    }
     
-
     function fetchdata(){
       $.ajax({
       url: 'ajax/service/service_list.php',
@@ -427,21 +432,29 @@
         data = result.data;
         var count = 0; var temp = [];
         data.map(obj => {
-          var but = document.createElement('i')
+          var but = document.createElement('button')
           but.setAttribute('data-feather','edit-2');
           but.setAttribute('data-bs-toggle','modal');
           but.setAttribute('data-original-title','test');
           but.setAttribute('data-bs-target', '#exampleModal')
           but.addEventListener('click', function() {
-            console.log(obj.id, obj.type_name, obj.type_id, obj.service_name)
+
             setid(obj.id, obj.type_name, obj.type_id, obj.service_name);
           })
+          var tryed = `
+                <i
+                  onclick="setid(${obj})" 
+                  data-feather="edit-2" 
+                  data-bs-toggle="modal" 
+                  data-original-title="test"
+                  data-bs-target="#exampleModal">
+                </i>`
           temp.push(
             {
               'count': ++count,
               'type_name': obj.type_name, 
               'service_name':obj.service_name,
-              'action': but.outerHTML})
+              'action': tryed})
           });
         dataTable = $('#tbl').DataTable({
         "pageLength": 10,
@@ -499,18 +512,7 @@
       
     }
 
-    function setid(ob, name, select_id, selectvalue) {
-      console.log(ob, name, select_id, selectvalue)
-      deleteid = ob; editname = name; 
-      document.getElementById('edit').value = name; 
-      editselect = select_id; editselectvalue = selectvalue;
-      var sel = document.getElementById('editselect');
-      var setoption = document.createElement('option')
-      setoption.value = select_id;
-      setoption.text = selectvalue;
-      sel.innerHTML = '';
-      sel.innerHTML = setoption;
-    }
+    
 
     function deletereq() {
       var fd = new FormData();
@@ -555,6 +557,7 @@
         newOption.value = option.id;
         newOption.text = option.type_name;
         slet.appendChild(newOption);
+        editslet.appendChild(newOption)
         });
       }
     })
