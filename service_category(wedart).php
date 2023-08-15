@@ -360,15 +360,16 @@
 
                 <div class="card-body">
                   <div class="row">
-                    <div class="col">
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label" for="inpt">Enter Service Category</label>
                         <input class="form-control" style="border: 1px solid #e0dddd" id="inpt">
                       </div>
                     </div>
-                  </div>
-                  <div style="float:right">
-                    <button class="btn btn-primary" id="addbtn" type="submit">Create Service Category</button>
+                    <div class="col-lg-4">
+                      <label class="form-label" style="color:transparent">.</label><br>
+                      <button class="btn btn-primary" id="addbtn" type="submit">Create Service Category</button>
+                    </div>
                   </div>
                 </div>
 
@@ -407,16 +408,25 @@
       
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Confirm Action</h3>
+              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">Are you sure to Delete?</div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label class="form-label" for="edit">Enter Service Category</label>
+                    <input class="form-control" style="border: 1px solid #e0dddd" id="edit">
+                  </div>
+                </div>
+              </div>              
+            </div>
             <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="setid('')">Close</button>
-              <button class="btn btn-secondary" type="button" data-bs-dismiss="modal" onclick="deletereq()">Delete</button>
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="editreq()">Edit</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletereq()">Delete</button>
             </div>
           </div>
         </div>
@@ -455,6 +465,7 @@
     document.getElementById("addbtn").addEventListener("click", postreq);
     var data;
     var deleteid;
+    var editname;
 
     function fetchdata(){
       $.ajax({
@@ -463,23 +474,22 @@
       contentType: false,
       processData: false,
       success: function (response) {
-        console.log(response)
         var result = JSON.parse(response);
         if(result.status == 'Success'){
-          console.log(result.data)
           data = result.data;
-          document.getElementById('listdata').innerHTML =
+          var mdv = document.createElement('div'); mdv.classList = 'bmain';
+          mdv .innerHTML = 
           data.map(obj => (
-            `<span 
-              class="badge badge-pill badge-primary" 
-              style="padding: 10px;border-radius: 30px;"
-              data-bs-toggle="modal" data-original-title="test"
-              data-bs-target="#exampleModal" 
-              onclick='setid(${obj.id})'>
-              ${obj.type_name} 
-                <i data-feather="x"></i>
-            </span>`
-          ))
+            `<div 
+                class="btag" 
+                data-bs-toggle="modal" data-original-title="test"
+                data-bs-target="#exampleModal" 
+                onclick='setid(${obj.id}, "${obj.type_name}")'>
+                ${obj.type_name} &nbsp;  
+                <i data-feather="edit-2"></i>
+              </div>`
+          )).join('');
+          document.getElementById('listdata').innerHTML = mdv.outerHTML;
           feather.replace()
         } else {
           document.getElementById('listdata').innerHTML = 'No Data'
@@ -550,9 +560,43 @@
       })
     }
 
-    function setid(obj) {
-      console.log('clicked', obj)
-      deleteid = obj;
+    function setid(ob, name) {
+      deleteid = ob; editname = name;
+      document.getElementById('edit').value = name;
+    }
+
+    function editreq(){
+      var inputvalue = $('#edit').val();
+      if(inputvalue == '')
+      {
+        toastr.error('Enter service category');
+      }
+      else
+      {
+        var fd = new FormData();
+        fd.append('id',deleteid);
+        fd.append('service_category', inputvalue);
+        $.ajax({
+          url: 'ajax/service_category/service_category_edit.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            console.log(response)
+            var result = JSON.parse(response);
+            if (result.status == 'Success') {
+              toastr.success(result.remarks);
+              $('#edit').val('');
+              fetchdata();
+            } else if (result.status == 'Available') {
+              toastr.error(result.remarks);
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
     }
 
     
@@ -561,6 +605,24 @@
 
 <style>
   .badge:hover{
+    cursor: pointer;
+  }
+  .bmain{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .btag{
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: var(--theme-default) !important;
+    color: #fff;
+    margin-right:10px;
+    margin-bottom: 10px;
+    display: flex;
+    min-width:fit-content;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
   }
 </style>

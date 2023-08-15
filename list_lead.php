@@ -684,7 +684,7 @@
                           </tr>
                         </thead>
 
-                        <tbody id="listdata">
+                        <tbody>
                           <!--data-->
                         </tbody>
                       </table>
@@ -782,6 +782,7 @@ function createTable() {
                     statusdisplay.style.cursor = 'pointer';
 
                     var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
+                    
                     var dataRow = [
                         obj.lead_no,
                         obj.name,
@@ -793,8 +794,14 @@ function createTable() {
                         statusdisplay.outerHTML,
                         `<i 
                           onclick="window.location.href = '/wedart/template/manage_lead.php?dat=${dat}'"
-                          data-feather="external-link"
-                          style="cursor: pointer"></i>`
+                          data-feather="edit"
+                          style="cursor: pointer;margin-right:10px;"
+                          title="Edit Lead"></i>
+                          <i 
+                            data-feather="message-circle"
+                            onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
+                            style="cursor: pointer"
+                            title=""></i>`
                     ];
                     // data-feather="external-link" 
                     dataTableData.push(dataRow);
@@ -833,8 +840,13 @@ function createTable() {
                         statusdisplay.outerHTML,
                         `<i 
                           onclick="window.location.href ='/wedart/template/manage_lead.php?dat=${dat}'"
-                          data-feather="external-link" 
-                          style="cursor: pointer"></i>`
+                          data-feather="edit" 
+                          style="cursor: pointer;margin-right:10px;"></i>
+                          <i 
+                            data-feather="message-circle"
+                            onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
+                            style="cursor: pointer"
+                            title=""></i>`
                     ];
 
                     dataTableData.push(dataRow);
