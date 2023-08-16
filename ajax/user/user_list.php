@@ -5,7 +5,7 @@
     $res = [];
     $count = 0;
 
-    $sql = "SELECT u.id, u.name, u.mobile, u.role, br.branch_name FROM user_data u JOIN branch_data br ON u.branch_id = br.id where u.status = 'Active'";
+    $sql = "SELECT u.id, u.name, u.mobile, u.role, u.password, u.branch_id, br.branch_name FROM user_data u JOIN branch_data br ON u.branch_id = br.id where u.status = 'Active'";
     $rec = mysqli_query($conn, $sql);
     while($data = mysqli_fetch_assoc($rec))
     {

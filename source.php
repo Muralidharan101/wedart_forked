@@ -936,7 +936,7 @@
         fd.append('id',deleteid);
         fd.append('source_data', inputvalue);
         $.ajax({
-          url: 'ajax/service_category/source_edit.php',
+          url: 'ajax/source/source_edit.php',
           data: fd,
           type: 'post',
           contentType: false,

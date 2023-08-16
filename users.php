@@ -741,7 +741,7 @@
 
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>User Creation</h3>
+                  <h3 id="tit">User Creation</h3>
                 </div>
 
                 <div class="card-body">
@@ -769,7 +769,6 @@
                       <div class="mb-3">
                         <label class="form-label" for="inpt">Select Branch</label>
                         <select class="form-select" style="border: 1px solid #e0dddd" id="user_branch">
-                          <option value="choose" selected disabled> - Choose -</option>
                         </select>
                       </div>
                     </div>
@@ -777,16 +776,16 @@
                       <div class="mb-3">
                         <label class="form-label" for="inpt">Select Role</label>
                         <select class="form-select" style="border: 1px solid #e0dddd" id="user_role">
-                            <option value="choose" selected disabled> - Choose -</option>
-                            <option value="admin">Admin</option>
-                            <option value="branch_user">Branch User</option>
-                            <option value="corporate_user">Corporate User</option>
+                            <option value="admin">ADMIN</option>
+                            <option value="branch_user">BRANCH USER</option>
+                            <option value="corporate_user">CORPORATE USER</option>
                         </select>
                       </div>
                     </div>
                   </div>
                   
                   <div class="text-end">
+                    <button class="btn btn-danger" style="opacity: 0" id="cancelbtn" onclick="window.location.reload()">Cancel Edit</button>
                     <button class="btn btn-primary" id="addbtn" type="submit">Create User</button>
                   </div>
                 </div>
@@ -798,28 +797,29 @@
 
             <div class="col-sm-12">
               <div class="card">
-                <div class="card-header">
+                <div class="card-header pb-0">
                   <h3>All Users</h3>
                 </div>
                 <div class="card-body">
-                <div class="table-responsive">
-                  <table id="tbl">
-                    <thead>
-                      <tr>
-                        <th scope="col">S.No</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">Mobile No</th>
-                        <th scope="col">Branch</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!--data-->
-                    </tbody>
-                  </table>
+                  <!--map list-->
+                  <div class="table-responsive">
+                    <table id="tbl">
+                      <thead>
+                        <tr>
+                          <td>SNo</td>
+                          <td>Name</td>
+                          <td>Mobile</td>
+                          <td>Role</td>
+                          <td>Branch</td>
+                          <td>Action</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
 
@@ -842,7 +842,7 @@
       
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title" id="exampleModalLabel">Confirm Action</h3>
@@ -862,24 +862,31 @@
     </div>
   </div>
   </div>
+  <!-- latest jquery-->
   <script src="../assets/js/jquery-3.6.0.min.js"></script>
-  <script src="../assets/js/bootstrap/popper.min.js"></script>
-  <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-  <!-- feather icon js-->
-  <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-  <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-  <script src="../assets/js/scrollbar/simplebar.js"></script>
-  <script src="../assets/js/scrollbar/custom.js"></script>
-  <!-- Sidebar jquery-->
-  <script src="../assets/js/config.js"></script>
-  <script src="../assets/js/sidebar-menu.js"></script>
-  <script src="../assets/js/tooltip-init.js"></script>
-  <!-- Theme js-->
-  <script src="../assets/js/script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- feather icon js-->
+    <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+    <script src="../assets/js/scrollbar/simplebar.js"></script>
+    <script src="../assets/js/scrollbar/custom.js"></script>
+    <!-- Sidebar jquery-->
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/sidebar-menu.js"></script>
+    <!--DataTable-->
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> 
+
+    <script src="../assets/js/tooltip-init.js"></script>
+    <!-- Theme js-->
+    <script src="../assets/js/script.js"></script>  
+
+    <!--Toster-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
     integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -889,13 +896,46 @@
     var deleteid;
     var dataTable;
 
-    function setid(obj) {
-      console.log('clicked', obj)
-      deleteid = obj;
+    function setid(ob) {
+      console.log('clicked', ob)
+      deleteid = ob;
+    }
+    function setedit(id, name, mobile, role, branch_id, branch, password){
+      document.getElementById('cancelbtn').style.opacity = '1';
+      console.log(id, name, mobile, role, branch, password); deleteid = id;
+      document.getElementById('tit').innerHTML = 'Edit User '+ name;
+      document.getElementById('user_name').value = name; document.getElementById('user_mobile').value = mobile;
+      document.getElementById('user_password').value = name; 
+      var brn = document.getElementById('user_branch');
+      var optbran = document.createElement('option');
+      optbran.value = branch_id;
+      optbran.text = branch;
+      optbran.selected = true;
+      brn.appendChild(optbran);
+      var rol = document.getElementById('user_role');
+      var abtn = document.getElementById('addbtn'); 
+      abtn.textContent = 'Update User'; 
+      abtn.removeEventListener('click', postreq);
+      abtn.addEventListener('click', editreq);
+      document.getElementById('tit').textContent = 'Update User ( ' + name + ' )';
+
+      while(rol.firstChild){
+        rol.removeChild(rol.firstChild)
+      }
+      var optionValues = [
+        {'value': role,'text':role}, 
+        {'value': 'admin','text': "Admin"},
+        {'value': 'branch_user','text':'Branch User'}, 
+        {'value': 'corporate_user', 'text': 'Corparate User'}];
+        optionValues.map(oj => {
+          var option = document.createElement('option');
+          option.value = oj.value;
+          option.textContent = oj.text.toUpperCase();
+          rol.appendChild(option);
+        })
     }
 
     function fetchdata(){
-
       $.ajax({
       url: 'ajax/user/user_list.php',
       type: 'get',
@@ -904,16 +944,22 @@
       success: function (response) {
         var result = JSON.parse(response);
         data = result.data; 
+        console.log(result.data)
         var count = 0; var temp = [];
         data.map(obj => {
           var tryed = `
                 <i
-                  onclick="setid('${obj}')"
+                  onclick="setedit('${obj.id}','${obj.name}','${obj.mobile}','${obj.role}','${obj.branch_id}','${obj.branch_name}','${obj.password}')"
                   data-feather="edit-2" 
+                  style="cursor:pointer">
+                </i>
+                <i
+                  onclick="setid(${obj.id})"
+                  data-feather="trash-2" 
                   data-bs-toggle="modal" 
                   data-original-title="test"
                   data-bs-target="#exampleModal"
-                  style="cursor:pointer">
+                  style="cursor:pointer;color:red">
                 </i>`;
           temp.push(
             {
@@ -1004,6 +1050,66 @@
       }
     }
 
+    function editreq() {
+      var nameinput = $('#user_name').val();
+      var passwordinput = $('#user_password').val();
+      var mobileinput = $('#user_mobile').val();
+      var branchinput = $('#user_branch').val();
+      var roleinput = $('#user_role').val();
+      if(nameinput == '')
+      {
+        toastr.error('Enter user name');
+      }
+      else if(passwordinput == '')
+      {
+        toastr.error('Enter password');
+      }
+      else if(mobileinput == '')
+      {
+        toastr.error('Enter Mobile number');
+      }
+      else if(branchinput == '' || branchinput == "choose")
+      {
+        toastr.error('Select Branch');
+      }
+      else if(roleinput == '' || roleinput == 'choose')
+      {
+        toastr.error('Select role');
+      }
+      else
+      {
+        var fd = new FormData();
+        fd.append('id', deleteid)
+        fd.append('user_name', nameinput);
+        fd.append('user_mobile', mobileinput);
+        fd.append('user_password', passwordinput);
+        fd.append('user_branch', branchinput);
+        fd.append('user_role', roleinput);
+        $.ajax({
+          url: 'ajax/user/user_edit.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            var result = JSON.parse(response);
+            if (result.status == 'Success') {
+              toastr.success(result.remarks);
+              setTimeout(function() {
+                window.location.reload();
+              }, 2000);
+              fetchdata();
+              // fetchdata();
+            } else if (result.status == 'Available') {
+              toastr.error(result.remarks);
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
+    }
+
     function deletesource() {
       var fd = new FormData();
       fd.append('id', deleteid);
@@ -1029,7 +1135,6 @@
     }
 
     function fetchselectdata(){
-      console.log('fetching')
       $.ajax({
       url: 'ajax/branch/branch_list.php',
       type: 'get',
