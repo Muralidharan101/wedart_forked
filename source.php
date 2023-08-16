@@ -96,8 +96,7 @@
                   <div class="lang"><i class="flag-icon flag-icon-us"></i><span class="lang-txt">EN </span></div>
                 </div>
                 <div class="more_lang">
-                  <div 
-                    class="lang selected" data-value="en"><i class="flag-icon flag-icon-us"></i><span
+                  <div class="lang selected" data-value="en"><i class="flag-icon flag-icon-us"></i><span
                       class="lang-txt">English<span> (US)</span></span></div>
                   <div class="lang" data-value="de"><i class="flag-icon flag-icon-de"></i><span
                       class="lang-txt">Deutsch</span></div>
@@ -737,8 +736,9 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Users</h3>
+                <h3>Source</h3>
               </div>
+
             </div>
           </div>
         </div>
@@ -750,98 +750,33 @@
 
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>User Creation</h3>
+                  <h3>Source Creation</h3>
                 </div>
 
                 <div class="card-body">
-
                   <div class="row">
-                    <div class="col">
+                    <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label" for="inpt">Enter User Name</label>
-                        <input class="form-control" style="border: 1px solid #e0dddd" id="user_name">
+                        <label class="form-label" for="inpt">Enter Source</label>
+                        <input class="form-control" style="border: 1px solid #e0dddd" id="inpt">
                       </div>
                     </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Enter Mobile Number</label>
-                        <input class="form-control" type="number" style="border: 1px solid #e0dddd" id="user_mobile">
-                      </div>
+                    <div class="col-lg-4">
+                      <label class="form-label" style="color:transparent">.</label><br>
+                      <button class="btn btn-primary" id="sourceadd" type="submit">Create Source</button>
                     </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Create Password</label>
-                        <input class="form-control" type="password" style="border: 1px solid #e0dddd" id="user_password">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Select Branch</label>
-                        <select class="form-select" style="border: 1px solid #e0dddd" id="user_branch">
-                          <option value="choose" selected disabled> - Choose -</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Select Role</label>
-                        <select class="form-select" style="border: 1px solid #e0dddd" id="user_role">
-                            <option value="choose" selected disabled> - Choose -</option>
-                            <option value="admin">Admin</option>
-                            <option value="branch_user">Branch User</option>
-                            <option value="corporate_user">Corporate User</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="text-end">
-                    <button class="btn btn-primary" id="addbtn" type="submit">Create User</button>
                   </div>
                 </div>
-
-                
-
               </div>
             </div>
 
             <div class="col-sm-12">
               <div class="card">
-                <div class="card-header">
-                  <h3>All Users</h3>
+                <div class="card-header pb-0">
+                  <h3>All Source</h3>
                 </div>
-                <div class="card-block row">
-                  <div class="col-sm-12 col-lg-12 col-xl-12">
-                    <div class="table-responsive">
-                      <table class="table table-responsive-sm">
-                        <thead>
-                          <tr style='text-align: center'>
-                            <th scope="col">S.No</th>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Mobile No</th>
-                            <th scope="col">Branch</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody id="listdata">
-                          <!--data-->
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                <div class="card-body" id="listdata">
+                  
                 </div>
               </div>
             </div>
@@ -865,15 +800,24 @@
       
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Confirm Action</h3>
+              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">Are you sure to Delete?</div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label class="form-label" for="edit">Enter Source Name</label>
+                    <input class="form-control" style="border: 1px solid #e0dddd" id="edit">
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="setid('')">Close</button>
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="editreq()">Edit</button>
               <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletesource()">Delete</button>
             </div>
           </div>
@@ -910,100 +854,100 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script>
-    document.getElementById("addbtn").addEventListener("click", postreq);
+    document.getElementById("sourceadd").addEventListener("click", postsource);
     var data;
     var deleteid;
-    var count;
+    var editname;
 
-    function setid(obj) {
-      console.log('clicked', obj)
-      deleteid = obj;
-    }
 
-    function fetchdata(){
-      count=0;
-      $.ajax({
-      url: 'ajax/user/user_list.php',
-      type: 'get',
-      contentType: false,
-      processData: false,
-      success: function (response) {
-        console.log(response)
-        var result = JSON.parse(response);
-        console.log(result.data)
-        data = result.data;
-        document.getElementById('listdata').innerHTML =
-          data.map(obj => (
-            `<tr style='text-align: center'>
-                <td>${++count}</td>
-                <td>${obj.name}</td>
-                <td>${obj.mobile}</td>
-                <td>${obj.branch_name}</td>
-                <td>${obj.role}</td>
-                <td><i data-feather="edit-2" class='ho'></i>
-                    ${' '} 
-                    <i
-                      data-bs-toggle="modal" data-original-title="test"
-                      data-bs-target="#exampleModal" 
-                      data-feather="trash-2" 
-                      onclick='setid(${obj.id})' 
-                      style='color:red' class='ho'></i>
-                </td>
-            </tr>`
-          ))
-          feather.replace()
-      }
-    })
-    }fetchdata();
+    function postsource() {
+      var inpt = $('#inpt').val();
 
-    function postreq() {
-      var nameinput = $('#user_name').val();
-      var passwordinput = $('#user_password').val();
-      var mobileinput = $('#user_mobile').val();
-      var branchinput = $('#user_branch').val();
-      var roleinput = $('#user_role').val();
-
-      if(nameinput == '')
+      if(inpt == '')
       {
-        toastr.error('Enter user name');
-      }
-      else if(passwordinput == '')
-      {
-        toastr.error('Enter password');
-      }
-      else if(mobileinput == '')
-      {
-        toastr.error('Enter Mobile number');
-      }
-      else if(branchinput == '' || branchinput == "choose")
-      {
-        toastr.error('Select Branch');
-      }
-      else if(roleinput == '' || roleinput == 'choose')
-      {
-        toastr.error('Select role');
+        toastr.error('Enter Source');
       }
       else
       {
         var fd = new FormData();
-        fd.append('user_name', nameinput);
-        fd.append('user_mobile', mobileinput);
-        fd.append('user_password', passwordinput);
-        fd.append('user_branch', branchinput);
-        fd.append('user_role', roleinput)
+
+        fd.append('source', inpt);
+
         $.ajax({
-          url: 'ajax/user/user_creation.php',
+          url: 'ajax/source/source_creation.php',
           data: fd,
           type: 'post',
           contentType: false,
           processData: false,
           success: function (response) {
+
+            var result = JSON.parse(response);
+
+            if (result.status == 'Success') {
+              toastr.success('Source Name Created successfully');
+              $('#inpt').val(''); fetchdata();
+            } else if (result.status == 'Available') {
+              toastr.error('Source Name Already Available');
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
+      
+    }
+
+    function deletesource() {
+
+      var fd = new FormData();
+
+      fd.append('source_id', deleteid);
+      $.ajax({
+        url: 'ajax/source/source_remove.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log(response)
+          var result = JSON.parse(response);
+          console.log(result)
+          if(result.status == 'Success')
+          {
+              toastr.success(result.remarks);
+              setid('');fetchdata();
+          } else
+          {
+            toastr.error('Sry, Error with the Backend');
+          }
+        }
+      })
+    }
+
+    function editreq(){
+      var inputvalue = $('#edit').val();
+      if(inputvalue == '')
+      {
+        toastr.error('Enter Source Name');
+      }
+      else
+      {
+        var fd = new FormData();
+        fd.append('id',deleteid);
+        fd.append('source_data', inputvalue);
+        $.ajax({
+          url: 'ajax/service_category/source_edit.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            console.log(response)
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
-              $('#user_name').val('');$('#user_password').val('');$('#user_mobile').val('');
+              $('#edit').val('');
               fetchdata();
-              // fetchdata();
             } else if (result.status == 'Available') {
               toastr.error(result.remarks);
             } else {
@@ -1014,62 +958,62 @@
       }
     }
 
-    function deletesource() {
-      var fd = new FormData();
-      fd.append('id', deleteid);
-      $.ajax({
-        url: 'ajax/user/user_remove.php',
-        data: fd,
-        type: 'post',
-        contentType: false,
-        processData: false,
-        success: function (response) {
-          var result = JSON.parse(response);
-          if(result.status == 'Success')
-          {
-              toastr.success(result.remarks);
-              fetchdata();
-              setid('')
-          } else
-          {
-            toastr.error('Sry, Error with the Backend');
-          }
-        }
-      })
+    function setid(ob, name) {
+      deleteid = ob; editname = name;
+      document.getElementById('edit').value = name;
     }
 
-    function fetchselectdata(){
-      console.log('fetching')
+    function fetchdata(){
       $.ajax({
-      url: 'ajax/branch/branch_list.php',
+      url: 'ajax/source/source_list.php',
       type: 'get',
       contentType: false,
       processData: false,
       success: function (response) {
         var result = JSON.parse(response);
-        var branch_data = result.data;
-        var selet = document.getElementById('user_branch');
-
-        branch_data.forEach(option => {
-        const newOption = document.createElement("option");
-        newOption.value = option.id;
-        newOption.text = option.branch_name;
-        selet.appendChild(newOption);
-        });
+        data = result.data;
+        var mdv = document.createElement('div'); mdv.classList = 'bmain';
+        mdv .innerHTML = 
+          data.map(obj => (
+            `<div 
+                class="btag" 
+                data-bs-toggle="modal" data-original-title="test"
+                data-bs-target="#exampleModal" 
+                onclick='setid("${obj.id}", "${obj.source_data}")'>
+                ${obj.source_data} &nbsp;  
+                <i data-feather="edit-2"></i>
+              </div>`
+          )).join('');
+          document.getElementById('listdata').innerHTML = mdv.outerHTML;
+          feather.replace()
       }
     })
-    };fetchselectdata();
-    
+    }fetchdata();
   </script>
 
 
 <style>
-    .badge:hover{
-      cursor: pointer;
-    }
-    .ho{
-      cursor: pointer;
-    }
+  .badge:hover{
+    cursor: pointer;
+  }
+  .bmain{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .btag{
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: var(--theme-default) !important;
+    color: #fff;
+    margin-right:10px;
+    margin-bottom: 10px;
+    display: flex;
+    min-width:fit-content;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 </style>
 
 </body>

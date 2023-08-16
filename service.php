@@ -4,7 +4,7 @@
 <!-- Mirrored from admin.pixelstrap.com/koho/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jul 2023 10:02:19 GMT -->
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
@@ -311,19 +311,21 @@
                 </div>
                 <div class="card-body">
                   <!--map list-->
-                  <table id="tbl">
-                    <thead>
-                      <tr>
-                        <td>SNo</td>
-                        <td>Service Category</td>
-                        <td>Service</td>
-                        <td>Action</td>
-                      </tr>
-                    </thead>
-                    <tbody>
+                  <div class="table-responsive">
+                    <table id="tbl">
+                      <thead>
+                        <tr>
+                          <td>SNo</td>
+                          <td>Service Category</td>
+                          <td>Service</td>
+                          <td>Action</td>
+                        </tr>
+                      </thead>
+                      <tbody>
 
-                    </tbody>
-                  </table>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -350,21 +352,21 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Confirm Action</h3>
+              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="row">
                   <div class="col-lg-12">
                     <div class="mb-4">
-                      <label class="form-label" for="category">Select service category</label>
+                      <label class="form-label" for="editselect">Select service category</label>
                       <select class="form-select digits" style="border: 1px solid #e0dddd" id="editselect">
                       </select>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="mb-3">
-                      <label class="form-label" for="inpt">Enter Service</label>
+                      <label class="form-label" for="edit">Enter Service</label>
                       <input class="form-control" style="border: 1px solid #e0dddd" id="edit">
                     </div>
                   </div>
@@ -395,14 +397,21 @@
     <!-- Sidebar jquery-->
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/sidebar-menu.js"></script>
+    <!--DataTable-->
     <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-    <!-- <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> 
 
     <script src="../assets/js/tooltip-init.js"></script>
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>  
+
+    <!--Toster-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+    integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script>
     document.getElementById("addbtn").addEventListener("click", postreq);
@@ -414,11 +423,23 @@
     var service_categorys;
     var dataTable;
 
-    function setid(ob) {
-      
-      console.log(ob)
-      deleteid = ob.id; editname = ob.service_name; 
-      
+    function setid(id, type, type_id, ser_name) {
+      console.log(id, type, type_id, ser_name)
+      deleteid = id; editname = ser_name; 
+      document.getElementById('edit').value = ser_name; 
+      editselect = type_id; editselectvalue = type;
+      var sel = document.getElementById('editselect');
+      var setoption = document.createElement('option')
+      setoption.value = type_id;
+      setoption.text = type;
+      while (sel.firstChild) {
+        sel.removeChild(sel.firstChild);
+      }
+      const optgroup = document.createElement('optgroup');
+      optgroup.label = 'Selected Service';
+      sel.appendChild(optgroup)
+      sel.appendChild(setoption);
+      fetcheditselectdata()
     }
     
     function fetchdata(){
@@ -432,23 +453,15 @@
         data = result.data;
         var count = 0; var temp = [];
         data.map(obj => {
-          var but = document.createElement('button')
-          but.setAttribute('data-feather','edit-2');
-          but.setAttribute('data-bs-toggle','modal');
-          but.setAttribute('data-original-title','test');
-          but.setAttribute('data-bs-target', '#exampleModal')
-          but.addEventListener('click', function() {
-
-            setid(obj.id, obj.type_name, obj.type_id, obj.service_name);
-          })
           var tryed = `
                 <i
-                  onclick="setid(${obj})" 
+                  onclick="setid('${obj.id}','${obj.type_name}','${obj.type_id}','${obj.service_name}')" 
                   data-feather="edit-2" 
                   data-bs-toggle="modal" 
                   data-original-title="test"
-                  data-bs-target="#exampleModal">
-                </i>`
+                  data-bs-target="#exampleModal"
+                  style="cursor:pointer">
+                </i>`;
           temp.push(
             {
               'count': ++count,
@@ -456,6 +469,9 @@
               'service_name':obj.service_name,
               'action': tryed})
           });
+          if(dataTable){
+            dataTable.destroy();
+          }
         dataTable = $('#tbl').DataTable({
         "pageLength": 10,
         "columns": [
@@ -512,6 +528,43 @@
       
     }
 
+    function editreq() {
+      var selectinpt = $('#editselect').val();
+      var servicename = $('#edit').val();
+
+      if(servicename == '')
+      {
+        toastr.error('Enter service');
+      }
+      else
+      {
+        var fd = new FormData();
+        fd.append('id',deleteid)
+        fd.append('service_category', selectinpt);
+        fd.append('service', servicename)
+        $.ajax({
+          url: 'ajax/service/service_edit.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            var result = JSON.parse(response);
+            if (result.status == 'Success') {
+              toastr.success(result.remarks);
+              $('#edit').val('');
+              fetchdata();
+            } else if (result.status == 'Available') {
+              toastr.error(result.remarks);
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
+      
+    }
+
     
 
     function deletereq() {
@@ -530,8 +583,7 @@
           if(result.status == 'Success')
           {
               toastr.success(result.remarks);
-              setid('')
-              fetchdata();
+              setid('');fetchdata();
           } else
           {
             toastr.error('Sry, Error with the Backend');
@@ -551,17 +603,27 @@
         var result = JSON.parse(response);
         service_categorys = result.data;
         var slet = document.getElementById('category');
-        var editslet = document.getElementById('editselect');
         service_categorys.forEach(option => {
         const newOption = document.createElement("option");
         newOption.value = option.id;
         newOption.text = option.type_name;
         slet.appendChild(newOption);
-        editslet.appendChild(newOption)
         });
       }
     })
     };fetchselectdata();
+    function fetcheditselectdata(){
+      var editslet = document.getElementById('editselect');
+      const optgroup = document.createElement('optgroup');
+      optgroup.label = 'All Services';
+      editslet.appendChild(optgroup)
+      service_categorys.forEach(option => {
+        const newOption = document.createElement("option");
+        newOption.value = option.id;
+        newOption.text = option.type_name;
+        editslet.appendChild(newOption)
+      });
+    };
   </script>
 
 <style>
@@ -586,7 +648,9 @@
     align-items: center;
     cursor: pointer;
   }
-  
+  i{
+    cursor: pointer !important;
+  }
 </style>
 
 </body>

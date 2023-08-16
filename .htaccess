@@ -1,3 +1,3 @@
 RewriteEngine On
 
-RewriteRule ^source source(wedart).php
+RewriteRule ^source source.php

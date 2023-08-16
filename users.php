@@ -4,13 +4,11 @@
 <!-- Mirrored from admin.pixelstrap.com/koho/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jul 2023 10:02:19 GMT -->
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-  <meta name="keywords"
-    content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="description" content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="pixelstrap">
   <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
@@ -18,15 +16,9 @@
   <!-- Google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
@@ -37,6 +29,7 @@
   <!-- Feather icon-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/vendors/datatables.css">
   <!-- Bootstrap css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
   <!-- App css-->
@@ -44,8 +37,6 @@
   <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
   <!-- Responsive css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-
-  <link rel="stylesheet" type="text/css" href="/wedartfiles/customstyle.css">
 </head>
 
 <body>
@@ -96,7 +87,8 @@
                   <div class="lang"><i class="flag-icon flag-icon-us"></i><span class="lang-txt">EN </span></div>
                 </div>
                 <div class="more_lang">
-                  <div class="lang selected" data-value="en"><i class="flag-icon flag-icon-us"></i><span
+                  <div 
+                    class="lang selected" data-value="en"><i class="flag-icon flag-icon-us"></i><span
                       class="lang-txt">English<span> (US)</span></span></div>
                   <div class="lang" data-value="de"><i class="flag-icon flag-icon-de"></i><span
                       class="lang-txt">Deutsch</span></div>
@@ -736,9 +728,8 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Additional Services</h3>
+                <h3>Users</h3>
               </div>
-
             </div>
           </div>
         </div>
@@ -750,46 +741,85 @@
 
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>Additional Service Creation</h3>
+                  <h3>User Creation</h3>
                 </div>
 
                 <div class="card-body">
-                    <div class="row">
 
-                        <div class="col">
-                          <div class="mb-3">
-                            <label class="form-label" for="service">Select Service</label>
-                            <select class="form-select" style="border: 1px solid #e0dddd" id="service">
-                              <option value="" selected disabled> - Select -</option>
-                            </select>
-                          </div>
-                        </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Enter User Name</label>
+                        <input class="form-control" style="border: 1px solid #e0dddd" id="user_name">
+                      </div>
                     </div>
-                  
-                  
-                    <div class="col">
-                        <div class="mb-3">
-                          <label class="form-label" for="inpt">Enter Additional Service</label>
-                          <input class="form-control" style="border: 1px solid #e0dddd" id="inpt">
-                        </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Enter Mobile Number</label>
+                        <input class="form-control" type="number" style="border: 1px solid #e0dddd" id="user_mobile">
+                      </div>
                     </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Create Password</label>
+                        <input class="form-control" type="password" style="border: 1px solid #e0dddd" id="user_password">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Select Branch</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="user_branch">
+                          <option value="choose" selected disabled> - Choose -</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Select Role</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="user_role">
+                            <option value="choose" selected disabled> - Choose -</option>
+                            <option value="admin">Admin</option>
+                            <option value="branch_user">Branch User</option>
+                            <option value="corporate_user">Corporate User</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                   
                   <div class="text-end">
-                    <button class="btn btn-primary" id="addbtn" type="submit">Create Additional Service</button>
+                    <button class="btn btn-primary" id="addbtn" type="submit">Create User</button>
                   </div>
                 </div>
+
+                
 
               </div>
             </div>
 
             <div class="col-sm-12">
               <div class="card">
-                <div class="card-header pb-0">
-                  <h3>Additional Service</h3>
+                <div class="card-header">
+                  <h3>All Users</h3>
                 </div>
-                <div class="card-body" id="listdata">
-                  <!--map list-->
+                <div class="card-body">
+                <div class="table-responsive">
+                  <table id="tbl">
+                    <thead>
+                      <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Mobile No</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!--data-->
+                    </tbody>
+                  </table>
                 </div>
+              </div>
               </div>
             </div>
 
@@ -821,7 +851,7 @@
             <div class="modal-body">Are you sure to Delete?</div>
             <div class="modal-footer">
               <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="setid('')">Close</button>
-              <button class="btn btn-secondary" type="button" data-bs-dismiss="modal" onclick="deletereq()">Delete</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletesource()">Delete</button>
             </div>
           </div>
         </div>
@@ -832,7 +862,6 @@
     </div>
   </div>
   </div>
-  <!-- latest jquery-->
   <script src="../assets/js/jquery-3.6.0.min.js"></script>
   <script src="../assets/js/bootstrap/popper.min.js"></script>
   <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
@@ -847,8 +876,6 @@
   <script src="../assets/js/tooltip-init.js"></script>
   <!-- Theme js-->
   <script src="../assets/js/script.js"></script>
-
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -860,53 +887,102 @@
     document.getElementById("addbtn").addEventListener("click", postreq);
     var data;
     var deleteid;
+    var dataTable;
+
+    function setid(obj) {
+      console.log('clicked', obj)
+      deleteid = obj;
+    }
 
     function fetchdata(){
+
       $.ajax({
-      url: 'ajax/additional_service/additional_service_list.php',
+      url: 'ajax/user/user_list.php',
       type: 'get',
       contentType: false,
       processData: false,
       success: function (response) {
         var result = JSON.parse(response);
-        data = result.data;
-        document.getElementById('listdata').innerHTML =
-          data.map(obj => (
-            `<span 
-              class="badge badge-pill badge-primary" 
-              style="padding: 10px;border-radius: 30px;"
-              data-bs-toggle="modal" data-original-title="test"
-              data-bs-target="#exampleModal" 
-              onclick='setid(${obj.id})'>
-              ${obj.additional_service_name} - ${obj.service_name} 
-                <i data-feather="x"></i>
-            </span>`
-          ))
+        data = result.data; 
+        var count = 0; var temp = [];
+        data.map(obj => {
+          var tryed = `
+                <i
+                  onclick="setid('${obj}')"
+                  data-feather="edit-2" 
+                  data-bs-toggle="modal" 
+                  data-original-title="test"
+                  data-bs-target="#exampleModal"
+                  style="cursor:pointer">
+                </i>`;
+          temp.push(
+            {
+              'count': ++count,
+              'name': obj.name,
+              'mobile': obj.mobile,
+              'branch':obj.branch_name,
+              'role': obj.role, 
+              'action': tryed
+            })
+          if(dataTable){
+            dataTable.destroy();
+          }
+          dataTable = $('#tbl').DataTable({
+          "pageLength": 10,
+          "columns": [
+            {"data": "count"},  
+            {"data": "name"},
+            {"data": "mobile"}, 
+            {"data": "branch"},
+            {"data": "role"},
+            {"data": "action"} 
+          ]
+          });
+          dataTable.clear().rows.add(temp).draw();
+          feather.replace();
+        })
           feather.replace()
       }
     })
     }fetchdata();
 
     function postreq() {
-      var service = $('#service').val();
-      var additionalservice = $('#inpt').val();
+      var nameinput = $('#user_name').val();
+      var passwordinput = $('#user_password').val();
+      var mobileinput = $('#user_mobile').val();
+      var branchinput = $('#user_branch').val();
+      var roleinput = $('#user_role').val();
 
-      if(service == '')
+      if(nameinput == '')
       {
-        toastr.error('Select service');
+        toastr.error('Enter user name');
       }
-      else if(additionalservice == '')
+      else if(passwordinput == '')
       {
-        toastr.error('Enter additional service');
+        toastr.error('Enter password');
+      }
+      else if(mobileinput == '')
+      {
+        toastr.error('Enter Mobile number');
+      }
+      else if(branchinput == '' || branchinput == "choose")
+      {
+        toastr.error('Select Branch');
+      }
+      else if(roleinput == '' || roleinput == 'choose')
+      {
+        toastr.error('Select role');
       }
       else
       {
         var fd = new FormData();
-        fd.append('service', service);
-        fd.append('additional_service', additionalservice);
-
+        fd.append('user_name', nameinput);
+        fd.append('user_mobile', mobileinput);
+        fd.append('user_password', passwordinput);
+        fd.append('user_branch', branchinput);
+        fd.append('user_role', roleinput)
         $.ajax({
-          url: 'ajax/additional_service/additional_service_creation.php',
+          url: 'ajax/user/user_creation.php',
           data: fd,
           type: 'post',
           contentType: false,
@@ -915,8 +991,9 @@
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
-              $('#inpt').val('');
-              fetchselectdata();
+              $('#user_name').val('');$('#user_password').val('');$('#user_mobile').val('');
+              fetchdata();
+              // fetchdata();
             } else if (result.status == 'Available') {
               toastr.error(result.remarks);
             } else {
@@ -925,14 +1002,13 @@
           }
         })
       }
-      
     }
 
-    function deletereq() {
+    function deletesource() {
       var fd = new FormData();
       fd.append('id', deleteid);
       $.ajax({
-        url: 'ajax/additional_service/additional_service_remove.php',
+        url: 'ajax/user/user_remove.php',
         data: fd,
         type: 'post',
         contentType: false,
@@ -942,6 +1018,7 @@
           if(result.status == 'Success')
           {
               toastr.success(result.remarks);
+              fetchdata();
               setid('')
           } else
           {
@@ -951,32 +1028,39 @@
       })
     }
 
-    function setid(obj) {
-      console.log('clicked', obj)
-      deleteid = obj;
-    }
-
     function fetchselectdata(){
+      console.log('fetching')
       $.ajax({
-      url: 'ajax/service/service_list.php',
+      url: 'ajax/branch/branch_list.php',
       type: 'get',
       contentType: false,
       processData: false,
       success: function (response) {
         var result = JSON.parse(response);
-        service = result.data;
-        var slet = document.getElementById('service');
-        service.forEach(option => {
+        var branch_data = result.data;
+        var selet = document.getElementById('user_branch');
+
+        branch_data.forEach(option => {
         const newOption = document.createElement("option");
         newOption.value = option.id;
-        newOption.text = option.service_name;
-        slet.appendChild(newOption);
+        newOption.text = option.branch_name;
+        selet.appendChild(newOption);
         });
       }
     })
     };fetchselectdata();
+    
   </script>
 
+
+<style>
+    .badge:hover{
+      cursor: pointer;
+    }
+    .ho{
+      cursor: pointer;
+    }
+</style>
 
 </body>
 
