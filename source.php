@@ -762,7 +762,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4">
-                      <label class="form-label" style="color:transparent">.</label><br>
+                      <label class="form-label" style="color:transparent" id="dot">.</label><br>
                       <button class="btn btn-primary" id="sourceadd" type="submit">Create Source</button>
                     </div>
                   </div>
@@ -898,9 +898,7 @@
     }
 
     function deletesource() {
-
       var fd = new FormData();
-
       fd.append('source_id', deleteid);
       $.ajax({
         url: 'ajax/source/source_remove.php',
@@ -909,15 +907,11 @@
         contentType: false,
         processData: false,
         success: function (response) {
-          console.log(response)
           var result = JSON.parse(response);
-          console.log(result)
-          if(result.status == 'Success')
-          {
+          if(result.status == 'Success'){
               toastr.success(result.remarks);
               setid('');fetchdata();
-          } else
-          {
+          } else {
             toastr.error('Sry, Error with the Backend');
           }
         }
@@ -942,7 +936,6 @@
           contentType: false,
           processData: false,
           success: function (response) {
-            console.log(response)
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
@@ -1013,6 +1006,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+  }
+  @media only screen and (max-width: 991px) {
+    #dot{
+      display: none;
+    }
   }
 </style>
 

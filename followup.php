@@ -4,7 +4,7 @@
 <!-- Mirrored from admin.pixelstrap.com/koho/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jul 2023 10:02:19 GMT -->
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
@@ -46,10 +46,6 @@
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
 
   <link rel="stylesheet" type="text/css" href="/wedartfiles/customstyle.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-    integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -757,26 +753,35 @@
                 </div>
 
                 <div class="card-body">
-
                   <div class="row">
-                    <div class="col">
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label" for="inpt">Enter Followup Name</label>
                         <input class="form-control" style="border: 1px solid #e0dddd" id="inpt">
                       </div>
                     </div>
-                  </div>
-                  
-                  <div class="text-end">
-                    <button class="btn btn-primary" id="addbtn" type="submit">Create FollowUp</button>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" style="color:transparent;width:100%" id="dot">.</label>
+                        <button class="btn btn-primary" id="addbtn">Create FollowUp</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                
-
               </div>
             </div>
 
+            <div class="col-sm-12">
+              <div class="card">
+                  <div class="card-header pb-0">
+                    <h3>All FollowUps</h3>
+                  </div>
+
+                  <div class="card-body" id="listdata">
+                    <!--Map Data-->
+                  </div>
+                </div>
+            </div>
           </div>
         </div>
 
@@ -793,6 +798,32 @@
         </div>
       </footer>
 
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label class="form-label" for="edit">Enter FollowUp Name</label>
+                    <input class="form-control" style="border: 1px solid #e0dddd" id="edit">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="editreq()">Edit</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletesource()">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     </div>
@@ -818,13 +849,51 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+    integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 
   <script>
     document.getElementById("addbtn").addEventListener("click", postreq);
+    var data = [];
+    var deleteid;
+    var editname;
+
+    function setid(ob, name) {
+      deleteid = ob; editname = name;console.log(ob,name)
+      document.getElementById('edit').value = name;
+    }
+
+    function fetchdata(){
+      $.ajax({
+      url: 'ajax/follow_up/follow_up_list.php',
+      type: 'get',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        data = result.data;
+        var mdv = document.createElement('div'); mdv.classList = 'bmain';
+        mdv .innerHTML = 
+          data.map(obj => (
+            `<div 
+                class="btag" 
+                data-bs-toggle="modal" data-original-title="test"
+                data-bs-target="#exampleModal" 
+                onclick='setid("${obj.id}", "${obj.follow_up_name}")'>
+                ${obj.follow_up_name} &nbsp;  
+                <i data-feather="edit-2"></i>
+              </div>`
+          )).join('');
+          document.getElementById('listdata').innerHTML = mdv.outerHTML;
+          feather.replace();
+      }
+      })
+    }fetchdata();
+
     function postreq() {
       var inpt = $('#inpt').val();
-
       if(inpt == '')
       {
         toastr.error('Enter follow up name');
@@ -833,7 +902,6 @@
       {
         var fd = new FormData();
         fd.append('follow_up_name', inpt);
-
         console.log(inpt);
         $.ajax({
           url: 'ajax/follow_up/follow_up_creation.php',
@@ -845,7 +913,7 @@
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
-              $('#inpt').val('');
+              $('#inpt').val('');fetchdata();
             } else if (result.status == 'Available') {
               toastr.error(result.remarks);
             } else {
@@ -854,11 +922,60 @@
           }
         })
       }
-      
-      
     }
 
-    
+    function editreq(){
+      var inpt = $('#edit').val();
+      if(inpt == '')
+      {
+        toastr.error('Enter follow up name');
+      }
+      else
+      {
+        var fd = new FormData();
+        fd.append('id', deleteid)
+        fd.append('follow_up_name', inpt);
+        $.ajax({
+          url: 'ajax/follow_up/follow_up_edit.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            var result = JSON.parse(response);
+            if (result.status == 'Success') {
+              toastr.success(result.remarks);
+              $('#edit').val('');fetchdata();
+            } else if (result.status == 'Available') {
+              toastr.error(result.remarks);
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
+    }
+
+    function deletesource() {
+      var fd = new FormData();
+      fd.append('id', deleteid);
+      $.ajax({
+        url: 'ajax/follow_up/follow_up_remove.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+          if(result.status == 'Success'){
+              toastr.success(result.remarks);
+              setid('');fetchdata();
+          } else {
+            toastr.error('Sry, Error with the Backend');
+          }
+        }
+      })
+    }
   </script>
 
 
@@ -868,6 +985,29 @@
     }
     .ho{
       cursor: pointer;
+    }
+    .bmain{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    }
+    .btag{
+      padding: 10px 15px;
+      border-radius: 30px;
+      background-color: var(--theme-default) !important;
+      color: #fff;
+      margin-right:10px;
+      margin-bottom: 10px;
+      display: flex;
+      min-width:fit-content;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    @media only screen and (max-width: 991px) {
+      #dot{
+        display: none;
+      }
     }
 </style>
 

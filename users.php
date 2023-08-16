@@ -909,11 +909,14 @@
       document.getElementById('user_name').value = name; document.getElementById('user_mobile').value = mobile;
       document.getElementById('user_password').value = name; 
       var brn = document.getElementById('user_branch');
+      while(brn.firstChild){
+        brn.removeChild(brn.firstChild)
+      }
       var optbran = document.createElement('option');
       optbran.value = branch_id;
       optbran.text = branch;
       optbran.selected = true;
-      brn.appendChild(optbran);
+      brn.appendChild(optbran);fetchselectdata();
       var rol = document.getElementById('user_role');
       var abtn = document.getElementById('addbtn'); 
       abtn.textContent = 'Update User'; 
@@ -968,7 +971,7 @@
               'count': ++count,
               'name': obj.name,
               'mobile': obj.mobile,
-              'branch':obj.branch_name,
+              'branch':obj.branch_name.toUpperCase(),
               'role': obj.role, 
               'action': tryed
             })
@@ -1146,7 +1149,9 @@
         var result = JSON.parse(response);
         var branch_data = result.data;
         var selet = document.getElementById('user_branch');
-
+        var opgrp = document.createElement("optgroup")
+        opgrp.label = 'All Branches';
+        selet.appendChild(opgrp);
         branch_data.forEach(option => {
         const newOption = document.createElement("option");
         newOption.value = option.id;
