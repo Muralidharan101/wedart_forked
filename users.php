@@ -723,12 +723,12 @@
         </div>
       </div>
       <!-- Page Sidebar Ends-->
-      <div class="page-body">
+      <div class="page-body" id="targetElement">
         <div class="container-fluid">
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Users</h3>
+                <h3 >Users</h3>
               </div>
             </div>
           </div>
@@ -901,6 +901,8 @@
       deleteid = ob;
     }
     function setedit(id, name, mobile, role, branch_id, branch, password){
+      var targetElement = document.getElementById('targetElement');
+      targetElement.scrollIntoView({ behavior: 'smooth' });
       document.getElementById('cancelbtn').style.opacity = '1';
       console.log(id, name, mobile, role, branch, password); deleteid = id;
       document.getElementById('tit').innerHTML = 'Edit User '+ name;
