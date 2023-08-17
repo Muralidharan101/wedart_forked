@@ -6,10 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-  <meta name="keywords"
-    content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="description" content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="pixelstrap">
   <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
@@ -17,15 +15,9 @@
   <!-- Google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
@@ -36,6 +28,7 @@
   <!-- Feather icon-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/vendors/datatables.css">
   <!-- Bootstrap css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
   <!-- App css-->
@@ -43,12 +36,6 @@
   <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
   <!-- Responsive css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-
-  <link rel="stylesheet" type="text/css" href="/wedartfiles/customstyle.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-  integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -758,30 +745,60 @@
                 <div class="card-body">
                     <div class="row">
 
-                        <div class="col">
-                          <div class="mb-3">
-                            <label class="form-label" for="category">Portfolio</label>
-                            <input class="form-control" type="file" accept=".pdf" style="background-color: #faf5f5" id="pdf">
-                          </div>
+                      <div class="col-lg-4">
+                        <div class="mb-3">
+                          <label class="form-label" for="category">Portfolio</label>
+                          <input class="form-control" type="file" accept=".pdf" style="background-color: #faf5f5" id="pdf">
                         </div>
-                    </div>
-                  
-                  
-                    <div class="col">
+                      </div>
+
+                      <div class="col-lg-4">
                         <div class="mb-3">
                           <label class="form-label" for="inpt">Sample Video</label>
                           <input class="form-control" type="file" accept=".mp4" style="background-color: #faf5f5" id="video">
                         </div>
                     </div>
                   
-                  <div class="text-end">
-                    <button class="btn btn-primary" id="addbtn" type="submit">Create</button>
-                  </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" style="color:transparent;width:100%" id="dot">.</label>
+                        <button class="btn btn-primary" id="addbtn" type="submit" style="padding: 0.5em 1.5em;">
+                          Create
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>  
                 </div>
 
               </div>
             </div>
 
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-header pb-0">
+                  <h3>All Files</h3>
+                </div>
+                <div class="card-body">
+                  <!--map list-->
+                  <div class="table-responsive">
+                    <table id="tbl">
+                      <thead>
+                        <tr>
+                          <td>SNo</td>
+                          <td>PDF</td>
+                          <td>Video</td>
+                          <td>Action</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!--data-->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
@@ -799,56 +816,81 @@
         </div>
       </footer>
 
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Are You Sure To Delete</div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="setid('')">Cancel</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletereq()">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
   </div>
   <!-- latest jquery-->
   <script src="../assets/js/jquery-3.6.0.min.js"></script>
-  <script src="../assets/js/bootstrap/popper.min.js"></script>
-  <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-  <!-- feather icon js-->
-  <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-  <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-  <script src="../assets/js/scrollbar/simplebar.js"></script>
-  <script src="../assets/js/scrollbar/custom.js"></script>
-  <!-- Sidebar jquery-->
-  <script src="../assets/js/config.js"></script>
-  <script src="../assets/js/sidebar-menu.js"></script>
-  <script src="../assets/js/tooltip-init.js"></script>
-  <!-- Theme js-->
-  <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- feather icon js-->
+    <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+    <script src="../assets/js/scrollbar/simplebar.js"></script>
+    <script src="../assets/js/scrollbar/custom.js"></script>
+    <!-- Sidebar jquery-->
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/sidebar-menu.js"></script>
+    <!--DataTable-->
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> 
 
+    <script src="../assets/js/tooltip-init.js"></script>
+    <!-- Theme js-->
+    <script src="../assets/js/script.js"></script>  
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    <!--Toster-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+    integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
   <script>
+    var data;
+    var deleteid;
+    var dataTable;
 
-    $(document).ready(function()
-    {
+    $(document).ready(function(){
       $('#addbtn').click(function()
       {
         var pdf   = $('#pdf')[0].files[0];
         var video = $('#video')[0].files[0];
 
-        if(pdf == null)
-        {
+        if(pdf == null) {
           toastr.error('Upload pdf');
-        }
-        else if(video == null)
-        {
+        } else if(video == null){
           toastr.error('Upload video');
-        }
-        else
-        {
+        } else {
+          document.getElementById('addbtn').innerHTML = `
+          <span 
+          class="spinner-border spinner-border-sm" 
+          role="status" 
+          aria-hidden="true"
+          id="lod"></span> Uploading...`;
+          document.getElementById('addbtn').disabled = true;
           var fd = new FormData();
-
           fd.append('pdf', pdf);
           fd.append('video', video);
-
           jQuery.ajax(  
           {
             url: 'ajax/general_settings/file_upload.php',
@@ -856,35 +898,24 @@
             contentType: false,
             processData: false,
             data: fd,
-
-            success: function(response)
-            {
+            success: function(response) {
               console.log(response);
               var result = JSON.parse(response);
-
               if(result.status == 'Success')
               {
                 toastr.success('Files Uploaded Successfully');
-              }
-              else if(result.status == 'Invalid PDF file')
-              {
-                toastr.error('Upload in pdf format', 'Invalid File Format');
-              }
-              else if(result.status == 'pdfBigFile')
-              {
-                toastr.error('PDF file exceeds 5MB!');
-              }
-              else if(result.status == 'Invalid Video file')
-              {
-                toastr.error('Upload Video file in MP4 format');
-              }
-              else if(result.status == 'videoBigFile')
-              {
-                toastr.error('Video file Exceeds 25MB!');
-              }
-              else
-              {
+                document.getElementById('addbtn').innerHTML = 'Create'
+                document.getElementById('addbtn').disabled = false;
+                $('#pdf').val('');
+                $('#video').val(''); fetchdata();
+              } else if(result.status != 'Success') {
+                toastr.error(result.remarks);
+                document.getElementById('addbtn').innerHTML = 'Create'
+                document.getElementById('addbtn').disabled = false;
+              } else {
                 toastr.error('Failed to upload');
+                document.getElementById('addbtn').innerHTML = 'Create'
+                document.getElementById('addbtn').disabled = false;
               }
             }
           })
@@ -895,97 +926,85 @@
       });
     });
 
-    // document.getElementById("addbtn").addEventListener("click", postservice);
-    // var data;
-    // var deleteid;
+    function fetchdata(){
+      $.ajax({
+      url: 'ajax/general_settings/general_settings_list.php',
+      type: 'get',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        data = result.data;
+        var count = 0; var temp = [];
+        data.map(obj => {
+          var tryed = `
+                <i
+                  onclick="setid('${obj.id}')" 
+                  data-feather="trash-2" 
+                  data-bs-toggle="modal" 
+                  data-original-title="test"
+                  data-bs-target="#exampleModal"
+                  style="cursor:pointer">
+                </i>`;
+          temp.push(
+            {
+              'count': ++count,
+              'pdf': obj.portfolio_file, 
+              'video':obj.sample_video_file,
+              'action': tryed})
+          });
+          if(dataTable){
+            dataTable.destroy();
+          }
+        dataTable = $('#tbl').DataTable({
+        "pageLength": 10,
+        "columns": [
+          {"data": "count"},  
+          {"data": "pdf"},
+          {"data": "video"}, 
+          {"data": "action"}  
+        ]
+        });
+        dataTable.clear().rows.add(temp).draw();
+        feather.replace();
+      }
+    })
+    };fetchdata();
 
-    // function postservice() {
-    //   var pdf = $('#pdf').val();
-    //   var video = $('#video').val();
-    //   var fd = new FormData();
-    //   fd.append('pdf', pdf);
-    //   fd.append('video', video);
+    function setid(ob) {
+      deleteid = ob;
+    }
 
-    //   $.ajax({
-    //     url: 'ajax/source/source_creation.php',
-    //     data: fd,
-    //     type: 'post',
-    //     contentType: false,
-    //     processData: false,
-    //     success: function (response) 
-    //     {
-    //       var result = JSON.parse(response);
-    //       if (result.status == 'Success') {
-    //         toastr.success('Source Name Created successfully');
-    //         $('#src').val('');
-    //       } else if (result.status == 'Available') {
-    //         toastr.error('Source Name Already Available');
-    //       } else {
-    //         toastr.error('Sry, Error with the Backend');
-    //       }
-    //     }
-    //   })
-    // }
-
-
-
-    // function deletesource() {
-    //   var fd = new FormData();
-    //   fd.append('source_id', deleteid);
-    //   $.ajax({
-    //     url: 'ajax/source/source_remove.php',
-    //     data: fd,
-    //     type: 'post',
-    //     contentType: false,
-    //     processData: false,
-    //     success: function (response) {
-    //       console.log(response)
-    //       var result = JSON.parse(response);
-    //       console.log(result)
-    //       if(result.status == 'Success')
-    //       {
-    //           toastr.success(result.remarks);
-    //           setid('')
-    //       } else
-    //       {
-    //         toastr.error('Sry, Error with the Backend');
-    //       }
-    //     }
-    //   })
-    // }
-
-    // function setid(obj) {
-    //   console.log('clicked', obj)
-    //   deleteid = obj;
-    // }
-
-    // $.ajax({
-    //   url: 'ajax/source/source_list.php',
-    //   type: 'get',
-    //   contentType: false,
-    //   processData: false,
-    //   success: function (response) {
-    //     console.log(response)
-    //     var result = JSON.parse(response);
-    //     console.log(result.data)
-    //     data = result.data;
-    //     document.getElementById('listdata').innerHTML =
-    //       data.map(obj => (
-    //         `<span 
-    //           class="badge badge-pill badge-primary" 
-    //           style="padding: 10px;border-radius: 30px;"
-    //           data-bs-toggle="modal" data-original-title="test"
-    //           data-bs-target="#exampleModal" 
-    //           onclick='setid(${obj.id})'>
-    //           ${obj.source_data} 
-    //             <i data-feather="x"></i>
-    //         </span>`
-    //       ))
-    //       feather.replace()
-    //   }
-    // })
+    function deletereq() {
+      var fd = new FormData();
+      fd.append('id', deleteid);
+      $.ajax({
+        url: 'ajax/general_settings/general_settings_remove.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+          if(result.status == 'Success'){
+              toastr.success(result.remarks);
+              setid('');fetchdata();
+          } else {
+            toastr.error('Sry, Error with the Backend');
+          }
+        }
+      })
+    }
+    
   </script>
 
+  <style>
+    @media only screen and (max-width: 991px) {
+      #dot{
+        display: none;
+      }
+    }
+  </style>
 
 </body>
 
