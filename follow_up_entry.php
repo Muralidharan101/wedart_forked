@@ -695,7 +695,8 @@
                         <tr style='text-align: center'>
                           <th scope="col">SNo</th>
                           <th>Date</th>
-                          <th>Info</th>
+                          <th>Approach Topic</th>
+                          <th>Response</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -793,21 +794,22 @@
         }
       }
     })
-  }
+  }fetchdata();
 
 function createTable() {
     var count = 0;
     var dat = [
-        {'id':++count,'date': "1-1-23", 'mes': "Active", 'but' : "Buttons"},
-        {'id':++count,'date': "1-1-23", 'mes': "Active", 'but' : "Buttons"},
-        {'id':++count,'date': "1-1-23", 'mes': "Active", 'but' : "Buttons"}
+        {'id':++count,'date': "1-1-23", 'topic': "TEXT", 'response': "Good", 'but' : "Buttons"},
+        {'id':++count,'date': "1-1-23", 'topic': "TEXT", 'response': "Good", 'but' : "Buttons"},
+        {'id':++count,'date': "1-1-23", 'topic': "TEXT", 'response': "Good", 'but' : "Buttons"}
     ]
     dataTable = $('#tbl').DataTable({
         "pageLength": 10,
         "columns": [
           {"data": "id"},  
           {"data": "date"},
-          {"data": "mes"}, 
+          {"data": "topic"},
+          {"data": "response"}, 
           {"data": "but"}  
         ]
     });
