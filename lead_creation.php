@@ -775,7 +775,7 @@
                   </div>
 
                   <div class="row">
-                      <div class="col-lg-6">
+                      <div class="col-lg-4">
                         <div class="mb-3">
                           <label class="form-label" for="inpt">Select Source</label>
                           <select class="form-select" style="border: 1px solid #e0dddd" id="source">
@@ -783,37 +783,35 @@
                           </select>
                         </div>
                       </div>
-                      <div class="col-lg-6">
+                      <!--Hidden-->
+                      <div class="col-lg-6" style="display: none;">
                         <div class="mb-3">
                           <label class="form-label">Lead No</label>
-                          <input class="form-control" style="border: 1px solid #e0dddd" id="leadno">
+                          <input class="form-control" style="border: 1px solid #e0dddd;" id="leadno">
                         </div>
                       </div>
-                  </div>                      
-
-                  <div class="row">
-                    <div class="col-lg-6">
+                      <!--end Hiddin-->
+                      <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label">Name</label>
                         <input class="form-control" style="border: 1px solid #e0dddd" type="text" id="c_name">
                       </div>
                     </div>
-                    <div class="col-lg-6">
+
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label" id="lab1"></label>
                         <input class="form-control" type="text" style="border: 1px solid #e0dddd" id="inpt1">
                       </div>
                     </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label" id="lab3"></label>
                         <input class="form-control" type="datetime" style="border: 1px solid #e0dddd" id="inpt3">
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label" id="lab2"></label>
                         <input class="form-control" style="border: 1px solid #e0dddd" id="inpt2">
@@ -824,85 +822,93 @@
                         </select>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label">Contact No</label>
                         <input class="form-control" 
                           type="number" style="border: 1px solid #e0dddd" id="contact">
                       </div>                     
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label">Follow-Up Date</label>
                         <input class="form-control" 
                           type="date" style="border: 1px solid #e0dddd" id="followup">
                       </div>
                     </div>
-                  </div>
 
-                  <div class="row">
-                      <div class="col-lg-6">
-                        <div class="mb-3">
-                          <label class="form-label">Select Service</label>
-                          <select 
-                            class="form-select" 
-                            type="select" 
-                            style="border: 1px solid #e0dddd" id="service_type"
-                            onchange="getAdditionalService()">
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-6" >
-                        <div class="mb-3">
-                          <div class="row" style="display: none;">
-                            <div class="col-lg-8">
-                                <label class="form-label">Select Additional Service</label>
-                                <select 
-                                  disabled 
-                                  class="form-select" 
-                                  type="select" 
-                                  style="border: 1px solid #e0dddd" 
-                                  id="service">
-                                </select>
-                            </div>
-                            <div class="col-lg-4">
-                                <label class="form-label"> .</label><br>
-                                <input class="btn btn-light" id="addservice" type="button" value="Add Service" />
-                            </div>
-                          </div>
-
-                          <label class="form-label">Select Additional Services</label>
-                          <div id="listcheckbox"
-                          class="cusdiv">
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-
-                  <!-- <div class="row">
-                    <div class="col">
+                    <div class="col-lg-4">
                       <div class="mb-3">
-                        
+                        <label class="form-label">Select Service Category</label>
+                        <select 
+                          class="form-select" 
+                          type="select" 
+                          style="border: 1px solid #e0dddd" id="service_category"
+                          onchange="fetfun()"><!--HEre-->
+                        </select>
                       </div>
                     </div>
-                  </div> -->
-                  
 
-                  <div class="row">
-                    <div class="col">
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label">Select Service</label>
+                        <select 
+                          class="form-select" 
+                          type="select" 
+                          style="border: 1px solid #e0dddd" id="service_type">
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4" >
+                      <div class="mb-3">
+                        <div class="row" style="display: none;">
+                          <div class="col-lg-8">
+                              <label class="form-label">Select Additional Service</label>
+                              <select 
+                                disabled 
+                                class="form-select" 
+                                type="select" 
+                                style="border: 1px solid #e0dddd" 
+                                id="service">
+                              </select>
+                          </div>
+                          <div class="col-lg-4">
+                              <label class="form-label"> .</label><br>
+                              <input class="btn btn-light" id="addservice" type="button" value="Add Service" />
+                          </div>
+                        </div>
+                        <label class="form-label">Select Additional Services</label>
+                        <div id="listcheckbox"
+                        class="cusdiv">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label">FollowUp Details</label>
+                        <textarea class="form-control"  
+                          type="text" rows="6"
+                          style="border: 1px solid #e0dddd" 
+                          id="follow_up_status"
+                          ></textarea>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label">Other Info</label>
                         <textarea class="form-control"  
-                          type="text" 
+                          type="text" rows="6"
                           style="border: 1px solid #e0dddd" 
                           id="otherinfo"
                           placeholder="Enter Other Informations About The Lead"></textarea>
                       </div>
                     </div>
-                  </div>
+
+                  </div>                      
                   
                   <div class="text-end">
                     <button class="btn btn-primary" id="addbtn" type="submit">Create Lead</button>
@@ -967,15 +973,17 @@
     var gender = document.getElementById('sex');
     var contact = document.getElementById('contact');
     var followup = document.getElementById('followup');
+    var service_category = document.getElementById('service_category');
     var service = document.getElementById('service');
     var service_type = document.getElementById('service_type');
+    var follow_up_status = document.getElementById('follow_up_status');
     var other_info = document.getElementById('otherinfo');
     var arr = []; var selected_services = [];
     var wedding = document.getElementById('wedding');
     var baby = document.getElementById('baby');
 
     document.getElementById("addbtn").addEventListener("click", postreq);
-    document.getElementById("addservice").addEventListener("click", selectService);
+    // document.getElementById("addservice").addEventListener("click", selectService);
 
     function radioChange(){
       if(wedding.checked){
@@ -983,39 +991,11 @@
         inpt1.type = 'text'; inpt2.type = 'text'; inpt3.type = 'date'; sex.style.display = 'none';
         inpt1.value = ''; inpt2.value = ''; inpt3.value = '';
       } else {  
-        lab1.innerHTML = 'Age'; lab2.innerHTML= 'Sex'; lab3.innerHTML = 'Event Date/Time';
+        lab1.innerHTML = 'Age'; lab2.innerHTML= 'Gender'; lab3.innerHTML = 'Event Date/Time';
         inpt1.type = 'number'; inpt2.type = 'hidden'; inpt3.type = 'datetime-local'; sex.style.display = 'block';
         inpt1.value = ''; inpt2.value = ''; inpt3.value = '';
       }
     }radioChange();
-
-    function fetchselectdata(){
-      $.ajax({
-      url: 'ajax/service/service_list.php',
-      type: 'get',
-      contentType: false,
-      processData: false,
-      success: function (response) {
-        var result = JSON.parse(response);
-        var service_category = result.data;
-
-        var slet = document.getElementById('service_type');
-        slet.innerHTML = '';  
-        const defaultOption = document.createElement("option");
-          defaultOption.value = "";
-          defaultOption.text = "Select an option";
-          defaultOption.disabled = true; defaultOption.selected = true;
-        slet.appendChild(defaultOption)
-
-        service_category.forEach(option => {
-        const newOption = document.createElement("option");
-        newOption.value = option.id;
-        newOption.text = option.service_name;
-        slet.appendChild(newOption);
-        });
-      }
-    })
-    };fetchselectdata();
 
     function getSource(){
       $.ajax({
@@ -1045,11 +1025,72 @@
     })
     }getSource();
 
+    function fetfun(){
+      fetchselectdata();
+      getAdditionalService();
+    }
+
+    function fetchservicecategory(){
+      $.ajax({
+      url: 'ajax/service_category/service_category_list.php',
+      type: 'get',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        var service_category = result.data;
+
+        var slet = document.getElementById('service_category');
+        slet.innerHTML = '';  
+        const defaultOption = document.createElement("option");
+          defaultOption.value = "";
+          defaultOption.text = "- Select -";
+          defaultOption.disabled = true; defaultOption.selected = true;
+        slet.appendChild(defaultOption)
+
+        service_category.forEach(option => {
+        const newOption = document.createElement("option");
+        newOption.value = option.id;
+        newOption.text = option.type_name;
+        slet.appendChild(newOption);
+        });
+      }
+    })
+    };fetchservicecategory();
+
+    function fetchselectdata(){
+      $.ajax({
+      url: 'ajax/service/service_list.php',
+      type: 'get',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        var service = result.data;
+
+        var slet = document.getElementById('service_type');
+        slet.innerHTML = '';  
+        const defaultOption = document.createElement("option");
+          defaultOption.value = "";
+          defaultOption.text = "Select an option";
+          defaultOption.disabled = true; defaultOption.selected = true;
+        slet.appendChild(defaultOption)
+
+        service.forEach(option => {
+          console.log(service_category.value , option.type_id, option.service_name)
+        if(service_category.value == option.type_id){
+          const newOption = document.createElement("option");
+          newOption.value = option.id;
+          newOption.text = option.service_name;
+          slet.appendChild(newOption);
+          }
+        });
+      }
+    })
+    };
+
     function getAdditionalService(){
       selected_services = [];
-      document.getElementById('listcheckbox').innerHTML = '';
-      // document.getElementById('listservice').innerHTML = '';
-      // service.disabled = false;
       document.getElementById('listcheckbox').innerHTML = '';
       $.ajax({
       url: 'ajax/additional_service/additional_service_list.php',
@@ -1060,22 +1101,6 @@
         var result = JSON.parse(response);
         var service_array = result.data;
         createCheckboxes(service_array);
-
-        // var slet = document.getElementById('service');
-        // slet.innerHTML = '';  
-        // const defaultOption = document.createElement("option");
-        //   defaultOption.value = "";
-        //   defaultOption.text = "Select an option";
-        //   defaultOption.disabled = true; defaultOption.selected = true;
-        // slet.appendChild(defaultOption)
-
-        // service_array.forEach(option => {
-        // if(service_type.value == option.type_id){
-        //   const newOption = document.createElement("option");
-        //   newOption.text = option.additional_service_name;
-        //   slet.appendChild(newOption);
-        // }
-        // });
       }
     })
     }
@@ -1085,7 +1110,7 @@
       var count = 0;
 
       arg.forEach(function (service) {
-        if(service_type.value == service.type_id){
+        if(service_category.value == service.type_id){
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.value = service.id;
@@ -1099,9 +1124,9 @@
         label.htmlFor = service.id;
         label.classList.add('cuslabel')
 
-        container.appendChild(checkbox);
-        container.appendChild(label);
-        container.appendChild(document.createElement('br'));
+        var divele = document.createElement('div')
+        divele.appendChild(checkbox);divele.appendChild(label);
+        container.appendChild(divele);
         ++count;
        }  
       });
@@ -1124,66 +1149,20 @@
       }
       console.log(selected_services);
     }
-
-    function remove(arg){
-      console.log(arg+ 'argu')
-      const index = arr.indexOf(arg);
-      if (index !== -1) {
-         arr.splice(index, 1);
-      }
-      console.log(arr.toString())
-      document.getElementById('listservice').innerHTML = '';
-      document.getElementById('listservice').innerHTML = 
-      arr.map(obj => (
-        `<span 
-           class="badge badge-pill badge-primary" 
-           style="padding: 10px;border-radius: 30px;"
-           onclick="remove('${obj}')"
-           >
-             ${obj} 
-           <i data-feather="x"><span style='font-weight: bold; font-style: normal;'>&emsp;X</span> </i>
-        </span>`));
-    }
-    
-    function selectService(){
-      var service_text = $('#service').val();
-      // set.add(service_text);arr = [];
-      //  set.forEach(obj => (arr.push(obj)));
-      if(arr.includes(service_text)){
-        toastr.warning(`This Service Already Selected`);
-      } else if(service_text == '' || service_text == null) {
-        toastr.error(`Choose Valid Option`)
-      }else {
-        arr.push(service_text);
-        document.getElementById('listservice').innerHTML = '';
-        document.getElementById('listservice').innerHTML = 
-        arr.map(obj => (
-          `<span 
-             class="badge badge-pill badge-primary" 
-             style="padding: 10px;border-radius: 30px;"
-             onclick="remove('${obj}')"
-             >
-               ${obj} 
-             <i data-feather="x"><span style='font-weight: bold; font-style: normal;'>&emsp;X</span> </i>
-          </span>`));
-      }
-      
-    }
-
     
     function postreq() {
       var fd = new FormData();
-      // var jsobj = arr.map(obj => ({'service': obj}))
-      // console.log(jsobj)
       
       fd.append('lead_no',leadno.value)
       fd.append('source_id',source.value)
       fd.append('name', c_name.value)
       fd.append('phone',contact.value)
       fd.append('other_info',other_info.value)
+      fd.append('service_category', service_category.value)
       fd.append('main_service', service_type.value)
       fd.append('service', JSON.stringify(selected_services))
       fd.append('follow_up', followup.value);
+      fd.append('follow_up_details', follow_up_status.value);
       
       if(wedding.checked){
         fd.append('wedding',true);
@@ -1206,7 +1185,9 @@
           var result = JSON.parse(response);
           if (result.status == 'Success') {
             toastr.success(result.remarks);
-            $('#inpt1').val('');$('#inpt2').val('');
+            setTimeout(() => {
+              window.location.href='list_lead.php'
+            }, 2000)
           } else if (result.status == 'Available') {
             toastr.error(result.remarks);
           } else {
@@ -1242,6 +1223,11 @@
     .cuslabel{
       padding-right: 20px;
       cursor: pointer;
+    }
+    #listcheckbox{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
 </style>
 

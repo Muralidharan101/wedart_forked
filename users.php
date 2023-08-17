@@ -1103,8 +1103,6 @@
               setTimeout(function() {
                 window.location.reload();
               }, 2000);
-              fetchdata();
-              // fetchdata();
             } else if (result.status == 'Available') {
               toastr.error(result.remarks);
             } else {
