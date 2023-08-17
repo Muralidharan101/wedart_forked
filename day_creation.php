@@ -1010,6 +1010,27 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
       
     }
 
+    function deletereq() {
+      var fd = new FormData();
+      fd.append('id', deleteid);
+      $.ajax({
+        url: 'ajax/day/day_remove.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+          if(result.status == 'Success'){
+              toastr.success(result.remarks);
+              setid('');fetchdata();
+          } else {
+            toastr.error('Sry, Error with the Backend');
+          }
+        }
+      })
+    }
+
     function setid(id, ref_name, day) {
       deleteid = id; 
       document.getElementById('edit1').value = ref_name;
