@@ -776,12 +776,12 @@
 //     }
 //     createTable();
 // }radioChange();
-  function postsource() {    
+  function fetchdata() {    
     var fd = new FormData();
     fd.append('lead_id', decodedData.lead_id);
     fd.append('lead', decodedData.lead);
     $.ajax({
-      url: 'ajax/lead_creation/lead_creation_list.php',
+      url: 'ajax/follow_up_data/follow_up_data_list.php',
       data: fd,
       type: 'post',
       contentType: false,
