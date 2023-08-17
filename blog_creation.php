@@ -913,7 +913,7 @@
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
-              $('#inpt1').val('');$('#inpt2').val('');
+              $('#inpt1').val('');$('#inpt2').val('');fetchdata();
               fetchdata();
             } else if (result.status == 'Available') {
               toastr.error(result.remarks);
@@ -971,6 +971,59 @@
       }
     })
     };fetchdata();
+
+    function editreq() {  
+      var inpt1 = $('#edit1').val();
+      var inpt2 = $('#edit2').val();
+      if(inpt1 == ''){
+        toastr.error('Enter Blog name');
+      } else if(inpt2 == '') {
+        toastr.error('Entet Blog Url');
+      } else {
+        var fd = new FormData();
+        fd.append('id', deleteid);
+        fd.append('blog_name', inpt1);
+        fd.append('blog_link', inpt2);
+        $.ajax({
+          url: 'ajax/blog/blog_edit.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            var result = JSON.parse(response);
+            if (result.status == 'Success') {
+              toastr.success(result.remarks);
+              $('#edit1').val('');$('#edit2').val('');
+              fetchdata();
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
+    }
+
+    function deletereq() {
+      var fd = new FormData();
+      fd.append('id', deleteid);
+      $.ajax({
+        url: 'ajax/blog/blog_remove.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+          if(result.status == 'Success'){
+              toastr.success(result.remarks);
+              setid('');fetchdata();
+          } else {
+            toastr.error('Sry, Error with the Backend');
+          }
+        }
+      })
+    }
 
     function setid(id, name, link) {
       deleteid = id; 
