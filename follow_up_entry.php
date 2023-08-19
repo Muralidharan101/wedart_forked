@@ -634,7 +634,7 @@
       </div>
       <!-- Page Sidebar Ends-->
       <div class="page-body">
-        <div class="container-fluid">
+        <div class="container-fluid" id="listfollowup">
           <div class="page-title">
             <div class="row">
               <div class="col-6">
@@ -657,21 +657,21 @@
                           <div class="col-lg-4">
                               <div class="mb-3">
                                  <label class="form-check-label">Name</label>&emsp;
-                                 <label class="form-check-label" style="color: blue">Nainaar</label>
+                                 <label class="form-check-label" style="color: blue" id="namelab">(null)</label>
                               </div>
                               <div class="mb-3">
                                   <label class="form-check-label">Event-Date</label>&emsp;
-                                  <label class="form-check-label" style="color: blue">11/12/23</label>
+                                  <label class="form-check-label" style="color: blue" id="event_date">(null)</label>
                               </div>
                           </div>
                           <div class="col-lg-4">
                               <div class="mb-3">
                                  <label class="form-check-label">Service</label>&emsp;
-                                 <label class="form-check-label" style="color: blue">Wedding</label>
+                                 <label class="form-check-label" style="color: blue" id="service">(null)</label>
                               </div>
                               <div class="mb-3">
                                   <label class="form-check-label">Additional Service</label>&emsp;
-                                  <label class="form-check-label" style="color: blue">
+                                  <label class="form-check-label" style="color: blue" id="a_s">
                                       <span 
                                           class="badge badge-pill badge-light"
                                           style="color:black; background-color: lightgrey">
@@ -683,9 +683,21 @@
                       </div>
                   </div>
               </div>
-              <div class="card">
+
+              <div class="card" id="listfollowup">
                 <div class="card-header pb-0">
-                  <h3>FollowUp Activity</h3>
+                  <h3 style="display:inline;">FollowUp Activity</h3>
+                  <div style="float: right;margin: 0.7em">
+                    <button 
+                      class="btn btn-primary"
+                      data-bs-toggle="modal" data-original-title="test"
+                      data-bs-target="#exampleModal" >
+                      <div style="display: flex; justify-content: center;align-items:center">
+                        <i data-feather="plus"></i> &nbsp; New FollowUp
+                      </div>
+                    </button>
+                    <button class="btn btn-info" onclick="closeLeadCheck(true)">Close Lead</button>
+                  </div>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -708,18 +720,78 @@
                 </div>
               </div>
 
-              <div class="card">
-                  <div class="card-header pb-0">
-                      <h3>Close Lead</h3>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                        <div class="mb-3">
-                            <button class="btn btn-dark">Close</button>
+              <div class="card" id="close_lead_div" style="opacity: 0;">
+                <div class="card-header pb-0">
+                  <h3>Close Lead</h3>
+                </div>
+
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="h2">Converted</label>
+                        <div style="float:right">
+                          <label class="switch">
+                            <input type="checkbox" id="convert_check" checked><span class="switch-state"></span>
+                          </label>
                         </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="h2">Blog</label>
+                        <div style="float:right">
+                          <label class="switch">
+                            <input type="checkbox" onchange="blogCheck()" id="blog_check" checked><span class="switch-state"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    
+                  </div>
+
+                  <div class="row" id="disp">
+                    <div class="col-lg-5">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Select Blog</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="blog">
+                          <option value="" selected disabled> - Select - </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-5">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Select Blog Days</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="days">
+                          <option value="" selected disabled> - Select - </option>
+                        </select>
+                      </div>
                     </div>
                   </div>
+                  
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <div class="text-end">
+                    <button 
+                      class="btn btn-danger" 
+                      onclick="closeLeadCheck(false)" 
+                      id="cancel_lead">Cancel
+                    </button>
+                    <button 
+                      class="btn btn-success" 
+                      id="close_lead"
+                      style="margin: auto 2em auto 1em;" >
+                      Close Lead
+                    </button>
+                  </div>
+                </div>
               </div>
+
             </div>
 
             
@@ -737,6 +809,33 @@
             </div>
           </div>
         </footer>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label" for="edit">Select FollowUp Date</label>
+                <input class="form-control" type="date" style="border: 1px solid #e0dddd" id="f_date">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="edit">Approach Topic</label>
+                <input class="form-control" style="border: 1px solid #e0dddd" id="a_topic">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="newFollowUp()">Add</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="clear()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       </div>
     </div>
     <!-- latest jquery-->
@@ -765,18 +864,70 @@
     var dataTable;
     const urlParams = new URLSearchParams(window.location.search).get('dat');
     const decodedData = JSON.parse(decodeURIComponent(urlParams));
-    var data=[];
-// function radioChange() {
-//     if (decodedData.lead == 'wedding') {
-//         link = 'ajax/lead_creation/lead_for_wedding.php';
-//     } else {
-//         link = 'ajax/lead_creation/lead_for_baby_list.php';
-//     }
-//     if (dataTable) {
-//         dataTable.destroy(); // Destroy the existing DataTable instance
-//     }
-//     createTable();
-// }radioChange();
+    var data=[]; var datobj = {};
+    function clear(){
+      $('#a_topic').val(''); $('#f_date').val('');
+    }
+
+    function closeLeadCheck(arg){
+      if(arg == true){
+        var div = document.getElementById('close_lead_div');
+        div.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('close_lead_div').style.opacity = '1';
+      } else {
+        document.getElementById('listfollowup').scrollIntoView({ behavior: 'smooth' })
+        document.getElementById('close_lead_div').style.opacity = '0';
+      }
+    }
+
+    function blogCheck(){
+      if(document.getElementById('blog_check').checked == true){
+        document.getElementById('disp').style.display = 'flex';
+      } else {
+        document.getElementById('disp').style.display = 'none';
+      }
+    }blogCheck();
+
+    function fetchselect(){
+      var blogdata;
+      var daysdata;
+      $.ajax({
+      url: 'ajax/blog/blog_list.php',
+      type: 'get',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        blogdata = result.data;
+        var selblog = document.getElementById('blog');
+          blogdata.map(obj => {
+            var opt = document.createElement('option');
+            opt.text = obj.blog_name;
+            opt.value = obj.id;
+            selblog.appendChild(opt);
+          })
+      }
+      })
+      $.ajax({
+      url: 'ajax/day/day_list.php',
+      type: 'get',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        daysdata = result.data;
+        var selblog = document.getElementById('days');
+          daysdata.map(obj => {
+            var opt = document.createElement('option');
+            opt.text = obj.days_count;
+            opt.value = obj.id;
+            selblog.appendChild(opt);
+          })
+      }
+      })
+    }fetchselect();
+
+
   function fetchdata() {    
     var fd = new FormData();
     fd.append('lead_id', decodedData.lead_id);
@@ -790,19 +941,32 @@
       success: function (response) {
         var result = JSON.parse(response);
         if (result.status == 'Success') {
-          data = result.data;
+          data = result.data;createTable();
+          data.map((item, index) => {
+            if(index == 0){
+              datobj = {'name' : item.name, 'eventdate': item.event_dateTime || item.event_date, 'service': item.main_service, 'info': item.other_info}
+            }
+          });
+          document.getElementById('namelab').innerHTML = datobj.name;document.getElementById('event_date').innerHTML = datobj.eventdate;
+          document.getElementById('service').innerHTML = datobj.service; document.getElementById('a_s').innerHTML = datobj.info;
         }
       }
     })
   }fetchdata();
 
-function createTable() {
+  function createTable() {
     var count = 0;
-    var dat = [
-        {'id':++count,'date': "1-1-23", 'topic': "TEXT", 'response': "Good", 'but' : "Buttons"},
-        {'id':++count,'date': "1-1-23", 'topic': "TEXT", 'response': "Good", 'but' : "Buttons"},
-        {'id':++count,'date': "1-1-23", 'topic': "TEXT", 'response': "Good", 'but' : "Buttons"}
-    ]
+    var dat = []; count =0;
+    data.map(obj => {
+      var val = '';
+      if(obj.response != null || obj.response != 'null'){
+        val = obj.response
+      }
+      dat.push({'id':++count,'date': obj.follow_up_date, 'topic': obj.approach, 'response': val, 'but' : "Buttons"})
+    })
+    if(dataTable){
+      dataTable.destroy();
+    }
     dataTable = $('#tbl').DataTable({
         "pageLength": 10,
         "columns": [
@@ -814,7 +978,53 @@ function createTable() {
         ]
     });
     dataTable.clear().rows.add(dat).draw();
-}createTable();
+  }
+
+  function newFollowUp(){
+    var inpt1 = $('#f_date').val();
+    var inpt2 = $('#a_topic').val();
+    var currentDate = new Date();
+    if(inpt1 < currentDate){
+      toastr.error('Select Valid Date')
+    } else if(inpt1 == '')
+    {
+      toastr.error('Select Date');
+    } else if (inpt2) {
+      toastr.error('Enter Topic');
+    }
+    else
+    {
+      var fd = new FormData();
+      fd.append('lead_id', decodedData.lead_id);
+      fd.append('follow_up_date', inpt1);
+      fd.append('approach', inpt2)
+      fd.append('category', decodedData.lead);
+      $.ajax({
+        url: 'ajax/follow_up_data/follow_up_data_creation.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+          if (result.status == 'Success') {
+            toastr.success('New FollowUp Data Added');
+            $('#date').val(''); $('#a_topic').val(''); fetchdata();
+          } else {
+            toastr.error('Sry, Error with the Backend');
+          }
+        }
+      })
+    }
+  }
+
+  
+  const observer = new MutationObserver(function(mutationsList, observer) {
+  feather.replace();
+  });
+  const config = { childList: true, subtree: true };
+  observer.observe(document.body, config);
+
 </script>
 <style>
   i {
@@ -832,6 +1042,11 @@ function createTable() {
  td {
     padding: 10px;
     text-align: center;
+  }
+  @media only screen and (max-width: 991px) {
+    #dot{
+      display: none;
+    }
   }
 </style>
 

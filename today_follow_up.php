@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from admin.pixelstrap.com/koho/template/base-input.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jul 2023 10:02:19 GMT -->
+<!-- Mirrored from admin.pixelstrap.com/koho/template/datatable-basic-init.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jul 2023 10:02:24 GMT -->
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -57,26 +57,20 @@
           <div class="form-group w-100">
             <div class="Typeahead Typeahead--twitterUsers">
               <div class="u-posRelative">
-                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                  placeholder="Search Koho .." name="q" title="" autofocus>
-                <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span>
-                </div><i class="close-search" data-feather="x"></i>
+                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search Koho .." name="q" title="" autofocus>
+                <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><i class="close-search" data-feather="x"></i>
               </div>
               <div class="Typeahead-menu"></div>
             </div>
           </div>
         </form>
         <div class="header-logo-wrapper col-auto p-0">
-          <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
-                src="../assets/images/logo/logo.png" alt=""><img class="img-fluid for-dark"
-                src="../assets/images/logo/logo-dark.png" alt=""></a></div>
-          <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
-          </div>
+          <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo.png" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo-dark.png" alt=""></a></div>
+          <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
         </div>
         <div class="left-header col horizontal-wrapper ps-0">
           <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search Here........"><span
-              class="input-group-text mobile-search"><i data-feather="search"></i></span>
+            <input class="form-control" type="text" placeholder="Search Here........"><span class="input-group-text mobile-search"><i data-feather="search"></i></span>
           </div>
         </div>
         <div class="nav-right col-6 pull-right right-header p-0">
@@ -87,20 +81,13 @@
                   <div class="lang"><i class="flag-icon flag-icon-us"></i><span class="lang-txt">EN </span></div>
                 </div>
                 <div class="more_lang">
-                  <div class="lang selected" data-value="en"><i class="flag-icon flag-icon-us"></i><span
-                      class="lang-txt">English<span> (US)</span></span></div>
-                  <div class="lang" data-value="de"><i class="flag-icon flag-icon-de"></i><span
-                      class="lang-txt">Deutsch</span></div>
-                  <div class="lang" data-value="es"><i class="flag-icon flag-icon-es"></i><span
-                      class="lang-txt">Español</span></div>
-                  <div class="lang" data-value="fr"><i class="flag-icon flag-icon-fr"></i><span
-                      class="lang-txt">Français</span></div>
-                  <div class="lang" data-value="pt"><i class="flag-icon flag-icon-pt"></i><span
-                      class="lang-txt">Português<span> (BR)</span></span></div>
-                  <div class="lang" data-value="cn"><i class="flag-icon flag-icon-cn"></i><span
-                      class="lang-txt">简体中文</span></div>
-                  <div class="lang" data-value="ae"><i class="flag-icon flag-icon-ae"></i><span class="lang-txt">لعربية
-                      <span> (ae)</span></span></div>
+                  <div class="lang selected" data-value="en"><i class="flag-icon flag-icon-us"></i><span class="lang-txt">English<span> (US)</span></span></div>
+                  <div class="lang" data-value="de"><i class="flag-icon flag-icon-de"></i><span class="lang-txt">Deutsch</span></div>
+                  <div class="lang" data-value="es"><i class="flag-icon flag-icon-es"></i><span class="lang-txt">Español</span></div>
+                  <div class="lang" data-value="fr"><i class="flag-icon flag-icon-fr"></i><span class="lang-txt">Français</span></div>
+                  <div class="lang" data-value="pt"><i class="flag-icon flag-icon-pt"></i><span class="lang-txt">Português<span> (BR)</span></span></div>
+                  <div class="lang" data-value="cn"><i class="flag-icon flag-icon-cn"></i><span class="lang-txt">简体中文</span></div>
+                  <div class="lang" data-value="ae"><i class="flag-icon flag-icon-ae"></i><span class="lang-txt">لعربية <span> (ae)</span></span></div>
                 </div>
               </div>
             </li>
@@ -119,17 +106,12 @@
                         </li>
                         <li>
                           <div class="row">
-                            <div class="col-4 text-center"><a href="file-manager.html"><i
-                                  data-feather="file-text"></i></a></div>
-                            <div class="col-4 text-center"><a href="general-widget.html"><i
-                                  data-feather="activity"></i></a></div>
-                            <div class="col-4 text-center"><a href="user-profile.html"><i data-feather="users"></i></a>
-                            </div>
-                            <div class="col-4 text-center"><a href="clipboard.html"><i data-feather="clipboard"></i></a>
-                            </div>
+                            <div class="col-4 text-center"><a href="file-manager.html"><i data-feather="file-text"></i></a></div>
+                            <div class="col-4 text-center"><a href="general-widget.html"><i data-feather="activity"></i></a></div>
+                            <div class="col-4 text-center"><a href="user-profile.html"><i data-feather="users"></i></a></div>
+                            <div class="col-4 text-center"><a href="clipboard.html"><i data-feather="clipboard"></i></a></div>
                             <div class="col-4 text-center"><a href="to-do.html"><i data-feather="anchor"></i></a></div>
-                            <div class="col-4 text-center"><a href="internationalization.html"><i
-                                  data-feather="settings"></i></a></div>
+                            <div class="col-4 text-center"><a href="internationalization.html"><i data-feather="settings"></i></a></div>
                           </div>
                         </li>
                         <li class="text-center">
@@ -154,27 +136,22 @@
               </div>
             </li>
             <li class="onhover-dropdown">
-              <div class="notification-box"><i data-feather="bell"></i><span class="badge rounded-pill badge-primary">4
-                </span></div>
+              <div class="notification-box"><i data-feather="bell"></i><span class="badge rounded-pill badge-primary">4 </span></div>
               <ul class="notification-dropdown onhover-show-div">
                 <li><i data-feather="bell"> </i>
                   <h3 class="mb-0">Notifications</h3>
                 </li>
                 <li><a href="email_read.html">
-                    <p><i class="fa fa-circle-o me-3 font-primary"> </i>Delivery processing <span class="pull-right">10
-                        min.</span></p>
+                    <p><i class="fa fa-circle-o me-3 font-primary"> </i>Delivery processing <span class="pull-right">10 min.</span></p>
                   </a></li>
                 <li><a href="email_read.html">
-                    <p><i class="fa fa-circle-o me-3 font-success"></i>Order Complete<span class="pull-right">1
-                        hr</span></p>
+                    <p><i class="fa fa-circle-o me-3 font-success"></i>Order Complete<span class="pull-right">1 hr</span></p>
                   </a></li>
                 <li><a href="email_read.html">
-                    <p><i class="fa fa-circle-o me-3 font-info"></i>Tickets Generated<span class="pull-right">3
-                        hr</span></p>
+                    <p><i class="fa fa-circle-o me-3 font-info"></i>Tickets Generated<span class="pull-right">3 hr</span></p>
                   </a></li>
                 <li><a href="email_read.html">
-                    <p><i class="fa fa-circle-o me-3 font-danger"></i>Delivery Complete<span class="pull-right">6
-                        hr</span></p>
+                    <p><i class="fa fa-circle-o me-3 font-danger"></i>Delivery Complete<span class="pull-right">6 hr</span></p>
                   </a></li>
                 <li><a class="btn btn-primary" href="email_read.html">Check all notification</a></li>
               </ul>
@@ -185,8 +162,7 @@
                   <h3 class="mb-0">Message Box</h3>
                 </li>
                 <li>
-                  <div class="d-flex"><img class="img-fluid rounded-circle me-3" src="../assets/images/user/6.jpg"
-                      alt="">
+                  <div class="d-flex"><img class="img-fluid rounded-circle me-3" src="../assets/images/user/6.jpg" alt="">
                     <div class="status-circle online"></div>
                     <div class="flex-grow-1"><a href="user-profile.html"><span>Ain Chavez</span>
                         <p>Do you want to go see movie?</p>
@@ -195,8 +171,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="d-flex"><img class="img-fluid rounded-circle me-3" src="../assets/images/user/1.jpg"
-                      alt="">
+                  <div class="d-flex"><img class="img-fluid rounded-circle me-3" src="../assets/images/user/1.jpg" alt="">
                     <div class="status-circle online"></div>
                     <div class="flex-grow-1"><a href="user-profile.html"><span>Erica Hughes</span>
                         <p>Thank you for rating us.</p>
@@ -205,8 +180,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="d-flex"><img class="img-fluid rounded-circle me-3" src="../assets/images/user/7.jpg"
-                      alt="">
+                  <div class="d-flex"><img class="img-fluid rounded-circle me-3" src="../assets/images/user/7.jpg" alt="">
                     <div class="status-circle offline"></div>
                     <div class="flex-grow-1"><a href="user-profile.html"><span>Kori Thomas</span>
                         <p>What`s the project report update?</p>
@@ -217,8 +191,7 @@
                 <li class="text-center"> <a class="btn btn-primary" href="chat.html">View All </a></li>
               </ul>
             </li>
-            <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
-                  data-feather="maximize"></i></a></li>
+            <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
             <li class="profile-nav onhover-dropdown p-0 me-0">
               <div class="d-flex profile-media"><img class="b-r-50" src="../assets/images/dashboard/profile.png" alt="">
                 <div class="flex-grow-1"><span>Helen Walter</span>
@@ -242,59 +215,45 @@
             </div>
             </div>
           </script>
-        <script class="empty-template" type="text/x-handlebars-template">
-          <div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div>
-        </script>
+        <script class="empty-template" type="text/x-handlebars-template"><div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div></script>
       </div>
     </div>
-    <!-- Page Header Ends                              -->
+    <!-- Page Header Ends-->
     <!-- Page Body Start-->
     <div class="page-body-wrapper">
       <!-- Page Sidebar Start-->
       <div class="sidebar-wrapper">
         <div>
-          <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
-                src="../assets/images/logo/logo.png" alt=""><img class="img-fluid for-dark"
-                src="../assets/images/logo/logo-dark.png" alt=""></a>
+          <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo.png" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo-dark.png" alt=""></a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
-            <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-left"> </i>
-            </div>
+            <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-left"> </i></div>
           </div>
-          <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid for-light"
-                src="../assets/images/logo/logo-icon.png" alt=""><img class="img-fluid for-dark"
-                src="../assets/images/logo/logo-icon-dark.png" alt=""></a></div>
+          <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo-icon.png" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo-icon-dark.png" alt=""></a></div>
           <nav class="sidebar-main">
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
             <div id="sidebar-menu">
               <ul class="sidebar-links" id="simple-bar">
-                <li class="back-btn"><a href="index.html"><img class="img-fluid for-light"
-                      src="../assets/images/logo/logo-icon.png" alt=""><img class="img-fluid for-dark"
-                      src="../assets/images/logo/logo-icon-dark.png" alt=""></a>
-                  <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
-                      aria-hidden="true"></i></div>
+                <li class="back-btn"><a href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo-icon.png" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo-icon-dark.png" alt=""></a>
+                  <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                 </li>
                 <li class="sidebar-main-title">
                   <div>
                     <h4 class="lan-1">General </h4>
                   </div>
                 </li>
-                <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="home"></i><span class="lan-3">Dashboard</span><span
-                      class="badge badge-primary">2</span></a>
+                <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="home"></i><span class="lan-3">Dashboard</span><span class="badge badge-primary">2</span></a>
                   <ul class="sidebar-submenu">
                     <li><a class="lan-4" href="index.html">Default</a></li>
                     <li><a class="lan-5" href="dashboard-02.html">Ecommerce</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="airplay"></i><span class="lan-6">Widgets</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="airplay"></i><span class="lan-6">Widgets</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="general-widget.html">General</a></li>
                     <li><a href="chart-widget.html">Chart</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="layout"></i><span class="lan-7">Page layout</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="layout"></i><span class="lan-7">Page layout</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="box-layout.html">Boxed</a></li>
                     <li><a href="layout-rtl.html">RTL</a></li>
@@ -310,19 +269,15 @@
                     <h4 class="lan-8">Applications </h4>
                   </div>
                 </li>
-                <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="box"></i><span>Project </span></a>
+                <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="box"></i><span>Project </span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="projects.html">Project List</a></li>
                     <li><a href="projectcreate.html">Create new</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="file-manager.html"><i
-                      data-feather="git-pull-request"> </i><span>File manager</span></a></li>
-                <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav" href="kanban.html"><i
-                      data-feather="monitor"> </i><span>kanban Board</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="shopping-bag"></i><span>Ecommerce</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="file-manager.html"><i data-feather="git-pull-request"> </i><span>File manager</span></a></li>
+                <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav" href="kanban.html"><i data-feather="monitor"> </i><span>kanban Board</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="shopping-bag"></i><span>Ecommerce</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="product.html">Product</a></li>
                     <li><a href="product-page.html">Product page</a></li>
@@ -337,53 +292,41 @@
                     <li><a href="pricing.html">Pricing </a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="mail"></i><span>Email</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="mail"></i><span>Email</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="email_inbox.html">Mail Inbox</a></li>
                     <li><a href="email_read.html">Read mail</a></li>
                     <li><a href="email_compose.html">Compose</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="message-circle"></i><span>Chat</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="message-circle"></i><span>Chat</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="chat.html">Chat App</a></li>
                     <li><a href="chat-video.html">Video chat</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="users"></i><span>Users</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="user-profile.html">Users Profile</a></li>
                     <li><a href="edit-profile.html">Users Edit</a></li>
                     <li><a href="user-cards.html">Users Cards</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="bookmark.html"><i
-                      data-feather="heart"> </i><span>Bookmarks</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="contacts.html"><i
-                      data-feather="list"> </i><span>Contacts</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="task.html"><i
-                      data-feather="check-square"> </i><span>Tasks</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="calendar-basic.html"><i
-                      data-feather="calendar"> </i><span>Calendar</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="social-app.html"><i
-                      data-feather="zap"> </i><span>Social App</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="to-do.html"><i
-                      data-feather="clock"> </i><span>To-Do</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="search.html"><i
-                      data-feather="search"> </i><span>Search Result</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="bookmark.html"><i data-feather="heart"> </i><span>Bookmarks</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="contacts.html"><i data-feather="list"> </i><span>Contacts</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="task.html"><i data-feather="check-square"> </i><span>Tasks</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="calendar-basic.html"><i data-feather="calendar"> </i><span>Calendar</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="social-app.html"><i data-feather="zap"> </i><span>Social App</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="to-do.html"><i data-feather="clock"> </i><span>To-Do</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="search.html"><i data-feather="search"> </i><span>Search Result</span></a></li>
                 <li class="sidebar-main-title">
                   <div>
                     <h4>Forms & Table </h4>
                   </div>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="file-text"></i><span>Forms</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="file-text"></i><span>Forms</span></a>
                   <ul class="sidebar-submenu">
-                    <li><a class="submenu-title" href="javascript:void(0)">Form Controls<span class="sub-arrow"><i
-                            class="fa fa-angle-right"></i></span></a>
+                    <li><a class="submenu-title" href="javascript:void(0)">Form Controls<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="form-validation.html">Form Validation</a></li>
                         <li><a href="base-input.html">Base Inputs</a></li>
@@ -392,8 +335,7 @@
                         <li><a href="megaoptions.html">Mega Options</a></li>
                       </ul>
                     </li>
-                    <li><a class="submenu-title" href="javascript:void(0)">Form Widgets<span class="sub-arrow"><i
-                            class="fa fa-angle-right"></i></span></a>
+                    <li><a class="submenu-title" href="javascript:void(0)">Form Widgets<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="datepicker.html">Datepicker</a></li>
                         <li><a href="time-picker.html">Timepicker</a></li>
@@ -406,8 +348,7 @@
                         <li><a href="clipboard.html">Clipboard</a></li>
                       </ul>
                     </li>
-                    <li><a class="submenu-title" href="javascript:void(0)">Form layout<span class="sub-arrow"><i
-                            class="fa fa-angle-right"></i></span></a>
+                    <li><a class="submenu-title" href="javascript:void(0)">Form layout<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="default-form.html">Default Forms</a></li>
                         <li><a href="form-wizard.html">Form Wizard 1</a></li>
@@ -417,18 +358,15 @@
                     </li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="server"></i><span>Tables</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="server"></i><span>Tables</span></a>
                   <ul class="sidebar-submenu">
-                    <li><a class="submenu-title" href="javascript:void(0)">Bootstrap Tables<span class="sub-arrow"><i
-                            class="fa fa-angle-right"></i></span></a>
+                    <li><a class="submenu-title" href="javascript:void(0)">Bootstrap Tables<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="bootstrap-basic-table.html">Basic Tables</a></li>
                         <li><a href="table-components.html">Table components</a></li>
                       </ul>
                     </li>
-                    <li><a class="submenu-title" href="javascript:void(0)">Data Tables<span class="sub-arrow"><i
-                            class="fa fa-angle-right"></i></span></a>
+                    <li><a class="submenu-title" href="javascript:void(0)">Data Tables<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="datatable-basic-init.html">Basic Tables</a></li>
                         <li><a href="datatable-API.html">Data API</a></li>
@@ -444,8 +382,7 @@
                     <h4>Components</h4>
                   </div>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="box"></i><span>Ui Kits</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="box"></i><span>Ui Kits</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="state-color.html">State color</a></li>
                     <li><a href="typography.html">Typography</a></li>
@@ -461,8 +398,7 @@
                     <li><a href="loader.html">Spinners</a></li>
                     <li><a href="dropdown.html">Dropdown</a></li>
                     <li><a href="according.html">Accordion</a></li>
-                    <li><a class="submenu-title" href="javascript:void(0)">Tabs<span class="sub-arrow"><i
-                            class="fa fa-angle-right"></i></span></a>
+                    <li><a class="submenu-title" href="javascript:void(0)">Tabs<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="tab-bootstrap.html">Bootstrap Tabs</a></li>
                         <li><a href="tab-material.html">Line Tabs</a></li>
@@ -472,8 +408,7 @@
                     <li><a href="list.html">Lists</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="folder-plus"></i><span>Bonus Ui</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="folder-plus"></i><span>Bonus Ui</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="scrollable.html">Scrollable</a></li>
                     <li><a href="tree.html">Tree view</a></li>
@@ -494,8 +429,7 @@
                     <li><a href="creative-card.html">Creative Card</a></li>
                     <li><a href="tabbed-card.html">Tabbed Card</a></li>
                     <li><a href="dragable-card.html">Draggable Card</a></li>
-                    <li><a class="submenu-title" href="javascript:void(0)">Timeline<span class="sub-arrow"><i
-                            class="fa fa-angle-right"></i></span></a>
+                    <li><a class="submenu-title" href="javascript:void(0)">Timeline<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="timeline-v-1.html">Timeline 1</a></li>
                         <li><a href="timeline-v-2.html">Timeline 2</a></li>
@@ -503,8 +437,7 @@
                     </li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="edit-3"></i><span>Builders</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="edit-3"></i><span>Builders</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="form-builder-1.html"> Form Builder 1</a></li>
                     <li><a href="form-builder-2.html"> Form Builder 2</a></li>
@@ -512,8 +445,7 @@
                     <li><a href="button-builder.html">Button Builder</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="cloud-drizzle"></i><span>Animation</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="cloud-drizzle"></i><span>Animation</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="animate.html">Animate</a></li>
                     <li><a href="scroll-reval.html">Scroll Reveal</a></li>
@@ -522,8 +454,7 @@
                     <li><a href="wow.html">Wow Animation</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="command"></i><span>Icons</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="command"></i><span>Icons</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="flag-icon.html">Flag icon</a></li>
                     <li><a href="font-awesome.html">Fontawesome Icon</a></li>
@@ -533,15 +464,13 @@
                     <li><a href="whether-icon.html">Whether Icon</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="cloud"></i><span>Buttons</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="cloud"></i><span>Buttons</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="buttons.html">Default Style</a></li>
                     <li><a href="button-group.html">Button Group</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="bar-chart"></i><span>Charts</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="bar-chart"></i><span>Charts</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="chart-apex.html">Apex Chart</a></li>
                     <li><a href="chart-google.html">Google Chart</a></li>
@@ -559,18 +488,11 @@
                     <h4>Pages </h4>
                   </div>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="landing-page.html"><i
-                      data-feather="cast"> </i><span>Landing page</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="sample-page.html"><i
-                      data-feather="file-text"> </i><span>Sample page</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                    href="internationalization.html"><i data-feather="globe"> </i><span>Internationalization</span></a>
-                </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                    href="https://admin.pixelstrap.com/koho/starter-kit/index.html" target="_blank"><i
-                      data-feather="anchor"></i><span>Starter kit</span></a></li>
-                <li class="mega-menu"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="layers"></i><span>Others</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="landing-page.html"><i data-feather="cast"> </i><span>Landing page</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="sample-page.html"><i data-feather="file-text"> </i><span>Sample page</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="internationalization.html"><i data-feather="globe"> </i><span>Internationalization</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="https://admin.pixelstrap.com/koho/starter-kit/index.html" target="_blank"><i data-feather="anchor"></i><span>Starter kit</span></a></li>
+                <li class="mega-menu"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="layers"></i><span>Others</span></a>
                   <div class="mega-menu-container menu-content">
                     <div class="container-fluid">
                       <div class="row">
@@ -646,8 +568,7 @@
                     <h4>Miscellaneous </h4>
                   </div>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="image"></i><span>Gallery</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="image"></i><span>Gallery</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="gallery.html">Gallery Grid</a></li>
                     <li><a href="gallery-with-description.html">Gallery Grid Desc</a></li>
@@ -656,18 +577,15 @@
                     <li><a href="gallery-hover.html">Hover Effects</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="film"></i><span>Blog</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="film"></i><span>Blog</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="blog.html">Blog Details</a></li>
                     <li><a href="blog-single.html">Blog Single</a></li>
                     <li><a href="add-post.html">Add Post</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="faq.html"><i
-                      data-feather="help-circle"> </i><span>FAQ</span></a></li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="package"></i><span>Job Search</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="faq.html"><i data-feather="help-circle"> </i><span>FAQ</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="package"></i><span>Job Search</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="job-cards-view.html">Cards view</a></li>
                     <li><a href="job-list-view.html">List View</a></li>
@@ -675,22 +593,19 @@
                     <li><a href="job-apply.html">Apply</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="radio"></i><span>Learning</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="radio"></i><span>Learning</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="learning-list-view.html">Learning List</a></li>
                     <li><a href="learning-detailed.html">Detailed Course</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="map"></i><span>Maps</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="map"></i><span>Maps</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="map-js.html">Maps JS</a></li>
                     <li><a href="vector-map.html">Vector Maps</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="edit"></i><span>Editors</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="edit"></i><span>Editors</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="summernote.html">Summer Note</a></li>
                     <li><a href="ckeditor.html">CK editor</a></li>
@@ -698,22 +613,18 @@
                     <li><a href="ace-code-editor.html">ACE code editor</a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
-                      data-feather="sunrise"> </i><span>Knowledgebase</span></a>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="sunrise"> </i><span>Knowledgebase</span></a>
                   <ul class="sidebar-submenu">
                     <li><a href="knowledgebase.html">Knowledgebase</a></li>
                     <li><a href="knowledge-category.html">Knowledge category</a></li>
                     <li><a href="knowledge-detail.html">Knowledge detail </a></li>
                   </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="support-ticket.html"><i
-                      data-feather="users"> </i><span>Support Ticket </span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="support-ticket.html"><i data-feather="users"> </i><span>Support Ticket </span></a></li>
               </ul>
               <div class="sidebar-img-section">
-                <div class="sidebar-img-content"><img class="img-fluid" src="../assets/images/dashboard/upgrade/2.png"
-                    alt="">
-                  <h4>Experiance with more Features</h4><a class="btn btn-primary"
-                    href="https://themeforest.net/user/pixelstrap/portfolio" target="_blank">Check now</a>
+                <div class="sidebar-img-content"><img class="img-fluid" src="../assets/images/dashboard/upgrade/2.png" alt="">
+                  <h4>Experiance with more Features</h4><a class="btn btn-primary" href="https://themeforest.net/user/pixelstrap/portfolio" target="_blank">Check now</a>
                 </div>
               </div>
             </div>
@@ -727,137 +638,80 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Blog</h3>
+                <h3>Today FollowUp</h3>
               </div>
             </div>
           </div>
         </div>
 
-        <!--Raj Code-->
+
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-12">
 
-              <div class="card">
-                <div class="card-header pb-0">
-                  <h3>Blog Creation</h3>
-                </div>
 
-                <div class="card-body">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header pb-0">
+                    <h3>Lead Types</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="row" style="margin-left: 0.5em;">
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
+                        <label class="form-check-label" for="wedding">Adult Studio</label>
+                      </div>
 
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Enter Blog Name</label>
-                        <input 
-                          class="form-control" 
-                          style="border: 1px solid #e0dddd" 
-                          id="inpt1"
-                          placeholder="Ex: Mornig Blog">
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
+                        <label class="form-check-label" for="baby">Baby Studio</label>
                       </div>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Blog Link(URL)</label>
-                        <input 
-                          class="form-control" 
-                          type="url" 
-                          style="border: 1px solid #e0dddd" 
-                          id="inpt2"
-                          placeholder="Ex: www.blog.com">
-                      </div>
-                    </div>
-                    <div class="col-lg-3">
-                      <div class="mb-3">
-                        <label class="form-label" style="color:transparent;width:100%" id="dot">.</label>
-                        <button class="btn btn-primary" id="addbtn" type="submit">Create Blog</button>
-                      </div>
+                    <div class="table-responsive">
+                      <!-- class="table-responsive" -->
+                      <table id="tbl">
+                        <thead>
+                          <tr style='text-align: center'>
+                            <th scope="col">Lead No</th>
+                            <th>Name</th>
+                            <th>Mobile No</th>
+                            <th id="th1"></th>
+                            <th id="th2"></th>
+                            <th id="th3"></th>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <!--data-->
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
-
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-header pb-0">
-                  <h3>All Blogs</h3>
-                </div>
-
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table id="tbl">
-                      <thead>
-                        <tr>
-                          <td>SNo</td>
-                          <td>Blog Name</td>
-                          <td>Blog Link</td>
-                          <td>Action</td>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
 
+        </div>
+        <!-- footer start-->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-10 p-0 footer-left">
+                <p class="mb-0">Copyright 2022 © Koho theme by pixelstrap</p>
+              </div>
+              <div class="col-2 p-0 footer-right"> <i class="fa fa-heart font-danger"> </i></div>
+            </div>
+          </div>
+        </footer>
       </div>
-      <!-- footer start-->
-      <footer class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-10 p-0 footer-left">
-              <p class="mb-0">Copyright 2022 © Koho theme by pixelstrap</p>
-            </div>
-            <div class="col-2 p-0 footer-right"> <i class="fa fa-heart font-danger"> </i></div>
-          </div>
-        </div>
-      </footer>
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                  <div class="col-lg-12">
-                    <div class="mb-4">
-                      <label class="form-label" for="editselect">Blog Name</label>
-                      <input class="form-control" style="border: 1px solid #e0dddd" id="edit1">
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="mb-3">
-                      <label class="form-label" for="edit">Enter Service</label>
-                      <input class="form-control" style="border: 1px solid #e0dddd" id="edit2">
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-success" type="button" data-bs-dismiss="modal" onclick="editreq()">Edit</button>
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletereq()">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
     </div>
-  </div>
-  </div>
-  <!-- latest jquery-->
-  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/bootstrap/popper.min.js"></script>
     <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- feather icon js-->
@@ -868,196 +722,176 @@
     <!-- Sidebar jquery-->
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/sidebar-menu.js"></script>
-    <!--DataTable-->
     <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> 
+    <!-- <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
 
     <script src="../assets/js/tooltip-init.js"></script>
     <!-- Theme js-->
-    <script src="../assets/js/script.js"></script>  
+    <script src="../assets/js/script.js"></script>
+</body>
+<script>
+var dataTable;
+var lead_page
 
-    <!--Toster-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-    integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-
-  <script>
-    document.getElementById("addbtn").addEventListener("click", postreq);
-    var data = [];
-    var deleteid;
-    var editname;
-    var dataTable;
-
-    function postreq() {  
-      var inpt1 = $('#inpt1').val();
-      var inpt2 = $('#inpt2').val();
-      if(inpt1 == ''){
-        toastr.error('Enter Blog name');
-      } else if(inpt2 == '') {
-        toastr.error('Entet Blog Url');
-      } else {
-        var fd = new FormData();
-        fd.append('blog_name', inpt1);
-        fd.append('blog_link', inpt2);
-        $.ajax({
-          url: 'ajax/blog/blog_creation.php',
-          data: fd,
-          type: 'post',
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            var result = JSON.parse(response);
-            if (result.status == 'Success') {
-              toastr.success(result.remarks);
-              $('#inpt1').val('');$('#inpt2').val('');fetchdata();
-              fetchdata();
-            } else if (result.status == 'Available') {
-              toastr.error(result.remarks);
-            } else {
-              toastr.error('Sry, Error with the Backend');
-            }
-          }
-        })
-      }
+function radioChange() {
+    if (document.getElementById('wedding').checked) {
+        lead_page = 'wedding';
+    } else {
+        lead_page = 'baby';
     }
-
-    function fetchdata(){
-      $.ajax({
-      url: 'ajax/blog/blog_list.php',
-      type: 'get',
-      contentType: false,
-      processData: false,
-      success: function (response) {
-        var result = JSON.parse(response);
-        data = result.data;
-        var count = 0; var temp = [];
-        data.map(obj => {
-          var tryed = `
-                <i
-                  onclick="setid('${obj.id}','${obj.blog_name}','${obj.blog_link}')" 
-                  data-feather="edit-2" 
-                  data-bs-toggle="modal" 
-                  data-original-title="test"
-                  data-bs-target="#exampleModal"
-                  style="cursor:pointer">
-                </i>`;
-          var lnk = `
-                    <button class="lnk" onclick="window.open('${obj.blog_link}')">${obj.blog_link}</button>`;
-          temp.push(
-            {
-              'count': ++count,
-              'b_name': obj.blog_name, 
-              'b_link': lnk,
-              'action': tryed})
-          });
-          if(dataTable){
-            dataTable.destroy();
-          }
-        dataTable = $('#tbl').DataTable({
-        "pageLength": 10,
-        "columns": [
-          {"data": "count"},  
-          {"data": "b_name"},
-          {"data": "b_link"}, 
-          {"data": "action"}  
-        ]
-        });
-        dataTable.clear().rows.add(temp).draw();
-        feather.replace();
-      }
-    })
-    };fetchdata();
-
-    function editreq() {  
-      var inpt1 = $('#edit1').val();
-      var inpt2 = $('#edit2').val();
-      if(inpt1 == ''){
-        toastr.error('Enter Blog name');
-      } else if(inpt2 == '') {
-        toastr.error('Entet Blog Url');
-      } else {
-        var fd = new FormData();
-        fd.append('id', deleteid);
-        fd.append('blog_name', inpt1);
-        fd.append('blog_link', inpt2);
-        $.ajax({
-          url: 'ajax/blog/blog_edit.php',
-          data: fd,
-          type: 'post',
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            var result = JSON.parse(response);
-            if (result.status == 'Success') {
-              toastr.success(result.remarks);
-              $('#edit1').val('');$('#edit2').val('');
-              fetchdata();
-            } else {
-              toastr.error('Sry, Error with the Backend');
-            }
-          }
-        })
-      }
+    if (dataTable) {
+        dataTable.destroy();
     }
+    createTable();
+} radioChange();
 
-    function deletereq() {
-      var fd = new FormData();
-      fd.append('id', deleteid);
-      $.ajax({
-        url: 'ajax/blog/blog_remove.php',
-        data: fd,
+function createTable() {
+    dataTable = $('#tbl').DataTable({
+        "pageLength": 10
+    });
+    var fd = new FormData();
+    fd.append('lead', lead_page);
+    $.ajax({
+        url: 'ajax/today_follow_up/list_today.php',
         type: 'post',
+        data: fd,
         contentType: false,
         processData: false,
-        success: function (response) {
-          var result = JSON.parse(response);
-          if(result.status == 'Success'){
-              toastr.success(result.remarks);
-              setid('');fetchdata();
-          } else {
-            toastr.error('Sry, Error with the Backend');
-          }
+        success: function(response) {
+            var result = JSON.parse(response);
+            var leads = result.data;
+            var dataTableData = [];
+
+            if (document.getElementById('wedding').checked) {
+                document.getElementById('th1').textContent = 'Event';
+                document.getElementById('th2').textContent = 'Event Date';
+                document.getElementById('th3').textContent = 'Mandapam';
+                leads.forEach(obj => {
+                    var test = JSON.parse(obj.service);
+                    var val = test.map(ob => (`
+                        <span class="badge badge-pill badge-light"
+                              style="color:black; background-color: lightgrey">
+                              ${ob.service}
+                        </span><br>`)).join('');
+                    var statusdisplay = document.createElement('span');
+                    if (obj.lead_status === 'open') {
+                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+                    } else if (obj.lead_status === 'closed') {
+                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
+                    }
+                    statusdisplay.style.cursor = 'pointer';
+                    statusdisplay.textContent = obj.lead_status;
+                    var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
+                    
+                    var dataRow = [
+                        obj.lead_no,
+                        obj.name,
+                        obj.phone,
+                        obj.event,
+                        obj.event_date,
+                        obj.mandapam,
+                        val,
+                        statusdisplay.outerHTML,
+                        `<i class="edit-icon"
+                            data-lead="${dat}"
+                            data-action="edit"
+                            data-feather="edit"
+                            style="cursor: pointer;margin-right:10px;"
+                            title="Edit Lead"></i>
+                        <i class="follow-up-icon"
+                          data-lead="${dat}"
+                          data-action="follow_up"
+                          data-feather="message-circle"
+                          style="cursor: pointer"
+                          title=""></i>`
+                    ];
+                    dataTableData.push(dataRow);
+                    feather.replace(); 
+                });
+            } else {
+                document.getElementById('th1').textContent = 'Age';
+                document.getElementById('th2').textContent = 'Sex';
+                document.getElementById('th3').textContent = 'Event Date-Time';
+                leads.forEach(obj => {
+                    var test = JSON.parse(obj.service);
+                    var val = test.map(ob => (`
+                        <span class="badge badge-pill badge-light"
+                              style="color:black; background-color: lightgrey">
+                              ${ob.service}
+                        </span><br>`)).join('');
+                    var statusdisplay = document.createElement('span');
+                    if (obj.lead_status == 'open') {
+                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+                    } else if (obj.lead_status == 'closed') {
+                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
+                    } else {
+                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-primary');
+                    }
+                    statusdisplay.textContent = obj.lead_status;
+                    statusdisplay.style.cursor = 'pointer';
+
+                    var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'baby'}))
+                    var dataRow = [
+                        obj.lead_no,
+                        obj.name,
+                        obj.phone,
+                        obj.age,
+                        obj.sex,
+                        obj.event_dateTime,
+                        val,
+                        statusdisplay.outerHTML,
+                        `<i class="edit-icon"
+                            data-lead="${dat}"
+                            data-action="edit"
+                            data-feather="edit"
+                            style="cursor: pointer;margin-right:10px;"
+                            title="Edit Lead"></i>
+                        <i class="follow-up-icon"
+                          data-lead="${dat}"
+                          data-action="follow_up"
+                          data-feather="message-circle"
+                          style="cursor: pointer"
+                          title=""></i>`
+                    ];
+                    dataTableData.push(dataRow);
+                });
+            }
+            dataTable.clear().rows.add(dataTableData).draw();
+            feather.replace();
         }
-      })
-    }
-
-    function setid(id, name, link) {
-      deleteid = id; 
-      document.getElementById('edit1').value = name;
-      document.getElementById('edit2').value = link; 
-    }
-
-    const observer = new MutationObserver(function(mutationsList, observer) {
-    feather.replace();
     });
-    const config = { childList: true, subtree: true };
-    observer.observe(document.body, config);
-  </script>
+
+}
 
 
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('edit-icon')) {
+        var leadData = event.target.getAttribute('data-lead');
+        window.location.href = `/wedart/template/manage_lead.php?dat=${leadData}`;
+    }
+
+    if (event.target && event.target.classList.contains('follow-up-icon')) {
+        var leadData = event.target.getAttribute('data-lead');
+        window.location.href = `/wedart/template/follow_up_entry.php?dat=${leadData}`;
+    }
+});
+
+const observer = new MutationObserver(function(mutationsList, observer) {
+    feather.replace();
+});
+const config = { childList: true, subtree: true };
+observer.observe(document.body, config);
+</script>
 <style>
-    .badge:hover{
-      cursor: pointer;
-    }
-    .ho{
-      cursor: pointer;
-    }
-    @media only screen and (max-width: 991px) {
-      #dot{
-        display: none;
-      }
-    }
-    .lnk{
-      background: transparent;
-      color:  blue !important;
-      border: none;
-    }
+  i {
+    cursor: pointer !important;
+  }
+  i:hover{
+    color: blue !important;
+  }
 </style>
 
-</body>
 
 </html>

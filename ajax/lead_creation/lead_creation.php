@@ -5,33 +5,50 @@
 
     if(isset($_POST['baby']) || isset($_POST['wedding']))
     {
-        $name        = mysqli_real_escape_string($conn, $_POST['name']);
-        $lead_no     = mysqli_real_escape_string($conn, $_POST['lead_no']);
-        $phone       = mysqli_real_escape_string($conn, $_POST['phone']);
-        $source_id   = mysqli_real_escape_string($conn, $_POST['source_id']);
-        $service     = mysqli_real_escape_string($conn, $_POST['service']);
-        $other_info  = mysqli_real_escape_string($conn, $_POST['other_info']);
-        // $follow_up_status = mysqli_real_escape_string($con, $_POST['follow_status']);
+        $lead_no           = mysqli_real_escape_string($conn, $_POST['lead_no']);
+        $source_id         = mysqli_real_escape_string($conn, $_POST['source_id']);
+        $name              = mysqli_real_escape_string($conn, $_POST['name']);
+        $phone             = mysqli_real_escape_string($conn, $_POST['phone']);
+        $other_info        = mysqli_real_escape_string($conn, $_POST['other_info']);
+        $service_category  = mysqli_real_escape_string($conn, $_POST['service_category']);
+        $main_service      = mysqli_real_escape_string($conn, $_POST['main_service']);
+        $service           = mysqli_real_escape_string($conn, $_POST['service']);
+        $follow_up_date    = mysqli_real_escape_string($conn, $_POST['follow_up']);
+        $follow_up_details = mysqli_real_escape_string($conn, $_POST['follow_up_details']);
+        // $response          = mysqli_real_escape_string($conn, $_POST['response']); 
 
         if(isset($_POST['baby']))
-        {   
+        {
             $event_dateTime = mysqli_real_escape_string($conn, $_POST['event_dateTime']);
             $age            = mysqli_real_escape_string($conn, $_POST['age']);
             $sex            = mysqli_real_escape_string($conn, $_POST['sex']);
 
-            $sql = "INSERT INTO lead_form_baby (`lead_no`, `name`, `age`, `sex`, `event_dateTime`, `phone`, `source_id`, `service`, `other_info`,`follow_up_status`, `status`, `dateTime`) 
-                                        VALUES ('$lead_no', '$name', '$age', '$sex', '$event_dateTime', '$phone', '$source_id', '$service', '$other_info','open', 'Active', '$dateTime')";
+            $sql = "INSERT INTO lead_form_baby (`lead_no`,`source_id`, `name`, `age`, `sex`, `event_dateTime`, `phone`, `service_category`, `service`, `main_service`, `other_info`, `status`, `dateTime`) 
+                                    VALUES ('$lead_no', '$source_id', '$name', '$age', '$sex', '$event_dateTime', '$phone', '$service_category', '$service', '$main_service', '$other_info', 'Active', '$dateTime')";
 
             if($row = mysqli_query($conn, $sql))
             {
-                $res['status']  = 'Success';
-                $res['remarks'] = 'Lead created successfully';
+                $lead_form_baby_insert_id = mysqli_insert_id($conn);
+
+                $sql_follow_up = "INSERT INTO `follow_up` (`lead_id`, `follow_up_date`, `approach`, `category`, `dateTime`) 
+                 VALUES ('$lead_form_baby_insert_id', '$follow_up_date', '$follow_up_details', 'baby', '$dateTime')";
+
+
+                if(mysqli_query($conn, $sql_follow_up))
+                {
+                    $res['status']  = 'Success';
+                    $res['remarks'] = 'Lead created successfully';    
+                }
+                else
+                {
+                    $res['status']  = 'Failed';
+                    $res['remarks'] = 'Failed to Create Lead';
+                }
             }
             else
             {
                 $res['status']  = 'Failed';
-                $res['remarks'] = 'Failed to create baby lead';
-                
+                $res['remarks'] = 'Failed to Create Baby Lead';  
             }
         }
         else if(isset($_POST['wedding']))
@@ -40,18 +57,26 @@
             $event      = mysqli_real_escape_string($conn, $_POST['event']);
             $mandapam   = mysqli_real_escape_string($conn, $_POST['mandapam']);
 
-            $sql_wed = "INSERT INTO lead_form_wd (`lead_no`, `name`, `event`, `event_date`, `mandapam`, `phone`, `source_id`, `service`, `other_info`,`follow_up_status`, `status`, `dateTime`) 
-                                         VALUES ('$lead_no', '$name', '$event', '$event_date', '$mandapam', '$phone', '$source_id', '$service', '$other_info','open', 'Active', '$dateTime')";
+            $sql_wed = "INSERT INTO lead_form_wd (`lead_no`, `name`, `source_id`, `event`, `event_date`, `mandapam`, `phone`, `service_category`, `service`, `main_service`, `other_info`, `status`, `dateTime`) 
+                                         VALUES ('$lead_no', '$name', '$source_id', '$event', '$event_date', '$mandapam', '$phone', '$service_category', '$service', '$main_service', '$other_info', 'Active', '$dateTime')";
 
-            if($result = mysqli_query($conn, $sql_wed))
+            if($row = mysqli_query($conn, $sql_wed))
             {
-                $res['status']  = 'Success';
-                $res['remarks'] = 'Lead Created Successfully';
-            }
-            else
-            {
-                $res['status']  = 'Success';
-                $res['remarks'] = 'Failed to create wedding lead';
+                $lead_form_wd_insert_id = mysqli_insert_id($conn);
+
+                $sql_follow_up = "INSERT INTO `follow_up` (`lead_id`, `follow_up_date` , `approach`, `category`, `dateTime`) 
+                                VALUES ('$lead_form_wd_insert_id', '$follow_up_date', '$follow_up_details', 'wedding', '$dateTime') ";
+
+                if(mysqli_query($conn, $sql_follow_up))
+                {
+                    $res['status']  = 'Success';
+                    $res['remarks'] = 'Lead created successfully';    
+                }
+                else
+                {
+                    $res['status']  = 'Failed';
+                    $res['remarks'] = 'Failed to Create Lead';
+                }
             }
         }
     }

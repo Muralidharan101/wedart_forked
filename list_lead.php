@@ -734,6 +734,7 @@
 <script>
 var link;
 var dataTable;
+
 function radioChange() {
     if (document.getElementById('wedding').checked) {
         link = 'ajax/lead_creation/lead_for_wedding.php';
@@ -746,6 +747,26 @@ function radioChange() {
     createTable();
 }
 radioChange();
+
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('edit-icon')) {
+        var leadData = event.target.getAttribute('data-lead');
+        window.location.href = `/wedart/template/manage_lead.php?dat=${leadData}`;
+    }
+
+    if (event.target && event.target.classList.contains('follow-up-icon')) {
+        var leadData = event.target.getAttribute('data-lead');
+        window.location.href = `/wedart/template/follow_up_entry.php?dat=${leadData}`;
+    }
+});
+
+const observer = new MutationObserver(function(mutationsList, observer) {
+    feather.replace();
+});
+const config = { childList: true, subtree: true };
+observer.observe(document.body, config);
+
+
 
 function createTable() {
     dataTable = $('#tbl').DataTable({
@@ -773,14 +794,13 @@ function createTable() {
                               ${ob.service}
                         </span><br>`)).join('');
                     var statusdisplay = document.createElement('span');
-                    statusdisplay.textContent = obj.follow_up_status;
-                    if (obj.follow_up_status === 'open') {
+                    if (obj.lead_status === 'open') {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
-                    } else if (obj.follow_up_status === 'closed') {
+                    } else if (obj.lead_status === 'closed') {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
                     }
                     statusdisplay.style.cursor = 'pointer';
-
+                    statusdisplay.textContent = obj.lead_status;
                     var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
                     
                     var dataRow = [
@@ -792,18 +812,19 @@ function createTable() {
                         obj.mandapam,
                         val,
                         statusdisplay.outerHTML,
-                        `<i 
-                          onclick="window.location.href = '/wedart/template/manage_lead.php?dat=${dat}'"
-                          data-feather="edit"
-                          style="cursor: pointer;margin-right:10px;"
-                          title="Edit Lead"></i>
-                          <i 
-                            data-feather="message-circle"
-                            onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
-                            style="cursor: pointer"
-                            title=""></i>`
+                        `<i class="edit-icon"
+                            data-lead="${dat}"
+                            data-action="edit"
+                            data-feather="edit"
+                            style="cursor: pointer;margin-right:10px;"
+                            title="Edit Lead"></i>
+                            <i class="follow-up-icon"
+                              data-lead="${dat}"
+                              data-action="follow_up"
+                              data-feather="message-circle"
+                              style="cursor: pointer"
+                              title=""></i>`
                     ];
-                    // data-feather="external-link" 
                     dataTableData.push(dataRow);
                     feather.replace(); 
                 });

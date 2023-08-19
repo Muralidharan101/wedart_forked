@@ -995,6 +995,12 @@
         }
       })
     }
+
+    const observer = new MutationObserver(function(mutationsList, observer) {
+    feather.replace();
+    });
+    const config = { childList: true, subtree: true };
+    observer.observe(document.body, config);
     
   </script>
 

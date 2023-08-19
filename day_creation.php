@@ -1041,6 +1041,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
       var input = e.value.replace(/[^0-9]/g, '');  
       e.value = input; 
     }
+    const observer = new MutationObserver(function(mutationsList, observer) {
+    feather.replace();
+    });
+    const config = { childList: true, subtree: true };
+    observer.observe(document.body, config);
     
   </script>
 
