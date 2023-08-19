@@ -691,7 +691,8 @@
                     <button 
                       class="btn btn-primary"
                       data-bs-toggle="modal" data-original-title="test"
-                      data-bs-target="#exampleModal" >
+                      data-bs-target="#exampleModal" 
+                      onclick="clearinput()">
                       <div style="display: flex; justify-content: center;align-items:center">
                         <i data-feather="plus"></i> &nbsp; New FollowUp
                       </div>
@@ -830,7 +831,32 @@
             </div>
             <div class="modal-footer">
               <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="newFollowUp()">Add</button>
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="clear()">Cancel</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Add Response</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label class="form-label" for="edit">Enter Response</label>
+                    <textarea class="form-control" style="border: 1px solid #e0dddd" rows="5" id="editRes"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="postResponse()">Add Response</button>
             </div>
           </div>
         </div>
@@ -858,6 +884,14 @@
     <script src="../assets/js/tooltip-init.js"></script>
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+    integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </body>
 <script>
     var link;
@@ -865,8 +899,10 @@
     const urlParams = new URLSearchParams(window.location.search).get('dat');
     const decodedData = JSON.parse(decodeURIComponent(urlParams));
     var data=[]; var datobj = {};
-    function clear(){
-      $('#a_topic').val(''); $('#f_date').val('');
+    var followUpID;
+    function clearinput(){
+      document.getElementById('a_topic').value = '';
+      document.getElementById('f_date').value = '';
     }
 
     function closeLeadCheck(arg){
@@ -954,6 +990,18 @@
     })
   }fetchdata();
 
+  function setid(type, id, date, approach){
+    console.log(type, id, date, approach);
+    followUpID = id;
+    if(type == 'res'){
+      document.getElementById('editRes').value = '';
+    }
+    if(type == 'edit'){
+      document.getElementById('f_date').value = date;
+      document.getElementById('a_topic').value = approach;
+    }
+  }
+
   function createTable() {
     var count = 0;
     var dat = []; count =0;
@@ -962,7 +1010,17 @@
       if(obj.response != null || obj.response != 'null'){
         val = obj.response
       }
-      dat.push({'id':++count,'date': obj.follow_up_date, 'topic': obj.approach, 'response': val, 'but' : "Buttons"})
+      dat.push({'id':++count,'date': obj.follow_up_date, 'topic': obj.approach, 'response': val, 'but' : 
+      ` <i
+          data-bs-toggle="modal" data-original-title="test"
+          data-bs-target="#exampleModal"
+          onclick="setid('edit', '${obj.id}', '${obj.follow_up_date}', '${obj.approach}')"
+          data-feather="edit"></i>
+        <i
+          onclick="setid('res', '${obj.id}')"
+          data-bs-toggle="modal" data-original-title="test"
+          data-bs-target="#Modal" 
+          data-feather="message-square"></i>`})
     })
     if(dataTable){
       dataTable.destroy();
@@ -989,7 +1047,7 @@
     } else if(inpt1 == '')
     {
       toastr.error('Select Date');
-    } else if (inpt2) {
+    } else if (inpt2 == '') {
       toastr.error('Enter Topic');
     }
     else
@@ -998,7 +1056,7 @@
       fd.append('lead_id', decodedData.lead_id);
       fd.append('follow_up_date', inpt1);
       fd.append('approach', inpt2)
-      fd.append('category', decodedData.lead);
+      fd.append('lead', decodedData.lead);
       $.ajax({
         url: 'ajax/follow_up_data/follow_up_data_creation.php',
         data: fd,
@@ -1008,8 +1066,8 @@
         success: function (response) {
           var result = JSON.parse(response);
           if (result.status == 'Success') {
-            toastr.success('New FollowUp Data Added');
-            $('#date').val(''); $('#a_topic').val(''); fetchdata();
+            toastr.success(result.remarks);
+            fetchdata();
           } else {
             toastr.error('Sry, Error with the Backend');
           }
@@ -1018,6 +1076,38 @@
     }
   }
 
+  function postResponse(){
+    var inputvalue = $('#editRes').val();
+      if(inputvalue == '')
+      {
+        toastr.error('Enter Valid Response');
+      }
+      else
+      {
+        var fd = new FormData();
+        fd.append('id', followUpID);
+        fd.append('response', inputvalue);
+        $.ajax({
+          url: 'ajax/follow_up_data/follow_up_response_creation.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            var result = JSON.parse(response);
+            if (result.status == 'Success') {
+              toastr.success(result.remarks);
+              $('#editRes').val('');
+              fetchdata();
+            } else if (result.status == 'Available') {
+              toastr.error(result.remarks);
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
+  }
   
   const observer = new MutationObserver(function(mutationsList, observer) {
   feather.replace();

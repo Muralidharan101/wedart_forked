@@ -9,7 +9,7 @@
     if ($lead == 'baby') 
     {
 
-        $sql = "SELECT l.lead_no, l.name, l.phone, l.age, l.sex, l.lead_status, l.event_dateTime, l.service, l.main_service, l.other_info, f.follow_up_date, f.approach, f.response   
+        $sql = "SELECT l.id, l.lead_no, l.name, l.phone, l.age, l.sex, l.lead_status, l.event_dateTime, l.service, l.main_service, l.other_info, f.follow_up_date, f.approach, f.response   
                 FROM lead_form_baby AS l 
                 JOIN follow_up AS f
                 ON l.id = f.lead_id
@@ -32,7 +32,7 @@
     } 
     else if ($lead == 'wedding') 
     {
-        $sql = "SELECT l.lead_no, l.name, l.lead_status, l.phone, l.event, l.mandapam, l.event_date, l.service, l.main_service, l.other_info, f.follow_up_date, f.follow_up_details, f.approach, f.response  
+        $sql = "SELECT l.id, l.lead_no, l.name, l.lead_status, l.phone, l.event, l.mandapam, l.event_date, l.service, l.main_service, l.other_info, f.follow_up_date, f.follow_up_details, f.approach, f.response  
             FROM lead_form_wd AS l 
             JOIN follow_up AS f
             ON l.id = f.lead_id

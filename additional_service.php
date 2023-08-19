@@ -747,7 +747,7 @@
                 <div class="card-body">
                     <div class="row">
 
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                           <div class="mb-3">
                             <label class="form-label" for="service">Select Service Category</label>
                             <select class="form-select" style="border: 1px solid #e0dddd" id="service">
@@ -756,14 +756,14 @@
                           </div>
                         </div>
 
-                      <div class="col-lg-3">
+                      <div class="col-lg-4">
                         <div class="mb-3">
                           <label class="form-label" for="inpt">Enter Additional Service</label>
                           <input class="form-control" style="border: 1px solid #e0dddd" id="inpt">
                         </div>
                       </div>
 
-                      <div class="col-lg-6">
+                      <div class="col-lg-4">
                         <div class="mb-3">
                           <label class="form-label" style="color:transparent">.</label>
                           <div>

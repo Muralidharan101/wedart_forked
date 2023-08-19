@@ -782,8 +782,8 @@ function createTable() {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
                     }
                     statusdisplay.style.cursor = 'pointer';
-                    statusdisplay.textContent = obj.lead_status;
-                    var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
+                    statusdisplay.textContent = obj.lead_status;                    
+                    var urldat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
                     
                     var dataRow = [
                         obj.lead_no,
@@ -794,15 +794,8 @@ function createTable() {
                         obj.mandapam,
                         val,
                         statusdisplay.outerHTML,
-                        `<i class="edit-icon"
-                            data-lead="${dat}"
-                            data-action="edit"
-                            data-feather="edit"
-                            style="cursor: pointer;margin-right:10px;"
-                            title="Edit Lead"></i>
-                        <i class="follow-up-icon"
-                          data-lead="${dat}"
-                          data-action="follow_up"
+                        `<i class="follow-up-icon"
+                          onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${urldat}'"
                           data-feather="message-circle"
                           style="cursor: pointer"
                           title=""></i>`
@@ -842,18 +835,10 @@ function createTable() {
                         obj.event_dateTime,
                         val,
                         statusdisplay.outerHTML,
-                        `<i class="edit-icon"
-                            data-lead="${dat}"
-                            data-action="edit"
-                            data-feather="edit"
-                            style="cursor: pointer;margin-right:10px;"
-                            title="Edit Lead"></i>
-                        <i class="follow-up-icon"
-                          data-lead="${dat}"
-                          data-action="follow_up"
+                        `<i class="follow-up-icon"
+                          onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
                           data-feather="message-circle"
-                          style="cursor: pointer"
-                          title=""></i>`
+                          style="cursor: pointer"></i>`
                     ];
                     dataTableData.push(dataRow);
                 });
@@ -866,17 +851,6 @@ function createTable() {
 }
 
 
-document.addEventListener('click', function(event) {
-    if (event.target && event.target.classList.contains('edit-icon')) {
-        var leadData = event.target.getAttribute('data-lead');
-        window.location.href = `/wedart/template/manage_lead.php?dat=${leadData}`;
-    }
-
-    if (event.target && event.target.classList.contains('follow-up-icon')) {
-        var leadData = event.target.getAttribute('data-lead');
-        window.location.href = `/wedart/template/follow_up_entry.php?dat=${leadData}`;
-    }
-});
 
 const observer = new MutationObserver(function(mutationsList, observer) {
     feather.replace();
