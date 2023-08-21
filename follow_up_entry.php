@@ -875,6 +875,14 @@
                       <label class="form-check-label" for="dd">DD</label>
                     </div>
                   </div>
+
+                  <div class="col-lg-12">
+                    <br>
+                    <div class="md-3 col-lg-5">
+                      <label class="form-lalel">Enter Amount</label><br>
+                      <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount" >
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -1173,8 +1181,10 @@
     var dayvalue = document.getElementById('days');
 
     if(document.getElementById('convert_check').checked == true){
+      var amt = $('#payment_amount').val();
       fd.append('converted', true)
       fd.append('payment_method', PAY.value)
+      fd.append('amount', amt)
     } else {
       fd.append('converted', false)
     }
