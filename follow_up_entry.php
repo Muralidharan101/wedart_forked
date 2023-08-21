@@ -807,7 +807,7 @@
               <h3 class="modal-title" id="exampleModalLabel">Close Lead</h3>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body overflow-auto">
               <div class="row">
                 <div class="col-lg-5">
                   <div class="mb-3">
@@ -876,11 +876,16 @@
                     </div>
                   </div>
 
-                  <div class="col-lg-12">
-                    <br>
-                    <div class="md-3 col-lg-5">
-                      <label class="form-lalel">Enter Amount</label><br>
-                      <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount" >
+                  <div class="col-lg-12"><br>
+                    <div class="row">
+                      <div class="md-3 col-lg-5">
+                        <label class="form-lalel">Enter Total Amount</label><br>
+                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount" >
+                      </div>
+                      <div class="md-3 col-lg-5">
+                        <label class="form-lalel">Paid Amount</label><br>
+                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="paid_amount" >
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1179,14 +1184,23 @@
     const PAY = document.querySelector('input[name="payment"]:checked');
     var blogvalue = document.getElementById('blog');
     var dayvalue = document.getElementById('days');
+    var sucesscount = 0;
 
     if(document.getElementById('convert_check').checked == true){
       var amt = $('#payment_amount').val();
-      fd.append('converted', true)
-      fd.append('payment_method', PAY.value)
-      fd.append('amount', amt)
+      var paidamt = $('#paid_amount').val();console.log(amt, paidamt)
+      if(amt == '' || paidamt == '' || parseInt(amt) < parseInt(paidamt)){
+        toastr.warning('Enter vaild amount')
+      } else {
+        fd.append('converted', true)
+        fd.append('payment_method', PAY.value)
+        fd.append('amount', amt)
+        fd.append('paid_amount', paidamt)
+        ++sucesscount;
+      }
     } else {
       fd.append('converted', false)
+      ++sucesscount
     }
 
     if(document.getElementById('blog_check').checked == true){
@@ -1198,11 +1212,15 @@
         fd.append('blog', true);
         fd.append('blog_id', blogvalue.value)
         fd.append('day_id', dayvalue.value)
-        postCloseData()
+        if(sucesscount == 1){
+          postCloseData()
+        }
       }
     } else {
       fd.append('blog', false)
-      postCloseData()
+      if(sucesscount == 1){
+        postCloseData()
+      }
     }
     
     function postCloseData(){
