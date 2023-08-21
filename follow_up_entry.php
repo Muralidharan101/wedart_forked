@@ -697,7 +697,10 @@
                         <i data-feather="plus"></i> &nbsp; New FollowUp
                       </div>
                     </button>
-                    <button class="btn btn-info" onclick="closeLeadCheck(true)">Close Lead</button>
+                    <button 
+                      class="btn btn-info" 
+                      data-bs-toggle="modal" data-original-title="test"
+                      data-bs-target="#ModelClose">Close Lead</button>
                   </div>
                 </div>
                 <div class="card-body">
@@ -721,78 +724,6 @@
                 </div>
               </div>
 
-              <div class="card" id="close_lead_div" style="opacity: 0;">
-                <div class="card-header pb-0">
-                  <h3>Close Lead</h3>
-                </div>
-
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="h2">Converted</label>
-                        <div style="float:right">
-                          <label class="switch">
-                            <input type="checkbox" id="convert_check" checked><span class="switch-state"></span>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-1"></div>
-
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="h2">Blog</label>
-                        <div style="float:right">
-                          <label class="switch">
-                            <input type="checkbox" onchange="blogCheck()" id="blog_check" checked><span class="switch-state"></span>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    
-                  </div>
-
-                  <div class="row" id="disp">
-                    <div class="col-lg-5">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Select Blog</label>
-                        <select class="form-select" style="border: 1px solid #e0dddd" id="blog">
-                          <option value="" selected disabled> - Select - </option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-lg-5">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Select Blog Days</label>
-                        <select class="form-select" style="border: 1px solid #e0dddd" id="days">
-                          <option value="" selected disabled> - Select - </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>
-                <hr>
-                <div class="mb-3">
-                  <div class="text-end">
-                    <button 
-                      class="btn btn-danger" 
-                      onclick="closeLeadCheck(false)" 
-                      id="cancel_lead">Cancel
-                    </button>
-                    <button 
-                      class="btn btn-success" 
-                      id="close_lead"
-                      style="margin: auto 2em auto 1em;" >
-                      Close Lead
-                    </button>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
             
@@ -810,6 +741,8 @@
             </div>
           </div>
         </footer>
+
+        <!--followup add, edit-->
 
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -837,6 +770,8 @@
         </div>
       </div>
 
+      <!--followup response add, edit-->
+
       <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -861,6 +796,131 @@
           </div>
         </div>
       </div>
+
+      <!--close lead-->
+
+      <div class="modal fade" id="ModelClose" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Close Lead</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-5">
+                  <div class="mb-3">
+                    <label class="h2">Converted</label>
+                    <div style="float:right">
+                      <label class="switch">
+                        <input type="checkbox" onchange="convertCheck()" id="convert_check" checked><span class="switch-state"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <!-- <hr> -->
+                </div>
+                <div class="col-lg-5">
+                  <div class="mb-3">
+                    <label class="h2">Blog</label>
+                    <div style="float:right">
+                      <label class="switch">
+                        <input type="checkbox" onchange="blogCheck()" id="blog_check" checked><span class="switch-state"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-1"></div>
+              </div>
+
+              <div id="disppay">
+                <br><br>
+                <h3>Payment Method</h3>
+                <hr>
+                <div class="row">
+                  
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="bank" type="radio" checked="" name="payment" value="BANK TRANSFER">
+                      <label class="form-check-label" for="bank">Bank Transfer</label>
+                    </div>
+                  </div>
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="upi" type="radio" name="payment" value="UPI">
+                      <label class="form-check-label" for="upi">UPI</label>
+                    </div>
+                  </div>
+                  
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="check" type="radio" name="payment" value="CHECK">
+                      <label class="form-check-label" for="check">Check</label>
+                    </div>
+                  </div>
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="cash" type="radio" name="payment" value="CASH">
+                      <label class="form-check-label" for="cash">Cash</label>
+                    </div>
+                  </div>
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="dd" type="radio" name="payment" value="DD">
+                      <label class="form-check-label" for="dd">DD</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="disp">
+                <br><br>
+                <h3>Blog Options</h3><hr>
+                <div class="row">
+                <div class="col-lg-5">
+                  <div class="mb-3">
+                    <label class="form-label">Select Blog</label>
+                    <select class="form-select" style="border: 1px solid #e0dddd" id="blog">
+                      <option value="" selected disabled> - Select - </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="mb-3">
+                    <label class="form-label" >Select Blog Days</label>
+                    <select class="form-select" style="border: 1px solid #e0dddd" id="days">
+                      <option value="" selected disabled> - Select - </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            <hr>
+            <div class="mb-3">
+              <div class="text-end">
+                <button 
+                  class="btn btn-danger"  
+                  data-bs-dismiss="modal">Cancel
+                </button>
+                <button
+                  class="btn btn-success" 
+                  style="margin: auto 2em auto 1em;" 
+                  onclick="closeREQ()">
+                  Close Lead
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
       </div>
     </div>
@@ -905,24 +965,21 @@
       document.getElementById('f_date').value = '';
     }
 
-    function closeLeadCheck(arg){
-      if(arg == true){
-        var div = document.getElementById('close_lead_div');
-        div.scrollIntoView({ behavior: 'smooth' });
-        document.getElementById('close_lead_div').style.opacity = '1';
-      } else {
-        document.getElementById('listfollowup').scrollIntoView({ behavior: 'smooth' })
-        document.getElementById('close_lead_div').style.opacity = '0';
-      }
-    }
-
     function blogCheck(){
       if(document.getElementById('blog_check').checked == true){
-        document.getElementById('disp').style.display = 'flex';
+        document.getElementById('disp').style.display = 'block';
       } else {
         document.getElementById('disp').style.display = 'none';
       }
     }blogCheck();
+
+    function convertCheck(){
+      if(document.getElementById('convert_check').checked == true){
+        document.getElementById('disppay').style.display = 'block';
+      } else {
+        document.getElementById('disppay').style.display = 'none';
+      }
+    }convertCheck();
 
     function fetchselect(){
       var blogdata;
@@ -1107,6 +1164,56 @@
           }
         })
       }
+  }
+
+  function closeREQ(){
+    var fd = new FormData();
+    const PAY = document.querySelector('input[name="payment"]:checked');
+    var blogvalue = document.getElementById('blog');
+    var dayvalue = document.getElementById('days');
+
+    if(document.getElementById('convert_check').checked == true){
+      fd.append('converted', true)
+      fd.append('payment_method', PAY.value)
+    } else {
+      fd.append('converted', false)
+    }
+
+    if(document.getElementById('blog_check').checked == true){
+      if(blogvalue.value == ''){
+        toastr.warning('Select Blog')
+      } else if(dayvalue.value == '') {
+        toastr.warning('Select Blog Days')
+      } else {
+        fd.append('blog', true);
+        fd.append('blog_id', blogvalue.value)
+        fd.append('day_id', dayvalue.value)
+        postCloseData()
+      }
+    } else {
+      fd.append('blog', false)
+      postCloseData()
+    }
+    
+    function postCloseData(){
+      fd.append('lead_id', decodedData.lead_id)
+      fd.append('lead', decodedData.lead)
+      $.ajax({
+      url: 'check.php',
+      data: fd,
+      type: 'post',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        if (result.status == 'Success') {
+          toastr.success(result.remarks);
+        } else {
+          toastr.error('Sry, Error with the Backend');
+        }
+      }
+    })
+    }
   }
   
   const observer = new MutationObserver(function(mutationsList, observer) {
