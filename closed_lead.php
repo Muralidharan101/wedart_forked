@@ -901,9 +901,7 @@ function setaddpay(ar){
 
 
 function createTable() {
-    if (dataTable) {
-        dataTable.destroy();
-    }
+  
     dataTable = $('#tbl').DataTable({
         "pageLength": 10
     });
@@ -919,16 +917,12 @@ function createTable() {
             var result = JSON.parse(response);
             leads = result.data;
             var dataTableData = [];
-
-            if (document.getElementById('wedding').checked) {
-                leads.forEach(obj => {
-                    var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
+            leads.forEach(obj => {
                     var paid = 0;
                     obj.history.forEach(ob => {
-                        paid = paid + ob.paid_amount;
+                        paid += ob.paid_amount;
                     });
                     var pend = obj.amount - paid;
-
                     var dataRow = [
                         obj.lead_no,
                         obj.name,
@@ -958,10 +952,7 @@ function createTable() {
                           style="cursor: pointer"></i>`,
                     ];
                     dataTableData.push(dataRow);
-
                 });
-            }
-
             dataTable.clear().rows.add(dataTableData).draw();
             feather.replace();
         }
@@ -996,7 +987,7 @@ function postNewPayment(){
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
-              createTable();
+              radioChange();
               newpayid= '';
               $('#paid_amt').val('');
               $('#pay_meth').val('');
