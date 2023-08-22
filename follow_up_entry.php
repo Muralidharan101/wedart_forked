@@ -664,7 +664,7 @@
                                   <label class="form-check-label" style="color: blue" id="event_date">(null)</label>
                               </div>
                           </div>
-                          <div class="col-lg-4">
+                          <div class="col-lg-8">
                               <div class="mb-3">
                                  <label class="form-check-label">Service</label>&emsp;
                                  <label class="form-check-label" style="color: blue" id="service">(null)</label>
@@ -672,11 +672,11 @@
                               <div class="mb-3">
                                   <label class="form-check-label">Additional Service</label>&emsp;
                                   <label class="form-check-label" style="color: blue" id="a_s">
-                                      <span 
+                                      <!-- <span 
                                           class="badge badge-pill badge-light"
                                           style="color:black; background-color: lightgrey">
                                               Photography
-                                      </span>
+                                      </span> -->
                                   </label>
                               </div>
                           </div>
@@ -692,7 +692,7 @@
                       class="btn btn-primary"
                       data-bs-toggle="modal" data-original-title="test"
                       data-bs-target="#exampleModal" 
-                      onclick="clearinput()">
+                      onclick="trignew()">
                       <div style="display: flex; justify-content: center;align-items:center">
                         <i data-feather="plus"></i> &nbsp; New FollowUp
                       </div>
@@ -763,7 +763,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="newFollowUp()">Add</button>
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" id="add_or_edit">Add</button>
               <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
             </div>
           </div>
@@ -973,10 +973,25 @@
     const decodedData = JSON.parse(decodeURIComponent(urlParams));
     var data=[]; var datobj = {};
     var followUpID;
+    var event;
     function clearinput(){
       document.getElementById('a_topic').value = '';
       document.getElementById('f_date').value = '';
     }
+
+    function trignew(){
+      clearinput();
+      event = 'add'
+    }
+
+    document.getElementById('add_or_edit').addEventListener('click',() => {
+      if(event == 'add'){
+        newFollowUp()
+      }
+      if(event == 'edit'){
+        updateReq();
+      }
+    })
 
     function blogCheck(){
       if(document.getElementById('blog_check').checked == true){
@@ -987,10 +1002,17 @@
     }blogCheck();
 
     function convertCheck(){
+      var blg = document.getElementById('blog_check');
       if(document.getElementById('convert_check').checked == true){
         document.getElementById('disppay').style.display = 'block';
+        blg.checked = true;
+        blg.disabled = false;
+        blogCheck()
       } else {
         document.getElementById('disppay').style.display = 'none';
+        blg.checked = false;
+        blg.disabled = true;
+        blogCheck()
       }
     }convertCheck();
 
@@ -1049,8 +1071,19 @@
         if (result.status == 'Success') {
           data = result.data;createTable();
           data.map((item, index) => {
+            var test = JSON.parse(item.service);
+            var val = test.map(ob => (`
+            <span class="badge badge-pill badge-light"
+                  style="color:black; background-color: lightgrey">
+                  ${ob.service}
+            </span>`)).join('');
+            var sval = `
+            <span class="badge badge-pill badge-light"
+                  style="color:black; background-color: lightgrey">
+                  ${item.service_name}
+            </span>`;
             if(index == 0){
-              datobj = {'name' : item.name, 'eventdate': item.event_dateTime || item.event_date, 'service': item.main_service, 'info': item.other_info}
+              datobj = {'name' : item.name, 'eventdate': item.event_dateTime || item.event_date, 'service': sval, 'info': val}
             }
           });
           document.getElementById('namelab').innerHTML = datobj.name;document.getElementById('event_date').innerHTML = datobj.eventdate;
@@ -1067,6 +1100,7 @@
       document.getElementById('editRes').value = '';
     }
     if(type == 'edit'){
+      event = type;
       document.getElementById('f_date').value = date;
       document.getElementById('a_topic').value = approach;
     }
@@ -1227,7 +1261,7 @@
       fd.append('lead_id', decodedData.lead_id)
       fd.append('lead', decodedData.lead)
       $.ajax({
-      url: 'check.php',
+      url: 'ajax/close_lead/test.php',
       data: fd,
       type: 'post',
       contentType: false,
@@ -1243,6 +1277,44 @@
     })
     }
   }
+
+  // function updateReq(){
+  //   var inpt1 = $('#f_date').val();
+  //   var inpt2 = $('#a_topic').val();
+  //   var currentDate = new Date();
+  //   if(inpt1 < currentDate){
+  //     toastr.error('Select Valid Date')
+  //   } else if(inpt1 == '')
+  //   {
+  //     toastr.error('Select Date');
+  //   } else if (inpt2 == '') {
+  //     toastr.error('Enter Topic');
+  //   }
+  //   else
+  //   {
+  //     var fd = new FormData();
+  //     fd.append('lead_id', decodedData.lead_id);
+  //     fd.append('follow_up_date', inpt1);
+  //     fd.append('approach', inpt2)
+  //     fd.append('lead', decodedData.lead);
+  //     $.ajax({
+  //       url: 'ajax/follow_up_data/follow_up_data_creation.php',
+  //       data: fd,
+  //       type: 'post',
+  //       contentType: false,
+  //       processData: false,
+  //       success: function (response) {
+  //         var result = JSON.parse(response);
+  //         if (result.status == 'Success') {
+  //           toastr.success(result.remarks);
+  //           fetchdata();
+  //         } else {
+  //           toastr.error('Sry, Error with the Backend');
+  //         }
+  //       }
+  //     })
+  //   }
+  // }
   
   const observer = new MutationObserver(function(mutationsList, observer) {
   feather.replace();

@@ -13,13 +13,6 @@
   <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <title>Koho - Premium Admin Template</title>
-  <!-- Google font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
   <!-- Themify icon-->
@@ -37,6 +30,9 @@
   <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
   <!-- Responsive css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+  <!--range picker-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> 
+  
 </head>
 
 <body>
@@ -638,7 +634,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>FollowUp Leads</h3>
+                <h3>Pending Payments</h3>
               </div>
             </div>
           </div>
@@ -648,7 +644,6 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-12">
-
 
               <div class="col-sm-12">
                 <div class="card">
@@ -667,6 +662,9 @@
                         <label class="form-check-label" for="baby">Baby Studio</label>
                       </div>
                     </div>
+
+                    
+
                     <div class="table-responsive">
                       <!-- class="table-responsive" -->
                       <table id="tbl">
@@ -723,14 +721,17 @@
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/sidebar-menu.js"></script>
     <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-    <!-- <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
 
     <script src="../assets/js/tooltip-init.js"></script>
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
+     
+    
 </body>
+
+
+
+
 <script>
 var link;
 var dataTable;
@@ -751,12 +752,12 @@ radioChange();
 document.addEventListener('click', function(event) {
     if (event.target && event.target.classList.contains('edit-icon')) {
         var leadData = event.target.getAttribute('data-lead');
-        window.location.href = `manage_lead.php?dat=${leadData}`;
+        window.location.href = `/wedart/template/manage_lead.php?dat=${leadData}`;
     }
 
     if (event.target && event.target.classList.contains('follow-up-icon')) {
         var leadData = event.target.getAttribute('data-lead');
-        window.location.href = `follow_up_entry.php?dat=${leadData}`;
+        window.location.href = `/wedart/template/follow_up_entry.php?dat=${leadData}`;
     }
 });
 
@@ -798,8 +799,6 @@ function createTable() {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
                     } else if (obj.lead_status === 'closed') {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
-                    } else {
-                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
                     }
                     statusdisplay.style.cursor = 'pointer';
                     statusdisplay.textContent = obj.lead_status;
@@ -842,15 +841,14 @@ function createTable() {
                               ${ob.service}
                         </span><br>`)).join('');
                     var statusdisplay = document.createElement('span');
-                    if (obj.lead_status === 'open') {
+                    statusdisplay.textContent = obj.follow_up_status;
+                    if (obj.follow_up_status === 'open') {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
-                    } else if (obj.lead_status === 'closed') {
+                    } else if (obj.follow_up_status === 'closed') {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
-                    } else {
-                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
                     }
                     statusdisplay.style.cursor = 'pointer';
-                    statusdisplay.textContent = obj.lead_status;
+
 
                     var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'baby'}))
                     var dataRow = [
@@ -863,12 +861,12 @@ function createTable() {
                         val,
                         statusdisplay.outerHTML,
                         `<i 
-                          onclick="window.location.href ='manage_lead.php?dat=${dat}'"
+                          onclick="window.location.href ='/wedart/template/manage_lead.php?dat=${dat}'"
                           data-feather="edit" 
                           style="cursor: pointer;margin-right:10px;"></i>
                           <i 
                             data-feather="message-circle"
-                            onclick="window.location.href = 'follow_up_entry.php?dat=${dat}'"
+                            onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
                             style="cursor: pointer"
                             title=""></i>`
                     ];
