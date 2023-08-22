@@ -1,52 +1,58 @@
 <?php
 
-    require_once '../datab.php';
+require_once '../datab.php';
 
-    $res = [];
-    $count = 0;
+$res = [
+    'status' => 'Failed',
+    'remarks' => 'Unable to send data'
+];
 
-    $lead = mysqli_real_escape_string($conn, $_POST['lead']);
+$lead = mysqli_real_escape_string($conn, $_POST['lead']);
 
+if ($lead == 'wedding' || $lead == 'baby') 
+{
     $table = $lead == 'wedding' ? 'lead_form_wd' : 'lead_form_baby';
 
-    if($lead == "wedding")
+    $sql = "SELECT * FROM closed_leads AS c 
+            JOIN `$table` AS l 
+            ON c.lead_id = l.id";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) 
     {
-        $sql = "SELECT * FROM closed_leads AS c 
-        JOIN `$table` AS l 
-        ON c.lead_id = l.id";
-
-        $sql_transaction = "SELECT * FROM closed_leads AS C
-        JOIN transaction_details AS t
-        ON  c.id = t.closed_leads_id";
-
-        if($result = mysqli_query($conn, $sql))
+        $data = [];
+        while ($row = mysqli_fetch_assoc($result)) 
         {
-            while($data = mysqli_fetch_assoc($result) )
-            {
-                $transaction_data = []; // Initialize the array for each loop iteration
-
-                // Execute the transaction query
-                $transaction_result = mysqli_query($conn, $sql_transaction);
-                while ($transaction_row = mysqli_fetch_assoc($transaction_result)) {
-                    // Add each transaction row to the transaction_data array
-                    $transaction_data[] = $transaction_row;
-                }
-
-                // Add the transaction_data array to the data array
-                $data['history'] = $transaction_data;
-
-                // Add the modified data array to the main data array
-                $res['data'][] = $data;
-            }
-            $res['status']  = 'Success';
-            $res['remarks'] = 'Data sent successfully';
+            $data[] = $row;
         }
-        else
+
+        // Fetch transaction data
+        $transaction_data = [];
+
+        $sql_transaction = "SELECT * FROM transaction_details AS t
+                            WHERE t.closed_leads_id IN (SELECT c.id FROM closed_leads AS c
+                                                      JOIN `$table` AS l
+                                                      ON c.lead_id = l.id)";
+
+        $transaction_result = mysqli_query($conn, $sql_transaction);
+
+        while ($transaction_row = mysqli_fetch_assoc($transaction_result)) 
         {
-            $res['status']  = 'Failed';
-            $res['remarks'] = 'Unable to send data';
+            $transaction_data[$transaction_row['closed_leads_id']][] = $transaction_row;
         }
+
+        foreach ($data as &$lead_row) 
+        {
+            $lead_id = $lead_row['id'];
+            $lead_row['history'] = isset($transaction_data[$lead_id]) ? $transaction_data[$lead_id] : [];
+        }
+
+        $res['status'] = 'Success';
+        $res['remarks'] = 'Data sent successfully';
+        $res['data'] = $data;
     }
-    
-    echo json_encode($res);
+}
+
+echo json_encode($res);
 ?>

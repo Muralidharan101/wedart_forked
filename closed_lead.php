@@ -673,12 +673,11 @@
                             <th scope="col">Lead No</th>
                             <th>Name</th>
                             <th>Mobile No</th>
-                            <th id="th1"></th>
-                            <th id="th2"></th>
-                            <th id="th3"></th>
-                            <th>Service</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Blog</th>
+                            <th>Blog Days</th>
+                            <th>Total Amount</th>
+                            <th>Pending Amount</th>
+                            <th style="min-width: 100px;">Action</th>
                           </tr>
                         </thead>
 
@@ -706,6 +705,107 @@
             </div>
           </div>
         </footer>
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Payment History</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <div class="table-responsive" id="pay_history">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Edit Payment</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="mb-3" id="pay_history">
+                    <label class="form-lable">Enter Total Amount</label>
+                    <input class="form-control" id="tot_amt" value="0">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="">Edit</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Edit Payment</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="mb-3">
+                    <label class="form-lable">Enter Paid Amount</label>
+                    <input class="form-control" id="paid_amt" value="0">
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="mb-3">
+                    <label class="form-lable">Select Payment Method</label>
+                    <select class="form-select" id="pay_meth">
+                      <option value="BANK TRANSFER">Bank Transfer</option>
+                      <option value="UPI">UPI</option>
+                      <option value="CHECK">Check</option>
+                      <option value="CASH">Cash</option>
+                      <option value="DD">DD</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="mb-3">
+                    <label class="form-lable">Enter Payment Remarks</label>
+                    <input class="form-control" id="pay_remark" >
+                  </div>
+                </div>
+
+                
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-success" type="button" data-bs-dismiss="modal" onclick="postNewPayment()">Post</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" >Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       </div>
     </div>
     <!-- latest jquery-->
@@ -735,7 +835,10 @@
 <script>
 var lead;
 var dataTable;
-
+var editID;
+var arrID;
+var leads = [];
+var newpayid;
 function radioChange() {
     if (document.getElementById('wedding').checked) {
         lead = 'wedding';
@@ -749,9 +852,58 @@ function radioChange() {
 }
 radioChange();
 
+function dispHistory(arg) {
+    var clid = arg.getAttribute('id');
+    console.log(clid);
+    
+    var temp_transaction_data; 
+    leads.forEach(obj => {
+        if (obj.id == clid) {
+            temp_transaction_data = obj.history;
+        }
+    });
+
+    var divid = document.getElementById('pay_history');
+    var table = `
+        <table class="table table-lg">
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Paid Amount</td>
+                    <td>Payment Method</td>
+                    <td>Remarks</td>
+                </tr>
+            </thead>
+            <tbody>
+                ${temp_transaction_data.map(hob => {
+                    return `
+                        <tr>
+                            <td>${hob.date}</td>
+                            <td>${hob.paid_amount}</td>
+                            <td>${hob.payment_method}</td>
+                            <td>${hob.payment_remarks}</td>
+                        </tr>`;
+                }).join('')}
+            </tbody>
+        </table>`;
+    divid.innerHTML = table;
+}
+
+
+function setid(id, amount){
+  document.getElementById('tot_amt').value = amount;
+  editID = id; 
+}
+
+function setaddpay(ar){
+  newpayid = ar;
+}
 
 
 function createTable() {
+    if (dataTable) {
+        dataTable.destroy();
+    }
     dataTable = $('#tbl').DataTable({
         "pageLength": 10
     });
@@ -765,100 +917,48 @@ function createTable() {
         processData: false,
         success: function(response) {
             var result = JSON.parse(response);
-            var leads = result.data;
+            leads = result.data;
             var dataTableData = [];
 
             if (document.getElementById('wedding').checked) {
-                document.getElementById('th1').textContent = 'Event';
-                document.getElementById('th2').textContent = 'Event Date';
-                document.getElementById('th3').textContent = 'Mandapam';
                 leads.forEach(obj => {
-                    var test = JSON.parse(obj.service);
-                    var val = test.map(ob => (`
-                        <span class="badge badge-pill badge-light"
-                              style="color:black; background-color: lightgrey">
-                              ${ob.service}
-                        </span><br>`)).join('');
-                    var statusdisplay = document.createElement('span');
-                    if (obj.lead_status === 'open') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
-                    } else if (obj.lead_status === 'closed') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
-                    } else {
-                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
-                    }
-                    statusdisplay.style.cursor = 'pointer';
-                    statusdisplay.textContent = obj.lead_status;
                     var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
-                    
+                    var paid = 0;
+                    obj.history.forEach(ob => {
+                        paid = paid + ob.paid_amount;
+                    });
+                    var pend = obj.amount - paid;
+
                     var dataRow = [
                         obj.lead_no,
                         obj.name,
                         obj.phone,
-                        obj.event,
-                        obj.event_date,
-                        obj.mandapam,
-                        val,
-                        statusdisplay.outerHTML,
-                        `<i class="edit-icon"
-                            data-lead="${dat}"
-                            data-action="edit"
-                            data-feather="edit"
-                            style="cursor: pointer;margin-right:10px;"
-                            title="Edit Lead"></i>
-                            <i class="follow-up-icon"
-                              data-lead="${dat}"
-                              data-action="follow_up"
-                              data-feather="message-circle"
-                              style="cursor: pointer"
-                              title=""></i>`
-                    ];
-                    dataTableData.push(dataRow);
-                    feather.replace(); 
-                });
-            } else {
-                document.getElementById('th1').textContent = 'Age';
-                document.getElementById('th2').textContent = 'Sex';
-                document.getElementById('th3').textContent = 'Date & Time';
-                leads.forEach(obj => {
-                    var test = JSON.parse(obj.service);
-                    var val = test.map(ob => (`
-                        <span class="badge badge-pill badge-light"
-                              style="color:black; background-color: lightgrey">
-                              ${ob.service}
-                        </span><br>`)).join('');
-                    var statusdisplay = document.createElement('span');
-                    statusdisplay.textContent = obj.follow_up_status;
-                    if (obj.follow_up_status === 'open') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
-                    } else if (obj.follow_up_status === 'closed') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
-                    }
-                    statusdisplay.style.cursor = 'pointer';
-
-
-                    var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'baby'}))
-                    var dataRow = [
-                        obj.lead_no,
-                        obj.name,
-                        obj.phone,
-                        obj.age,
-                        obj.sex,
-                        obj.event_dateTime,
-                        val,
-                        statusdisplay.outerHTML,
+                        obj.blog_id,
+                        obj.day_id,
+                        obj.amount,
+                        pend,
                         `<i 
-                          onclick="window.location.href ='/wedart/template/manage_lead.php?dat=${dat}'"
-                          data-feather="edit" 
+                          data-bs-toggle="modal" data-original-title="test"
+                          data-bs-target="#exampleModal1"
+                          onclick="setid('${obj.id}', '${obj.amount}')"
+                          data-feather="edit"
                           style="cursor: pointer;margin-right:10px;"></i>
                           <i 
-                            data-feather="message-circle"
-                            onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
-                            style="cursor: pointer"
-                            title=""></i>`
+                          data-bs-toggle="modal" data-original-title="test"
+                          data-bs-target="#exampleModal2"
+                          data-feather="plus"
+                          onclick="setaddpay('${obj.id}')"
+                          style="cursor: pointer;margin-right:10px;"></i>
+                          <i 
+                          data-bs-toggle="modal" data-original-title="test"
+                          data-bs-target="#exampleModal" 
+                          data-feather="list"
+                          id="${obj.id}"
+                          onclick="dispHistory(this)"
+                          style="cursor: pointer"></i>`,
                     ];
-
                     dataTableData.push(dataRow);
+
                 });
             }
 
@@ -866,8 +966,51 @@ function createTable() {
             feather.replace();
         }
     });
-
 }
+
+function postNewPayment(){
+  var pay_amt =    $('#paid_amt').val();
+  var pay_method = $('#pay_meth').val();
+  var pay_remark = $('#pay_remark').val();
+  var fd = new FormData();
+    if(pay_amt == '')
+      {
+        toastr.error('Enter Paid Amount');
+      }
+    else if (pay_method == ''){
+      toastr.error('Select Payment Method');
+    }
+      else
+      {
+        fd.append('closed_leads_id', newpayid);
+        fd.append('paid_amount', pay_amt);
+        fd.append('payment_method', pay_method);
+        fd.append('payment_remarks', pay_remark);
+        $.ajax({
+          url: 'ajax/lead_closing/new_payment.php',
+          data: fd,
+          type: 'post',
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            var result = JSON.parse(response);
+            if (result.status == 'Success') {
+              toastr.success(result.remarks);
+              createTable();
+              newpayid= '';
+              $('#paid_amt').val('');
+              $('#pay_meth').val('');
+              $('#pay_remark').val('');
+              fetchdata();
+            } else {
+              toastr.error('Sry, Error with the Backend');
+            }
+          }
+        })
+      }
+}
+
+
 
 document.addEventListener('click', function(event) {
     if (event.target && event.target.classList.contains('edit-icon')) {
