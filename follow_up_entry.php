@@ -692,7 +692,7 @@
                       class="btn btn-primary"
                       data-bs-toggle="modal" data-original-title="test"
                       data-bs-target="#exampleModal" 
-                      onclick="trignew()">
+                      onclick="trignew()" id="newFollowUpBtn">
                       <div style="display: flex; justify-content: center;align-items:center">
                         <i data-feather="plus"></i> &nbsp; New FollowUp
                       </div>
@@ -700,7 +700,7 @@
                     <button 
                       class="btn btn-info" 
                       data-bs-toggle="modal" data-original-title="test"
-                      data-bs-target="#ModelClose">Close Lead</button>
+                      data-bs-target="#ModelClose" id="closeLeadBtn">Close Lead</button>
                   </div>
                 </div>
                 <div class="card-body">
@@ -1055,6 +1055,12 @@
       })
     }fetchselect();
 
+    function checkStatus(arg){
+      if(arg == 'closed' || arg == 'converted'){
+        document.getElementById('newFollowUpBtn').style.display = 'none';
+        document.getElementById('closeLeadBtn').style.display = 'none'
+      }
+    }
 
   function fetchdata() {    
     var fd = new FormData();
@@ -1071,6 +1077,8 @@
         if (result.status == 'Success') {
           data = result.data;createTable();
           data.map((item, index) => {
+            var sts_val = item.lead_status;
+            checkStatus(sts_val)
             var test = JSON.parse(item.service);
             var val = test.map(ob => (`
             <span class="badge badge-pill badge-light"

@@ -733,39 +733,21 @@
 
 
 <script>
-var link;
+var lead;
 var dataTable;
 
 function radioChange() {
     if (document.getElementById('wedding').checked) {
-        link = 'ajax/lead_creation/lead_for_wedding.php';
+        lead = 'wedding';
     } else {
-        link = 'ajax/lead_creation/lead_for_baby_list.php';
+        lead = 'baby';
     }
     if (dataTable) {
-        dataTable.destroy(); // Destroy the existing DataTable instance
+        dataTable.destroy();
     }
     createTable();
 }
 radioChange();
-
-document.addEventListener('click', function(event) {
-    if (event.target && event.target.classList.contains('edit-icon')) {
-        var leadData = event.target.getAttribute('data-lead');
-        window.location.href = `/wedart/template/manage_lead.php?dat=${leadData}`;
-    }
-
-    if (event.target && event.target.classList.contains('follow-up-icon')) {
-        var leadData = event.target.getAttribute('data-lead');
-        window.location.href = `/wedart/template/follow_up_entry.php?dat=${leadData}`;
-    }
-});
-
-const observer = new MutationObserver(function(mutationsList, observer) {
-    feather.replace();
-});
-const config = { childList: true, subtree: true };
-observer.observe(document.body, config);
 
 
 
@@ -773,9 +755,12 @@ function createTable() {
     dataTable = $('#tbl').DataTable({
         "pageLength": 10
     });
+    var fd = new FormData();
+    fd.append('lead', lead)
     $.ajax({
-        url: link,
-        type: 'get',
+        url: 'ajax/lead_closing/closed_lead_list.php',
+        type: 'post',
+        data: fd,
         contentType: false,
         processData: false,
         success: function(response) {
@@ -799,6 +784,8 @@ function createTable() {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
                     } else if (obj.lead_status === 'closed') {
                         statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
+                    } else {
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
                     }
                     statusdisplay.style.cursor = 'pointer';
                     statusdisplay.textContent = obj.lead_status;
@@ -881,6 +868,24 @@ function createTable() {
     });
 
 }
+
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('edit-icon')) {
+        var leadData = event.target.getAttribute('data-lead');
+        window.location.href = `/wedart/template/manage_lead.php?dat=${leadData}`;
+    }
+
+    if (event.target && event.target.classList.contains('follow-up-icon')) {
+        var leadData = event.target.getAttribute('data-lead');
+        window.location.href = `/wedart/template/follow_up_entry.php?dat=${leadData}`;
+    }
+});
+
+const observer = new MutationObserver(function(mutationsList, observer) {
+    feather.replace();
+});
+const config = { childList: true, subtree: true };
+observer.observe(document.body, config);
 </script>
 <style>
   i {
