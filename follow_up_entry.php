@@ -1278,6 +1278,7 @@
         var result = JSON.parse(response);
         if (result.status == 'Success') {
           toastr.success(result.remarks);
+          window.location.href = 'closed_lead.php';
         } else {
           toastr.error('Sry, Error with the Backend');
         }
@@ -1301,6 +1302,7 @@
   //   else
   //   {
   //     var fd = new FormData();
+  //     fd.append('id', followUpID)
   //     fd.append('lead_id', decodedData.lead_id);
   //     fd.append('follow_up_date', inpt1);
   //     fd.append('approach', inpt2)

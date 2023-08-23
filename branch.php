@@ -807,7 +807,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="postreq()">Edit</button>
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="editreq()">Edit</button>
               <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletesource()">Delete</button>
             </div>
           </div>

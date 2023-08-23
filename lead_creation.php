@@ -1152,6 +1152,17 @@
     
     function postreq() {
       var fd = new FormData();
+      if(c_name.value == ''){
+        toastr.error('Enter Name')
+      } else if(contact.value == ''){
+        toastr.error('Enter Contact')
+      } else if (inpt3.value == ''){
+        toastr.error('Enter Event Date')
+      } else if (service_category.value == ''){
+        toastr.error('Select Service Category')
+      } else if (service_type.value == ''){
+        toastr.error('Select Service')
+      } else {
       
       fd.append('lead_no',leadno.value)
       fd.append('source_id',source.value)
@@ -1195,6 +1206,7 @@
           }
         }
       })
+      }
     }
 
     
