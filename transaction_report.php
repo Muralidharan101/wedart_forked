@@ -648,24 +648,45 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h3>Lead Types</h3>
+                    <h3>Transaction Date Range</h3>
                   </div>
                   <div class="card-body">
-                    <div class="row" style="margin-left: 0.5em;">
-                      <div class="form-check radio radio-primary col-lg-2">
-                        <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                        <label class="form-check-label" for="wedding">Adult Studio</label>
-                      </div>
+                    <div class="row">
+                        <h3></h3>
+                        <div class="col-lg-12">
+                            <div class="md-3">
+                                <label class="form-label" for="daterange">Select Date Range</label>
+                                <input type="text" class="form-control" name="daterange" value="01/01/2018 - 01/15/2018" />
+                            </div>
+                        </div>
 
-                      <div class="form-check radio radio-primary col-lg-2">
-                        <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
-                        <label class="form-check-label" for="baby">Baby Studio</label>
-                      </div>
+                        <div class="card-header pb-0">
+                            <h3>Lead Types</h3>
+                        </div><br>
+                        <div class="row" style="margin-left: 0.5em; margin-top: 2em">
+                            <div class="form-check radio radio-primary col-lg-2">
+                              <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
+                              <label class="form-check-label" for="wedding">Adult Studio</label>
+                            </div>
+
+                            <div class="form-check radio radio-primary col-lg-2">
+                              <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
+                              <label class="form-check-label" for="baby">Baby Studio</label>
+                            </div>
+                        </div>
+                        
+
+                        <div class="text-end">
+                            <button class="btn btn-primary" onclick="gend()">Gendrate Report</button>
+                        </div>
+                        
                     </div>
+                  </div>
 
+                
+                <div class="card-body" id="disptable" style="display: none;">
                     
-
-                    <div class="table-responsive">
+                    <div class="table-responsive" >
                       <!-- class="table-responsive" -->
                       <table id="tbl">
                         <thead>
@@ -673,14 +694,13 @@
                             <th scope="col">Lead No</th>
                             <th>Name</th>
                             <th>Mobile No</th>
-                            <th>Blog</th>
-                            <th>Blog Days</th>
+                            <th>Transaction Date</th>
                             <th>Total Amount</th>
-                            <th>Pending Amount</th>
-                            <th style="min-width: 100px;">Action</th>
+                            <th>Paid Amount</th>
+                            <th>Payment Method</th>
+                            <th>Payment Remarks</th>
                           </tr>
                         </thead>
-
                         <tbody>
                           <!--data-->
                         </tbody>
@@ -693,6 +713,7 @@
             </div>
           </div>
 
+        </div>
         </div>
         <!-- footer start-->
         <footer class="footer">
@@ -707,105 +728,7 @@
         </footer>
 
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Payment History</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col">
-                  <div class="table-responsive" id="pay_history">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Edit Payment</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mb-3" id="pay_history">
-                    <label class="form-lable">Enter Total Amount</label>
-                    <input class="form-control" id="tot_amt" value="0">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="updateAmount()">Update Amount</button>
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Edit Payment</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mb-3">
-                    <label class="form-lable">Enter Paid Amount</label>
-                    <input class="form-control" id="paid_amt" value="0">
-                  </div>
-                </div>
-
-                <div class="col-lg-12">
-                  <div class="mb-3">
-                    <label class="form-lable">Select Payment Method</label>
-                    <select class="form-select" id="pay_meth">
-                      <option value="BANK TRANSFER">Bank Transfer</option>
-                      <option value="UPI">UPI</option>
-                      <option value="CHECK">Check</option>
-                      <option value="CASH">Cash</option>
-                      <option value="DD">DD</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-lg-12">
-                  <div class="mb-3">
-                    <label class="form-lable">Enter Payment Remarks</label>
-                    <input class="form-control" id="pay_remark" >
-                  </div>
-                </div>
-
-                
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-success" type="button" data-bs-dismiss="modal" onclick="postNewPayment()">Post</button>
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" >Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
+      
       </div>
     </div>
     <!-- latest jquery-->
@@ -826,6 +749,10 @@
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
 
+    <!--date range picker-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -842,10 +769,30 @@
 <script>
 var lead;
 var dataTable;
-var editID;
-var arrID;
 var leads = [];
-var newpayid;
+var start;
+var end;
+
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left',
+    startDate: '01-01-2023',
+    endDate: '01-01-2023',  
+  }, function(st, en, label) {
+    console.log("A new date selection was made: " + st.format('YYYY-MM-DD') + ' to ' + en.format('YYYY-MM-DD'));
+    start = st.format('YYYY-MM-DD'); end = en.format('YYYY-MM-DD');
+  });
+});
+
+function gend(){
+    document.getElementById('disptable').style.display = 'block';
+    if(start != '' && end != ''){
+        radioChange()
+    } else {
+        toastr.error('Select Date Range');
+    }
+}
+
 function radioChange() {
     if (document.getElementById('wedding').checked) {
         lead = 'wedding';
@@ -859,63 +806,19 @@ function radioChange() {
 }
 radioChange();
 
-function dispHistory(arg) {
-    var clid = arg.getAttribute('id');
-    console.log(clid);
-    
-    var temp_transaction_data; 
-    leads.forEach(obj => {
-        if (obj.id == clid) {
-            temp_transaction_data = obj.history;
-        }
-    });
-
-    var divid = document.getElementById('pay_history');
-    var table = `
-        <table class="table table-lg">
-            <thead>
-                <tr>
-                    <td>Date</td>
-                    <td>Paid Amount</td>
-                    <td>Payment Method</td>
-                    <td>Remarks</td>
-                </tr>
-            </thead>
-            <tbody>
-                ${temp_transaction_data.map(hob => {
-                    return `
-                        <tr>
-                            <td>${hob.date}</td>
-                            <td>${hob.paid_amount}</td>
-                            <td>${hob.payment_method}</td>
-                            <td>${hob.payment_remarks}</td>
-                        </tr>`;
-                }).join('')}
-            </tbody>
-        </table>`;
-    divid.innerHTML = table;
-}
-
-
-function setid(id, amount){
-  document.getElementById('tot_amt').value = amount;
-  editID = id; 
-}
-
-function setaddpay(ar){
-  newpayid = ar;
-}
-
 
 function createTable() {
+    
   
     dataTable = $('#tbl').DataTable({
         "pageLength": 10
     });
     var fd = new FormData();
     fd.append('lead', lead)
+    fd.append('start', start)
+    fd.append('end', end)
     $.ajax({
-        url: 'ajax/lead_closing/closed_lead_list.php',
+        url: 'ajax/lead_closing/transaction_report.php',
         type: 'post',
         data: fd,
         contentType: false,
@@ -925,38 +828,15 @@ function createTable() {
             leads = result.data;
             var dataTableData = [];
             leads.forEach(obj => {
-                    var paid = 0;
-                    obj.history.forEach(ob => {
-                        paid += ob.paid_amount;
-                    });
-                    var pend = obj.amount - paid;
                     var dataRow = [
                         obj.lead_no,
                         obj.name,
                         obj.phone,
-                        obj.blog_name,
-                        obj.days_count,
+                        obj.date,
                         obj.amount,
-                        pend,
-                        `<i 
-                          data-bs-toggle="modal" data-original-title="test"
-                          data-bs-target="#exampleModal1"
-                          onclick="setid('${obj.id}', '${obj.amount}')"
-                          data-feather="edit"
-                          style="cursor: pointer;margin-right:10px;"></i>
-                          <i 
-                          data-bs-toggle="modal" data-original-title="test"
-                          data-bs-target="#exampleModal2"
-                          data-feather="plus"
-                          onclick="setaddpay('${obj.id}')"
-                          style="cursor: pointer;margin-right:10px;"></i>
-                          <i 
-                          data-bs-toggle="modal" data-original-title="test"
-                          data-bs-target="#exampleModal" 
-                          data-feather="list"
-                          id="${obj.id}"
-                          onclick="dispHistory(this)"
-                          style="cursor: pointer"></i>`,
+                        obj.paid_amount,
+                        obj.payment_method,
+                        obj.payment_remarks,
                     ];
                     dataTableData.push(dataRow);
                 });
@@ -966,77 +846,7 @@ function createTable() {
     });
 }
 
-function postNewPayment(){
-  var pay_amt =    $('#paid_amt').val();
-  var pay_method = $('#pay_meth').val();
-  var pay_remark = $('#pay_remark').val();
-  var fd = new FormData();
-    if(pay_amt == '')
-      {
-        toastr.error('Enter Paid Amount');
-      }
-    else if (pay_method == ''){
-      toastr.error('Select Payment Method');
-    }
-      else
-      {
-        fd.append('closed_leads_id', newpayid);
-        fd.append('paid_amount', pay_amt);
-        fd.append('payment_method', pay_method);
-        fd.append('payment_remarks', pay_remark);
-        $.ajax({
-          url: 'ajax/lead_closing/new_payment.php',
-          data: fd,
-          type: 'post',
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            var result = JSON.parse(response);
-            if (result.status == 'Success') {
-              toastr.success(result.remarks);
-              radioChange();
-              newpayid= '';
-              $('#paid_amt').val('');
-              $('#pay_meth').val('');
-              $('#pay_remark').val('');
-            } else {
-              toastr.error('Sry, Error with the Backend');
-            }
-          }
-        })
-      }
-}
 
-function updateAmount(){
-  var totamt = $('#tot_amt').val();
-  var fd = new FormData();
-  if(totamt == '')
-      {
-        toastr.error('Enter Total Amount');
-      }
-      else
-      {
-        fd.append('amount', totamt);
-        fd.append('id', editID)
-        $.ajax({
-          url: 'ajax/lead_closing/update_amount.php',
-          data: fd,
-          type: 'post',
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            var result = JSON.parse(response);
-            if (result.status == 'Success') {
-              toastr.success(result.remarks);
-              radioChange();
-              $('#tot_amt').val('');
-            } else {
-              toastr.error('Sry, Error with the Backend');
-            }
-          }
-        })
-      }
-}
 
 
 document.addEventListener('click', function(event) {
