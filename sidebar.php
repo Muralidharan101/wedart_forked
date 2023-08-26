@@ -68,6 +68,7 @@
                                                                         <li><a href="lead_creation.php">Lead Creation</a></li>
                                                                         <li><a href="list_lead.php">Leads & Baby Studio</a></li>
                                                                         <li><a href="closed_lead.php">Closed Leads</a></li>
+                                                                        <li><a href="today_follow_up.php">Today FollowUp</a></li>
                                                                   </ul>
                                                             </li>
 
