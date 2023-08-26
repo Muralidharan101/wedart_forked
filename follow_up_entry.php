@@ -66,8 +66,8 @@
         </form>
         <div class="header-logo-wrapper col-auto p-0">
           <div class="logo-wrapper"><a href="index.html">
-          <!-- <img height="40" width="140" src="wedart.jpeg" alt="er"> -->
-          </a></div>
+              <!-- <img height="40" width="140" src="wedart.jpeg" alt="er"> -->
+            </a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
         </div>
         <div class="left-header col horizontal-wrapper ps-0">
@@ -77,7 +77,7 @@
         </div>
         <div class="nav-right col-6 pull-right right-header p-0">
           <ul class="nav-menus">
-                        
+
             <li class="profile-nav onhover-dropdown p-0 me-0">
               <div class="d-flex profile-media"><img class="b-r-50" src="../assets/images/dashboard/profile.png" alt="">
                 <div class="flex-grow-1"><span>Helen Walter</span>
@@ -201,6 +201,7 @@
       </div>
       <!-- Page Sidebar Ends-->
       <div class="page-body">
+
         <div class="container-fluid" id="listfollowup">
           <div class="page-title">
             <div class="row">
@@ -216,58 +217,51 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
-                  <div class="card-header pb-0">
-                      <h3>Client Details</h3>
-                  </div>
-                  <div class="card-body">
-                      <div class="row">
-                          <div class="col-lg-4">
-                              <div class="mb-3">
-                                 <label class="form-check-label">Name</label>&emsp;
-                                 <label class="form-check-label" style="color: blue" id="namelab">(null)</label>
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-check-label">Event-Date</label>&emsp;
-                                  <label class="form-check-label" style="color: blue" id="event_date">(null)</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-8">
-                              <div class="mb-3">
-                                 <label class="form-check-label">Service</label>&emsp;
-                                 <label class="form-check-label" style="color: blue" id="service">(null)</label>
-                              </div>
-                              <div class="mb-3">
-                                  <label class="form-check-label">Additional Service</label>&emsp;
-                                  <label class="form-check-label" style="color: blue" id="a_s">
-                                      <!-- <span 
+                <div class="card-header pb-0">
+                  <h3>Client Details</h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-check-label">Name</label>&emsp;
+                        <label class="form-check-label" style="color: blue" id="namelab">(null)</label>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-check-label">Event-Date</label>&emsp;
+                        <label class="form-check-label" style="color: blue" id="event_date">(null)</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="mb-3">
+                        <label class="form-check-label">Service</label>&emsp;
+                        <label class="form-check-label" style="color: blue" id="service">(null)</label>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-check-label">Additional Service</label>&emsp;
+                        <label class="form-check-label" style="color: blue" id="a_s">
+                          <!-- <span 
                                           class="badge badge-pill badge-light"
                                           style="color:black; background-color: lightgrey">
                                               Photography
                                       </span> -->
-                                  </label>
-                              </div>
-                          </div>
+                        </label>
                       </div>
+                    </div>
                   </div>
+                </div>
               </div>
 
               <div class="card" id="listfollowup">
                 <div class="card-header pb-0">
                   <h3 style="display:inline;">FollowUp Activity</h3>
                   <div style="float: right;margin: 0.7em">
-                    <button 
-                      class="btn btn-primary"
-                      data-bs-toggle="modal" data-original-title="test"
-                      data-bs-target="#exampleModal" 
-                      onclick="trignew()" id="newFollowUpBtn">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" onclick="trignew()" id="newFollowUpBtn">
                       <div style="display: flex; justify-content: center;align-items:center">
                         <i data-feather="plus"></i> &nbsp; New FollowUp
                       </div>
                     </button>
-                    <button 
-                      class="btn btn-info" 
-                      data-bs-toggle="modal" data-original-title="test"
-                      data-bs-target="#ModelClose" id="closeLeadBtn">Close Lead</button>
+                    <button class="btn btn-info" data-bs-toggle="modal" data-original-title="test" data-bs-target="#ModelClose" id="closeLeadBtn">Close Lead</button>
                   </div>
                 </div>
                 <div class="card-body">
@@ -293,7 +287,7 @@
 
             </div>
 
-            
+
           </div>
 
         </div>
@@ -311,325 +305,317 @@
 
         <!--followup add, edit-->
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label class="form-label" for="edit">Select FollowUp Date</label>
-                <input class="form-control" type="date" style="border: 1px solid #e0dddd" id="f_date">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Action</h3>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="mb-3">
-                <label class="form-label" for="edit">Approach Topic</label>
-                <input class="form-control" style="border: 1px solid #e0dddd" id="a_topic">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label" for="edit">Select FollowUp Date</label>
+                  <input class="form-control" type="date" style="border: 1px solid #e0dddd" id="f_date">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="edit">Approach Topic</label>
+                  <input class="form-control" style="border: 1px solid #e0dddd" id="a_topic">
+                </div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" id="add_or_edit">Add</button>
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+              <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-bs-dismiss="modal" id="add_or_edit">Add</button>
+                <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!--followup response add, edit-->
+        <!--followup response add, edit-->
 
-      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Add Response</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col">
-                  <div class="mb-3">
-                    <label class="form-label" for="edit">Enter Response</label>
-                    <textarea class="form-control" style="border: 1px solid #e0dddd" rows="5" id="editRes"></textarea>
-                  </div>
-                </div>
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Add Response</h3>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="postResponse()">Add Response</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--close lead-->
-
-      <div class="modal fade" id="ModelClose" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Close Lead</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body overflow-auto">
-              <div class="row">
-                <div class="col-lg-5">
-                  <div class="mb-3">
-                    <label class="h2">Converted</label>
-                    <div style="float:right">
-                      <label class="switch">
-                        <input type="checkbox" onchange="convertCheck()" id="convert_check" checked><span class="switch-state"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-1">
-                  <!-- <hr> -->
-                </div>
-                <div class="col-lg-5">
-                  <div class="mb-3">
-                    <label class="h2">Blog</label>
-                    <div style="float:right">
-                      <label class="switch">
-                        <input type="checkbox" onchange="blogCheck()" id="blog_check" checked><span class="switch-state"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-1"></div>
-              </div>
-
-              <div id="disppay">
-                <br><br>
-                <h3>Payment Method</h3>
-                <hr>
+              <div class="modal-body">
                 <div class="row">
-                  
-                  <div class="col custom-radio-ml">
-                    <div class="form-check radio radio-primary">
-                      <input class="form-check-input" id="bank" type="radio" checked="" name="payment" value="BANK TRANSFER">
-                      <label class="form-check-label" for="bank">Bank Transfer</label>
+                  <div class="col">
+                    <div class="mb-3">
+                      <label class="form-label" for="edit">Enter Response</label>
+                      <textarea class="form-control" style="border: 1px solid #e0dddd" rows="5" id="editRes"></textarea>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="postResponse()">Add Response</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                  <div class="col custom-radio-ml">
-                    <div class="form-check radio radio-primary">
-                      <input class="form-check-input" id="upi" type="radio" name="payment" value="UPI">
-                      <label class="form-check-label" for="upi">UPI</label>
-                    </div>
-                  </div>
-                  
-                  <div class="col custom-radio-ml">
-                    <div class="form-check radio radio-primary">
-                      <input class="form-check-input" id="check" type="radio" name="payment" value="CHECK">
-                      <label class="form-check-label" for="check">Check</label>
-                    </div>
-                  </div>
+        <!--close lead-->
 
-                  <div class="col custom-radio-ml">
-                    <div class="form-check radio radio-primary">
-                      <input class="form-check-input" id="cash" type="radio" name="payment" value="CASH">
-                      <label class="form-check-label" for="cash">Cash</label>
-                    </div>
-                  </div>
-
-                  <div class="col custom-radio-ml">
-                    <div class="form-check radio radio-primary">
-                      <input class="form-check-input" id="dd" type="radio" name="payment" value="DD">
-                      <label class="form-check-label" for="dd">DD</label>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12"><br>
-                    <div class="row">
-                      <div class="md-3 col-lg-5">
-                        <label class="form-lalel">Enter Total Amount</label><br>
-                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount" >
+        <div class="modal fade" id="ModelClose" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Close Lead</h3>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body overflow-auto">
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="mb-3">
+                      <label class="h2">Converted</label>
+                      <div style="float:right">
+                        <label class="switch">
+                          <input type="checkbox" onchange="convertCheck()" id="convert_check" checked><span class="switch-state"></span>
+                        </label>
                       </div>
-                      <div class="md-3 col-lg-5">
-                        <label class="form-lalel">Paid Amount</label><br>
-                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="paid_amount" >
+                    </div>
+                  </div>
+                  <div class="col-lg-1">
+                    <!-- <hr> -->
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="mb-3">
+                      <label class="h2">Blog</label>
+                      <div style="float:right">
+                        <label class="switch">
+                          <input type="checkbox" onchange="blogCheck()" id="blog_check" checked><span class="switch-state"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-1"></div>
+                </div>
+
+                <div id="disppay">
+                  <br><br>
+                  <h3>Payment Method</h3>
+                  <hr>
+                  <div class="row">
+
+                    <div class="col custom-radio-ml">
+                      <div class="form-check radio radio-primary">
+                        <input class="form-check-input" id="bank" type="radio" checked="" name="payment" value="BANK TRANSFER">
+                        <label class="form-check-label" for="bank">Bank Transfer</label>
+                      </div>
+                    </div>
+
+                    <div class="col custom-radio-ml">
+                      <div class="form-check radio radio-primary">
+                        <input class="form-check-input" id="upi" type="radio" name="payment" value="UPI">
+                        <label class="form-check-label" for="upi">UPI</label>
+                      </div>
+                    </div>
+
+                    <div class="col custom-radio-ml">
+                      <div class="form-check radio radio-primary">
+                        <input class="form-check-input" id="check" type="radio" name="payment" value="CHECK">
+                        <label class="form-check-label" for="check">Check</label>
+                      </div>
+                    </div>
+
+                    <div class="col custom-radio-ml">
+                      <div class="form-check radio radio-primary">
+                        <input class="form-check-input" id="cash" type="radio" name="payment" value="CASH">
+                        <label class="form-check-label" for="cash">Cash</label>
+                      </div>
+                    </div>
+
+                    <div class="col custom-radio-ml">
+                      <div class="form-check radio radio-primary">
+                        <input class="form-check-input" id="dd" type="radio" name="payment" value="DD">
+                        <label class="form-check-label" for="dd">DD</label>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12"><br>
+                      <div class="row">
+                        <div class="md-3 col-lg-5">
+                          <label class="form-lalel">Enter Total Amount</label><br>
+                          <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount">
+                        </div>
+                        <div class="md-3 col-lg-5">
+                          <label class="form-lalel">Paid Amount</label><br>
+                          <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="paid_amount">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div id="disp">
-                <br><br>
-                <h3>Blog Options</h3><hr>
-                <div class="row">
-                <div class="col-lg-5">
-                  <div class="mb-3">
-                    <label class="form-label">Select Blog</label>
-                    <select class="form-select" style="border: 1px solid #e0dddd" id="blog">
-                      <option value="" selected disabled> - Select - </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-5">
-                  <div class="mb-3">
-                    <label class="form-label" >Select Blog Days</label>
-                    <select class="form-select" style="border: 1px solid #e0dddd" id="days">
-                      <option value="" selected disabled> - Select - </option>
-                    </select>
+                <div id="disp">
+                  <br><br>
+                  <h3>Blog Options</h3>
+                  <hr>
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <div class="mb-3">
+                        <label class="form-label">Select Blog</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="blog">
+                          <option value="" selected disabled> - Select - </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-5">
+                      <div class="mb-3">
+                        <label class="form-label">Select Blog Days</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="days">
+                          <option value="" selected disabled> - Select - </option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>
-            </div>
-            <hr>
-            <div class="mb-3">
-              <div class="text-end">
-                <button 
-                  class="btn btn-danger"  
-                  data-bs-dismiss="modal">Cancel
-                </button>
-                <button
-                  class="btn btn-success" 
-                  style="margin: auto 2em auto 1em;" 
-                  onclick="closeREQ()">
-                  Close Lead
-                </button>
+              <hr>
+              <div class="mb-3">
+                <div class="text-end">
+                  <button class="btn btn-danger" data-bs-dismiss="modal">Cancel
+                  </button>
+                  <button class="btn btn-success" style="margin: auto 2em auto 1em;" onclick="closeREQ()">
+                    Close Lead
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      </div>
-    </div>
-
-
 
       </div>
     </div>
-    <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <!-- feather icon js-->
-    <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-    <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-    <script src="../assets/js/scrollbar/simplebar.js"></script>
-    <script src="../assets/js/scrollbar/custom.js"></script>
-    <!-- Sidebar jquery-->
-    <script src="../assets/js/config.js"></script>
-    <script src="../assets/js/sidebar-menu.js"></script>
-    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-    <!-- <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+  </div>
+  
+  <!-- latest jquery-->
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/js/bootstrap/popper.min.js"></script>
+  <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- feather icon js-->
+  <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
+  <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+  <script src="../assets/js/scrollbar/simplebar.js"></script>
+  <script src="../assets/js/scrollbar/custom.js"></script>
+  <!-- Sidebar jquery-->
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/sidebar-menu.js"></script>
+  <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+  <!-- <script src="../assets/js/datatable/datatables/datatable.custom.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
 
-    <script src="../assets/js/tooltip-init.js"></script>
-    <!-- Theme js-->
-    <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/tooltip-init.js"></script>
+  <!-- Theme js-->
+  <script src="../assets/js/script.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-    integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </body>
 <script>
-    var link;
-    var dataTable;
-    const urlParams = new URLSearchParams(window.location.search).get('dat');
-    const decodedData = JSON.parse(decodeURIComponent(urlParams));
-    var data=[]; var datobj = {};
-    var followUpID;
-    var event;
-    function clearinput(){
-      document.getElementById('a_topic').value = '';
-      document.getElementById('f_date').value = '';
+  var link;
+  var dataTable;
+  const urlParams = new URLSearchParams(window.location.search).get('dat');
+  const decodedData = JSON.parse(decodeURIComponent(urlParams));
+  var data = [];
+  var datobj = {};
+  var followUpID;
+  var event;
+
+  function clearinput() {
+    document.getElementById('a_topic').value = '';
+    document.getElementById('f_date').value = '';
+  }
+
+  function trignew() {
+    clearinput();
+    event = 'add'
+  }
+
+  document.getElementById('add_or_edit').addEventListener('click', () => {
+    if (event == 'add') {
+      newFollowUp()
     }
-
-    function trignew(){
-      clearinput();
-      event = 'add'
+    if (event == 'edit') {
+      updateReq();
     }
+  })
 
-    document.getElementById('add_or_edit').addEventListener('click',() => {
-      if(event == 'add'){
-        newFollowUp()
-      }
-      if(event == 'edit'){
-        updateReq();
-      }
-    })
+  function blogCheck() {
+    if (document.getElementById('blog_check').checked == true) {
+      document.getElementById('disp').style.display = 'block';
+    } else {
+      document.getElementById('disp').style.display = 'none';
+    }
+  }
+  blogCheck();
 
-    function blogCheck(){
-      if(document.getElementById('blog_check').checked == true){
-        document.getElementById('disp').style.display = 'block';
-      } else {
-        document.getElementById('disp').style.display = 'none';
-      }
-    }blogCheck();
+  function convertCheck() {
+    var blg = document.getElementById('blog_check');
+    if (document.getElementById('convert_check').checked == true) {
+      document.getElementById('disppay').style.display = 'block';
+      blg.checked = true;
+      blg.disabled = false;
+      blogCheck()
+    } else {
+      document.getElementById('disppay').style.display = 'none';
+      blg.checked = false;
+      blg.disabled = true;
+      blogCheck()
+    }
+  }
+  convertCheck();
 
-    function convertCheck(){
-      var blg = document.getElementById('blog_check');
-      if(document.getElementById('convert_check').checked == true){
-        document.getElementById('disppay').style.display = 'block';
-        blg.checked = true;
-        blg.disabled = false;
-        blogCheck()
-      } else {
-        document.getElementById('disppay').style.display = 'none';
-        blg.checked = false;
-        blg.disabled = true;
-        blogCheck()
-      }
-    }convertCheck();
-
-    function fetchselect(){
-      var blogdata;
-      var daysdata;
-      $.ajax({
+  function fetchselect() {
+    var blogdata;
+    var daysdata;
+    $.ajax({
       url: 'ajax/blog/blog_list.php',
       type: 'get',
       contentType: false,
       processData: false,
-      success: function (response) {
+      success: function(response) {
         var result = JSON.parse(response);
         blogdata = result.data;
         var selblog = document.getElementById('blog');
-          blogdata.map(obj => {
-            var opt = document.createElement('option');
-            opt.text = obj.blog_name;
-            opt.value = obj.id;
-            selblog.appendChild(opt);
-          })
+        blogdata.map(obj => {
+          var opt = document.createElement('option');
+          opt.text = obj.blog_name;
+          opt.value = obj.id;
+          selblog.appendChild(opt);
+        })
       }
-      })
-      $.ajax({
+    })
+    $.ajax({
       url: 'ajax/day/day_list.php',
       type: 'get',
       contentType: false,
       processData: false,
-      success: function (response) {
+      success: function(response) {
         var result = JSON.parse(response);
         daysdata = result.data;
         var selblog = document.getElementById('days');
-          daysdata.map(obj => {
-            var opt = document.createElement('option');
-            opt.text = obj.days_count;
-            opt.value = obj.id;
-            selblog.appendChild(opt);
-          })
+        daysdata.map(obj => {
+          var opt = document.createElement('option');
+          opt.text = obj.days_count;
+          opt.value = obj.id;
+          selblog.appendChild(opt);
+        })
       }
-      })
-    }fetchselect();
+    })
+  }
+  fetchselect();
 
-    function checkStatus(arg){
-      if(arg == 'closed' || arg == 'converted'){
-        document.getElementById('newFollowUpBtn').style.display = 'none';
-        document.getElementById('closeLeadBtn').style.display = 'none'
-      }
+  function checkStatus(arg) {
+    if (arg == 'closed' || arg == 'converted') {
+      document.getElementById('newFollowUpBtn').style.display = 'none';
+      document.getElementById('closeLeadBtn').style.display = 'none'
     }
+  }
 
   function fetchdata() {    
     var fd = new FormData();
@@ -644,11 +630,10 @@
       success: function (response) {
         var result = JSON.parse(response);
         if (result.status == 'Success') {
-          data = result.data;
-          createTable();
+          data = result.data;createTable();
           data.map((item, index) => {
             var sts_val = item.lead_status;
-            checkStatus(sts_val);
+            checkStatus(sts_val)
             var test = JSON.parse(item.service);
             var val = test.map(ob => (`
             <span class="badge badge-pill badge-light"
@@ -671,13 +656,13 @@
     })
   }fetchdata();
 
-  function setid(type, id, date, approach){
+  function setid(type, id, date, approach) {
     console.log(type, id, date, approach);
     followUpID = id;
-    if(type == 'res'){
+    if (type == 'res') {
       document.getElementById('editRes').value = '';
     }
-    if(type == 'edit'){
+    if (type == 'edit') {
       event = type;
       document.getElementById('f_date').value = date;
       document.getElementById('a_topic').value = approach;
@@ -691,50 +676,62 @@
     //       onclick="setid('edit', '${obj.id}', '${obj.follow_up_date}', '${obj.approach}')"
     //       data-feather="edit"></i>
     var count = 0;
-    var dat = []; count =0;
+    var dat = [];
+    count = 0;
     data.map(obj => {
       var val = '';
-      if(obj.response != null || obj.response != 'null'){
+      if (obj.response != null || obj.response != 'null') {
         val = obj.response
       }
-      dat.push({'id':++count,'date': obj.follow_up_date, 'topic': obj.approach, 'response': val, 'but' : 
-      `
+      dat.push({
+        'id': ++count,
+        'date': obj.follow_up_date,
+        'topic': obj.approach,
+        'response': val,
+        'but': `
         <i
           onclick="setid('res', '${obj.id}')"
           data-bs-toggle="modal" data-original-title="test"
           data-bs-target="#Modal" 
-          data-feather="message-square"></i>`})
+          data-feather="message-square"></i>`
+      })
     })
-    if(dataTable){
+    if (dataTable) {
       dataTable.destroy();
     }
     dataTable = $('#tbl').DataTable({
-        "pageLength": 10,
-        "columns": [
-          {"data": "id"},  
-          {"data": "date"},
-          {"data": "topic"},
-          {"data": "response"}, 
-          {"data": "but"}  
-        ]
+      "pageLength": 10,
+      "columns": [{
+          "data": "id"
+        },
+        {
+          "data": "date"
+        },
+        {
+          "data": "topic"
+        },
+        {
+          "data": "response"
+        },
+        {
+          "data": "but"
+        }
+      ]
     });
     dataTable.clear().rows.add(dat).draw();
   }
 
-  function newFollowUp(){
+  function newFollowUp() {
     var inpt1 = $('#f_date').val();
     var inpt2 = $('#a_topic').val();
     var currentDate = new Date();
-    if(inpt1 < currentDate){
+    if (inpt1 < currentDate) {
       toastr.error('Select Valid Date')
-    } else if(inpt1 == '')
-    {
+    } else if (inpt1 == '') {
       toastr.error('Select Date');
     } else if (inpt2 == '') {
       toastr.error('Enter Topic');
-    }
-    else
-    {
+    } else {
       var fd = new FormData();
       fd.append('lead_id', decodedData.lead_id);
       fd.append('follow_up_date', inpt1);
@@ -746,7 +743,7 @@
         type: 'post',
         contentType: false,
         processData: false,
-        success: function (response) {
+        success: function(response) {
           var result = JSON.parse(response);
           if (result.status == 'Success') {
             toastr.success(result.remarks);
@@ -759,124 +756,119 @@
     }
   }
 
-  function postResponse(){
+  function postResponse() {
     var inputvalue = $('#editRes').val();
-      if(inputvalue == '')
-      {
-        toastr.error('Enter Valid Response');
-      }
-      else
-      {
-        var fd = new FormData();
-        fd.append('id', followUpID);
-        fd.append('response', inputvalue);
-        $.ajax({
-          url: 'ajax/follow_up_data/follow_up_response_creation.php',
-          data: fd,
-          type: 'post',
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            var result = JSON.parse(response);
-            if (result.status == 'Success') {
-              toastr.success(result.remarks);
-              $('#editRes').val('');
-              fetchdata();
-            } else if (result.status == 'Available') {
-              toastr.error(result.remarks);
-            } else {
-              toastr.error('Sry, Error with the Backend');
-            }
+    if (inputvalue == '') {
+      toastr.error('Enter Valid Response');
+    } else {
+      var fd = new FormData();
+      fd.append('id', followUpID);
+      fd.append('response', inputvalue);
+      $.ajax({
+        url: 'ajax/follow_up_data/follow_up_response_creation.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          var result = JSON.parse(response);
+          if (result.status == 'Success') {
+            toastr.success(result.remarks);
+            $('#editRes').val('');
+            fetchdata();
+          } else if (result.status == 'Available') {
+            toastr.error(result.remarks);
+          } else {
+            toastr.error('Sry, Error with the Backend');
           }
-        })
-      }
+        }
+      })
+    }
   }
 
-  function closeREQ(){
+  function closeREQ() {
     var fd = new FormData();
     const PAY = document.querySelector('input[name="payment"]:checked');
     var blogvalue = document.getElementById('blog');
     var dayvalue = document.getElementById('days');
     var sucesscount = 0;
 
-    if(document.getElementById('convert_check').checked == true){
+    if (document.getElementById('convert_check').checked == true) {
       var amt = $('#payment_amount').val();
-      var paidamt = $('#paid_amount').val();console.log(amt, paidamt)
-      if(amt == '' || paidamt == '' || parseInt(amt) < parseInt(paidamt)){
+      var paidamt = $('#paid_amount').val();
+      console.log(amt, paidamt)
+      if (amt == '' || paidamt == '' || parseInt(amt) < parseInt(paidamt)) {
         toastr.warning('Enter vaild amount')
       } else {
         fd.append('converted', true)
         fd.append('payment_method', PAY.value)
         fd.append('amount', amt)
         fd.append('paid_amount', paidamt)
-        ++sucesscount;
+          ++sucesscount;
       }
     } else {
       fd.append('converted', false)
-      ++sucesscount
+        ++sucesscount
     }
 
-    if(document.getElementById('blog_check').checked == true){
-      if(blogvalue.value == ''){
+    if (document.getElementById('blog_check').checked == true) {
+      if (blogvalue.value == '') {
         toastr.warning('Select Blog')
-      } else if(dayvalue.value == '') {
+      } else if (dayvalue.value == '') {
         toastr.warning('Select Blog Days')
       } else {
         fd.append('blog', true);
         fd.append('blog_id', blogvalue.value)
         fd.append('day_id', dayvalue.value)
-        if(sucesscount == 1){
+        if (sucesscount == 1) {
           postCloseData()
         }
       }
     } else {
       fd.append('blog', false)
-      if(sucesscount == 1){
+      if (sucesscount == 1) {
         postCloseData()
       }
     }
-    
-    function postCloseData(){
+
+    function postCloseData() {
       fd.append('lead_id', decodedData.lead_id)
       fd.append('lead', decodedData.lead)
       $.ajax({
-      url: 'ajax/lead_closing/closed_lead_creation_and_update.php',
-      data: fd,
-      type: 'post',
-      contentType: false,
-      processData: false,
-      success: function (response) {
-        var result = JSON.parse(response);
-        if (result.status == 'Success') {
-          toastr.success(result.remarks);
-          setTimeout(() => {
-          window.location.href = 'closed_lead.php';
-          }, 1000);
-        } else {
-          toastr.error('Sry, Error with the Backend');
-          setTimeout(() => {
-            window.location.href = 'list_lead.php';
-          }, 1000);
+        url: 'ajax/lead_closing/closed_lead_creation_and_update.php',
+        data: fd,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          var result = JSON.parse(response);
+          if (result.status == 'Success') {
+            toastr.success(result.remarks);
+            setTimeout(() => {
+              window.location.href = 'closed_lead.php';
+            }, 1000);
+          } else {
+            toastr.error('Sry, Error with the Backend');
+            setTimeout(() => {
+              window.location.href = 'list_lead.php';
+            }, 1000);
+          }
         }
-      }
-    })
+      })
     }
   }
 
-  function updateReq(){
+  function updateReq() {
     var inpt1 = $('#f_date').val();
     var inpt2 = $('#a_topic').val();
     var currentDate = new Date();
-    if(inpt1 < currentDate){
+    if (inpt1 < currentDate) {
       toastr.error('Select Valid Date')
-    } else if(inpt1 == '')
-    {
+    } else if (inpt1 == '') {
       toastr.error('Select Date');
     } else if (inpt2 == '') {
       toastr.error('Enter Topic');
-    }
-    else
-    {
+    } else {
       var fd = new FormData();
       fd.append('id', followUpID);
       fd.append('lead_id', decodedData.lead_id);
@@ -889,7 +881,7 @@
         type: 'post',
         contentType: false,
         processData: false,
-        success: function (response) {
+        success: function(response) {
           var result = JSON.parse(response);
           if (result.status == 'Success') {
             toastr.success(result.remarks);
@@ -901,33 +893,38 @@
       })
     }
   }
-  
-  const observer = new MutationObserver(function(mutationsList, observer) {
-  feather.replace();
-  });
-  const config = { childList: true, subtree: true };
-  observer.observe(document.body, config);
 
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    feather.replace();
+  });
+  const config = {
+    childList: true,
+    subtree: true
+  };
+  observer.observe(document.body, config);
 </script>
 <style>
   i {
     cursor: pointer !important;
   }
-  i:hover{
+
+  i:hover {
     color: blue !important;
   }
 </style>
 <style>
- table {
+  table {
     width: 100%;
     border-collapse: collapse;
   }
- td {
+
+  td {
     padding: 10px;
     text-align: center;
   }
+
   @media only screen and (max-width: 991px) {
-    #dot{
+    #dot {
       display: none;
     }
   }

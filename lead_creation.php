@@ -253,23 +253,28 @@
                   </div>
 
                   <div class="row">
-                      <div class="col-lg-4">
-                        <div class="mb-3">
-                          <label class="form-label" for="inpt">Select Source</label>
-                          <select class="form-select" style="border: 1px solid #e0dddd" id="source">
-                            <option value="choose" selected disabled> - Choose -</option>
-                          </select>
-                        </div>
+                    <div class="col-lg-12"><br>
+                      <h3>Client Details</h3><br>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Select Source</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="source">
+                          <option value="choose" selected disabled> - Choose -</option>
+                        </select>
                       </div>
-                      <!--Hidden-->
-                      <div class="col-lg-6" style="display: none;">
-                        <div class="mb-3">
-                          <label class="form-label">Lead No</label>
-                          <input class="form-control" style="border: 1px solid #e0dddd;" id="leadno">
-                        </div>
+                    </div>
+
+                    <!--Hidden-->
+                    <div class="col-lg-6" style="display: none;">
+                      <div class="mb-3">
+                        <label class="form-label">Lead No</label>
+                        <input class="form-control" style="border: 1px solid #e0dddd;" id="leadno">
                       </div>
-                      <!--end Hiddin-->
-                      <div class="col-lg-4">
+                    </div>
+                    <!--end Hiddin-->
+
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label">Name</label>
                         <input class="form-control" style="border: 1px solid #e0dddd" type="text" id="c_name">
@@ -308,15 +313,16 @@
                           type="number" style="border: 1px solid #e0dddd" id="contact">
                       </div>                     
                     </div>
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label">Follow-Up Date</label>
-                        <input class="form-control" 
-                          type="date" style="border: 1px solid #e0dddd" id="followup">
-                      </div>
+                  </div> 
+
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-lg-12"><br>
+                      <h3>Service Details</h3><br>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                       <div class="mb-3">
                         <label class="form-label">Select Service Category</label>
                         <select 
@@ -328,7 +334,7 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                       <div class="mb-3">
                         <label class="form-label">Select Service</label>
                         <select 
@@ -339,7 +345,7 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-4" >
+                    <div class="col-lg-7">
                       <div class="mb-3">
                         <div class="row" style="display: none;">
                           <div class="col-lg-8">
@@ -364,7 +370,33 @@
                       </div>
                     </div>
 
+                    <div class="col-lg-5">
+                      <div class="mb-3">
+                        <label class="form-label">Other Info</label>
+                        <textarea class="form-control"  
+                          type="text" rows="6"
+                          style="border: 1px solid #e0dddd" 
+                          id="otherinfo"
+                          placeholder="Enter Other Informations About The Lead"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+                  
+                  <div class="row">
+                    <div class="col-lg-12"><br>
+                      <h3>Follow Ups</h3><br>
+                    </div>
                     <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label">Follow-Up Date</label>
+                        <input class="form-control" 
+                          type="date" style="border: 1px solid #e0dddd" id="followup">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
                       <div class="mb-3">
                         <label class="form-label">FollowUp Details</label>
                         <textarea class="form-control"  
@@ -375,18 +407,7 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label">Other Info</label>
-                        <textarea class="form-control"  
-                          type="text" rows="6"
-                          style="border: 1px solid #e0dddd" 
-                          id="otherinfo"
-                          placeholder="Enter Other Informations About The Lead"></textarea>
-                      </div>
-                    </div>
-
-                  </div>                      
+                  </div>
                   
                   <div class="text-end">
                     <button class="btn btn-primary" id="addbtn" type="submit">Create Lead</button>

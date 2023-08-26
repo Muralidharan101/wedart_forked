@@ -214,70 +214,70 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-12">
-
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>General</h3>
+                  <h3>File Upload(PDF)</h3>
                 </div>
-
                 <div class="card-body">
                     <div class="row">
-
                       <div class="col-lg-4">
                         <div class="mb-3">
                           <label class="form-label" for="category">Portfolio<span style="font-size: 10px"> (maximum file size 5MB)</span></label>
-                          <input class="form-control" type="file" accept=".pdf" style="background-color: #faf5f5" id="pdf">
+                          <input 
+                            class="form-control" 
+                            type="file" accept=".pdf" 
+                            style="background-color: #faf5f5" id="pdf">
                         </div>
                       </div>
-
-                      <div class="col-lg-4">
+                      <div class="col-lg-8">
                         <div class="mb-3">
-                          <label class="form-label" for="inpt">Sample Video<span style="font-size: 10px"> (maximum file size 50MB)</span></label>
-                          <input class="form-control" type="file" accept=".mp4" style="background-color: #faf5f5" id="video">
+                          <label class="form-label">PDF Preview</label>
+                          <div class="doc"  id="prePDF">
+                            <!--doc-->
+                          </div>
                         </div>
-                    </div>
-                  
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label" style="color:transparent;width:100%" id="dot">.</label>
-                        <button class="btn btn-primary" id="addbtn" type="submit" style="padding: 0.5em 1.5em;">
-                          Create
-                        </button>
                       </div>
-                    </div>
-
                   </div>  
                 </div>
-
               </div>
-            </div>
 
-            <div class="col-sm-12">
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>All Files</h3>
+                  <h3>Video Upload</h3>
                 </div>
+
                 <div class="card-body">
-                  <!--map list-->
-                  <div class="table-responsive">
-                    <table id="tbl">
-                      <thead>
-                        <tr>
-                          <td>SNo</td>
-                          <td>PDF</td>
-                          <td>Video</td>
-                          <td>Action</td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!--data-->
-                      </tbody>
-                    </table>
-                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="inpt">Sample Video<span style="font-size: 10px"> (maximum file size 50MB)</span></label>
+                        <input 
+                          class="form-control" 
+                          type="file" accept="video/*" 
+                          style="background-color: #faf5f5" 
+                          id="video">
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="mb-3">
+                        <label class="form-label">Video Preview</label>
+                        <div class="doc" id="preVideo">
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+
+              <div class="text-end">
+                <div class="mb-3">
+                  <label class="form-label" style="color:transparent;width:100%" id="dot">.</label>
+                  <button class="btn btn-primary" id="addbtn" type="submit" style="padding: 0.5em 1.5em;">
+                    Create
+                  </button>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -294,7 +294,7 @@
         </div>
       </footer>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -309,7 +309,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -347,6 +347,48 @@
     var data;
     var deleteid;
     var dataTable;
+    const fileInput = document.getElementById('pdf');
+    const pdfPreview = document.getElementById('prePDF');
+    const videoInput = document.getElementById('video');
+    const videoPreview = document.getElementById('preVideo');
+    
+    fileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          pdfPreview.innerHTML = '';
+          const embedElement = document.createElement('embed');
+          embedElement.src = reader.result;
+          embedElement.width = '100%';
+          embedElement.height = '500px';
+          pdfPreview.appendChild(embedElement);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        pdfPreview.innerHTML = ''; 
+      }
+    });
+
+    videoInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      console.log('wori')
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          videoPreview.innerHTML = '';
+          const videoElement = document.createElement('video');
+          videoElement.src = reader.result;
+          videoElement.controls = true;
+          videoElement.width = '100%';
+          videoPreview.appendChild(videoElement);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        videoPreview.innerHTML = ''; 
+      }
+    });
+
 
     $(document).ready(function() {
     $('#addbtn').click(function() {
@@ -395,8 +437,7 @@
             });
         }
     });
-});
-
+    });
 
     function fetchdata(){
       $.ajax({
@@ -443,30 +484,31 @@
     })
     };fetchdata();
 
-    function setid(ob) {
-      deleteid = ob;
-    }
+    // function setid(ob) {
+    //   deleteid = ob;
+    // }
 
-    function deletereq() {
-      var fd = new FormData();
-      fd.append('id', deleteid);
-      $.ajax({
-        url: 'ajax/general_settings/general_settings_remove.php',
-        data: fd,
-        type: 'post',
-        contentType: false,
-        processData: false,
-        success: function (response) {
-          var result = JSON.parse(response);
-          if(result.status == 'Success'){
-              toastr.success(result.remarks);
-              setid('');fetchdata();
-          } else {
-            toastr.error('Sry, Error with the Backend');
-          }
-        }
-      })
-    }
+    // function deletereq() {
+    //   var fd = new FormData();
+    //   fd.append('id', deleteid);
+    //   $.ajax({
+    //     url: 'ajax/general_settings/general_settings_remove.php',
+    //     data: fd,
+    //     type: 'post',
+    //     contentType: false,
+    //     processData: false,
+    //     success: function (response) {
+    //       var result = JSON.parse(response);
+    //       if(result.status == 'Success'){
+    //           toastr.success(result.remarks);
+    //           setid('');fetchdata();
+    //       } else {
+    //         toastr.error('Sry, Error with the Backend');
+    //       }
+    //     }
+    //   })
+    // }
+
 
     const observer = new MutationObserver(function(mutationsList, observer) {
     feather.replace();
@@ -481,6 +523,12 @@
       #dot{
         display: none;
       }
+    }
+    .doc{
+      min-height: 180px;
+      padding: 2em;
+      border: 1px solid #f2f2f2;
+      border-radius: 8px; 
     }
   </style>
 
