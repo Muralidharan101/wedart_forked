@@ -5,7 +5,12 @@
     $res = [];
     $count = 0;
 
-    $sql = "SELECT asd.id, asd.additional_service_name, asd.type_id, std.service_name FROM additional_service_data asd JOIN service_data std ON asd.type_id = std.id where asd.status = 'Active'";
+    $sql = "SELECT asd.id, asd.additional_service_name, asd.type_id, std.type_name
+            FROM additional_service_data asd 
+            JOIN service_type_data AS std
+            ON asd.type_id = std.id
+            where asd.status = 'Active'";
+
     $rec = mysqli_query($conn, $sql);
     while($data = mysqli_fetch_assoc($rec))
     {

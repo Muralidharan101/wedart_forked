@@ -9,6 +9,8 @@
     $user_password = mysqli_real_escape_string($conn, $_POST['user_password']);
     $user_branch = mysqli_real_escape_string($conn, $_POST['user_branch']);
     $user_role = mysqli_real_escape_string($conn, $_POST['user_role']);
+
+    $enc_pass = md5('wedart'.$user_password);
     
     $sql = "SELECT * FROM user_data where status = 'Active' AND mobile = '$user_mobile' ";
     $rec = mysqli_query($conn, $sql);
@@ -19,7 +21,8 @@
     }
     else
     {
-        $sql = "INSERT INTO user_data (`name`, `mobile`, `password`, `branch_id`, `role`, `created_by`, `status`, `dateTime`) VALUES ('$user_name', '$user_mobile', '$user_password', '$user_branch', '$user_role', 'null', 'Active', '$dateTime')";
+        $sql = "INSERT INTO user_data (`name`, `mobile`, `password`, `branch_id`, `role`, `created_by`, `status`, `dateTime`) 
+                VALUES ('$user_name', '$user_mobile', '$enc_pass', '$user_branch', '$user_role', 'null', 'Active', '$dateTime')";
         mysqli_query($conn, $sql);
 
         $res['status'] = 'Success';  

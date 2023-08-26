@@ -2,7 +2,7 @@
 <html lang="en">
   
 <!-- Mirrored from admin.pixelstrap.com/koho/template/box-shadow.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Jul 2023 10:02:34 GMT -->
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
-    <title>Koho - Premium Admin Template</title>
+    <title>Wedart</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -735,7 +735,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-10 p-0 footer-left">
-                <p class="mb-0">Copyright 2022 © Koho theme by pixelstrap</p>
+                <p class="mb-0">Copyright 2022 © Wedart</p>
               </div>
               <div class="col-2 p-0 footer-right">     <i class="fa fa-heart font-danger">               </i></div>
             </div>

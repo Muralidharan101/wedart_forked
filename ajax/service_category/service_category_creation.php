@@ -20,7 +20,7 @@
         mysqli_query($conn, $sql);
 
         $res['status'] = 'Success';  
-        $res['remarks'] = 'Source Name Created Successfully';
+        $res['remarks'] = 'Service Category Created Successfully';
     }
 
     echo json_encode($res);

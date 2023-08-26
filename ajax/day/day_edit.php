@@ -3,17 +3,17 @@
 
     $res = [];
 
+    $id       = mysqli_real_escape_string($conn, $_POST['id']);
     $name     = mysqli_real_escape_string($conn, $_POST['ref_name']);
     $days     = mysqli_real_escape_string($conn, $_POST['days_count']);
 
    
-    $sql = "INSERT INTO blog_days (`ref_name`, `days_count`, `status`, `dateTime` ) VALUES('$name', '$days', 'Active', '$dateTime')";
+    $sql = "UPDATE blog_days SET `ref_name`='$name', `days_count`='$days' WHERE `id`='$id'";
     
-
     if($result = mysqli_query($conn, $sql))
     {
         $res['status']  = 'Success';
-        $res['remarks'] = 'Blog days created successfully';
+        $res['remarks'] = 'Referrer created successfully';
     }
     else
     {
