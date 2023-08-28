@@ -120,8 +120,9 @@
         }
 
         but.addEventListener('click', () => {
-          var phone = document.getElementById('phone').value; 
+          var phone = document.getElementById('phone').value;
           var password = document.getElementById('password').value;
+          var remember = document.getElementById('remember');
           if (!phonePattern.test(phone)) {
             toastr.error('Please enter a valid 10-digit phone number');
           } else if (password === '') {
@@ -129,7 +130,7 @@
           } else {
             var fd = new FormData();
             fd.append('phone', phone);
-            fd.append('password', password);    
+            fd.append('password', password);
             $.ajax({
               url: 'ajax/login/login.php',
               data: fd,
@@ -138,26 +139,32 @@
               processData: false,
               success: function(response) {
                 var res = JSON.parse(response);
-                if(res.status == "Success"){
+                if (res.status === "Success") {
                   res.data.map(obj => {
-                    if(obj.role == "admin" || obj.role == "branch_user" || obj.role == "corporate_user"){
-                      setCookie('name',obj.name, 356);
-                      setCookie('phone', obj.mobile, 356);
-                      setCookie('role', obj.role, 356);
+                    if ((obj.role === "admin" || obj.role === "branch_user" || obj.role === "corporate_user") && remember.checked) {
+                      setCookie('name', obj.name, 365);
+                      setCookie('phone', obj.mobile, 365);
+                      setCookie('role', obj.role, 365);
+                      window.location.href = 'list_lead.php';
+                    } else if ((obj.role === "admin" || obj.role === "branch_user" || obj.role === "corporate_user") && !remember.checked) {
+                      sessionStorage.setItem('name', obj.name);
+                      sessionStorage.setItem('phone', obj.mobile);
+                      sessionStorage.setItem('role', obj.role);
                       window.location.href = 'list_lead.php';
                     } else {
-                      toastr.error('Invalid Role!, Contact Admin')
+                      toastr.error('Invalid Role! Contact Admin');
                     }
-                  })
-                } else if (res.status == "Failure") {
-                  toastr.error('Invalid Credential, Check Phone & Password')
+                  });
+                } else if (res.status === "Failure") {
+                  toastr.error('Invalid Credential. Check Phone & Password');
                 } else {
-                  toastr.error('Server Error')
+                  toastr.error('Server Error');
                 }
               }
             });
           }
         });
+
       </script>
 
 
