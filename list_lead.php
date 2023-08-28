@@ -63,7 +63,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>FollowUp Leads</h3>
+                <h3>Leads</h3>
               </div>
             </div>
           </div>

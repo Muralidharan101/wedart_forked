@@ -78,7 +78,7 @@
                   <div class="card-body">
                     <div class="row">
                         <h3></h3>
-                        <div class="col-lg-12">
+                        <div class="col-lg-8">
                             <div class="md-3">
                                 <label class="form-label" for="daterange">Select Date Range</label>
                                 <input type="text" class="form-control" name="daterange" value="01/01/2018 - 01/15/2018" />
