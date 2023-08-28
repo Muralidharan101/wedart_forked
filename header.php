@@ -27,14 +27,14 @@
 
                 <li class="profile-nav onhover-dropdown p-0 me-0">
                     <div class="d-flex profile-media"><img class="b-r-50" src="../assets/images/dashboard/profile.png" alt="">
-                        <div class="flex-grow-1"><span id="Uname">Null</span>
-                            <p class="mb-0 font-roboto"><span id="Urole">Null</span> <i data-feather="chevron-down"></i></p>
+                        <div class="flex-grow-1" style="color: blue"><span id="Uname">Null</span>
+                            <p class="mb-0 font-roboto" ><span id="Urole">Null</span> <i data-feather="chevron-down"></i></p>
                         </div>
                     </div>
                     <ul class="profile-dropdown onhover-show-div">
                         <li>
-                            <button class="btn btn-light" id="logout">
-                                <span>Log Out</span>
+                            <button class="drop-btn" id="logout">
+                                <span><i data-feather="log-out"></i>Log Out</span>
                             </button>
                         </li>
                     </ul>
@@ -95,3 +95,10 @@
     
 
 </script>
+
+<style>
+    .drop-btn{
+        border: none;
+        background-color: transparent;
+    }
+</style>
