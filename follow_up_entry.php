@@ -149,206 +149,198 @@
           </div>
 
         </div>
-        <!-- footer start-->
-        <footer class="footer">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-10 p-0 footer-left">
-                <p class="mb-0">Copyright 2022 © Wedart</p>
-              </div>
-              <div class="col-2 p-0 footer-right"> <i class="fa fa-heart font-danger"> </i></div>
-            </div>
-          </div>
-        </footer>
-
-        <!--followup add, edit-->
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Action</h3>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="mb-3">
-                  <label class="form-label" for="edit">Select FollowUp Date</label>
-                  <input class="form-control" type="date" style="border: 1px solid #e0dddd" id="f_date">
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" for="edit">Approach Topic</label>
-                  <input class="form-control" style="border: 1px solid #e0dddd" id="a_topic">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-bs-dismiss="modal" id="add_or_edit">Add</button>
-                <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--followup response add, edit-->
-
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Add Response</h3>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col">
-                    <div class="mb-3">
-                      <label class="form-label" for="edit">Enter Response</label>
-                      <textarea class="form-control" style="border: 1px solid #e0dddd" rows="5" id="editRes"></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="postResponse()">Add Response</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--close lead-->
-
-        <div class="modal fade" id="ModelClose" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Close Lead</h3>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body overflow-auto">
-                <div class="row">
-                  <div class="col-lg-5">
-                    <div class="mb-3">
-                      <label class="h2">Converted</label>
-                      <div style="float:right">
-                        <label class="switch">
-                          <input type="checkbox" onchange="convertCheck()" id="convert_check" checked><span class="switch-state"></span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-1">
-                    <!-- <hr> -->
-                  </div>
-                  <div class="col-lg-5">
-                    <div class="mb-3">
-                      <label class="h2">Blog</label>
-                      <div style="float:right">
-                        <label class="switch">
-                          <input type="checkbox" onchange="blogCheck()" id="blog_check" checked><span class="switch-state"></span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-1"></div>
-                </div>
-
-                <div id="disppay">
-                  <br><br>
-                  <h3>Payment Method</h3>
-                  <hr>
-                  <div class="row">
-
-                    <div class="col custom-radio-ml">
-                      <div class="form-check radio radio-primary">
-                        <input class="form-check-input" id="bank" type="radio" checked="" name="payment" value="BANK TRANSFER">
-                        <label class="form-check-label" for="bank">Bank Transfer</label>
-                      </div>
-                    </div>
-
-                    <div class="col custom-radio-ml">
-                      <div class="form-check radio radio-primary">
-                        <input class="form-check-input" id="upi" type="radio" name="payment" value="UPI">
-                        <label class="form-check-label" for="upi">UPI</label>
-                      </div>
-                    </div>
-
-                    <div class="col custom-radio-ml">
-                      <div class="form-check radio radio-primary">
-                        <input class="form-check-input" id="check" type="radio" name="payment" value="CHECK">
-                        <label class="form-check-label" for="check">Check</label>
-                      </div>
-                    </div>
-
-                    <div class="col custom-radio-ml">
-                      <div class="form-check radio radio-primary">
-                        <input class="form-check-input" id="cash" type="radio" name="payment" value="CASH">
-                        <label class="form-check-label" for="cash">Cash</label>
-                      </div>
-                    </div>
-
-                    <div class="col custom-radio-ml">
-                      <div class="form-check radio radio-primary">
-                        <input class="form-check-input" id="dd" type="radio" name="payment" value="DD">
-                        <label class="form-check-label" for="dd">DD</label>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-12"><br>
-                      <div class="row">
-                        <div class="md-3 col-lg-5">
-                          <label class="form-lalel">Enter Total Amount</label><br>
-                          <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount">
-                        </div>
-                        <div class="md-3 col-lg-5">
-                          <label class="form-lalel">Paid Amount</label><br>
-                          <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="paid_amount">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div id="disp">
-                  <br><br>
-                  <h3>Blog Options</h3>
-                  <hr>
-                  <div class="row">
-                    <div class="col-lg-5">
-                      <div class="mb-3">
-                        <label class="form-label">Select Blog</label>
-                        <select class="form-select" style="border: 1px solid #e0dddd" id="blog">
-                          <option value="" selected disabled> - Select - </option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-lg-5">
-                      <div class="mb-3">
-                        <label class="form-label">Select Blog Days</label>
-                        <select class="form-select" style="border: 1px solid #e0dddd" id="days">
-                          <option value="" selected disabled> - Select - </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div class="mb-3">
-                <div class="text-end">
-                  <button class="btn btn-danger" data-bs-dismiss="modal">Cancel
-                  </button>
-                  <button class="btn btn-success" style="margin: auto 2em auto 1em;" onclick="closeREQ()">
-                    Close Lead
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
+
+      <!-- footer start-->
+      <?php include 'footer.php'; ?>
+
+      <!--followup add, edit-->
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label" for="edit">Select FollowUp Date</label>
+                <input class="form-control" type="date" style="border: 1px solid #e0dddd" id="f_date">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="edit">Approach Topic</label>
+                <input class="form-control" style="border: 1px solid #e0dddd" id="a_topic">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" id="add_or_edit">Add</button>
+              <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--followup response add, edit-->
+
+      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Add Response</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label class="form-label" for="edit">Enter Response</label>
+                    <textarea class="form-control" style="border: 1px solid #e0dddd" rows="5" id="editRes"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="postResponse()">Add Response</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--close lead-->
+
+      <div class="modal fade" id="ModelClose" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Close Lead</h3>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body overflow-auto">
+              <div class="row">
+                <div class="col-lg-5">
+                  <div class="mb-3">
+                    <label class="h2">Converted</label>
+                    <div style="float:right">
+                      <label class="switch">
+                        <input type="checkbox" onchange="convertCheck()" id="convert_check" checked><span class="switch-state"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <!-- <hr> -->
+                </div>
+                <div class="col-lg-5">
+                  <div class="mb-3">
+                    <label class="h2">Blog</label>
+                    <div style="float:right">
+                      <label class="switch">
+                        <input type="checkbox" onchange="blogCheck()" id="blog_check" checked><span class="switch-state"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-1"></div>
+              </div>
+
+              <div id="disppay">
+                <br><br>
+                <h3>Payment Method</h3>
+                <hr>
+                <div class="row">
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="bank" type="radio" checked="" name="payment" value="BANK TRANSFER">
+                      <label class="form-check-label" for="bank">Bank Transfer</label>
+                    </div>
+                  </div>
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="upi" type="radio" name="payment" value="UPI">
+                      <label class="form-check-label" for="upi">UPI</label>
+                    </div>
+                  </div>
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="check" type="radio" name="payment" value="CHECK">
+                      <label class="form-check-label" for="check">Check</label>
+                    </div>
+                  </div>
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="cash" type="radio" name="payment" value="CASH">
+                      <label class="form-check-label" for="cash">Cash</label>
+                    </div>
+                  </div>
+
+                  <div class="col custom-radio-ml">
+                    <div class="form-check radio radio-primary">
+                      <input class="form-check-input" id="dd" type="radio" name="payment" value="DD">
+                      <label class="form-check-label" for="dd">DD</label>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12"><br>
+                    <div class="row">
+                      <div class="md-3 col-lg-5">
+                        <label class="form-lalel">Enter Total Amount</label><br>
+                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount">
+                      </div>
+                      <div class="md-3 col-lg-5">
+                        <label class="form-lalel">Paid Amount</label><br>
+                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="paid_amount">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="disp">
+                <br><br>
+                <h3>Blog Options</h3>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="mb-3">
+                      <label class="form-label">Select Blog</label>
+                      <select class="form-select" style="border: 1px solid #e0dddd" id="blog">
+                        <option value="" selected disabled> - Select - </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="mb-3">
+                      <label class="form-label">Select Blog Days</label>
+                      <select class="form-select" style="border: 1px solid #e0dddd" id="days">
+                        <option value="" selected disabled> - Select - </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="mb-3">
+              <div class="text-end">
+                <button class="btn btn-danger" data-bs-dismiss="modal">Cancel
+                </button>
+                <button class="btn btn-success" style="margin: auto 2em auto 1em;" onclick="closeREQ()">
+                  Close Lead
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-  
+
   <!-- latest jquery-->
   <script src="../assets/js/jquery-3.6.0.min.js"></script>
   <script src="../assets/js/bootstrap/popper.min.js"></script>
@@ -475,7 +467,7 @@
     }
   }
 
-  function fetchdata() {    
+  function fetchdata() {
     var fd = new FormData();
     fd.append('lead_id', decodedData.lead_id);
     fd.append('lead', decodedData.lead);
@@ -485,10 +477,11 @@
       type: 'post',
       contentType: false,
       processData: false,
-      success: function (response) {
+      success: function(response) {
         var result = JSON.parse(response);
         if (result.status == 'Success') {
-          data = result.data;createTable();
+          data = result.data;
+          createTable();
           data.map((item, index) => {
             var sts_val = item.lead_status;
             checkStatus(sts_val)
@@ -503,16 +496,24 @@
                   style="color:black; background-color: lightgrey">
                   ${item.service_name}
             </span>`;
-            if(index == 0){
-              datobj = {'name' : item.name, 'eventdate': item.event_dateTime || item.event_date, 'service': sval, 'info': val}
+            if (index == 0) {
+              datobj = {
+                'name': item.name,
+                'eventdate': item.event_dateTime || item.event_date,
+                'service': sval,
+                'info': val
+              }
             }
           });
-          document.getElementById('namelab').innerHTML = datobj.name;document.getElementById('event_date').innerHTML = datobj.eventdate;
-          document.getElementById('service').innerHTML = datobj.service; document.getElementById('a_s').innerHTML = datobj.info;
+          document.getElementById('namelab').innerHTML = datobj.name;
+          document.getElementById('event_date').innerHTML = datobj.eventdate;
+          document.getElementById('service').innerHTML = datobj.service;
+          document.getElementById('a_s').innerHTML = datobj.info;
         }
       }
     })
-  }fetchdata();
+  }
+  fetchdata();
 
   function setid(type, id, date, approach) {
     console.log(type, id, date, approach);

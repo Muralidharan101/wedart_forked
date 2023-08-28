@@ -145,16 +145,7 @@
 
       </div>
       <!-- footer start-->
-      <footer class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-10 p-0 footer-left">
-              <p class="mb-0">Copyright 2022 © Wedart</p>
-            </div>
-            <div class="col-2 p-0 footer-right"> <i class="fa fa-heart font-danger"> </i></div>
-          </div>
-        </div>
-      </footer>
+      <?php include 'footer.php'; ?>
 
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
