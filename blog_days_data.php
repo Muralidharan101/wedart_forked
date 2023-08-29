@@ -393,7 +393,7 @@
         data = result.data;
 
         var slet = document.getElementById('blog');
-        var slet1 = document.getElementById('edit1');
+        // var slet1 = document.getElementById('edit1');
         slet.innerHTML = '';  
         const defaultOption = document.createElement("option");
           defaultOption.value = "";
@@ -406,7 +406,7 @@
           newOption.value = option.id;
           newOption.text = option.blog_name;
           slet.appendChild(newOption);
-          slet1.appendChild(newOption);
+          // slet1.appendChild(newOption);
         });
       }
       })
@@ -419,7 +419,7 @@
         var result = JSON.parse(response);
         dayDetails = result.data;
         var slet = document.getElementById('blog_day');
-        var slet1 = document.getElementById('edit2');
+        // var slet1 = document.getElementById('edit2');
         slet.innerHTML = '';  
         const defaultOption = document.createElement("option");
           defaultOption.value = "";
@@ -432,7 +432,7 @@
           newOption.value = option.id;
           newOption.text = option.ref_name + " - ( " + option.days_count + " )";
           slet.appendChild(newOption);
-          slet1.appendChild(newOption);
+          // slet1.appendChild(newOption);
         });
       }
       })
