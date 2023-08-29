@@ -155,14 +155,14 @@
               <div class="row">
                   <div class="col-lg-12">
                     <div class="mb-4">
-                      <label class="form-label" for="editselect">Blog</label>
+                      <label class="form-label">Blog</label>
                       <select class="form-control" style="border: 1px solid #e0dddd" id="edit1">
                       </select>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="mb-3">
-                      <label class="form-label" for="edit">Refferer</label>
+                      <label class="form-label">Refferer</label>
                       <select 
                         class="form-control" 
                         style="border: 1px solid #e0dddd" 
@@ -173,7 +173,7 @@
                   </div>
                   <div class="col-lg-12">
                     <div class="mb-3">
-                      <label class="form-label" for="edit">Day Count</label>
+                      <label class="form-label">Day Count</label>
                       <select class="form-control" style="border: 1px solid #e0dddd" id="edit3">
                       </select>
                     </div>
@@ -440,16 +440,19 @@
 
     function listday(arg){
       var selec = document.getElementById('day_count');
-      var selec1 = document.getElementById('edit3');
+      // var selec1 = document.getElementById('edit3');
       selec.innerHTML = '';
-      selec1.innerHTML = '';
+      // selec1.innerHTML = '';
       var day = $('#blog_day').val();
-      var day1 = $('#edit2').val();
+      // var day1 = $('#edit2').val();
       var totalDays;
       dayDetails.map(obj => {
         if(obj.id == day){
           totalDays = obj.days_count;
         }
+        // if(obj.id == day1){
+        //   totalDays = obj.days_count;
+        // }
       })
       if(totalDays > 0){
         for (var i = 1; i <= totalDays; i++) {
@@ -457,7 +460,7 @@
           newOption.value = i;
           newOption.text = i;
           selec.appendChild(newOption);
-          selec1.appendChild(newOption);
+          // selec1.appendChild(newOption);
         }
       } else {
         var newOption = document.createElement("option");
