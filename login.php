@@ -36,7 +36,7 @@
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
 </head>
 
-  <body>
+  <body onload="checkCookie()">
     <!-- Loader starts-->
     <div class="loader-wrapper">
       <div class="loader"></div>
@@ -71,7 +71,7 @@
                   <div class="mb-4">
                     <div style="margin-top: 2em;">
                       <input id="remember" type="checkbox"  checked="">
-                      <label class="text-muted" for="remember">Remember Me</label>
+                      <label class="text-muted" for="remember">Keep me logged in</label>
                     </div>
                     <div class="text-end mt-3">
                       <button class="btn btn-primary btn-block w-100" id="sign_in">Sign in</button>
@@ -111,6 +111,31 @@
       <script>
         var phonePattern = /^\d{10}$/;
         var but = document.getElementById('sign_in');
+
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0) == ' ') {
+                  c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                  return c.substring(name.length, c.length);
+              }
+          }
+          return "";
+        }
+
+        function checkCookie() {
+          let role = getCookie("role");
+          let name = getCookie("name");
+          let mobile = getCookie("phone");
+          if (name != "" && (role == "admin" || role == "branch_user" || role == "corporate_user") && mobile != "") {
+           window.location.href = 'list_lead.php';
+          } 
+        }
 
         function setCookie(cname, cvalue, exdays) {
           const d = new Date();
