@@ -8,7 +8,7 @@
         </div>
         <div class="left-header col horizontal-wrapper ps-0">
             <div class="input-group" style="background-color: transparent;">
-                <img class="img-fluid for-light" height="40" width="110" src="wedart.jpeg" alt="">
+                <img class="img-fluid for-light" height="20" width="110" src="wedart.jpeg" style="opacity: 0;" alt="">
             </div>
         </div>
         <div class="nav-right col-6 pull-right right-header p-0">
@@ -32,6 +32,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     var logout = document.getElementById('logout');

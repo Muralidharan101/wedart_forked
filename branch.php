@@ -283,8 +283,8 @@
                 data-bs-toggle="modal" data-original-title="test"
                 data-bs-target="#exampleModal" 
                 onclick='setid("${obj.id}", "${obj.branch_name}")'>
-                ${obj.branch_name} &nbsp;  
-                <i data-feather="edit-2"></i>
+                ${obj.branch_name} &nbsp; &nbsp; &nbsp;
+                <i class="fa-solid fa-pen"></i>
               </div>`
           )).join('');
           document.getElementById('listdata').innerHTML = mdv.outerHTML;
@@ -310,7 +310,7 @@
     flex-wrap: wrap;
   }
   .btag{
-    padding: 10px 15px;
+    padding: 10px 25px; 
     border-radius: 30px;
     background-color: var(--theme-default) !important;
     color: #fff;

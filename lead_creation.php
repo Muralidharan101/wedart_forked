@@ -98,7 +98,7 @@
                         name="lead" id="wedding" 
                         checked
                         type="radio" value="true" onchange="radioChange()">
-                      <label class="form-check-label" for="wedding">Lead Form</label>
+                      <label class="form-check-label" for="wedding">Wedding Leads</label>
                     </div>
 
                     <div class="form-check radio radio-primary col-lg-2">
@@ -106,7 +106,7 @@
                         class="form-check-input" 
                         name="lead" id="baby" 
                         type="radio" value="false" onchange="radioChange()">
-                      <label class="form-check-label" for="baby">Baby Studio</label>
+                      <label class="form-check-label" for="baby">Baby's Event</label>
                     </div>
                   </div>
 
@@ -114,15 +114,6 @@
                     <div class="col-lg-12"><br>
                       <h3>Client Details</h3><br>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Select Source</label>
-                        <select class="form-select" style="border: 1px solid #e0dddd" id="source">
-                          <option value="choose" selected disabled> - Choose -</option>
-                        </select>
-                      </div>
-                    </div>
-
                     <!--Hidden-->
                     <div class="col-lg-6" style="display: none;">
                       <div class="mb-3">
@@ -134,8 +125,24 @@
 
                     <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label">Name</label>
+                        <label class="form-label">Name <span style="color:red">*</span></label>
                         <input class="form-control" style="border: 1px solid #e0dddd" type="text" id="c_name">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label">Contact No <span style="color:red">*</span></label>
+                        <input class="form-control" 
+                          type="text" 
+                          oninput="onlynum(this);"  style="border: 1px solid #e0dddd" id="contact">
+                      </div>                     
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" id="lab3"></label>
+                        <input class="form-control" type="datetime" style="border: 1px solid #e0dddd" id="inpt3">
                       </div>
                     </div>
 
@@ -146,12 +153,6 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label" id="lab3"></label>
-                        <input class="form-control" type="datetime" style="border: 1px solid #e0dddd" id="inpt3">
-                      </div>
-                    </div>
                     <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label" id="lab2"></label>
@@ -166,11 +167,13 @@
 
                     <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label">Contact No</label>
-                        <input class="form-control" 
-                          type="number" style="border: 1px solid #e0dddd" id="contact">
-                      </div>                     
+                        <label class="form-label" for="inpt">Select Source</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="source">
+                          <option value="choose" selected disabled> - Choose -</option>
+                        </select>
+                      </div>
                     </div>
+
                   </div> 
 
                   <hr>
@@ -180,9 +183,9 @@
                       <h3>Service Details</h3><br>
                     </div>
 
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label">Select Service Category</label>
+                        <label class="form-label">Select Service Category  <span style="color:red">*</span></label>
                         <select 
                           class="form-select" 
                           type="select" 
@@ -192,14 +195,24 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label">Select Service</label>
+                        <label class="form-label">Select Service <span style="color:red">*</span></label>
                         <select 
                           class="form-select" 
                           type="select" 
                           style="border: 1px solid #e0dddd" id="service_type">
                         </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label">Estimated Amount</label>
+                        <input
+                          class="form-control" 
+                          style="border: 1px solid #e0dddd" type="text" 
+                          oninput="onlynum(this);" id="E_Amount">
                       </div>
                     </div>
 
@@ -235,7 +248,7 @@
                           type="text" rows="6"
                           style="border: 1px solid #e0dddd" 
                           id="otherinfo"
-                          placeholder="Enter Other Informations About The Lead"></textarea>
+                          placeholder="Enter other informations about the lead"></textarea>
                       </div>
                     </div>
                   </div>
@@ -246,6 +259,15 @@
                     <div class="col-lg-12"><br>
                       <h3>Follow Ups</h3><br>
                     </div>
+                    <div class="col-lg-12">
+                      <div class="col-lg-4">
+                        <div class="mb-3">
+                          <label class="form-label">Follow Up Category</label>
+                          <select id="follow_up_cateogry" class="form-select">
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label">Follow-Up Date</label>
@@ -254,7 +276,7 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                       <div class="mb-3">
                         <label class="form-label">FollowUp Details</label>
                         <textarea class="form-control"  
@@ -324,24 +346,35 @@
     var service_category = document.getElementById('service_category');
     var service = document.getElementById('service');
     var service_type = document.getElementById('service_type');
+    var EstimatedAmount = document.getElementById('E_Amount');
     var follow_up_status = document.getElementById('follow_up_status');
+    var follow_up_category = document.getElementById('follow_up_cateogry');
     var other_info = document.getElementById('otherinfo');
     var arr = []; var selected_services = [];
     var wedding = document.getElementById('wedding');
     var baby = document.getElementById('baby');
+
+    function onlynum(e) {
+      var input = e.value.replace(/[^0-9]/g, '');  
+      e.value = input; 
+    }
 
     document.getElementById("addbtn").addEventListener("click", postreq);
     // document.getElementById("addservice").addEventListener("click", selectService);
 
     function radioChange(){
       if(wedding.checked){
-        lab1.innerHTML = 'Event'; lab2.innerHTML= 'Mandapam'; lab3.innerHTML = 'Event Date';
+        lab1.innerHTML = 'Event'; lab2.innerHTML= 'Mandapam'; lab3.innerHTML = `Event Date  <span style="color:red">*</span>`;
         inpt1.type = 'text'; inpt2.type = 'text'; inpt3.type = 'date'; sex.style.display = 'none';
         inpt1.value = ''; inpt2.value = ''; inpt3.value = '';
+        inpt1.oninput = function(){}
       } else {  
-        lab1.innerHTML = 'Age'; lab2.innerHTML= 'Gender'; lab3.innerHTML = 'Event Date/Time';
-        inpt1.type = 'number'; inpt2.type = 'hidden'; inpt3.type = 'datetime-local'; sex.style.display = 'block';
+        lab1.innerHTML = 'Age'; lab2.innerHTML= 'Gender'; lab3.innerHTML = `Event Date/Time  <span style="color:red">*</span>`;
+        inpt1.type = 'text'; inpt2.type = 'hidden'; inpt3.type = 'datetime-local'; sex.style.display = 'block';
         inpt1.value = ''; inpt2.value = ''; inpt3.value = '';
+        inpt1.oninput = function() {
+            onlynum(inpt1);
+        };
       }
     }radioChange();
 
@@ -370,7 +403,32 @@
         slet.appendChild(newOption);
         });
       }
-    })
+      })
+      $.ajax({
+        url: 'ajax/follow_up/follow_up_list.php',
+        type: 'get',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+          var follow_category = result.data;
+
+          var slet = document.getElementById('follow_up_cateogry');
+          slet.innerHTML = '';  
+          const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.text = "Select an option";
+            defaultOption.disabled = true; defaultOption.selected = true;
+          slet.appendChild(defaultOption)
+
+          follow_category.forEach(option => {
+          const newOption = document.createElement("option");
+          newOption.value = option.follow_up_name;
+          newOption.text = option.follow_up_name;
+          slet.appendChild(newOption);
+          });
+        }
+      })
     }getSource();
 
     function fetfun(){
@@ -517,9 +575,11 @@
       fd.append('name', c_name.value)
       fd.append('phone',contact.value)
       fd.append('other_info',other_info.value)
+      fd.append('esimated_amount', EstimatedAmount.value)
       fd.append('service_category', service_category.value)
       fd.append('main_service', service_type.value)
       fd.append('service', JSON.stringify(selected_services))
+      fd.append('follow_up_category', follow_up_category.value);
       fd.append('follow_up', followup.value);
       fd.append('follow_up_details', follow_up_status.value);
       
@@ -544,9 +604,9 @@
           var result = JSON.parse(response);
           if (result.status == 'Success') {
             toastr.success(result.remarks);
-            setTimeout(() => {
-              window.location.href='list_lead.php'
-            }, 2000)
+            // setTimeout(() => {
+            //   window.location.href='list_lead.php'
+            // }, 2000)
           } else if (result.status == 'Available') {
             toastr.error(result.remarks);
           } else {

@@ -84,12 +84,12 @@
                     <div class="row" style="margin-left: 0.5em;">
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                        <label class="form-check-label" for="wedding">Adult Studio</label>
+                        <label class="form-check-label" for="wedding">Wedding Leads</label>
                       </div>
 
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
-                        <label class="form-check-label" for="baby">Baby Studio</label>
+                        <label class="form-check-label" for="baby">Baby's Event</label>
                       </div>
                     </div>
                     <div class="table-responsive">
@@ -237,13 +237,11 @@
               obj.mandapam,
               val,
               statusdisplay.outerHTML,
-              `
-                            <i class="follow-up-icon"
-                              data-lead="${dat}"
-                              data-action="follow_up"
-                              data-feather="message-circle"
-                              style="cursor: pointer"
-                              title=""></i>`
+              `<i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
+                data-lead="${dat}"
+                data-action="follow_up"
+                style="cursor: pointer;font-size: 20px"
+                title=""></i>`
             ];
             dataTableData.push(dataRow);
             feather.replace();
