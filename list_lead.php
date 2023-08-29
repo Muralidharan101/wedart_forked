@@ -240,8 +240,7 @@
               `<i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
                 data-lead="${dat}"
                 data-action="follow_up"
-                style="cursor: pointer;font-size: 20px"
-                title=""></i>`
+                style="cursor: pointer;font-size: 20px"></i>`
             ];
             dataTableData.push(dataRow);
             feather.replace();
@@ -281,12 +280,10 @@
               obj.event_dateTime,
               val,
               statusdisplay.outerHTML,
-              `
-                          <i 
-                            data-feather="message-circle"
-                            onclick="window.location.href = 'follow_up_entry.php?dat=${dat}'"
-                            style="cursor: pointer"
-                            title=""></i>`
+              `<i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
+                data-lead="${dat}"
+                data-action="follow_up"
+                style="cursor: pointer;font-size: 20px"></i>`
             ];
 
             dataTableData.push(dataRow);
