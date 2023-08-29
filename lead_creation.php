@@ -604,9 +604,9 @@
           var result = JSON.parse(response);
           if (result.status == 'Success') {
             toastr.success(result.remarks);
-            // setTimeout(() => {
-            //   window.location.href='list_lead.php'
-            // }, 2000)
+            setTimeout(() => {
+              window.location.href='list_lead.php'
+            }, 2000)
           } else if (result.status == 'Available') {
             toastr.error(result.remarks);
           } else {
