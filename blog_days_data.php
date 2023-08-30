@@ -239,7 +239,7 @@
       editblog.innerHTML = `<option value="${blogId}">${b_Name}</option>`; 
       editday.innerHTML = `<option value="${day_Id}">${ref_name}</option>`;
       editdaycount.innerHTML =`<option value="${day_Count}">${day_Count}</option>`;
-      fetchSelect();
+      editSelect();
     }
 
     function postreq() {  
@@ -282,7 +282,7 @@
 
     function fetchdata(){
       $.ajax({
-      url: 'ajax/blog_day/blog_day_list.php',
+      url: 'ajax/blog_days/blog_days_list.php',
       type: 'get',
       contentType: false,
       processData: false,
@@ -344,7 +344,7 @@
         fd.append('blog_days_id', inpt2);
         fd.append('day_count', inpt3);
         $.ajax({
-          url: 'ajax/blog_day/blog_day_edit.php',
+          url: 'ajax/blog_days/blog_days_update.php',
           data: fd,
           type: 'post',
           contentType: false,

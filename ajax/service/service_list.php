@@ -4,8 +4,6 @@
 
     $res = [];
     $count = 0;
-
-    // $sql = "SELECT id, type_name FROM service_type_data where status = 'Active' ";
     $sql = "SELECT sd.id, sd.service_name, sd.type_id, std.type_name FROM service_data sd JOIN service_type_data std ON sd.type_id = std.id where sd.status = 'Active'";
     $rec = mysqli_query($conn, $sql);
     while($data = mysqli_fetch_assoc($rec))

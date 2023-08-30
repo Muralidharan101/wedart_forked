@@ -100,9 +100,9 @@
                             <th scope="col">Lead No</th>
                             <th>Name</th>
                             <th>Mobile No</th>
-                            <th id="th1"></th>
-                            <th id="th2"></th>
-                            <th id="th3"></th>
+                            <th id="th1">Event</th>
+                            <th id="th2">Event Date</th>
+                            <th id="th3">Mandapam</th>
                             <th>Service</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -204,7 +204,7 @@
 
         if (document.getElementById('wedding').checked) {
           document.getElementById('th1').textContent = 'Event';
-          document.getElementById('th2').textContent = 'Event Date';
+          document.getElementById('th2').textContent = 'Event-Date';
           document.getElementById('th3').textContent = 'Mandapam';
           leads.forEach(obj => {
             var test = JSON.parse(obj.service);
