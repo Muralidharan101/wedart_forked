@@ -55,8 +55,8 @@
 
                                                             <li class="sidebar-list"> 
                                                                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                                                                        <i class="fa-solid fa-chart-simple"></i>
-                                                                        <span> &nbsp;Dashboard</span>
+                                                                        <i class="fa-solid fa-house"></i>
+                                                                        <span> &nbsp;Home</span>
                                                                   </a>
                                                                   <ul class="sidebar-submenu">
                                                                         <li><a href="dashboard.php">Dashboard</a></li>
