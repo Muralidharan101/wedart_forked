@@ -7,9 +7,11 @@
     $blog_days_id = mysqli_real_escape_string($conn, $_POST['blog_days_id']);
     $day_count = mysqli_real_escape_string($conn, $_POST['day_count']);
 
-    $sql = "INSERT INTO blog_days_data (`blog_id`, `blog_days_id`, `day_count`, `status`, `dateTime`) 
+
+    $sql = "INSERT INTO blogs_days_data (`blog_id`, `blog_days_id`, `day_count`, `status`, `dateTime`) 
                                 VALUES ('$blog_id', '$blog_days_id', '$day_count', 'Active', NOW() )";
     
+
     if($row = mysqli_query($conn, $sql))
     {
         $res['status']  = 'Success';

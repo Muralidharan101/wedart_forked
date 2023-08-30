@@ -4,6 +4,7 @@
     $res = [];
 
     $sql = "SELECT bd.id, bd.blog_days_id,bd.blog_id,bd.day_count,b.blog_name,b.blog_link,d.ref_name,d.days_count
+
             FROM 
                 blogs_days_data AS bd
             JOIN blog_data AS b
@@ -12,18 +13,16 @@
             ON bd.blog_days_id = d.id
             WHERE bd.status = 'Active' ";
 
-    if( $row = mysqli_query($conn, $sql))
-    {
-        
-        $data = [];
-        while($result = mysqli_fetch_assoc($result))
-        {
-            $data[] = $result;
-        }
 
+    if($result = mysqli_query($conn, $sql))
+    {
+        while($data = mysqli_fetch_assoc($result))
+        {
+            $res['data'][] = $data;
+        }
         $res['status']  = 'Success';
         $res['remarks'] = 'Data sent successfully';
-        $res            = $data; 
+
     }
     else
     {

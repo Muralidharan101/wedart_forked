@@ -4,7 +4,8 @@
 
     $id = mysqli_real_escape_string($conn, $_POST['id']);
 
-    $sql = "UPDATE blog_days_data SET `status`='In-Active' WHERE `id`='$id'";
+    $sql = "UPDATE blogs_days_data SET `status`='In-Active' WHERE `id`='$id'";
+
 
     if(mysqli_query($conn, $sql))
     {

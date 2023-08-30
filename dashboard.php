@@ -72,6 +72,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
+                <br>
                 <h3>Dashboard</h3>
               </div>
 
