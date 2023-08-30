@@ -7,8 +7,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-  <meta name="keywords" content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="description"
+    content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+  <meta name="keywords"
+    content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="pixelstrap">
   <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
@@ -16,9 +18,15 @@
   <!-- Google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
@@ -29,7 +37,6 @@
   <!-- Feather icon-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/scrollbar.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/vendors/datatables.css">
   <!-- Bootstrap css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
   <!-- App css-->
@@ -37,6 +44,8 @@
   <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
   <!-- Responsive css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+
+  <link rel="stylesheet" type="text/css" href="/wedartfiles/customstyle.css">
 </head>
 
 <body>
@@ -63,46 +72,83 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Branch</h3>
+                <h3>Dashboard</h3>
               </div>
+
             </div>
           </div>
         </div>
 
         <!--Raj Code-->
-        <div class="container-fluid">
+        <div class="container-fluid ecommerce-page">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-header pb-0">
-                  <h3>Branch Creation</h3>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-label" for="inpt">Enter Branch</label>
-                        <input class="form-control" style="border: 1px solid #e0dddd" id="inpt">
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card sale-chart">
+                  <div class="card-body"> 
+                    <div class="d-flex">    
+                      <div class="flex-shrink-0">          
+                        <div class="sale-detail">
+                          <div class="icon"><i class="fa-solid fa-arrow-trend-up" style="font-size: 20px;"></i></div>
+                          <div class="sale-content">
+                            <h3>Total Leads</h3>
+                            <p id="dispLeads" style="font-size: 28px;">0  </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-lg-4">
-                      <label class="form-label" style="color:transparent">.</label>
-                      <div>
-                        <button class="btn btn-primary" id="addbtn" type="submit">Create Branch</button>
+                    <div style="position:absolute; top:20px; right:20px; color:blue; cursor:pointer; ">
+                        <div class="icon">
+                            <i class="fa-solid fa-arrow-up-right-from-square" onclick="window.location.href = 'list_lead.php'"></i>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card sale-chart">
+                <div class="card-body">
+                  <div class="d-flex">    
+                    <div class="flex-shrink-0">         
+                      <div class="sale-detail">
+                        <div class="icon"><i class="fa-regular fa-circle-check" style="font-size: 20px;"></i></div>
+                        <div class="sale-content">
+                          <h3>Today's FollowUp</h3>
+                          <p id="dispFollowUp" style="font-size: 28px;">0</p>
+                        </div>
                       </div>
+                    </div>
+                    <div class="small-chart-view income-chart" id="income-chart"></div>
+                  </div>
+                  <div style="position:absolute; top:20px; right:20px; color:blue; cursor:pointer; ">
+                    <div class="icon">
+                        <i class="fa-solid fa-arrow-up-right-from-square" onclick="window.location.href = 'today_follow_up.php'"></i>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-header pb-0">
-                  <h3>All Branch</h3>
-                </div>
-                <div class="card-body" id="listdata">
-                  
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card sale-chart">
+                <div class="card-body">
+                  <div class="d-flex">    
+                    <div class="flex-shrink-0">                
+                      <div class="sale-detail">
+                        <div class="icon"><i class="fa-solid fa-coins" style="font-size: 18px;"></i></div>
+                        <div class="sale-content">
+                          <h3>Pending Payment</h3>
+                          <p id="dispPendingPay" style="font-size: 28px;">0  </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="position:absolute; top:20px; right:20px; color:blue; cursor:pointer; ">
+                    <div class="icon">
+                        <i class="fa-solid fa-arrow-up-right-from-square" onclick="window.location.href = 'closed_lead.php'"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -127,7 +173,7 @@
               <div class="row">
                 <div class="col">
                   <div class="mb-3">
-                    <label class="form-label" for="edit">Branch Name</label>
+                    <label class="form-label" for="edit">Enter Source Name</label>
                     <input class="form-control" style="border: 1px solid #e0dddd" id="edit">
                   </div>
                 </div>
@@ -170,135 +216,6 @@
     integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <script>
-    document.getElementById("addbtn").addEventListener("click", postreq);
-    var data;
-    var deleteid;
-    var editname;
-
-
-    function postreq() {
-      var inpt = $('#inpt').val();
-
-      if(inpt == '')
-      {
-        toastr.error('Enter Branch');
-      }
-      else
-      {
-        var fd = new FormData();
-        fd.append('branch', inpt);
-        $.ajax({
-          url: 'ajax/branch/branch_creation.php',
-          data: fd,
-          type: 'post',
-          contentType: false,
-          processData: false,
-          success: function (response) {
-            var result = JSON.parse(response);
-            if (result.status == 'Success') {
-              toastr.success(result.remarks);
-              $('#inpt').val('');fetchdata();
-            } else if (result.status == 'Available') {
-              toastr.error(result.remarks);
-            } else {
-              toastr.error('Sry, Error with the Backend');
-            }
-          }
-        })
-      }
-      
-    }
-
-    function editreq() {
-      var inpt = $('#edit').val();
-      
-      var fd = new FormData();
-      fd.append('branch', inpt);
-      fd.append('id',deleteid);
-      $.ajax({
-        url: 'ajax/branch/branch_edit.php',
-        data: fd,
-        type: 'post',
-        contentType: false,
-        processData: false,
-        success: function (response) {
-          var result = JSON.parse(response);
-          if (result.status == 'Success') {
-            toastr.success(result.remarks);
-            $('#edit').val('');fetchdata();
-          } else if (result.status == 'Available') {
-            toastr.error(result.remarks);
-          } else {
-            toastr.error('Sry, Error with the Backend');
-          }
-        }
-        })
-      
-      
-    }
-
-    function deletesource() {
-      var fd = new FormData();
-      fd.append('id', deleteid);
-      $.ajax({
-        url: 'ajax/branch/branch_remove.php',
-        data: fd,
-        type: 'post',
-        contentType: false,
-        processData: false,
-        success: function (response) {
-          var result = JSON.parse(response);
-          if(result.status == 'Success')
-          {
-              toastr.success(result.remarks);
-              setid('');fetchdata();
-          } else
-          {
-            toastr.error('Sry, Error with the Backend');
-          }
-        }
-      })
-    }
-
-    function setid(ob, name) {
-      deleteid = ob; editname = name;
-      document.getElementById('edit').value = name;
-    }
-
-    function fetchdata() {
-      $.ajax({
-      url: 'ajax/branch/branch_list.php',
-      type: 'get',
-      contentType: false,
-      processData: false,
-      success: function (response) {
-        var result = JSON.parse(response);
-        data = result.data;
-        var mdv = document.createElement('div'); mdv.classList = 'bmain';
-        mdv .innerHTML = 
-          data.map(obj => (
-            `<div 
-                class="btag" 
-                data-bs-toggle="modal" data-original-title="test"
-                data-bs-target="#exampleModal" 
-                onclick='setid("${obj.id}", "${obj.branch_name}")'>
-                ${obj.branch_name} &nbsp; &nbsp; &nbsp;
-                <i class="fa-solid fa-pen"></i>
-              </div>`
-          )).join('');
-          document.getElementById('listdata').innerHTML = mdv.outerHTML;
-          feather.replace()
-      }
-    })
-    }fetchdata();
-    const observer = new MutationObserver(function(mutationsList, observer) {
-    feather.replace();
-    });
-    const config = { childList: true, subtree: true };
-    observer.observe(document.body, config);
-  </script>
-
 
 <style>
   .badge:hover{
@@ -310,7 +227,7 @@
     flex-wrap: wrap;
   }
   .btag{
-    padding: 10px 25px; 
+    padding: 10px 25px;
     border-radius: 30px;
     background-color: var(--theme-default) !important;
     color: #fff;
@@ -321,6 +238,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+  }
+  @media only screen and (max-width: 991px) {
+    #dot{
+      display: none;
+    }
   }
 </style>
 

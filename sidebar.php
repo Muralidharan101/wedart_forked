@@ -1,11 +1,13 @@
+<script src="https://kit.fontawesome.com/438020997e.js" crossorigin="anonymous"></script>
+
 <div class="sidebar-wrapper">
       <div>
             <div class="logo-wrapper">
                   <a href="index.html" data-bs-original-title="" title="">
-                        <img class="img-fluid for-light" style="opacity: 0;" src="../assets/images/logo/logo.png" alt="">
-                        <img class="img-fluid for-dark" style="opacity: 0;" src="../assets/images/logo/logo-dark.png" alt="">
+                        <div class="logodiv">
+                        </div>
                   </a>
-                  <div class="back-btn"><i class="fa fa-angle-left"></i></div>
+                  <!-- <div class="back-btn"><i class="fa fa-angle-left"></i></div> -->
                   <div class="toggle-sidebar">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-left status_toggle middle sidebar-toggle">
                               <line x1="17" y1="10" x2="3" y2="10"></line>
@@ -43,13 +45,52 @@
                                                                   <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                                             </li>
 
-                                                            <li class="sidebar-main-title">
+                                                            <!-- <li class="sidebar-main-title">
                                                                   <div>
                                                                         <h4>User Navigations</h4>
                                                                   </div>
+                                                            </li> -->
+
+                                                            <br>
+
+                                                            <li class="sidebar-list"> 
+                                                                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                                                        <i class="fa-solid fa-house"></i>
+                                                                        <span> &nbsp;Home</span>
+                                                                  </a>
+                                                                  <ul class="sidebar-submenu">
+                                                                        <li><a href="dashboard.php">Dashboard</a></li>
+                                                                  </ul>
                                                             </li>
 
-                                                            <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="database"></i><span>Master Data</span></a>
+                                                            <li class="sidebar-list"> 
+                                                                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                                                        <i class="fa-solid fa-chart-line"></i>
+                                                                        <span> &nbsp;Leads</span>
+                                                                  </a>
+                                                                  <ul class="sidebar-submenu">
+                                                                        <li><a href="lead_creation.php">Lead Creation</a></li>
+                                                                        <li><a href="list_lead.php">Leads </a></li>
+                                                                        <li><a href="today_follow_up.php">Today FollowUp</a></li>
+                                                                  </ul>
+                                                            </li>
+
+                                                            <li class="sidebar-list">
+                                                                  <a class="sidebar-link sidebar-title"  href="javascript:void(0)">
+                                                                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                                                                        <span> &nbsp;Transactions</span>
+                                                                  </a>
+                                                                  <ul class="sidebar-submenu">
+                                                                        <li><a href="closed_lead.php">Pending Payments</a></li>
+                                                                        <li><a href="transaction_report.php">Transaction Reports</a></li>
+                                                                  </ul>
+                                                            </li>
+
+                                                            <li class="sidebar-list"> 
+                                                                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                                                        <i class="fa-solid fa-database"></i>
+                                                                        <span> &nbsp;Master Data</span>
+                                                                  </a>
                                                                   <ul class="sidebar-submenu">
                                                                         <li><a href="source.php">Source</a></li>
                                                                         <li><a href="service_category.php">Service Category</a></li>
@@ -57,26 +98,14 @@
                                                                         <li><a href="additional_service.php">Additional Service</a></li>
                                                                         <li><a href="branch.php">Branch</a></li>
                                                                         <li><a href="users.php">Users</a></li>
+                                                                        <li><a href="followup.php">Follow Up Category</a></li>
                                                                         <li><a href="blog_creation.php">Blogs</a></li>
-                                                                        <li><a href="day_creation.php">Blog Days</a></li>
+                                                                        <li><a href="day_creation.php">Days Creation</a></li>
+                                                                        <li><a href="blog_days_data.php">Blog Days</a></li>
                                                                         <li><a href="general_settings.php">General Settings</a></li>
                                                                   </ul>
                                                             </li>
-
-                                                            <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="trending-up"></i><span>Leads</span></a>
-                                                                  <ul class="sidebar-submenu">
-                                                                        <li><a href="lead_creation.php">Lead Creation</a></li>
-                                                                        <li><a href="list_lead.php">Leads & Baby Studio</a></li>
-                                                                        <li><a href="today_follow_up.php">Today FollowUp</a></li>
-                                                                  </ul>
-                                                            </li>
-
-                                                            <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="dollar-sign"></i><span>Transactions</span></a>
-                                                                  <ul class="sidebar-submenu">
-                                                                        <li><a href="closed_lead.php">Pending Payments</a></li>
-                                                                        <li><a href="transaction_report.php">Transaction Reports</a></li>
-                                                                  </ul>
-                                                            </li>
+                                                            
                                                       </div>
                                                 </div>
 
@@ -101,3 +130,14 @@
             </nav>
       </div>
 </div>
+
+<style>
+      .logodiv{
+          background-image: url('wedart.jpeg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: fixed;
+          height: 50px;
+          width: 130px;
+        }
+</style>

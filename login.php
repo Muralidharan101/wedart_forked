@@ -59,7 +59,8 @@
                   <br>
                   <div class="form-group">
                     <label class="col-form-label">Phone Number</label>
-                    <input class="form-control" id="phone" type="number" style="border: 1px solid #e0dddd">
+                    <input class="form-control" id="phone" type="text" 
+                          oninput="onlynum(this);" style="border: 1px solid #e0dddd">
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
@@ -112,6 +113,11 @@
         var phonePattern = /^\d{10}$/;
         var but = document.getElementById('sign_in');
 
+        function onlynum(e) {
+          var input = e.value.replace(/[^0-9]/g, '');  
+          e.value = input; 
+        }
+
         function getCookie(cname) {
           let name = cname + "=";
           let decodedCookie = decodeURIComponent(document.cookie);
@@ -132,7 +138,8 @@
           let role = getCookie("role");
           let name = getCookie("name");
           let mobile = getCookie("phone");
-          if (name != "" && (role == "admin" || role == "branch_user" || role == "corporate_user") && mobile != "") {
+
+          if (name != "" && role != "" && mobile != "") {
            window.location.href = 'list_lead.php';
           } 
         }
@@ -170,12 +177,12 @@
                       setCookie('name', obj.name, 365);
                       setCookie('phone', obj.mobile, 365);
                       setCookie('role', obj.role, 365);
-                      window.location.href = 'list_lead.php';
+                      window.location.href = 'dashboard.php';
                     } else if ((obj.role === "admin" || obj.role === "branch_user" || obj.role === "corporate_user") && !remember.checked) {
                       sessionStorage.setItem('name', obj.name);
                       sessionStorage.setItem('phone', obj.mobile);
                       sessionStorage.setItem('role', obj.role);
-                      window.location.href = 'list_lead.php';
+                      window.location.href = 'dashboard.php';
                     } else {
                       toastr.error('Invalid Role! Contact Admin');
                     }
