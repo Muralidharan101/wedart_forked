@@ -156,7 +156,7 @@
                   <div class="col-lg-12">
                     <div class="mb-4">
                       <label class="form-label">Blog</label>
-                      <select class="form-control" style="border: 1px solid #e0dddd" id="edit1">
+                      <select class="form-select" style="border: 1px solid #e0dddd" id="edit1">
                       </select>
                     </div>
                   </div>
@@ -164,7 +164,7 @@
                     <div class="mb-3">
                       <label class="form-label">Refferer</label>
                       <select 
-                        class="form-control" 
+                        class="form-select" 
                         style="border: 1px solid #e0dddd" 
                         id="edit2"
                         onchange="listday('edit')">
@@ -174,7 +174,7 @@
                   <div class="col-lg-12">
                     <div class="mb-3">
                       <label class="form-label">Day Count</label>
-                      <select class="form-control" style="border: 1px solid #e0dddd" id="edit3">
+                      <select class="form-select" style="border: 1px solid #e0dddd" id="edit3">
                       </select>
                     </div>
                   </div>
@@ -247,11 +247,11 @@
       var day_id = $('#blog_day').val();
       var day = $('#day_count').val();
 
-      if(blog_id == ''){
+      if(blog_id == '' || blog_id == null){
         toastr.error('Select Blog');
-      } else if(day_id == '') {
+      } else if(day_id == '' || day_id == null) {
         toastr.error('Select Blog Day');
-      } else if(day == '') {
+      } else if(day == '' || day == null) {
         toastr.error('Select Day Count');
       } else {
         var fd = new FormData();
@@ -331,11 +331,11 @@
       var inpt1 = $('#edit1').val();
       var inpt2 = $('#edit2').val();
       var inpt3 = $('#edit3').val();
-      if(inpt1 == ''){
+      if(inpt1 == '' || inpt1 == null){
         toastr.error('Select Blog');
-      } else if(inpt2 == '') {
+      } else if(inpt2 == '' || inpt2 == null) {
         toastr.error('Select Referrer');
-      } else if(inpt3 == '') {
+      } else if(inpt3 == '' || inpt3 == null) {
         toastr.error('Selct Days Count');
       } else {
         var fd = new FormData();
