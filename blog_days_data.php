@@ -92,7 +92,7 @@
                           class="form-select" 
                           style="border: 1px solid #e0dddd" 
                           id="blog_day"
-                          onchange="listday()"></select>
+                          onchange="listday('add')"></select>
                       </div>
                     </div>
                     <div class="col-lg-4">
@@ -167,7 +167,7 @@
                         class="form-control" 
                         style="border: 1px solid #e0dddd" 
                         id="edit2"
-                        onchange="listday()">
+                        onchange="listday('edit')">
                       </select>
                     </div>
                   </div>
@@ -227,6 +227,7 @@
     var deleteid;
     var editname;
     var dataTable;
+    var blogDetails;
     var dayDetails;
 
     function setid(id, blogId, b_Name, day_Id, ref_name, day_Count) {
@@ -390,10 +391,9 @@
       processData: false,
       success: function (response) {
         var result = JSON.parse(response);
-        data = result.data;
+        blogDetails = result.data;
 
         var slet = document.getElementById('blog');
-        // var slet1 = document.getElementById('edit1');
         slet.innerHTML = '';  
         const defaultOption = document.createElement("option");
           defaultOption.value = "";
@@ -401,12 +401,11 @@
           defaultOption.disabled = true; defaultOption.selected = true;
         slet.appendChild(defaultOption)
 
-        data.forEach(option => {
+        blogDetails.forEach(option => {
           const newOption = document.createElement("option");
           newOption.value = option.id;
           newOption.text = option.blog_name;
           slet.appendChild(newOption);
-          // slet1.appendChild(newOption);
         });
       }
       })
@@ -419,7 +418,6 @@
         var result = JSON.parse(response);
         dayDetails = result.data;
         var slet = document.getElementById('blog_day');
-        // var slet1 = document.getElementById('edit2');
         slet.innerHTML = '';  
         const defaultOption = document.createElement("option");
           defaultOption.value = "";
@@ -432,42 +430,76 @@
           newOption.value = option.id;
           newOption.text = option.ref_name + " - ( " + option.days_count + " )";
           slet.appendChild(newOption);
-          // slet1.appendChild(newOption);
         });
       }
       })
     } fetchSelect();
 
+    function editSelect(){
+      var slet1 = document.getElementById('edit1');
+      var slet2 = document.getElementById('edit2');
+      blogDetails.forEach(option => {
+          const newOption = document.createElement("option");
+          newOption.value = option.id;
+          newOption.text = option.blog_name;
+          slet1.appendChild(newOption);
+      });
+      dayDetails.forEach(option => {
+        const newOption = document.createElement("option");
+        newOption.value = option.id;
+        newOption.text = option.ref_name + " - ( " + option.days_count + " )";
+        slet2.appendChild(newOption);
+      });
+    }
+
     function listday(arg){
-      var selec = document.getElementById('day_count');
-      // var selec1 = document.getElementById('edit3');
-      selec.innerHTML = '';
-      // selec1.innerHTML = '';
-      var day = $('#blog_day').val();
-      // var day1 = $('#edit2').val();
-      var totalDays;
-      dayDetails.map(obj => {
-        if(obj.id == day){
-          totalDays = obj.days_count;
-        }
-        // if(obj.id == day1){
-        //   totalDays = obj.days_count;
-        // }
-      })
-      if(totalDays > 0){
-        for (var i = 1; i <= totalDays; i++) {
+      if(arg == "add"){
+        var selec = document.getElementById('day_count');
+        selec.innerHTML = '';
+        var day = $('#blog_day').val();
+        var totalDays;
+        dayDetails.map(obj => {
+          if(obj.id == day){
+            totalDays = obj.days_count;
+          }
+        })
+        if(totalDays > 0){
+          for (var i = 1; i <= totalDays; i++) {
+            var newOption = document.createElement("option");
+            newOption.value = i;
+            newOption.text = i;
+            selec.appendChild(newOption);
+          }
+        } else {
           var newOption = document.createElement("option");
-          newOption.value = i;
-          newOption.text = i;
+          newOption.value = "0";
+          newOption.text = "0";
           selec.appendChild(newOption);
-          // selec1.appendChild(newOption);
         }
       } else {
-        var newOption = document.createElement("option");
-        newOption.value = "0";
-        newOption.text = "0";
-        selec.appendChild(newOption);
-      }
+        var selec1 = document.getElementById('edit3');
+        selec1.innerHTML = '';
+        var day1 = $('#edit2').val();
+        var totalDays;
+        dayDetails.map(obj => {
+          if(obj.id == day1){
+            totalDays = obj.days_count;
+          }
+        })
+        if(totalDays > 0){
+          for (var i = 1; i <= totalDays; i++) {
+            var newOption = document.createElement("option");
+            newOption.value = i;
+            newOption.text = i;
+            selec1.appendChild(newOption);
+          }
+        } else {
+          var newOption = document.createElement("option");
+          newOption.value = "0";
+          newOption.text = "0";
+          selec1.appendChild(newOption);
+        }
+      }     
     }
   </script>
 
