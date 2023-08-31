@@ -237,17 +237,20 @@
               obj.mandapam,
               val,
               statusdisplay.outerHTML,
-              `<i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
-                data-lead="${dat}"
-                data-action="follow_up"
-                style="cursor: pointer;font-size: 20px"></i>`
+              `<i class="fa-regular fa-pen-to-square" 
+                  style="font-size: 22px;margin-right:10px;"
+                  onclick="window.location.href = 'manage_lead.php?dat=${dat}'"></i>
+                <i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
+                  data-lead="${dat}"
+                  data-action="follow_up"
+                  style="cursor: pointer;font-size: 20px"></i>`
             ];
             dataTableData.push(dataRow);
             feather.replace();
           });
         } else {
           document.getElementById('th1').textContent = 'Age';
-          document.getElementById('th2').textContent = 'Sex';
+          document.getElementById('th2').textContent = 'Gender';
           document.getElementById('th3').textContent = 'Date & Time';
           leads.forEach(obj => {
             var test = JSON.parse(obj.service);
@@ -280,7 +283,10 @@
               obj.event_dateTime,
               val,
               statusdisplay.outerHTML,
-              `<i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
+              `<i class="fa-regular fa-pen-to-square" 
+                  style="font-size: 22px;margin-right:10px;"
+                  onclick="window.location.href = 'manage_lead.php?dat=${dat}'"></i>
+              <i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
                 data-lead="${dat}"
                 data-action="follow_up"
                 style="cursor: pointer;font-size: 20px"></i>`
