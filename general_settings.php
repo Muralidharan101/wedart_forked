@@ -145,23 +145,6 @@
       <!-- footer start-->
       <?php include 'footer.php'; ?>
 
-      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">Are You Sure To Delete</div>
-            <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="setid('')">Cancel</button>
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletereq()">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
     </div>
   </div>
   </div>
@@ -200,10 +183,6 @@
     var data;
     var deleteid;
     var dataTable;
-    const fileInput = document.getElementById('pdf');
-    const pdfPreview = document.getElementById('prePDF');
-    const videoInput = document.getElementById('video');
-    const videoPreview = document.getElementById('preVideo');
 
     var uploadedFile = null;
     $("#pdf").on("change", function() {
@@ -216,43 +195,21 @@
             toastr.error("Please select a valid PDF file.");
         }
     });
-    
-    // fileInput.addEventListener('change', function(event) {
-    //   const file = event.target.files[0];
-    //   if (file) {
-    //     const reader = new FileReader();
-    //     reader.onload = function() {
-    //       pdfPreview.innerHTML = '';
-    //       const embedElement = document.createElement('embed');
-    //       embedElement.src = reader.result;
-    //       embedElement.width = '100%';
-    //       embedElement.height = '500px';
-    //       pdfPreview.appendChild(embedElement);
-    //     };
-    //     reader.readAsDataURL(file);
-    //   } else {
-    //     pdfPreview.innerHTML = ''; 
-    //   }
-    // });
-
-    // videoInput.addEventListener('change', function(event) {
-    //   const file = event.target.files[0];
-    //   console.log('wori')
-    //   if (file) {
-    //     const reader = new FileReader();
-    //     reader.onload = function() {
-    //       videoPreview.innerHTML = '';
-    //       const videoElement = document.createElement('video');
-    //       videoElement.src = reader.result;
-    //       videoElement.controls = true;
-    //       videoElement.width = '100%';
-    //       videoPreview.appendChild(videoElement);
-    //     };
-    //     reader.readAsDataURL(file);
-    //   } else {
-    //     videoPreview.innerHTML = ''; 
-    //   }
-    // });
+    var uploadedVideo = null;
+    $("#video").on("change", function() {
+        var file = this.files[0];
+        if (file && file.type.includes("video/")) {
+            uploadedVideo = file;
+            var videoPreview = `
+                  <video class="video-preview" width="100%" height="auto" controls>
+                  <source src="${URL.createObjectURL(file)}" type="${file.type}">
+                      Your browser does not support the video tag.
+                  </video>`;
+            $("#preVideo").html(videoPreview);
+        } else {
+            toastr.error("Please select a valid video file.");
+        }
+      });
 
 
     $(document).ready(function() {
@@ -313,38 +270,18 @@
       success: function (response) {
         var result = JSON.parse(response);
         data = result.data;
-        var count = 0; var temp = [];
-        data.map(obj => {
-          var tryed = `
-                <i
-                  onclick="setid('${obj.id}')" 
-                  data-feather="trash-2" 
-                  data-bs-toggle="modal" 
-                  data-original-title="test"
-                  data-bs-target="#exampleModal"
-                  style="cursor:pointer">
-                </i>`;
-          temp.push(
-            {
-              'count': ++count,
-              'pdf': obj.portfolio_file, 
-              'video':obj.sample_video_file,
-              'action': tryed})
-          });
-          if(dataTable){
-            dataTable.destroy();
-          }
-        dataTable = $('#tbl').DataTable({
-        "pageLength": 10,
-        "columns": [
-          {"data": "count"},  
-          {"data": "pdf"},
-          {"data": "video"}, 
-          {"data": "action"}  
-        ]
-        });
-        dataTable.clear().rows.add(temp).draw();
-        feather.replace();
+        var fetchPDF = data[0].portfolio_file;
+        var fetchVideo = data[0].sample_video_file;
+        $('#prePDF').html(`
+        <iframe 
+          class="pdf-preview" 
+          src="ajax/general_settings/files/featured_files/${data[0].id}/${fetchPDF}"
+          width="100%" height="600">`);
+        $('#preVideo').html(`
+        <video class="video-preview" width="100%" height="auto" controls>
+          <source src="ajax/general_settings/files/featured_files/${data[0].id}/${fetchVideo}" >
+              Your browser does not support the video tag.
+        </video>`);
       }
     })
     };fetchdata();
