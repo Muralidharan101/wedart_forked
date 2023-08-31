@@ -65,6 +65,19 @@
         return "";
     }
 
+    window.onload = function () {
+        checkCookie();
+    }
+
+    function checkCookie() {
+      let role = getCookie("role"); let srole = sessionStorage.getItem('role');
+      let name = getCookie("name"); let sname = sessionStorage.getItem('name');
+      let mobile = getCookie("phone"); let smobile = sessionStorage.getItem('phone');
+      if ((name == "" && role == "" && mobile == "") && (sname == null && srole == null && smobile == null)) {
+       window.location.href = 'login.php';
+      } 
+    }
+
     function getUname (){
         var name = getCookie('name');
         if(name != ''){
@@ -82,8 +95,8 @@
             document.getElementById('Urole').textContent = sessionStorage.getItem('role').toUpperCase();
         }
     }getRole();
-    
 
+    
 </script>
 
 <style>
