@@ -87,6 +87,7 @@
                             style="background-color: #faf5f5" id="pdf">
                         </div>
                       </div>
+                      <div class="col-lg-2"></div>
                       <div class="col-lg-8">
                         <div class="mb-3">
                           <label class="form-label">PDF Preview</label>
@@ -116,6 +117,7 @@
                           id="video">
                       </div>
                     </div>
+                    <div class="col-lg-2"></div>
                     <div class="col-lg-8">
                       <div class="mb-3">
                         <label class="form-label">Video Preview</label>
@@ -376,7 +378,7 @@
     .doc{
       min-height: 180px;
       padding: 2em;
-      border: 1px solid #f2f2f2;
+      border: 1px solid grey;
       border-radius: 8px; 
     }
   </style>
