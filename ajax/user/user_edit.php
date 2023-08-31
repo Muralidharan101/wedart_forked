@@ -9,18 +9,46 @@
     $user_role = mysqli_real_escape_string($conn, $_POST['user_role']);
 
     $enc_pass = md5('wedart'.$user_password);
-    
-    $sql = "UPDATE user_data SET `name`='$user_name', `mobile`='$user_mobile', `password`='$enc_pass', `branch_id`='$user_branch', `role`='$user_role', `created_by`='null' WHERE `id`='$id'";
 
+    $sql = "SELECT mobile FROM user_data WHERE mobile='$user_mobile' AND id != '$id' ";
     if(mysqli_query($conn, $sql))
     {
-        $res['status']  = 'Success';
-        $res['remarks'] = 'User Details Updated';
+        $res['status']  = 'Exist';
+        $res['remarks'] = 'Mobile number already exists';
     }
     else
     {
-        $res['status']  = 'Failed';
-        $res['remarks'] = 'Failed to Update User';
+        if($user_password == '' || $user_password == null)
+        {
+            $sql2 = "UPDATE user_data SET `name`='$user_name', `mobile`='$user_mobile', `branch_id`='$user_branch', `role`='$user_role', `created_by`='null' WHERE `id`='$id'";
+
+            if(mysqli_query($conn, $sql2))
+            {
+                $res['status']  = 'Success';
+                $res['remarks'] = 'User Details Updated';
+            }
+            else
+            {
+                $res['status']  = 'Failed';
+                $res['remarks'] = 'Failed to Update User';
+            }    
+        }
+        else
+        {
+            $sql2 = "UPDATE user_data SET `name`='$user_name', `mobile`='$user_mobile', `password`='$enc_pass', `branch_id`='$user_branch', `role`='$user_role', `created_by`='null' WHERE `id`='$id'";
+
+            if(mysqli_query($conn, $sql2))
+            {
+                $res['status']  = 'Success';
+                $res['remarks'] = 'User Details Updated';
+            }
+            else
+            {
+                $res['status']  = 'Failed';
+                $res['remarks'] = 'Failed to Update User';
+            }
+        }
+        
     }
     echo json_encode($res);
 ?>
