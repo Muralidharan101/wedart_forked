@@ -320,6 +320,7 @@
         toastr.error('Enter Event Date/Time')
       } else {
       
+      fd.append('id', decodedData.lead_id)
       fd.append('name', c_name.value)
       fd.append('phone',contact.value)
       fd.append('other_info',other_info.value)
