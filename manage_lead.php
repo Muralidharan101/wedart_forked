@@ -277,7 +277,7 @@
               }
             }
           })
-          inpt3.value
+          inpt2.value = leadDetails.inpt3
         } else {
           leads.map(obj => {
             if(obj.id == decodedData.lead_id){
@@ -324,7 +324,7 @@
       fd.append('name', c_name.value)
       fd.append('phone',contact.value)
       fd.append('other_info',other_info.value)
-      fd.append('esimated_amount', EstimatedAmount.value)
+      fd.append('estimated_amount', EstimatedAmount.value)
       
       if(decodedData.lead == 'wedding'){
         fd.append('wedding',true);
@@ -347,7 +347,9 @@
           var result = JSON.parse(response);
           if (result.status == 'Success') {
             toastr.success(result.remarks);
-            $('#inpt1').val('');$('#inpt2').val('');
+            setTimeout(() => {
+              window.location.href='list_lead.php'
+            }, 1300)
           } else if (result.status == 'Available') {
             toastr.error(result.remarks);
           } else {

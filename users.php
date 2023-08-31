@@ -91,12 +91,12 @@
                     <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label" for="inpt">Enter Mobile Number</label>
-                        <input class="form-control" type="number" style="border: 1px solid #e0dddd" id="user_mobile">
+                        <input class="form-control" oninput="onlynum(this)" style="border: 1px solid #e0dddd" id="user_mobile">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label" for="inpt">Create Password</label>
+                        <label class="form-label" for="inpt">Password</label>
                         <input class="form-control" type="password" style="border: 1px solid #e0dddd" id="user_password">
                       </div>
                     </div>
@@ -222,6 +222,11 @@
     var deleteid;
     var dataTable;
 
+    function onlynum(e) {
+      var input = e.value.replace(/[^0-9]/g, '');  
+      e.value = input; 
+    }
+
     function setid(ob) {
       console.log('clicked', ob)
       deleteid = ob;
@@ -233,7 +238,7 @@
       console.log(id, name, mobile, role, branch, password); deleteid = id;
       document.getElementById('tit').innerHTML = 'Edit User '+ name;
       document.getElementById('user_name').value = name; document.getElementById('user_mobile').value = mobile;
-      document.getElementById('user_password').value = name; 
+      document.getElementById('user_password').value = ""
       var brn = document.getElementById('user_branch');
       while(brn.firstChild){
         brn.removeChild(brn.firstChild)
