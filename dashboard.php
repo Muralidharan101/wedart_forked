@@ -217,6 +217,27 @@
     integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <script>
+    var lead = document.getElementById('dispLeads');
+    var followUp = document.getElementById('dispFollowUp');
+    var pendingpay = document.getElementById('dispPendingPay');
+
+    function fetchdata(){
+      $.ajax({
+        url: 'ajax/dashboard/list.php',
+        type: 'get',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+            lead.innerHTML = `&nbsp; &nbsp;` + result.lead_count;
+            followUp.innerHTML = `&nbsp; &nbsp;` + result.today_count.follow_date_count;
+            pendingpay.innerHTML = `&nbsp; &nbsp;` +result.payment_count;
+        }
+      })
+    }fetchdata();
+  </script>
+
 
 <style>
   .badge:hover{
