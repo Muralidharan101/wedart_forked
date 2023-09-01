@@ -5,6 +5,8 @@
         'status' => 'Failed',
         'remarks' => 'Unable to send data'
     ];
+    // $temp1 = [];
+    // $temp2 = [];
 
     $lead = mysqli_real_escape_string($conn, $_POST['lead']);
 

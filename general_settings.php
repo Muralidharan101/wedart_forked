@@ -87,6 +87,7 @@
                             style="background-color: #faf5f5" id="pdf">
                         </div>
                       </div>
+                      <div class="col-lg-2"></div>
                       <div class="col-lg-8">
                         <div class="mb-3">
                           <label class="form-label">PDF Preview</label>
@@ -116,6 +117,7 @@
                           id="video">
                       </div>
                     </div>
+                    <div class="col-lg-2"></div>
                     <div class="col-lg-8">
                       <div class="mb-3">
                         <label class="form-label">Video Preview</label>
@@ -143,23 +145,6 @@
       <!-- footer start-->
       <?php include 'footer.php'; ?>
 
-      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Action</h3>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">Are You Sure To Delete</div>
-            <div class="modal-footer">
-              <button class="btn btn-primary" type="button" data-bs-dismiss="modal" onclick="setid('')">Cancel</button>
-              <button class="btn btn-danger" type="button" data-bs-dismiss="modal" onclick="deletereq()">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
     </div>
   </div>
   </div>
@@ -181,7 +166,9 @@
 
     <script src="../assets/js/tooltip-init.js"></script>
     <!-- Theme js-->
-    <script src="../assets/js/script.js"></script>  
+    <script src="../assets/js/script.js"></script>
+    <!--mur -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>  
 
     <!--Toster-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
@@ -196,47 +183,33 @@
     var data;
     var deleteid;
     var dataTable;
-    const fileInput = document.getElementById('pdf');
-    const pdfPreview = document.getElementById('prePDF');
-    const videoInput = document.getElementById('video');
-    const videoPreview = document.getElementById('preVideo');
-    
-    fileInput.addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function() {
-          pdfPreview.innerHTML = '';
-          const embedElement = document.createElement('embed');
-          embedElement.src = reader.result;
-          embedElement.width = '100%';
-          embedElement.height = '500px';
-          pdfPreview.appendChild(embedElement);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        pdfPreview.innerHTML = ''; 
-      }
-    });
 
-    videoInput.addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      console.log('wori')
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function() {
-          videoPreview.innerHTML = '';
-          const videoElement = document.createElement('video');
-          videoElement.src = reader.result;
-          videoElement.controls = true;
-          videoElement.width = '100%';
-          videoPreview.appendChild(videoElement);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        videoPreview.innerHTML = ''; 
-      }
+    var uploadedFile = null;
+    $("#pdf").on("change", function() {
+        var file = this.files[0];
+        if (file && file.type === "application/pdf") {
+            uploadedFile = file;
+            var pdfPreview = `<iframe class="pdf-preview" src="${URL.createObjectURL(file)}" width="100%" height="600"></iframe>`;
+            $("#prePDF").html(pdfPreview);
+        } else {
+            toastr.error("Please select a valid PDF file.");
+        }
     });
+    var uploadedVideo = null;
+    $("#video").on("change", function() {
+        var file = this.files[0];
+        if (file && file.type.includes("video/")) {
+            uploadedVideo = file;
+            var videoPreview = `
+                  <video class="video-preview" width="100%" height="auto" controls>
+                  <source src="${URL.createObjectURL(file)}" type="${file.type}">
+                      Your browser does not support the video tag.
+                  </video>`;
+            $("#preVideo").html(videoPreview);
+        } else {
+            toastr.error("Please select a valid video file.");
+        }
+      });
 
 
     $(document).ready(function() {
@@ -297,66 +270,21 @@
       success: function (response) {
         var result = JSON.parse(response);
         data = result.data;
-        var count = 0; var temp = [];
-        data.map(obj => {
-          var tryed = `
-                <i
-                  onclick="setid('${obj.id}')" 
-                  data-feather="trash-2" 
-                  data-bs-toggle="modal" 
-                  data-original-title="test"
-                  data-bs-target="#exampleModal"
-                  style="cursor:pointer">
-                </i>`;
-          temp.push(
-            {
-              'count': ++count,
-              'pdf': obj.portfolio_file, 
-              'video':obj.sample_video_file,
-              'action': tryed})
-          });
-          if(dataTable){
-            dataTable.destroy();
-          }
-        dataTable = $('#tbl').DataTable({
-        "pageLength": 10,
-        "columns": [
-          {"data": "count"},  
-          {"data": "pdf"},
-          {"data": "video"}, 
-          {"data": "action"}  
-        ]
-        });
-        dataTable.clear().rows.add(temp).draw();
-        feather.replace();
+        var fetchPDF = data[0].portfolio_file;
+        var fetchVideo = data[0].sample_video_file;
+        $('#prePDF').html(`
+        <iframe 
+          class="pdf-preview" 
+          src="ajax/general_settings/files/featured_files/${data[0].id}/${fetchPDF}"
+          width="100%" height="600">`);
+        $('#preVideo').html(`
+        <video class="video-preview" width="100%" height="auto" controls>
+          <source src="ajax/general_settings/files/featured_files/${data[0].id}/${fetchVideo}" >
+              Your browser does not support the video tag.
+        </video>`);
       }
     })
     };fetchdata();
-
-    // function setid(ob) {
-    //   deleteid = ob;
-    // }
-
-    // function deletereq() {
-    //   var fd = new FormData();
-    //   fd.append('id', deleteid);
-    //   $.ajax({
-    //     url: 'ajax/general_settings/general_settings_remove.php',
-    //     data: fd,
-    //     type: 'post',
-    //     contentType: false,
-    //     processData: false,
-    //     success: function (response) {
-    //       var result = JSON.parse(response);
-    //       if(result.status == 'Success'){
-    //           toastr.success(result.remarks);
-    //           setid('');fetchdata();
-    //       } else {
-    //         toastr.error('Sry, Error with the Backend');
-    //       }
-    //     }
-    //   })
-    // }
 
 
     const observer = new MutationObserver(function(mutationsList, observer) {
@@ -376,7 +304,7 @@
     .doc{
       min-height: 180px;
       padding: 2em;
-      border: 1px solid #f2f2f2;
+      border: 1px solid grey;
       border-radius: 8px; 
     }
   </style>

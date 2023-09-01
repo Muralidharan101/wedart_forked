@@ -3,6 +3,7 @@
     $res = [];
     $count = 0; 
     $today = date("Y-m-d");
+    $temp = [];
 
     $lead    = mysqli_real_escape_string($conn, $_POST['lead']);
 
@@ -21,11 +22,13 @@
             while ($data = mysqli_fetch_assoc($result)) 
             { 
                 $count++;
-                $res['data'][] = $data;
+                $temp[] = $data;
             }
+            $res['data'] = $temp;
             $res['status'] = 'Success';
             $res['remarks'] = 'Follow Data Listed Successfully';
         } else {
+            $res['data'] = $temp;
             $res['status'] = 'Failed';
             $res['remarks'] = 'Failed to List Follow Data';
         }
@@ -43,12 +46,14 @@
             while ($data = mysqli_fetch_assoc($result)) 
             { 
                 $count++;
-                $res['data'][] = $data;
+                $temp[] = $data;
             }
+            $res['data'] = $temp;
             $res['status'] = 'Success';
             $res['remarks'] = 'Follow Up Data Listed Successfully';
         } 
         else {
+            $res['data'] = $temp;
             $res['status'] = 'Failed';
             $res['remarks'] = 'Failed to List Follow Up Data';
         }

@@ -37,11 +37,15 @@
                                           <div class="simplebar-height-auto-observer"></div>
                                     </div>
                                     <div class="simplebar-mask">
-                                          <div class="simplebar-offset" style="right: 0px;bottom: 0px;height: 100vh;">
-                                                <div class="simplebar-content-wrapper" style="height: auto;overflow: hidden scroll;height: 100vh !important;">
+                                          <div class="simplebar-offset" style="right: 0px;bottom: 0px;height: 90vh;">
+                                                <div class="simplebar-content-wrapper" style="overflow: hidden scroll;height: 90vh !important;">
                                                       <div class="simplebar-content" style="padding: 0px 0px 30px;">
 
-                                                            <li class="back-btn"><a href="index.html" data-bs-original-title="" title=""><img class="img-fluid for-light" src="../assets/images/logo/logo-icon.png" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo-icon-dark.png" alt=""></a>
+                                                            <li class="back-btn">
+                                                                  <!-- <a href="index.html" data-bs-original-title="" title="">
+                                                                        <img class="img-fluid for-light" src="../assets/images/logo/logo-icon.png" alt="">
+                                                                        <img class="img-fluid for-dark" src="../assets/images/logo/logo-icon-dark.png" alt="">
+                                                                  </a> -->
                                                                   <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                                             </li>
 
@@ -111,13 +115,13 @@
 
                                           </div>
                                     </div>
-                                    <div class="simplebar-placeholder" style="width: auto; height: 2453px;"></div>
+                                    <div class="simplebar-placeholder" style="width: auto; height: 2653px;"></div>
                               </div>
                               <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
                                     <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
                               </div>
                               <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
-                                    <div class="simplebar-scrollbar" style="height: 2551px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                    <div class="simplebar-scrollbar" style="height: 2751px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
                               </div>
                         </ul>
                   </div>

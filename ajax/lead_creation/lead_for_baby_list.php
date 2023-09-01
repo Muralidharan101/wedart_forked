@@ -2,6 +2,7 @@
     require_once '../datab.php';
 
     $res = [];
+    $temp = [];
 
     $count = 0;
     
@@ -10,16 +11,18 @@
     while($data = mysqli_fetch_assoc($result))
     {
         $count++;
-        $res['data'][] = $data; 
+        $temp[] = $data;
     }
 
     if($count == 0)
     {
+        $res['data'] = $temp; 
         $res['status']  = 'Error';
         $res['remarks'] = 'Baby lead data Not-Available'; 
     }
     else
     {
+        $res['data'] = $temp; 
         $res['status']  = 'Success';
         $res['remarks'] = 'Baby lead data sent successfully';
     }

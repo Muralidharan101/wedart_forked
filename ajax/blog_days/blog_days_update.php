@@ -8,8 +8,8 @@
     $blog_days_id = mysqli_real_escape_string($conn, $_POST['blog_days_id']);
     $day_count = mysqli_real_escape_string($conn, $_POST['day_count']);
 
-    $sql = "UPDATE blog_days_data SET `blog_id`='$blog_id', `blog_days_id`='$blog_days_id', `day_count`='$day_count' WHERE `id`='$id' ";
-    
+    $sql = "UPDATE blogs_days_data SET `blog_id`='$blog_id', `blog_days_id`='$blog_days_id', `day_count`='$day_count' WHERE `id`='$id' ";
+
     if($row = mysqli_query($conn, $sql))
     {
         $res['status']  = 'Success';

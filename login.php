@@ -140,7 +140,7 @@
           let mobile = getCookie("phone");
 
           if (name != "" && role != "" && mobile != "") {
-           window.location.href = 'list_lead.php';
+           window.location.href = 'dashboard.php';
           } 
         }
 

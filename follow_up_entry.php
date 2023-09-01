@@ -64,7 +64,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>FollowUp</h3>
+                <h3>FollowUp Lead</h3>
               </div>
             </div>
           </div>
@@ -76,37 +76,94 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>Client Details</h3>
+                  <h3>Lead Info</h3>
                 </div>
                 <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="mb-3">
-                        <label class="form-check-label">Name</label>&emsp;
-                        <label class="form-check-label" style="color: blue" id="namelab">(null)</label>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-check-label">Event-Date</label>&emsp;
-                        <label class="form-check-label" style="color: blue" id="event_date">(null)</label>
+                  <!-- Tab --> 
+
+                  <ul class="nav nav-tabs" id="icon-tab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#Client-Details" role="tab" aria-controls="pills-home" aria-selected="true">
+                        Client Info
+                        <div class="d-flex"></div></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#Service-Details" role="tab" aria-controls="pills-profile" aria-selected="false">
+                        Services
+                      </a>
+                    </li>
+                  </ul>
+
+                  <br>
+
+                  <div class="tab-content container-fluid" id="pills-tabContent" style="background-color: #f5f5f5;border-radius:30px;padding:2em">
+                  <!-- style="background-color: #f2f2f2;border-radius:30px;padding:2em" -->
+                    <div class="tab-pane fade show active" id="Client-Details" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                      <div class="row">
+
+                        <div class="col-lg-4">
+                          <div class="mb-3">
+                            <label class="form-check-label">Name :</label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="namelab">(null)</label>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-check-label">Event-Date :</label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="event_date">(null)</label>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                          <div class="mb-3">
+                            <label class="form-check-label" id="dynamic1"></label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="dynamic11">(null)</label>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-check-label" id="dynamic2"></label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="dynamic22">(null)</label>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                          <div class="mb-3">
+                            <label class="form-check-label">Phone :</label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="phone">(null)</label>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-lg-8">
-                      <div class="mb-3">
-                        <label class="form-check-label">Service</label>&emsp;
-                        <label class="form-check-label" style="color: blue" id="service">(null)</label>
+
+                    <div class="tab-pane fade" id="Service-Details" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label class="form-check-label">Service :</label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="service">(null)</label>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-check-label">Additional Service :</label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="a_s">
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label class="form-check-label">Estimated Amount :</label>&emsp;
+                            <label class="form-check-label" style="color: blue" id="estimated_amount">(null)</label>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-check-label">Other Info :</label>
+                            <label class="form-check-label" style="color: blue" id="other_info">
+                            </label>
+                          </div>
+                        </div>
                       </div>
-                      <div class="mb-3">
-                        <label class="form-check-label">Additional Service</label>&emsp;
-                        <label class="form-check-label" style="color: blue" id="a_s">
-                          <!-- <span 
-                                          class="badge badge-pill badge-light"
-                                          style="color:black; background-color: lightgrey">
-                                              Photography
-                                      </span> -->
-                        </label>
-                      </div>
+
                     </div>
                   </div>
+
                 </div>
               </div>
 
@@ -401,8 +458,7 @@
     } else {
       document.getElementById('disp').style.display = 'none';
     }
-  }
-  blogCheck();
+  } blogCheck();
 
   function convertCheck() {
     var blg = document.getElementById('blog_check');
@@ -481,8 +537,9 @@
         var result = JSON.parse(response);
         if (result.status == 'Success') {
           data = result.data;
+          var lead_data = result.lead_data
           createTable();
-          data.map((item, index) => {
+          lead_data.map((item, index) => {
             var sts_val = item.lead_status;
             checkStatus(sts_val)
             var test = JSON.parse(item.service);
@@ -501,19 +558,36 @@
                 'name': item.name,
                 'eventdate': item.event_dateTime || item.event_date,
                 'service': sval,
-                'info': val
+                'info': val,
+                'phone': item.phone,
+                'estimated_amount': item.estimated_amount,
+                'other_info': item.other_info
               }
             }
+            if(decodedData.lead == 'wedding'){
+              document.getElementById('dynamic1').innerHTML = "Event :";
+              document.getElementById('dynamic11').innerHTML = item.event;
+              document.getElementById('dynamic2').innerHTML = "Mandapam :";
+              document.getElementById('dynamic22').innerHTML = item.mandapam;
+            } else {
+              document.getElementById('dynamic1').innerHTML = "Gender :";
+              document.getElementById('dynamic11').innerHTML = item.sex;
+              document.getElementById('dynamic2').innerHTML = "Age :";
+              document.getElementById('dynamic22').innerHTML = item.age;
+            }
+            
           });
           document.getElementById('namelab').innerHTML = datobj.name;
           document.getElementById('event_date').innerHTML = datobj.eventdate;
           document.getElementById('service').innerHTML = datobj.service;
           document.getElementById('a_s').innerHTML = datobj.info;
+          document.getElementById('phone').innerHTML = datobj.phone;
+          document.getElementById('estimated_amount').innerHTML = datobj.estimated_amount;
+          document.getElementById('other_info').innerHTML = datobj.other_info;
         }
       }
     })
-  }
-  fetchdata();
+  } fetchdata();
 
   function setid(type, id, date, approach) {
     console.log(type, id, date, approach);

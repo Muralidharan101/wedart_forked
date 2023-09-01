@@ -135,7 +135,7 @@
                         <label class="form-label">Contact No <span style="color:red">*</span></label>
                         <input class="form-control" 
                           type="text" 
-                          oninput="onlynum(this);"  style="border: 1px solid #e0dddd" id="contact">
+                          oninput="onlynum(this)"  style="border: 1px solid #e0dddd" id="contact">
                       </div>                     
                     </div>
 

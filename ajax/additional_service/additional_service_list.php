@@ -4,6 +4,7 @@
 
     $res = [];
     $count = 0;
+    $temp = [];
 
     $sql = "SELECT asd.id, asd.additional_service_name, asd.type_id, std.type_name
             FROM additional_service_data asd 
@@ -15,20 +16,22 @@
     while($data = mysqli_fetch_assoc($rec))
     {
         $count++;
-        $res['data'][] = $data;
+        $temp[] = $data;
     }
 
     if($count == 0)
     {
+        $res['data'] = $temp;
         $res['status'] = 'Not-Available';  
         $res['remarks'] = 'Service Not-Available';  
     }
     else
     {
+        $res['data'] = $temp;
         $res['status'] = 'Success';  
         $res['remarks'] = 'Service Sent';  
     }
-
+    
     $res['count'] = $count;
 
     echo json_encode($res);

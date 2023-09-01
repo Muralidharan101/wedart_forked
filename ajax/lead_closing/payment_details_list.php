@@ -3,6 +3,7 @@
 
     $res = [];
     $count = 0;
+    $temp = [];
 
     $lead = mysqli_real_escape_string($conn, $_POST['lead']);
 
@@ -13,19 +14,21 @@
 
     if($row = mysqli_query($conn, $sql))
     {
-        while($result = mysqli_fetch_assoc($row))
+        while($data = mysqli_fetch_assoc($row))
         {
             $count++;
-            $res['data'][] = $data; 
+            $temp[] = $data;
         }
         
         if($count == 0)
         {
+            $res['data'] = $temp; 
             $res['status']  = 'Success';
             $res['remarks'] = 'Data sent successfully';
         }
         else
         {
+            $res['data'] = $temp; 
             $res['status']  = 'Failed';
             $res['remarks'] = 'Failed to sent data';
         }

@@ -33,10 +33,10 @@ else if($video_ext !== 'mp4')
     $res['status']  = 'Invalid Video file';
     $res['remarks'] = 'Invalid file format ' .$video_ext. ' Not a valid format!'; 
 }
-else if($video_size > 26214400)
+else if($video_size > 52428800)
 {
     $res['status']  = 'videoBigFile';
-    $res['remarks'] = 'Video File size more than 25MB!';
+    $res['remarks'] = 'Video File size more than 50MB!';
 }
 else
 {
