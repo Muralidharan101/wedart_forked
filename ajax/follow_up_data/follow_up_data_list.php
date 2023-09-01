@@ -36,7 +36,6 @@
             { 
                 $count++;
                 $temp1[] = $data; 
-                
             }
             $res['data'] = $temp1;
             $res['status'] = 'Success';
@@ -81,6 +80,7 @@
         else
         {
             $res['lead_data'] = $lead_data;
+
             $res['status']  = 'Failed';
             $res['remarks'] = 'Unable to list lead data';
         }
@@ -114,6 +114,7 @@
                 $count++;
                 $temp1[] = $data;
             }
+
             $res['data'] = $temp1;
             $res['status']    = 'Success';
             $res['remarks']   = 'Follow Up Data Listed Successfully';

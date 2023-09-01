@@ -2,7 +2,9 @@
     require_once '../datab.php';
 
     $res = [];
+
     $temp = [];
+
 
     $sql = "SELECT 
                 bd.id, 
@@ -25,15 +27,19 @@
     {
         while($data = mysqli_fetch_assoc($result))
         {
+
            $temp[] = $data;
         }
         $res['data'] = $temp;
+
         $res['status']  = 'Success';
         $res['remarks'] = 'Data sent successfully';
     }
     else
     {
+
         $res['data'] = $temp;
+
         $res['status']  = 'Failed';
         $res['remarks'] = 'No Data available';
     }
