@@ -99,6 +99,7 @@
                           <label class="form-label">Lead Status</label>
                           <select class="form-select" style="border: 1px solid #e0dddd" id="lead_status_select" onchange="radioChange()">
                             <option value="all" selected>All</option>
+                            <option value="open">Open</option>
                             <option value="cold">Cold</option>
                             <option value="hot">Hot</option>
                             <option value="ready">Ready</option>
@@ -263,13 +264,20 @@
                         </span><br>`)).join('');
             var statusdisplay = document.createElement('span');
             if (obj.lead_status === 'open') {
-              statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-secondary');
             } else if (obj.lead_status === 'closed') {
               statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
-            } else {
+            } else if(obj.lead_status === 'converted') {
               statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
+            } else if(obj.lead_status === 'hot'){
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+            } else if(obj.lead_status === 'cold'){
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-info');
+            } else if(obj.lead_status === 'ready'){
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-primary');
+            } else {
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-dark');
             }
-            statusdisplay.style.cursor = 'pointer';
             statusdisplay.textContent = obj.lead_status;
             var dat = encodeURIComponent(JSON.stringify({
               'lead_id': obj.id,
@@ -309,11 +317,19 @@
                         </span><br>`)).join('');
             var statusdisplay = document.createElement('span');
             if (obj.lead_status === 'open') {
-              statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-secondary');
             } else if (obj.lead_status === 'closed') {
               statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
-            } else {
+            } else if(obj.lead_status === 'converted') {
               statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
+            } else if(obj.lead_status === 'hot'){
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+            } else if(obj.lead_status === 'cold'){
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-info');
+            } else if(obj.lead_status === 'ready'){
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-primary');
+            } else {
+              statusdisplay.classList.add('badge', 'badge-pill', 'badge-dark');
             }
             statusdisplay.style.cursor = 'pointer';
             statusdisplay.textContent = obj.lead_status;
