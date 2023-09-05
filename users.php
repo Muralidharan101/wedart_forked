@@ -334,6 +334,12 @@
       var mobileinput = $('#user_mobile').val();
       var branchinput = $('#user_branch').val();
       var roleinput = $('#user_role').val();
+      var created_by; 
+      if(getCookie("name") != ""){
+        created_by = getCookie("name")
+      } else {
+        created_by = sessionStorage.getItem('name');
+      }
 
       if(nameinput == '')
       {
@@ -362,7 +368,8 @@
         fd.append('user_mobile', mobileinput);
         fd.append('user_password', passwordinput);
         fd.append('user_branch', branchinput);
-        fd.append('user_role', roleinput)
+        fd.append('user_role', roleinput);
+        fd.append('created_by', created_by)
         $.ajax({
           url: 'ajax/user/user_creation.php',
           data: fd,

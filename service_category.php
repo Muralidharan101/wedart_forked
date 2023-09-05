@@ -241,7 +241,7 @@
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
-              $('#src').val('');
+              $('#inpt').val('');
               fetchdata();
             } else if (result.status == 'Available') {
               toastr.error(result.remarks);

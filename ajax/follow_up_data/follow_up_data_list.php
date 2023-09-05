@@ -55,14 +55,11 @@
                     l.phone,
                     l.service,
                     sd.service_name,
-                    std.type_name,
                     l.other_info,
                     l.follow_up_category
                 FROM lead_form_baby AS l 
                 JOIN service_data AS sd
                 ON l.main_service = sd.id
-                JOIN service_type_data AS std
-                ON l.service_category = std.id
                 WHERE l.id = '$lead_id'";
 
         if($result = mysqli_query($conn, $sql2))
@@ -127,14 +124,11 @@
                     l.phone,
                     l.service, 
                     sd.service_name,
-                    std.type_name,
                     l.other_info,
                     l.follow_up_category
                 FROM lead_form_wd AS l 
                 JOIN service_data AS sd
                 ON l.main_service = sd.id
-                JOIN service_type_data AS std
-                ON l.service_category = std.id
                 WHERE l.id = '$lead_id' ";
 
         if($result = mysqli_query($conn, $sql2))
