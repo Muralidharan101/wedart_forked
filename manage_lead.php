@@ -153,7 +153,7 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                       <div class="mb-3">
                         <label class="form-label">Other Info</label>
                         <textarea class="form-control"  
@@ -163,6 +163,15 @@
                           placeholder="Enter other informations about the lead"></textarea>
                       </div>
                     </div>
+
+                      <div class="col-lg-4" id="leadDiv">
+                        <div class="mb-3">
+                          <label class="form-label">Lead Status</label>
+                          <select class="form-select" style="border: 1px solid #e0dddd" id="lead_status_select">
+                            <!--lead status-->
+                          </select>
+                        </div>
+                      </div>
 
                   </div> 
 
@@ -224,6 +233,7 @@
     var contact = document.getElementById('contact');
     var other_info = document.getElementById('otherinfo');
     var EstimatedAmount = document.getElementById('E_Amount');
+    var lead_status = document.getElementById('lead_status_select');
     var link;
     var leadDetails;
     
@@ -273,10 +283,18 @@
                 'inpt2' : obj.event, 
                 'inpt3': obj.mandapam,
                 'estimated_amount': obj.estimated_amount,
-                'other_info': obj.other_info
+                'other_info': obj.other_info,
+                'lead_status': obj.lead_status
               }
             }
           })
+          if(leadDetails.lead_status != "converted" || leadDetails.lead_status != "closed"){
+            lead_status.innerHTML = 
+            `<option value=${leadDetails.lead_status} selected >${leadDetails.lead_status}</option>
+             <option value="cold">Cold</option>
+             <option value="hot">Hot</option>
+             <option value="ready">Ready</option>`;
+          }
           inpt2.value = leadDetails.inpt3
         } else {
           leads.map(obj => {
@@ -289,7 +307,8 @@
                 'inpt2' : obj.age, 
                 'inpt3': obj.sex,
                 'estimated_amount': obj.estimated_amount,
-                'other_info': obj.other_info
+                'other_info': obj.other_info,
+                'lead_status': obj.lead_status
               }
             }
           })
@@ -297,6 +316,13 @@
               `<option value=${leadDetails.inpt3} selected >${leadDetails.inpt3}</option>
                <option value='boy'>boy</option>
                <option value='girl'>girl</option>`;
+          if(leadDetails.lead_status != "converted" || leadDetails.lead_status != "closed"){
+            lead_status.innerHTML = 
+            `<option value=${leadDetails.lead_status} selected >${leadDetails.lead_status}</option>
+             <option value="cold">Cold</option>
+             <option value="hot">Hot</option>
+             <option value="ready">Ready</option>`;
+          }
         }
         console.log(leadDetails)
         c_name.value = leadDetails.name;
@@ -305,6 +331,9 @@
         other_info.value = leadDetails.other_info;
         inpt1.value = leadDetails.inpt2;
         inpt3.value = leadDetails.inpt1;
+        if(leadDetails.lead_status == "converted" || leadDetails.lead_status == "closed"){
+          document.getElementById('leadDiv').style.display = 'none'
+        }
       }
       })
     } 
@@ -325,6 +354,10 @@
       fd.append('phone',contact.value)
       fd.append('other_info',other_info.value)
       fd.append('estimated_amount', EstimatedAmount.value)
+
+      if(leadDetails.lead_status != "converted" || leadDetails.lead_status != "closed"){
+        fd.append('lead_status', lead_status.value)
+      }
       
       if(decodedData.lead == 'wedding'){
         fd.append('wedding',true);
