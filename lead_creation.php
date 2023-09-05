@@ -98,7 +98,7 @@
                         name="lead" id="wedding" 
                         checked
                         type="radio" value="true" onchange="radioChange()">
-                      <label class="form-check-label" for="wedding">Wedding Leads</label>
+                      <label class="form-check-label" for="wedding">Leads</label>
                     </div>
 
                     <div class="form-check radio radio-primary col-lg-2">
@@ -108,20 +108,12 @@
                         type="radio" value="false" onchange="radioChange()">
                       <label class="form-check-label" for="baby">Baby's Event</label>
                     </div>
-                  </div>
+                  </div><br>
 
                   <div class="row">
                     <div class="col-lg-12"><br>
                       <h3>Client Details</h3><br>
                     </div>
-                    <!--Hidden-->
-                    <div class="col-lg-6" style="display: none;">
-                      <div class="mb-3">
-                        <label class="form-label">Lead No</label>
-                        <input class="form-control" style="border: 1px solid #e0dddd;" id="leadno">
-                      </div>
-                    </div>
-                    <!--end Hiddin-->
 
                     <div class="col-lg-4">
                       <div class="mb-3">
@@ -162,6 +154,13 @@
                           <option value="boy">Boy</option>
                           <option value="girl">Girl</option>
                         </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label">Booking No</label>
+                        <input class="form-control" style="border: 1px solid #e0dddd;" id="leadno">
                       </div>
                     </div>
 
@@ -570,7 +569,7 @@
         toastr.error('Select Service')
       } else {
       
-      fd.append('lead_no',leadno.value)
+      fd.append('booking_no',leadno.value)
       fd.append('source_id',source.value)
       fd.append('name', c_name.value)
       fd.append('phone',contact.value)

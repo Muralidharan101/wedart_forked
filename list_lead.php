@@ -84,14 +84,58 @@
                     <div class="row" style="margin-left: 0.5em;">
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                        <label class="form-check-label" for="wedding">Wedding Leads</label>
+                        <label class="form-check-label" for="wedding">Leads</label>
                       </div>
 
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
                         <label class="form-check-label" for="baby">Baby's Event</label>
                       </div>
+                    </div><br>
+
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <div class="mb-3">
+                          <label class="form-label">Lead Status</label>
+                          <select class="form-select" style="border: 1px solid #e0dddd" id="lead_status_select" onchange="radioChange()">
+                            <option value="all" selected>All</option>
+                            <option value="cold">Cold</option>
+                            <option value="hot">Hot</option>
+                            <option value="ready">Ready</option>
+                            <option value="converted">Converted</option>
+                            <option value="closed">Closed</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
+
+                    <!-- <div class="row" style="margin-left: 0.5em;">
+                      <div class="col-lg-12" style="margin-left: -1em;">
+                        <h3>Lead Status</h3>
+                      </div><br><br>
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead_status" id="cold" checked type="radio" value="true">
+                        <label class="form-check-label" for="cold">Cold</label>
+                      </div>
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead_status" id="hot" type="radio" value="true">
+                        <label class="form-check-label" for="hot">Hot</label>
+                      </div>
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead_status" id="ready" type="radio" value="true">
+                        <label class="form-check-label" for="ready">Ready</label>
+                      </div>
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead_status" id="converted" type="radio" value="true">
+                        <label class="form-check-label" for="converted">Converted</label>
+                      </div>
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead_status" id="closed" type="radio" value="true">
+                        <label class="form-check-label" for="closed">Closed</label>
+                      </div>
+                    </div> -->
+                    <br>
+
                     <div class="table-responsive">
                       <!-- class="table-responsive" -->
                       <table id="tbl">
@@ -192,9 +236,13 @@
     dataTable = $('#tbl').DataTable({
       "pageLength": 10
     });
+    var fd = new FormData();
+    var led_sts = $('#lead_status_select').val();
+    fd.append('lead_status', led_sts);
     $.ajax({
       url: link,
-      type: 'get',
+      data: fd,
+      type: 'post',
       contentType: false,
       processData: false,
       success: function(response) {

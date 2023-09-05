@@ -76,35 +76,31 @@
                     <h3>Transaction Date Range</h3>
                   </div>
                   <div class="card-body">
+                    <div class="row" style="margin-left: 0.5em;">
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
+                        <label class="form-check-label" for="wedding">Leads</label>
+                      </div>
+                      <div class="form-check radio radio-primary col-lg-2">
+                        <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
+                        <label class="form-check-label" for="baby">Baby's Event</label>
+                      </div>
+                    </div><br>
+
                     <div class="row">
-                        <h3></h3>
                         <div class="col-lg-8">
                             <div class="md-3">
-                                <label class="form-label" for="daterange">Select Date Range</label>
-                                <input type="text" class="form-control" name="daterange" value="01/01/2018 - 01/15/2018" />
+                                <label class="form-label" for="daterange">Date Range</label>
+                                <input 
+                                  type="text" 
+                                  class="form-control" 
+                                  style="border: 1px solid #e0dddd" 
+                                  name="daterange"  />
                             </div>
                         </div>
-
-                        <div class="card-header pb-0">
-                            <h3>Lead Types</h3>
-                        </div><br>
-                        <div class="row" style="margin-left: 0.5em; margin-top: 2em">
-                            <div class="form-check radio radio-primary col-lg-2">
-                              <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                              <label class="form-check-label" for="wedding">Wedding Leads</label>
-                            </div>
-
-                            <div class="form-check radio radio-primary col-lg-2">
-                              <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
-                              <label class="form-check-label" for="baby">Baby's Event</label>
-                            </div>
-                        </div>
-                        
-
-                        <div class="text-end">
-                            <button class="btn btn-primary" onclick="gend()">Generate Report</button>
-                        </div>
-                        
+                    </div> <br>
+                    <div>
+                      <button class="btn btn-primary" onclick="gend()">Generate Report</button>
                     </div>
                   </div>
 
@@ -187,9 +183,12 @@ var end;
 
 $(function() {
   $('input[name="daterange"]').daterangepicker({
-    opens: 'left',
+    opens: 'center',
     startDate: '01-01-2023',
-    endDate: '01-01-2023',  
+    endDate: '31-12-2023',
+    locale: {
+      format: 'DD-MM-YYYY'
+    }  
   }, function(st, en, label) {
     console.log("A new date selection was made: " + st.format('YYYY-MM-DD') + ' to ' + en.format('YYYY-MM-DD'));
     start = st.format('YYYY-MM-DD'); end = en.format('YYYY-MM-DD');
@@ -197,9 +196,9 @@ $(function() {
 });
 
 function gend(){
-    document.getElementById('disptable').style.display = 'block';
-    if(start != '' && end != ''){
-        radioChange()
+    if((start != '' && end != '') && (start != undefined && end != undefined)){
+        radioChange();
+        document.getElementById('disptable').style.display = 'block';
     } else {
         toastr.error('Select Date Range');
     }
@@ -215,13 +214,10 @@ function radioChange() {
         dataTable.destroy();
     }
     createTable();
-}
-radioChange();
+}; radioChange();
 
 
-function createTable() {
-    
-  
+  function createTable() {  
     dataTable = $('#tbl').DataTable({
         "pageLength": 10
     });
@@ -256,7 +252,7 @@ function createTable() {
             feather.replace();
         }
     });
-}
+  }
 
 
 
