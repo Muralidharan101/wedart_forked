@@ -291,7 +291,7 @@
               }
             }
           })
-          if(leadDetails.lead_status != "converted" || leadDetails.lead_status != "closed"){
+          if(leadDetails.lead_status != "converted" && leadDetails.lead_status != "closed"){
             lead_status.innerHTML = 
             `<option value=${leadDetails.lead_status} selected >${leadDetails.lead_status}</option>
              <option value="cold">Cold</option>
