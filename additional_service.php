@@ -101,7 +101,13 @@
 
                       <div class="col-lg-4">
                         <div class="mb-3">
-                          <label class="form-label" style="color:transparent">.</label>
+                          <label class="form-label">Enter Service Cost</label>
+                          <input class="form-control" style="border: 1px solid #e0dddd" oninput="onlynum(this)" id="service_cost">
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12">
+                        <div class="text-end">
                           <div>
                             <button class="btn btn-primary" id="addbtn" type="submit">Create Additional Service</button>
                           </div>
@@ -128,6 +134,7 @@
                           <td>SNo</td>
                           <td>Service Category</td>
                           <td>Additional Service</td>
+                          <td>Service Cost</td>
                           <td>Action</td>
                         </tr>
                       </thead>
@@ -168,6 +175,12 @@
                   <div class="mb-4">
                     <label class="form-label" for="edit">Enter Additional Service</label>
                     <input class="form-control" style="border: 1px solid #e0dddd" id="edit">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="mb-4">
+                    <label class="form-label" for="edit">Enter Service Cost</label>
+                    <input class="form-control" style="border: 1px solid #e0dddd" id="edit_cost">
                   </div>
                 </div>
               </div>
@@ -219,6 +232,11 @@
     var service;
     var dataTable;
 
+    function onlynum(e) {
+      var input = e.value.replace(/[^0-9]/g, '');  
+      e.value = input; 
+    }
+
     function fetchdata(){
       $.ajax({
       url: 'ajax/additional_service/additional_service_list.php',
@@ -232,7 +250,7 @@
         data.map(obj => {
           var tryed = `
                 <i
-                  onclick="setid('${obj.id}','${obj.additional_service_name}','${obj.type_id}','${obj.type_name}')" 
+                  onclick="setid('${obj.id}','${obj.additional_service_name}','${obj.type_id}','${obj.type_name}','${obj.additional_service_cost}')" 
                   data-feather="edit-2" 
                   data-bs-toggle="modal" 
                   data-original-title="test"
@@ -244,6 +262,7 @@
               'count': ++count,
               'type_name': obj.type_name || 'test', 
               'additional_service_name':obj.additional_service_name,
+              'cost': obj.additional_service_cost,
               'action': tryed})
           });
           if(dataTable){
@@ -255,6 +274,7 @@
               {"data": "count"},  
               {"data": "type_name"},
               {"data": "additional_service_name"}, 
+              {"data": "cost"},
               {"data": "action"}  
             ]
             });
@@ -267,6 +287,7 @@
     function postreq() {
       var service = $('#service').val();
       var additionalservice = $('#inpt').val();
+      let cost = $('#service_cost').val();
 
       if(service == '')
       {
@@ -275,12 +296,15 @@
       else if(additionalservice == '')
       {
         toastr.error('Enter additional service');
+      } else if (cost == ""){
+        toastr.error('Enter Cost');
       }
       else
       {
         var fd = new FormData();
         fd.append('service', service);
         fd.append('additional_service', additionalservice);
+        fd.append('additional_service_cost', cost);
 
         $.ajax({
           url: 'ajax/additional_service/additional_service_creation.php',
@@ -292,7 +316,7 @@
             var result = JSON.parse(response);
             if (result.status == 'Success') {
               toastr.success(result.remarks);
-              $('#inpt').val('');
+              $('#inpt').val(''); $('#service_cost').val('');
               fetchdata();
             } else if (result.status == 'Available') {
               toastr.error(result.remarks);
@@ -308,10 +332,13 @@
     function editreq() {
       var selectinpt = $('#editselect').val();
       var servicename = $('#edit').val();
+      let cost = $('#edit_cost').val();
 
       if(servicename == '')
       {
         toastr.error('Enter Additional service');
+      } else if(cost == ''){
+        toastr.error('Enter Cost');
       }
       else
       {
@@ -319,6 +346,7 @@
         fd.append('id', deleteid)
         fd.append('service', selectinpt);
         fd.append('additional_service', servicename)
+        fd.append('additional_service_cost', cost);
         $.ajax({
           url: 'ajax/additional_service/additional_service_edit.php',
           data: fd,
@@ -364,10 +392,11 @@
       })
     }
 
-    function setid(id, as_value, sel_id, sel_value) {
+    function setid(id, as_value, sel_id, sel_value, sel_cost) {
       console.log('clicked', id, as_value, sel_id, sel_value)
       deleteid = id; editname = as_value; 
       document.getElementById('edit').value = as_value;
+      document.getElementById('edit_cost').value = sel_cost
       var sel = document.getElementById('editselect');
       var setoption = document.createElement('option')
       setoption.value = sel_id;

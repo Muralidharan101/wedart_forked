@@ -264,9 +264,12 @@
     }; checkLead();
 
     function fetchleaddetails(){
+      var fd = new FormData();
+      fd.append('lead_status', 'all')
       $.ajax({
       url: link,
-      type: 'get',
+      data: fd,
+      type: 'post',
       contentType: false,
       processData: false,
       success: function(response) {
