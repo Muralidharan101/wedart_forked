@@ -5,6 +5,7 @@
     $today = date("Y-m-d");
 
     $lead    = mysqli_real_escape_string($conn, $_POST['lead']);
+    $res['data'] = [];
 
     if ($lead == 'baby') 
     {

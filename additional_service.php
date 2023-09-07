@@ -180,7 +180,7 @@
                 <div class="col-lg-12">
                   <div class="mb-4">
                     <label class="form-label" for="edit">Enter Service Cost</label>
-                    <input class="form-control" style="border: 1px solid #e0dddd" id="edit_cost">
+                    <input class="form-control" oninput="onlynum(this)" style="border: 1px solid #e0dddd" id="edit_cost">
                   </div>
                 </div>
               </div>

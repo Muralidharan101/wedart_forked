@@ -351,6 +351,7 @@
     function editreq() {
       var selectinpt = $('#editselect').val();
       var servicename = $('#edit').val();
+      let cost = $('#edit_cost').val();
 
       if(servicename == '')
       {
@@ -362,6 +363,7 @@
         fd.append('id',deleteid)
         fd.append('service_category', selectinpt);
         fd.append('service', servicename)
+        fd.append('service_cost', cost)
         $.ajax({
           url: 'ajax/service/service_edit.php',
           data: fd,

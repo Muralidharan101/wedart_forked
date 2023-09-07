@@ -1,31 +1,28 @@
 <?php
+include('../datab.php');
 
-    include('../datab.php');
+$res = [];
 
-    $res = [];
+$sql = "SELECT id, branch_name FROM branch_data WHERE status = 'Active'";
+$rec = mysqli_query($conn, $sql);
+
+if ($rec) {
+    $data = [];
     $count = 0;
-
-    $sql = "SELECT id, branch_name FROM branch_data where status = 'Active' ";
-    $rec = mysqli_query($conn, $sql);
-    while($data = mysqli_fetch_assoc($rec))
-    {
+    while ($row = mysqli_fetch_assoc($rec)) {
+        $data[] = $row;
         $count++;
-        $res['data'][] = $data;
     }
-
-    if($count == 0)
-    {
-        $res['status'] = 'Not-Available';  
-        $res['remarks'] = 'Branch Name Not-Available';  
-    }
-    else
-    {
-        $res['status'] = 'Success';  
-        $res['remarks'] = 'Branch Sent';  
-    }
-
+    
+    $res['data'] = $data;
     $res['count'] = $count;
+    $res['status'] = 'Success';
+    $res['remarks'] = 'Branch Sent';
 
-    echo json_encode($res);
+} else {
+    $res['status'] = 'Error';
+    $res['remarks'] = 'Database query error';
+}
 
+echo json_encode($res);
 ?>
