@@ -17,19 +17,40 @@
             $age            = mysqli_real_escape_string($conn, $_POST['age']);
             $sex            = mysqli_real_escape_string($conn, $_POST['sex']);
 
-            $sql_baby = "UPDATE lead_form_baby SET `name`='$name', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event_dateTime`='$event_dateTime', `age`='$age', `sex`='$sex' WHERE  `id`='$id' ";
-            
-            if(mysqli_query($conn, $sql_baby))
+
+            if(isset($_POST['lead_status']) !==  '')
             {
-                $res['status']  = 'Success';
-                $res['remarks'] = 'Lead details updated';
+                $lead_status    = mysqli_real_escape_string($conn, $_POST['lead_status']);
+
+                $sql_baby = "UPDATE lead_form_baby SET `name`='$name',`lead_status`='$lead_status', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event_dateTime`='$event_dateTime', `age`='$age', `sex`='$sex' WHERE  `id`='$id' ";
+
+                if(mysqli_query($conn, $sql_baby))
+                {
+                    $res['status']  = 'Success';
+                    $res['remarks'] = 'Lead details updated';
+                }
+                else
+                {
+                    $res['status']  = 'Failed';
+                    $res['remarks'] = 'Unable to update lead';
+                }
             }
             else
             {
-                $res['status']  = 'Failed';
-                $res['remarks'] = 'Unable to update lead';
+                $sql_baby = "UPDATE lead_form_baby SET `name`='$name', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event_dateTime`='$event_dateTime', `age`='$age', `sex`='$sex' WHERE  `id`='$id' ";
+
+                if(mysqli_query($conn, $sql_baby))
+                {
+                    $res['status']  = 'Success';
+                    $res['remarks'] = 'Lead details updated';
+                }
+                else
+                {
+                    $res['status']  = 'Failed';
+                    $res['remarks'] = 'Unable to update lead';
+                }
             }
-            
+
         }
         else if(isset($_POST['wedding']))
         {
@@ -37,17 +58,39 @@
             $event      = mysqli_real_escape_string($conn, $_POST['event']);
             $mandapam   = mysqli_real_escape_string($conn, $_POST['mandapam']);
 
-            $sql_wed = "UPDATE lead_form_wd SET `name`= '$name', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event`='$event', `event_date`='$event_date', `mandapam`='$mandapam' WHERE `id`='$id'";
-            if(mysqli_query($conn, $sql_wed))
+            if(isset($_POST['lead_status']) !==  '')
             {
-                $res['status']  = 'Success';
-                $res['remarks'] = 'Lead details updated';
+                $lead_status    = mysqli_real_escape_string($conn, $_POST['lead_status']);
+
+                $sql_wed = "UPDATE lead_form_wd SET `name`= '$name', `lead_status`='$lead_status' ,`phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event`='$event', `event_date`='$event_date', `mandapam`='$mandapam' WHERE `id`='$id'";
+                
+                if(mysqli_query($conn, $sql_wed))
+                {
+                    $res['status']  = 'Success';
+                    $res['remarks'] = 'Lead details updated';
+                }
+                else
+                {
+                    $res['status']  = 'Failed';
+                    $res['remarks'] = 'Unable to update lead details';
+                }
             }
             else
             {
-                $res['status']  = 'Failed';
-                $res['remarks'] = 'Unable to update lead details';
+                $sql_wed = "UPDATE lead_form_wd SET `name`= '$name', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event`='$event', `event_date`='$event_date', `mandapam`='$mandapam' WHERE `id`='$id'";
+                
+                if(mysqli_query($conn, $sql_wed))
+                {
+                    $res['status']  = 'Success';
+                    $res['remarks'] = 'Lead details updated';
+                }
+                else
+                {
+                    $res['status']  = 'Failed';
+                    $res['remarks'] = 'Unable to update lead details';
+                }
             }
+           
         }
     }
     else

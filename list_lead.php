@@ -7,18 +7,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-  <meta name="keywords" content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
-  <meta name="author" content="pixelstrap">
-  <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
-  <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <title>Wedart</title>
-  <!-- Google font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
@@ -148,9 +137,9 @@
                             <th id="th1">Event</th>
                             <th id="th2">Event Date</th>
                             <th id="th3">Mandapam</th>
-                            <th>Service</th>
+                            <th>Estimated</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th style="min-width: 80px;">Action</th>
                           </tr>
                         </thead>
 
@@ -210,28 +199,28 @@
   }
   radioChange();
 
-  document.addEventListener('click', function(event) {
-    if (event.target && event.target.classList.contains('edit-icon')) {
-      var leadData = event.target.getAttribute('data-lead');
-      window.location.href = `manage_lead.php?dat=${leadData}`;
-    }
-
-    if (event.target && event.target.classList.contains('follow-up-icon')) {
-      var leadData = event.target.getAttribute('data-lead');
-      window.location.href = `follow_up_entry.php?dat=${leadData}`;
-    }
-  });
-
-  const observer = new MutationObserver(function(mutationsList, observer) {
-    feather.replace();
-  });
-  const config = {
-    childList: true,
-    subtree: true
-  };
-  observer.observe(document.body, config);
-
-
+  function downloadPDF(param_ID, param_LEAD){
+    let fd = new FormData();
+    fd.append('id', param_ID);
+    fd.append('lead', param_LEAD);
+    $.ajax({
+      url: 'ajax/lead_creation/download_pdf.php',
+      data: fd,
+      type: 'post',
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        var result = JSON.parse(response);
+        if (result.status == 'Success') {
+          toastr.success(result.remarks);
+        } else if (result.status == 'Failed') {
+          toastr.error(result.remarks);
+        } else {
+          toastr.error('Sorry, Error with the Backend');
+        }
+      }
+    })
+  }
 
   function createTable() {
     dataTable = $('#tbl').DataTable({
@@ -291,15 +280,18 @@
               obj.event,
               obj.event_date,
               obj.mandapam,
-              val,
+              obj.estimated_amount,
               statusdisplay.outerHTML,
               `<i class="fa-regular fa-pen-to-square" 
                   style="font-size: 22px;margin-right:10px;"
                   onclick="window.location.href = 'manage_lead.php?dat=${dat}'"></i>
-                <i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
+               <i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
                   data-lead="${dat}"
                   data-action="follow_up"
-                  style="cursor: pointer;font-size: 20px"></i>`
+                  style="cursor: pointer;font-size: 20px;margin-right:10px;"></i>
+               <i class="fa-regular fa-circle-down"
+                  style="cursor: pointer;font-size: 20px;"
+                  onclick="downloadPDF('${obj.id}', 'wedding')"></i>`
             ];
             dataTableData.push(dataRow);
             feather.replace();
@@ -345,7 +337,7 @@
               obj.age,
               obj.sex,
               obj.event_dateTime,
-              val,
+              obj.estimated_amount,
               statusdisplay.outerHTML,
               `<i class="fa-regular fa-pen-to-square" 
                   style="font-size: 22px;margin-right:10px;"
@@ -353,7 +345,10 @@
               <i class="follow-up-icon fa-solid fa-arrow-up-right-from-square"
                 data-lead="${dat}"
                 data-action="follow_up"
-                style="cursor: pointer;font-size: 20px"></i>`
+                style="cursor: pointer;font-size: 20px;margin-right:10px;"></i>
+              <i class="fa-regular fa-circle-down"
+                style="cursor: pointer;font-size: 20px;"
+                onclick="downloadPDF('${obj.id}', 'baby')"></i>`
             ];
 
             dataTableData.push(dataRow);
@@ -366,6 +361,28 @@
     });
 
   }
+
+  document.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('edit-icon')) {
+      var leadData = event.target.getAttribute('data-lead');
+      window.location.href = `manage_lead.php?dat=${leadData}`;
+    }
+
+    if (event.target && event.target.classList.contains('follow-up-icon')) {
+      var leadData = event.target.getAttribute('data-lead');
+      window.location.href = `follow_up_entry.php?dat=${leadData}`;
+    }
+  });
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    feather.replace();
+  });
+  const config = {
+    childList: true,
+    subtree: true
+  };
+  observer.observe(document.body, config);
+
 </script>
 <style>
   i {

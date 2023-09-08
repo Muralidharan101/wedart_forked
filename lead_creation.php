@@ -7,31 +7,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-  <meta name="keywords"
-    content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
-  <meta name="author" content="pixelstrap">
-  <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
-  <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <title>Wedart</title>
   <!-- Google font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-    rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
-  <!-- Themify icon-->
-  <link rel="stylesheet" type="text/css" href="../assets/css/vendors/themify.css">
   <!-- Flag icon-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/flag-icon.css">
   <!-- Feather icon-->
@@ -44,8 +24,6 @@
   <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
   <!-- Responsive css-->
   <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
-
-  <link rel="stylesheet" type="text/css" href="/wedartfiles/customstyle.css">
 </head>
 
 <body>
@@ -72,7 +50,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Leads</h3>
+                <h3>  </h3>
               </div>
             </div>
           </div>
@@ -168,7 +146,6 @@
                       <div class="mb-3">
                         <label class="form-label" for="inpt">Select Source</label>
                         <select class="form-select" style="border: 1px solid #e0dddd" id="source">
-                          <option value="choose" selected disabled> - Choose -</option>
                         </select>
                       </div>
                     </div>
@@ -189,7 +166,7 @@
                           class="form-select" 
                           type="select" 
                           style="border: 1px solid #e0dddd" id="service_category"
-                          onchange="fetfun()"><!--HEre-->
+                          onchange="fetfun()">
                         </select>
                       </div>
                     </div>
@@ -359,7 +336,6 @@
     }
 
     document.getElementById("addbtn").addEventListener("click", postreq);
-    // document.getElementById("addservice").addEventListener("click", selectService);
 
     function radioChange(){
       if(wedding.checked){
@@ -388,12 +364,7 @@
         var source_array = result.data;
 
         var slet = document.getElementById('source');
-        slet.innerHTML = '';  
-        const defaultOption = document.createElement("option");
-          defaultOption.value = "";
-          defaultOption.text = "Select an option";
-          defaultOption.disabled = true; defaultOption.selected = true;
-        slet.appendChild(defaultOption)
+        slet.innerHTML = ''; 
 
         source_array.forEach(option => {
         const newOption = document.createElement("option");
@@ -414,12 +385,7 @@
 
           var slet = document.getElementById('follow_up_cateogry');
           slet.innerHTML = '';  
-          const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.text = "Select an option";
-            defaultOption.disabled = true; defaultOption.selected = true;
-          slet.appendChild(defaultOption)
-
+          
           follow_category.forEach(option => {
           const newOption = document.createElement("option");
           newOption.value = option.follow_up_name;
@@ -474,19 +440,13 @@
         var service = result.data;
 
         var slet = document.getElementById('service_type');
-        slet.innerHTML = '';  
-        const defaultOption = document.createElement("option");
-          defaultOption.value = "";
-          defaultOption.text = "Select an option";
-          defaultOption.disabled = true; defaultOption.selected = true;
-        slet.appendChild(defaultOption)
+        slet.innerHTML = '';
 
         service.forEach(option => {
-          console.log(service_category.value , option.type_id, option.service_name)
         if(service_category.value == option.type_id){
           const newOption = document.createElement("option");
           newOption.value = option.id;
-          newOption.text = option.service_name;
+          newOption.text = option.service_name + " - ₹ " + option.service_cost ;
           slet.appendChild(newOption);
           }
         });
@@ -521,11 +481,12 @@
         checkbox.value = service.id;
         checkbox.id = service.id;
         checkbox.dataset.service = service.additional_service_name;
+        checkbox.dataset.cost = service.additional_service_cost;
         checkbox.classList.add('checkbox_animated');
         checkbox.addEventListener('change', handleCheckboxChange);
 
         var label = document.createElement('label');
-        label.textContent = service.additional_service_name;
+        label.textContent = service.additional_service_name + " ( ₹ " + service.additional_service_cost + " )";
         label.htmlFor = service.id;
         label.classList.add('cuslabel')
 
@@ -544,9 +505,10 @@
       var checkbox = event.target;
       var serviceId = parseInt(checkbox.value);
       var serviceName = checkbox.dataset.service;
+      let service_cost = checkbox.dataset.cost;
 
       if (checkbox.checked) {
-        selected_services.push({ 'id': serviceId, 'service': serviceName });
+        selected_services.push({ 'id': serviceId, 'service': serviceName, 'additional_service_cost': service_cost });
       } else {
         selected_services = selected_services.filter(function (service) {
           return service.id !== serviceId;

@@ -1,13 +1,12 @@
 <script src="https://kit.fontawesome.com/438020997e.js" crossorigin="anonymous"></script>
 
-<div class="sidebar-wrapper">
+<div class="sidebar-wrapper" style="height: 100vh;">
       <div>
             <div class="logo-wrapper">
-                  <a href="index.html" data-bs-original-title="" title="">
+                  <a data-bs-original-title="" title="">
                         <div class="logodiv">
                         </div>
                   </a>
-                  <!-- <div class="back-btn"><i class="fa fa-angle-left"></i></div> -->
                   <div class="toggle-sidebar">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-left status_toggle middle sidebar-toggle">
                               <line x1="17" y1="10" x2="3" y2="10"></line>
@@ -19,17 +18,11 @@
             </div>
             <div class="logo-icon-wrapper">
                   <a href="index.html" data-bs-original-title="" title="">
-                        <img class="img-fluid for-light" style="opacity: 0;" src="../assets/images/logo/logo-icon.png" alt="">
-                        <img class="img-fluid for-dark" style="opacity: 0;" src="../assets/images/logo/logo-icon-dark.png" alt="">
+                        <img class="img-fluid for-light" style="opacity: 0; height:30px;width:30px" alt="">
+                        <img class="img-fluid for-dark" style="opacity: 0; height:30px;width:30px" alt="">
                   </a>
             </div>
             <nav class="sidebar-main">
-                  <div class="left-arrow disabled" id="left-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
-                              <line x1="19" y1="12" x2="5" y2="12"></line>
-                              <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                  </div>
                   <div id="sidebar-menu">
                         <ul class="sidebar-links" id="simple-bar" data-simplebar="init" style="display: block;">
                               <div class="simplebar-wrapper" style="margin: 0px 0px -30px;">
@@ -37,27 +30,15 @@
                                           <div class="simplebar-height-auto-observer"></div>
                                     </div>
                                     <div class="simplebar-mask">
-                                          <div class="simplebar-offset" style="right: 0px;bottom: 0px;height: 90vh;">
-                                                <div class="simplebar-content-wrapper" style="overflow: hidden scroll;height: 90vh !important;">
+                                          <div class="simplebar-offset" style="height: 90vh;">
+                                                <div class="simplebar-content-wrapper" style="height: 90vh;">
                                                       <div class="simplebar-content" style="padding: 0px 0px 30px;">
 
                                                             <li class="back-btn">
-                                                                  <!-- <a href="index.html" data-bs-original-title="" title="">
-                                                                        <img class="img-fluid for-light" src="../assets/images/logo/logo-icon.png" alt="">
-                                                                        <img class="img-fluid for-dark" src="../assets/images/logo/logo-icon-dark.png" alt="">
-                                                                  </a> -->
                                                                   <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                                             </li>
-
-                                                            <!-- <li class="sidebar-main-title">
-                                                                  <div>
-                                                                        <h4>User Navigations</h4>
-                                                                  </div>
-                                                            </li> -->
-
                                                             <br>
-
-                                                            <li class="sidebar-list"> 
+                                                            <li class="sidebar-list">
                                                                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                                                         <i class="fa-solid fa-house"></i>
                                                                         <span> &nbsp;Home</span>
@@ -67,7 +48,7 @@
                                                                   </ul>
                                                             </li>
 
-                                                            <li class="sidebar-list"> 
+                                                            <li class="sidebar-list">
                                                                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                                                         <i class="fa-solid fa-chart-line"></i>
                                                                         <span> &nbsp;Leads</span>
@@ -80,7 +61,7 @@
                                                             </li>
 
                                                             <li class="sidebar-list">
-                                                                  <a class="sidebar-link sidebar-title"  href="javascript:void(0)">
+                                                                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                                                         <i class="fa-solid fa-indian-rupee-sign"></i>
                                                                         <span> &nbsp;Transactions</span>
                                                                   </a>
@@ -90,7 +71,7 @@
                                                                   </ul>
                                                             </li>
 
-                                                            <li class="sidebar-list"> 
+                                                            <li class="sidebar-list">
                                                                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                                                         <i class="fa-solid fa-database"></i>
                                                                         <span> &nbsp;Master Data</span>
@@ -109,39 +90,33 @@
                                                                         <li><a href="general_settings.php">General Settings</a></li>
                                                                   </ul>
                                                             </li>
-                                                            
+
                                                       </div>
                                                 </div>
 
                                           </div>
                                     </div>
-                                    <div class="simplebar-placeholder" style="width: auto; height: 2653px;"></div>
-                              </div>
-                              <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-                                    <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
-                              </div>
-                              <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
-                                    <div class="simplebar-scrollbar" style="height: 2751px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                    <div class="simplebar-placeholder hid-mob" style="width: auto; height: 2653px;"></div>
                               </div>
                         </ul>
-                  </div>
-                  <div class="right-arrow" id="right-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
-                              <line x1="5" y1="12" x2="19" y2="12"></line>
-                              <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
                   </div>
             </nav>
       </div>
 </div>
 
 <style>
-      .logodiv{
-          background-image: url('wedart.jpeg');
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: fixed;
-          height: 50px;
-          width: 130px;
-        }
+      .logodiv {
+            background-image: url('wedart.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: fixed;
+            height: 50px;
+            width: 130px;
+      }
+      @media only screen and (max-width: 991px){
+            .hid-mob{
+                  height: 0 !important;
+                  display: none !important;
+            }
+      }
 </style>

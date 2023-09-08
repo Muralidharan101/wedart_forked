@@ -65,10 +65,6 @@
         return "";
     }
 
-    window.onload = function () {
-        checkCookie();
-    }
-
     function checkCookie() {
       let role = getCookie("role"); let srole = sessionStorage.getItem('role');
       let name = getCookie("name"); let sname = sessionStorage.getItem('name');
@@ -76,6 +72,10 @@
       if ((name == "" && role == "" && mobile == "") && (sname == null && srole == null && smobile == null)) {
        window.location.href = 'login.php';
       } 
+    }
+
+    window.onload = function () {
+        checkCookie();
     }
 
     function getUname (){
@@ -96,8 +96,8 @@
         }
     }getRole();
 
-    
 </script>
+    
 
 <style>
     .drop-btn{
