@@ -56,6 +56,7 @@ if ($lead == 'baby') {
                 l.phone,
                 l.service,
                 sd.service_name,
+                sd.service_cost,
                 l.other_info,
                 l.follow_up_category
             FROM lead_form_baby AS l 
@@ -120,6 +121,7 @@ if ($lead == 'baby') {
                 l.phone,
                 l.service, 
                 sd.service_name,
+                sd.service_cost,
                 l.other_info,
                 l.follow_up_category
             FROM lead_form_wd AS l 

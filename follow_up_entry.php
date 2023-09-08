@@ -134,7 +134,6 @@
                     </div>
 
                     <div class="tab-pane fade" id="Service-Details" role="tabpanel" aria-labelledby="pills-profile-tab">
-
                       <div class="row">
                         <div class="col-lg-6">
                           <div class="mb-3">
@@ -303,7 +302,7 @@
 
               <div id="disppay">
                 <br><br>
-                <h3>Payment Method</h3>
+                <h3>Payment Info</h3>
                 <hr>
                 <div class="row">
 
@@ -344,11 +343,15 @@
 
                   <div class="col-lg-12"><br>
                     <div class="row">
-                      <div class="md-3 col-lg-5">
-                        <label class="form-lalel">Enter Total Amount</label><br>
+                      <div class="md-3 col-lg-4">
+                        <label class="form-lalel">Total Service Cost</label><br>
+                        <input class="form-control" disabled style="border: 1px solid #e0dddd" id="total_cost">
+                      </div>
+                      <div class="md-3 col-lg-4">
+                        <label class="form-lalel">Enter Final Amount</label><br>
                         <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount">
                       </div>
-                      <div class="md-3 col-lg-5">
+                      <div class="md-3 col-lg-4">
                         <label class="form-lalel">Paid Amount</label><br>
                         <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="paid_amount">
                       </div>
@@ -430,8 +433,21 @@
   const decodedData = JSON.parse(decodeURIComponent(urlParams));
   var data = [];
   var datobj = {};
+  let lead_data;
   var followUpID;
   var event;
+  let TotalServiceCharge = 0;
+
+  function calcTotalAmount(){
+    let Ad_ser = JSON.parse(lead_data[0].service);
+    let Ad_ser_tot = 0;
+    Ad_ser.map(obj => {
+      Ad_ser_tot += parseInt(obj.additional_service_cost)
+    })
+    TotalServiceCharge = parseInt(lead_data[0].service_cost) + Ad_ser_tot;
+    console.log('tot = ',TotalServiceCharge)
+    document.getElementById('total_cost').value = '₹ '+TotalServiceCharge;
+  }
 
   function clearinput() {
     document.getElementById('a_topic').value = '';
@@ -537,8 +553,9 @@
         var result = JSON.parse(response);
         if (result.status == 'Success') {
           data = result.data;
-          var lead_data = result.lead_data
+          lead_data = result.lead_data
           createTable();
+          calcTotalAmount();
           lead_data.map((item, index) => {
             var sts_val = item.lead_status;
             checkStatus(sts_val)
@@ -546,12 +563,12 @@
             var val = test.map(ob => (`
             <span class="badge badge-pill badge-light"
                   style="color:black; background-color: lightgrey">
-                  ${ob.service}
+                  ${ob.service} - ₹  ${ob.additional_service_cost}
             </span>`)).join('');
             var sval = `
             <span class="badge badge-pill badge-light"
                   style="color:black; background-color: lightgrey">
-                  ${item.service_name}
+                  ${item.service_name} - ₹ ${item.service_cost}
             </span>`;
             if (index == 0) {
               datobj = {
