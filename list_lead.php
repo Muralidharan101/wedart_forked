@@ -161,6 +161,10 @@
       <?php include 'footer.php'; ?>
       </div>
     </div>
+
+    <!-- PDF Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha512-a9NgEEK7tsCvABL7KqtUTQjl69z7091EVPpw5KxPlZ93T141ffe1woLtbXTX+r2/8TtTvRX/v4zTL2UlMUPgwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha512-pAoMgvsSBQTe8P3og+SAnjILwnti03Kz92V3Mxm0WOtHuA482QeldNM5wEdnKwjOnQ/X11IM6Dn3nbmvOz365g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- latest jquery-->
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/bootstrap/popper.min.js"></script>
@@ -181,6 +185,10 @@
     <script src="../assets/js/tooltip-init.js"></script>
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
+
+    
+
+
 </body>
 <script>
   var link;
@@ -193,7 +201,7 @@
       link = 'ajax/lead_creation/lead_for_baby_list.php';
     }
     if (dataTable) {
-      dataTable.destroy(); // Destroy the existing DataTable instance
+      dataTable.destroy(); 
     }
     createTable();
   }
@@ -211,8 +219,15 @@
       processData: false,
       success: function (response) {
         var result = JSON.parse(response);
+        let lead_data = result.data;
         if (result.status == 'Success') {
-          toastr.success(result.remarks);
+          console.log(lead_data[0]);
+          if(param_LEAD == 'wedding'){
+            generatePDF(lead_data[0])
+          }
+          else {
+            generatePDFBaby(lead_data[0])
+          }
         } else if (result.status == 'Failed') {
           toastr.error(result.remarks);
         } else {
@@ -221,6 +236,148 @@
       }
     })
   }
+
+  function generatePDFBaby(pdfDetails) {
+    const Add_services = JSON.parse(pdfDetails.service);
+    const additionalServices = Add_services.map((obj) => ({
+      text: obj.service + " - ₹ " + obj.additional_service_cost + " ",
+      margin: [20, 5],
+      border: [],
+    }));
+    let addServTot = 0;
+    Add_services.map(obj => {
+      addServTot += parseInt(obj.additional_service_cost);
+    })
+    let total = parseInt(pdfDetails.service_cost) + addServTot;
+    const table = {
+      widths: ['auto', '*'],
+      padding: [30, 30, 30, 30],
+      body: [
+        [{ text: 'Lead ID', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.id, border: [], margin: [20, 5] }],
+        [{ text: 'Booking ID', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.lead_no, border: [], margin: [20, 5] }],
+        [{ text: 'Name', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.name, border: [], margin: [20, 5] }],
+        [{ text: 'Phone', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.phone, border: [], margin: [20, 5] }],
+        [{ text: 'Gender', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.sex, border: [], margin: [20, 5] }],
+        [{ text: 'Age', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.age, border: [], margin: [20, 5] }],
+        [{ text: 'Event Date/Time', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.event_date+' / '+pdfDetails.event_time, border: [], margin: [20, 5] }],
+        [{ text: 'Estimated Amount', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.estimated_amount, border: [], margin: [20, 5] }],
+        [{ text: 'Other Info', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.other_info, border: [], margin: [20, 5] }],
+        [{ text: '', bold: true, margin: [20, 5], border: [] }, { text: "", border: [], margin: [20, 5] }],
+        [{ text: 'Service', bold: true, margin: [20, 5] }, { text: pdfDetails.service_name + " - ₹ " + pdfDetails.service_cost, margin: [20, 5] }],
+        [
+          { text: 'Additional Services', bold: true, margin: [20, 5] }, 
+          additionalServices
+        ],
+        [{ text: 'Total', bold: true, margin: [20, 5] }, { text: " ₹ " + total, margin: [20, 5] }]
+      ],
+    };
+    const docDefinition = {
+      content: [
+        { text: 'WedArt Photography', style: 'header', alignment: 'center', fontSize: 24, },
+        { text: '', style: 'header' },
+        { text: 'Lead Information', style: 'header' },
+        {
+          table: {
+            body: [
+              [{ table: table, style: 'tableStyle' }],
+            ],
+          },
+          layout: 'noBorders',
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10],
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 10, 0, 5],
+        },
+        tableStyle: {
+          margin: [0, 0, 0, 0],
+        },
+      },
+    };
+    pdfMake.createPdf(docDefinition).open();
+  }
+
+  function generatePDF(pdfDetails) {
+    const Add_services = JSON.parse(pdfDetails.service);
+    const additionalServices = Add_services.map((obj) => ({
+      text: obj.service + " - ₹ " + obj.additional_service_cost + " ",
+      margin: [20, 5],
+      border: [],
+    }));
+    let addServTot = 0;
+    Add_services.map(obj => {
+      addServTot += parseInt(obj.additional_service_cost);
+    })
+    let total = parseInt(pdfDetails.service_cost) + addServTot;
+    const table = {
+      widths: ['auto', '*'],
+      padding: [30, 30, 30, 30],
+      body: [
+        [{ text: 'Lead ID', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.id, border: [], margin: [20, 5] }],
+        [{ text: 'Booking ID', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.lead_no, border: [], margin: [20, 5] }],
+        [{ text: 'Name', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.name, border: [], margin: [20, 5] }],
+        [{ text: 'Phone', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.phone, border: [], margin: [20, 5] }],
+        [{ text: 'Mandapam', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.mandapam, border: [], margin: [20, 5] }],
+        [{ text: 'Estimated Amount', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.estimated_amount, border: [], margin: [20, 5] }],
+        [{ text: 'Event', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.event, border: [], margin: [20, 5] }],
+        [{ text: 'Event Date', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.event_date, border: [], margin: [20, 5] }],
+        [{ text: 'Other Info', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.other_info, border: [], margin: [20, 5] }],
+        [{ text: '', bold: true, margin: [20, 5], border: [] }, { text: "", border: [], margin: [20, 5] }],
+        [{ text: 'Service', bold: true, margin: [20, 5] }, { text: pdfDetails.service_name + " - ₹ " + pdfDetails.service_cost, margin: [20, 5] }],
+        [
+          { text: 'Additional Services', bold: true, margin: [20, 5] }, 
+          additionalServices
+        ],
+        [{ text: 'Total', bold: true, margin: [20, 5] }, { text: " ₹ " + total, margin: [20, 5] }]
+      ],
+    };
+    const docDefinition = {
+      content: [
+        { text: 'WedArt Photography', style: 'header', alignment: 'center', fontSize: 24, },
+        { text: '', style: 'header' },
+        { text: 'Lead Information', style: 'header' },
+        {
+          table: {
+            body: [
+              [{ table: table, style: 'tableStyle' }],
+            ],
+          },
+          layout: 'noBorders',
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10],
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 10, 0, 5],
+        },
+        tableStyle: {
+          margin: [0, 0, 0, 0],
+        },
+      },
+    };
+    pdfMake.createPdf(docDefinition).open();
+  }
+
+
+
+
+
+
+
+
 
   function createTable() {
     dataTable = $('#tbl').DataTable({

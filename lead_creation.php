@@ -240,13 +240,17 @@
                         <div class="mb-3">
                           <label class="form-label">Follow Up Category</label>
                           <select id="follow_up_cateogry" class="form-select">
+                            <option value="open">Open</option>
+                            <option value="cold">Cold</option>
+                            <option value="hot">Hot</option>
+                            <option value="ready">Ready</option>
                           </select>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label">Follow-Up Date</label>
+                        <label class="form-label">Follow-Up Date <span style="color:red">*</span></label>
                         <input class="form-control" 
                           type="date" style="border: 1px solid #e0dddd" id="followup">
                       </div>
@@ -254,7 +258,7 @@
 
                     <div class="col-lg-8">
                       <div class="mb-3">
-                        <label class="form-label">FollowUp Details</label>
+                        <label class="form-label">FollowUp Details <span style="color:red">*</span></label>
                         <textarea class="form-control"  
                           type="text" rows="6"
                           style="border: 1px solid #e0dddd" 
@@ -374,26 +378,26 @@
         });
       }
       })
-      $.ajax({
-        url: 'ajax/follow_up/follow_up_list.php',
-        type: 'get',
-        contentType: false,
-        processData: false,
-        success: function (response) {
-          var result = JSON.parse(response);
-          var follow_category = result.data;
+      // $.ajax({
+      //   url: 'ajax/follow_up/follow_up_list.php',
+      //   type: 'get',
+      //   contentType: false,
+      //   processData: false,
+      //   success: function (response) {
+      //     var result = JSON.parse(response);
+      //     var follow_category = result.data;
 
-          var slet = document.getElementById('follow_up_cateogry');
-          slet.innerHTML = '';  
+      //     var slet = document.getElementById('follow_up_cateogry');
+      //     slet.innerHTML = '';  
           
-          follow_category.forEach(option => {
-          const newOption = document.createElement("option");
-          newOption.value = option.follow_up_name;
-          newOption.text = option.follow_up_name;
-          slet.appendChild(newOption);
-          });
-        }
-      })
+      //     follow_category.forEach(option => {
+      //     const newOption = document.createElement("option");
+      //     newOption.value = option.follow_up_name;
+      //     newOption.text = option.follow_up_name;
+      //     slet.appendChild(newOption);
+      //     });
+      //   }
+      // })
     }getSource();
 
     function fetfun(){
@@ -529,18 +533,23 @@
         toastr.error('Select Service Category')
       } else if (service_type.value == ''){
         toastr.error('Select Service')
+      } else if (followup.value == ''){
+        toastr.error('Enter FollowUp Date')
+      } else if (follow_up_status.value == ''){
+        toastr.error('Enter FollowUp Details')
       } else {
       
-      fd.append('booking_no',leadno.value)
+      fd.append('lead_no',leadno.value)
       fd.append('source_id',source.value)
       fd.append('name', c_name.value)
       fd.append('phone',contact.value)
       fd.append('other_info',other_info.value)
-      fd.append('esimated_amount', EstimatedAmount.value)
+      fd.append('estimated_amount', EstimatedAmount.value)
       fd.append('service_category', service_category.value)
       fd.append('main_service', service_type.value)
       fd.append('service', JSON.stringify(selected_services))
       fd.append('follow_up_category', follow_up_category.value);
+      fd.append('lead_status', follow_up_category.value);
       fd.append('follow_up', followup.value);
       fd.append('follow_up_details', follow_up_status.value);
       

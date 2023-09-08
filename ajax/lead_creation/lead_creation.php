@@ -15,6 +15,8 @@
         $service           = mysqli_real_escape_string($conn, $_POST['service']);
         $follow_up_date    = mysqli_real_escape_string($conn, $_POST['follow_up']);
         $follow_up_details = mysqli_real_escape_string($conn, $_POST['follow_up_details']);
+        $lead_status       = mysqli_real_escape_string($conn, $_POST['lead_status']);
+        $estimated_amount  = mysqli_real_escape_string($conn, $_POST['estimated_amount']);
         // $response          = mysqli_real_escape_string($conn, $_POST['response']); 
 
         if(isset($_POST['baby']))
@@ -23,8 +25,8 @@
             $age            = mysqli_real_escape_string($conn, $_POST['age']);
             $sex            = mysqli_real_escape_string($conn, $_POST['sex']);
 
-            $sql = "INSERT INTO lead_form_baby (`lead_no`,`source_id`, `name`, `age`, `sex`, `event_dateTime`, `phone`, `service_category`, `service`, `main_service`, `other_info`, `status`, `dateTime`) 
-                                    VALUES ('$lead_no', '$source_id', '$name', '$age', '$sex', '$event_dateTime', '$phone', '$service_category', '$service', '$main_service', '$other_info', 'Active', '$dateTime')";
+            $sql = "INSERT INTO lead_form_baby (`lead_no`,`source_id`, `name`, `age`, `sex`, `event_dateTime`, `phone`, `service_category`, `service`, `estimated_amount`, `lead_status`, `main_service`, `other_info`, `status`, `dateTime`) 
+                                    VALUES ('$lead_no', '$source_id', '$name', '$age', '$sex', '$event_dateTime', '$phone', '$service_category', '$service', '$estimated_amount', '$lead_status', '$main_service', '$other_info', 'Active', '$dateTime')";
 
             if($row = mysqli_query($conn, $sql))
             {
@@ -57,8 +59,8 @@
             $event      = mysqli_real_escape_string($conn, $_POST['event']);
             $mandapam   = mysqli_real_escape_string($conn, $_POST['mandapam']);
 
-            $sql_wed = "INSERT INTO lead_form_wd (`lead_no`, `name`, `source_id`, `event`, `event_date`, `mandapam`, `phone`, `service_category`, `service`, `main_service`, `other_info`, `status`, `dateTime`) 
-                                         VALUES ('$lead_no', '$name', '$source_id', '$event', '$event_date', '$mandapam', '$phone', '$service_category', '$service', '$main_service', '$other_info', 'Active', '$dateTime')";
+            $sql_wed = "INSERT INTO lead_form_wd (`lead_no`, `name`, `source_id`, `event`, `event_date`, `mandapam`, `phone`, `service_category`, `service`, `estimated_amount`, `lead_status`, `main_service`, `other_info`, `status`, `dateTime`) 
+                                         VALUES ('$lead_no', '$name', '$source_id', '$event', '$event_date', '$mandapam', '$phone', '$service_category', '$service', '$estimated_amount', '$lead_status', '$main_service', '$other_info', 'Active', '$dateTime')";
 
             if($row = mysqli_query($conn, $sql_wed))
             {

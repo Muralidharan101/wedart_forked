@@ -83,7 +83,7 @@
                                                                         <li><a href="additional_service.php">Additional Service</a></li>
                                                                         <li><a href="branch.php">Branch</a></li>
                                                                         <li><a href="users.php">Users</a></li>
-                                                                        <li><a href="followup.php">Follow Up Category</a></li>
+                                                                        <!-- <li><a href="followup.php">Follow Up Category</a></li> -->
                                                                         <li><a href="blog_creation.php">Blogs</a></li>
                                                                         <li><a href="day_creation.php">Days Creation</a></li>
                                                                         <li><a href="blog_days_data.php">Blog Days</a></li>
@@ -105,6 +105,9 @@
 </div>
 
 <style>
+      .table-responsive::-webkit-scrollbar{
+            display: none;
+      }
       .logodiv {
             background-image: url('wedart.jpeg');
             background-size: cover;
