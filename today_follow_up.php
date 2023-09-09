@@ -76,8 +76,16 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h3>Lead Types</h3>
+                    <h3>PDF Generation</h3>
                   </div>
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <button class="btn btn-info" id="week"> Weekly FollowUp's &nbsp;&nbsp;<i class="fa-regular fa-circle-down" style="font-size: 1.4em;"></i> </button>
+                      &emsp;
+                      <button class="btn btn-info" id="month"> Monthly FollowUp's &nbsp;&nbsp;<i class="fa-regular fa-circle-down" style="font-size: 1.4em;"></i>  </button>
+                    </div>
+                  </div>
+                  <h3 style="margin-left: 1.7em;">Lead Types</h3>
                   <div class="card-body">
                     <div class="row" style="margin-left: 0.5em;">
                       <div class="form-check radio radio-primary col-lg-2">
@@ -89,19 +97,20 @@
                         <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
                         <label class="form-check-label" for="baby">Baby's Event</label>
                       </div>
-                    </div>
+                    </div><br>
                     <div class="table-responsive">
                       <!-- class="table-responsive" -->
                       <table id="tbl">
                         <thead>
                           <tr style='text-align: center'>
                             <th scope="col">Lead No</th>
+                            <th>Booking No</th>
                             <th>Name</th>
                             <th>Mobile No</th>
                             <th id="th1"></th>
                             <th id="th2"></th>
                             <th id="th3"></th>
-                            <th>Service</th>
+                            <th>Estimated</th>
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
@@ -124,6 +133,10 @@
         <?php include 'footer.php'; ?>
       </div>
     </div>
+
+    <!-- PDF Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha512-a9NgEEK7tsCvABL7KqtUTQjl69z7091EVPpw5KxPlZ93T141ffe1woLtbXTX+r2/8TtTvRX/v4zTL2UlMUPgwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha512-pAoMgvsSBQTe8P3og+SAnjILwnti03Kz92V3Mxm0WOtHuA482QeldNM5wEdnKwjOnQ/X11IM6Dn3nbmvOz365g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- latest jquery-->
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/bootstrap/popper.min.js"></script>
@@ -147,7 +160,142 @@
 </body>
 <script>
 var dataTable;
-var lead_page
+var lead_page;
+
+document.getElementById('week').addEventListener('click', generatePDF);
+document.getElementById('month').addEventListener('click', generatePDFMonth);
+
+function generatePDF() {
+  $.ajax({
+    url: 'ajax/today_follow_up/weekly.php',
+    type: 'post',
+    contentType: false,
+    processData: false,
+    success: (response) => {
+      let res = JSON.parse(response);
+      let pdfDetails = res.data1;
+      let pdfDetails1 = res.data2;
+      const content = [];
+      
+      content.push({ text: 'WedArt Photography', style: 'header', alignment: 'center', fontSize: 24 });
+      content.push({ text: ' ', style: 'header' });
+
+      function generateTable(data) {
+        const table = {
+          table: {
+            widths: ['*', '*'],
+            body: []
+          }
+        };
+        function createKeyValuePair(key, value) {
+          return [
+            { text: key, bold: true, border: [] },
+            { text: value || '', border: [] }
+          ];
+        }
+        data.forEach((obj) => {
+          table.table.body.push(createKeyValuePair('Lead ID', obj.id));
+          table.table.body.push(createKeyValuePair('Booking ID', obj.lead_no));
+          table.table.body.push(createKeyValuePair('Name', obj.name));
+          table.table.body.push(createKeyValuePair('Phone', obj.phone));
+          table.table.body.push(createKeyValuePair('Estimated Amount', obj.estimated_amount));
+          table.table.body.push(createKeyValuePair('Event Date', obj.event_date));
+          table.table.body.push(createKeyValuePair('FollowUp Date', obj.follow_up_date));
+          table.table.body.push(createKeyValuePair('Approach Topic', obj.approach));
+          table.table.body.push(createKeyValuePair('Response', obj.response));
+          table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
+          table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
+        });
+
+        return table;
+      }
+
+      content.push({ text: `Lead FollowUps (Last 7 days) (count: ${pdfDetails.length} )`, style: 'header' });
+      content.push(generateTable(pdfDetails));
+      content.push({ text: `Baby Event FollowUps (Last 7 days) (count: ${pdfDetails1.length} )`, style: 'header' });
+      content.push(generateTable(pdfDetails1));
+
+      const docDefinition = {
+        content: content,
+        styles: {
+          header: {
+            fontSize: 16,
+            bold: true,
+            margin: [0, 0, 0, 10],
+          },
+        },
+      };
+
+      pdfMake.createPdf(docDefinition).open();
+    }
+  });
+}
+
+function generatePDFMonth() {
+  $.ajax({
+    url: 'ajax/today_follow_up/monthly.php',
+    type: 'post',
+    contentType: false,
+    processData: false,
+    success: (response) => {
+      let res = JSON.parse(response);
+      let pdfDetails = res.data1;
+      let pdfDetails1 = res.data2;
+      const content = [];
+      
+      content.push({ text: 'WedArt Photography', style: 'header', alignment: 'center', fontSize: 24 });
+      content.push({ text: ' ', style: 'header' });
+
+      function generateTable(data) {
+        const table = {
+          table: {
+            widths: ['*', '*'],
+            body: []
+          }
+        };
+        function createKeyValuePair(key, value) {
+          return [
+            { text: key, bold: true, border: [] },
+            { text: value || '', border: [] }
+          ];
+        }
+        data.forEach((obj) => {
+          table.table.body.push(createKeyValuePair('Lead ID', obj.id));
+          table.table.body.push(createKeyValuePair('Booking ID', obj.lead_no));
+          table.table.body.push(createKeyValuePair('Name', obj.name));
+          table.table.body.push(createKeyValuePair('Phone', obj.phone));
+          table.table.body.push(createKeyValuePair('Estimated Amount', obj.estimated_amount));
+          table.table.body.push(createKeyValuePair('Event Date', obj.event_date));
+          table.table.body.push(createKeyValuePair('FollowUp Date', obj.follow_up_date));
+          table.table.body.push(createKeyValuePair('Approach Topic', obj.approach));
+          table.table.body.push(createKeyValuePair('Response', obj.response));
+          table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
+          table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
+        });
+        return table;
+      }
+      content.push({ text: `Lead FollowUps (Last 30 days) (count: ${pdfDetails.length} )`, style: 'header' });
+      content.push(generateTable(pdfDetails));
+      content.push({ text: `Baby Event FollowUps (Last 30 days) (count: ${pdfDetails1.length} )`, style: 'header' });
+      content.push(generateTable(pdfDetails1));
+
+      const docDefinition = {
+        content: content,
+        styles: {
+          header: {
+            fontSize: 16,
+            bold: true,
+            margin: [0, 0, 0, 10],
+          },
+        },
+      };
+
+      pdfMake.createPdf(docDefinition).open();
+    }
+  });
+}
+
+
 
 function radioChange() {
     if (document.getElementById('wedding').checked) {
@@ -160,6 +308,7 @@ function radioChange() {
     }
     createTable();
 } radioChange();
+
 
 function createTable() {
     dataTable = $('#tbl').DataTable({
@@ -191,26 +340,37 @@ function createTable() {
                         </span><br>`)).join('');
                     var statusdisplay = document.createElement('span');
                     if (obj.lead_status === 'open') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-secondary');
                     } else if (obj.lead_status === 'closed') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
+                    } else if(obj.lead_status === 'converted') {
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
+                    } else if(obj.lead_status === 'hot'){
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+                    } else if(obj.lead_status === 'cold'){
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-info');
+                    } else if(obj.lead_status === 'ready'){
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-primary');
+                    } else {
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-dark');
                     }
                     statusdisplay.style.cursor = 'pointer';
                     statusdisplay.textContent = obj.lead_status;                    
                     var urldat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'wedding'}))
                     
                     var dataRow = [
+                        obj.id,
                         obj.lead_no,
                         obj.name,
                         obj.phone,
                         obj.event,
                         obj.event_date,
                         obj.mandapam,
-                        val,
+                        obj.estimated_amount,
                         statusdisplay.outerHTML,
                         `<i class="follow-up-icon"
                           onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${urldat}'"
-                          data-feather="message-circle"
+                          data-feather="external-link"
                           style="cursor: pointer"
                           title=""></i>`
                     ];
@@ -229,29 +389,38 @@ function createTable() {
                               ${ob.service}
                         </span><br>`)).join('');
                     var statusdisplay = document.createElement('span');
-                    if (obj.lead_status == 'open') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
-                    } else if (obj.lead_status == 'closed') {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
+                    if (obj.lead_status === 'open') {
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-secondary');
+                    } else if (obj.lead_status === 'closed') {
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-danger');
+                    } else if(obj.lead_status === 'converted') {
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-success');
+                    } else if(obj.lead_status === 'hot'){
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-warning');
+                    } else if(obj.lead_status === 'cold'){
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-info');
+                    } else if(obj.lead_status === 'ready'){
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-primary');
                     } else {
-                        statusdisplay.classList.add('badge', 'badge-pill', 'badge-primary');
+                      statusdisplay.classList.add('badge', 'badge-pill', 'badge-dark');
                     }
                     statusdisplay.textContent = obj.lead_status;
                     statusdisplay.style.cursor = 'pointer';
 
                     var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'baby'}))
                     var dataRow = [
+                        obj.id,
                         obj.lead_no,
                         obj.name,
                         obj.phone,
                         obj.age,
                         obj.sex,
                         obj.event_dateTime,
-                        val,
+                        obj.estimated_amount,
                         statusdisplay.outerHTML,
                         `<i class="follow-up-icon"
                           onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
-                          data-feather="message-circle"
+                          data-feather="external-link"
                           style="cursor: pointer"></i>`
                     ];
                     dataTableData.push(dataRow);

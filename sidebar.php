@@ -56,7 +56,7 @@
                                                                   <ul class="sidebar-submenu">
                                                                         <li><a href="lead_creation.php">Lead Creation</a></li>
                                                                         <li><a href="list_lead.php">Leads </a></li>
-                                                                        <li><a href="today_follow_up.php">Today FollowUp</a></li>
+                                                                        <li><a href="today_follow_up.php">Today's FollowUp</a></li>
                                                                   </ul>
                                                             </li>
 
@@ -67,6 +67,7 @@
                                                                   </a>
                                                                   <ul class="sidebar-submenu">
                                                                         <li><a href="closed_lead.php">Pending Payments</a></li>
+                                                                        <li><a href="compled_payments.php">Payments Cleared</a></li>
                                                                         <li><a href="transaction_report.php">Transaction Reports</a></li>
                                                                   </ul>
                                                             </li>

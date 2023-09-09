@@ -186,7 +186,7 @@
                         <tr style='text-align: center'>
                           <th scope="col">SNo</th>
                           <th>Date</th>
-                          <th>Approach Topic</th>
+                          <th>Approach </th>
                           <th>Response</th>
                           <th>Action</th>
                         </tr>
@@ -225,8 +225,8 @@
                 <input class="form-control" type="date" style="border: 1px solid #e0dddd" id="f_date">
               </div>
               <div class="mb-3">
-                <label class="form-label" for="edit">Approach Topic</label>
-                <input class="form-control" style="border: 1px solid #e0dddd" id="a_topic">
+                <label class="form-label" for="edit">FollowUp Info</label>
+                <textarea class="form-control" rows="5" style="border: 1px solid #e0dddd" id="a_topic"></textarea>
               </div>
             </div>
             <div class="modal-footer">
@@ -349,11 +349,11 @@
                       </div>
                       <div class="md-3 col-lg-4">
                         <label class="form-lalel">Enter Final Amount</label><br>
-                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="payment_amount">
+                        <input class="form-control" oninput="onlynum(this)" value="0" style="border: 1px solid #e0dddd" id="payment_amount">
                       </div>
                       <div class="md-3 col-lg-4">
                         <label class="form-lalel">Paid Amount</label><br>
-                        <input class="form-control" type="number" value="0" style="border: 1px solid #e0dddd" id="paid_amount">
+                        <input class="form-control" oninput="onlynum(this)" value="0" style="border: 1px solid #e0dddd" id="paid_amount">
                       </div>
                     </div>
                   </div>
@@ -437,6 +437,11 @@
   var followUpID;
   var event;
   let TotalServiceCharge = 0;
+
+  function onlynum(e) {
+      var input = e.value.replace(/[^0-9]/g, '');  
+      e.value = input; 
+    }
 
   function calcTotalAmount(){
     let Ad_ser = JSON.parse(lead_data[0].service);
@@ -680,7 +685,7 @@
     } else if (inpt1 == '') {
       toastr.error('Select Date');
     } else if (inpt2 == '') {
-      toastr.error('Enter Topic');
+      toastr.error('Enter FollowUp Info');
     } else {
       var fd = new FormData();
       fd.append('lead_id', decodedData.lead_id);

@@ -132,6 +132,7 @@
                         <thead>
                           <tr style='text-align: center'>
                             <th scope="col">Lead No</th>
+                            <th>Booking No</th>
                             <th>Name</th>
                             <th>Mobile No</th>
                             <th id="th1">Event</th>
@@ -432,6 +433,7 @@
 
             var dataRow = [
               obj.id,
+              obj.lead_no,
               obj.name,
               obj.phone,
               obj.event,
@@ -489,6 +491,7 @@
             }))
             var dataRow = [
               obj.id,
+              obj.lead_no,
               obj.name,
               obj.phone,
               obj.age,
