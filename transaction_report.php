@@ -94,7 +94,7 @@
                                 <input 
                                   type="text" 
                                   class="form-control" 
-                                  style="border: 1px solid #e0dddd" 
+                                  style="border: 1px solid #e0dddd;" 
                                   name="daterange"  />
                             </div>
                         </div>
@@ -184,10 +184,9 @@ var end;
 $(function() {
   $('input[name="daterange"]').daterangepicker({
     opens: 'center',
-    startDate: '01-01-2023',
-    endDate: '31-12-2023',
     locale: {
-      format: 'DD-MM-YYYY'
+      format: 'DD-MM-YYYY',
+      placeholder: 'Select Date Range',
     }  
   }, function(st, en, label) {
     console.log("A new date selection was made: " + st.format('YYYY-MM-DD') + ' to ' + en.format('YYYY-MM-DD'));
@@ -200,7 +199,7 @@ function gend(){
         radioChange();
         document.getElementById('disptable').style.display = 'block';
     } else {
-        toastr.error('Select Date Range');
+        toastr.error('Select Valid Date Range');
     }
 }
 
