@@ -348,11 +348,11 @@
                         <input class="form-control" disabled style="border: 1px solid #e0dddd" id="total_cost">
                       </div>
                       <div class="md-3 col-lg-4">
-                        <label class="form-lalel">Enter Final Amount</label><br>
+                        <label class="form-lalel">Enter Final Amount <span style="color:red">*</span></label><br>
                         <input class="form-control" oninput="onlynum(this)" value="0" style="border: 1px solid #e0dddd" id="payment_amount">
                       </div>
                       <div class="md-3 col-lg-4">
-                        <label class="form-lalel">Paid Amount</label><br>
+                        <label class="form-lalel">Paid Amount <span style="color:red">*</span></label><br>
                         <input class="form-control" oninput="onlynum(this)" value="0" style="border: 1px solid #e0dddd" id="paid_amount">
                       </div>
                     </div>
@@ -751,9 +751,12 @@
     if (document.getElementById('convert_check').checked == true) {
       var amt = $('#payment_amount').val();
       var paidamt = $('#paid_amount').val();
-      console.log(amt, paidamt)
-      if (amt == '' || paidamt == '' || parseInt(amt) < parseInt(paidamt)) {
-        toastr.warning('Enter vaild amount')
+      if (amt == 0){
+        toastr.warning('Enter Total amount')
+      } else if (paidamt == ''){
+        toastr.warning('Enter Paid amount')
+      }  else if (parseInt(amt) < parseInt(paidamt)){
+        toastr.warning('Check Paid Amount')
       } else {
         fd.append('converted', true)
         fd.append('payment_method', PAY.value)

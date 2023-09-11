@@ -165,7 +165,7 @@
                   <div class="col-lg-12">
                     <div class="mb-3">
                       <label class="form-label" for="edit">Days Count</label>
-                      <input class="form-control" style="border: 1px solid #e0dddd" id="edit2">
+                      <input class="form-control" oninput="onlynum(this)" style="border: 1px solid #e0dddd" id="edit2">
                     </div>
                   </div>
               </div>

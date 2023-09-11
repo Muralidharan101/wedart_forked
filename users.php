@@ -144,8 +144,8 @@
                           <td>SNo</td>
                           <td>Name</td>
                           <td>Mobile</td>
-                          <td>Role</td>
                           <td>Branch</td>
+                          <td>Role</td>
                           <td>Action</td>
                         </tr>
                       </thead>
@@ -402,20 +402,16 @@
       if(nameinput == '')
       {
         toastr.error('Enter user name');
-      }
-      else if(passwordinput == '')
-      {
-        toastr.error('Enter password');
-      }
+      } 
       else if(mobileinput == '')
       {
         toastr.error('Enter Mobile number');
       }
-      else if(branchinput == '' || branchinput == "choose")
+      else if(branchinput == '')
       {
         toastr.error('Select Branch');
       }
-      else if(roleinput == '' || roleinput == 'choose')
+      else if(roleinput == '')
       {
         toastr.error('Select role');
       }
@@ -441,7 +437,7 @@
               setTimeout(function() {
                 window.location.reload();
               }, 2000);
-            } else if (result.status == 'Available') {
+            } else if (result.status) {
               toastr.error(result.remarks);
             } else {
               toastr.error('Sry, Error with the Backend');

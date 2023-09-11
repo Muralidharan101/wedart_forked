@@ -10,7 +10,7 @@
     mysqli_query($conn, $sql);
 
     $res['status'] = 'Success';  
-    $res['remarks'] = 'Blog days Removed Successfully';
+    $res['remarks'] = 'Blog Removed Successfully';
 
     echo json_encode($res);
 

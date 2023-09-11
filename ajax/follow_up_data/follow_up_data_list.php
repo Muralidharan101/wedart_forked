@@ -29,7 +29,7 @@ if ($lead == 'baby') {
             WHERE f.category = '$lead' AND l.id = '$lead_id'";
         
     if ($result = mysqli_query($conn, $sql)) {
-        $res['data'] = []; // Initialize as an empty array
+        $res['data'] = []; 
         while ($data = mysqli_fetch_assoc($result)) { 
             $count++;
             $res['data'][] = $data;
@@ -37,12 +37,12 @@ if ($lead == 'baby') {
         $res['status'] = 'Success';
         $res['remarks'] = 'Follow Data Listed Successfully';
     } else {
-        $res['data'] = []; // Set to an empty array on query failure
+        $res['data'] = []; 
         $res['status'] = 'Failed';
         $res['remarks'] = 'Failed to List Follow Data';
     }
 
-    $res['lead_data'] = []; // Initialize as an empty array for the "baby" case
+    $res['lead_data'] = []; 
 
     $sql2 = "SELECT 
                 l.lead_no, 

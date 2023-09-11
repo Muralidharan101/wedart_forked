@@ -13,7 +13,7 @@
     if($row = mysqli_query($conn, $sql))
     {
         $res['status']  = 'Success';
-        $res['remarks'] = 'Blog days created successfully';
+        $res['remarks'] = 'Blog days Updated';
     }
     else
     {
