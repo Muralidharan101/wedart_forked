@@ -425,8 +425,7 @@ function postNewPayment(){
               toastr.success(result.remarks);
               radioChange();
               newpayid= '';
-              $('#paid_amt').val('');
-              $('#pay_meth').val('');
+              $('#paid_amt').val(0);
               $('#pay_remark').val('');
             } else {
               toastr.error('Sry, Error with the Backend');
