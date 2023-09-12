@@ -260,7 +260,7 @@
         [{ text: 'Phone', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.phone, border: [], margin: [20, 5] }],
         [{ text: 'Gender', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.sex, border: [], margin: [20, 5] }],
         [{ text: 'Age', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.age, border: [], margin: [20, 5] }],
-        [{ text: 'Event Date/Time', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.event_date+' / '+pdfDetails.event_time, border: [], margin: [20, 5] }],
+        [{ text: 'Event Date/Time', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.event_datetime, border: [], margin: [20, 5] }],
         [{ text: 'Estimated Amount', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.estimated_amount, border: [], margin: [20, 5] }],
         [{ text: 'Other Info', bold: true, margin: [20, 5], border: [] }, { text: pdfDetails.other_info, border: [], margin: [20, 5] }],
         [{ text: '', bold: true, margin: [20, 5], border: [] }, { text: "", border: [], margin: [20, 5] }],
@@ -382,6 +382,7 @@
 
   function createTable() {
     dataTable = $('#tbl').DataTable({
+      "stateSave": false,
       "pageLength": 10
     });
     var fd = new FormData();

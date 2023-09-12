@@ -60,8 +60,10 @@
                 l.age,
                 l.phone,
                 l.sex,
-                DATE_FORMAT(L.event_dateTime, '%d-%m-%Y') AS event_date,
-                DATE_FORMAT(L.event_dateTime, '%H:%i:%s') AS event_time, 
+                CONCAT(
+                    DATE_FORMAT(l.event_dateTime, '%d-%m-%Y '),
+                    DATE_FORMAT(l.event_dateTime, '%H:%i:%s')
+                ) AS event_datetime, 
                 l.service, 
                 l.main_service, 
                 l.lead_status, 

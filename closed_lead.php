@@ -95,7 +95,8 @@
                       <table id="tbl">
                         <thead>
                           <tr style='text-align: center'>
-                            <th scope="col">Lead No</th>
+                            <th scope="col">Quotation No</th>
+                            <th>Lead No</th>
                             <th>Name</th>
                             <th>Mobile No</th>
                             <th>Blog</th>
@@ -356,6 +357,7 @@ function createTable() {
                       pend = st + " - Extra Paid";
                     }
                     var dataRow = [
+                        obj.id,
                         obj.lead_id,
                         obj.name,
                         obj.phone,

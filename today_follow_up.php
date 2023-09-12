@@ -369,7 +369,7 @@ function createTable() {
                         obj.estimated_amount,
                         statusdisplay.outerHTML,
                         `<i class="follow-up-icon"
-                          onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${urldat}'"
+                          onclick="window.location.href = 'follow_up_entry.php?dat=${urldat}'"
                           data-feather="external-link"
                           style="cursor: pointer"
                           title=""></i>`
@@ -419,7 +419,7 @@ function createTable() {
                         obj.estimated_amount,
                         statusdisplay.outerHTML,
                         `<i class="follow-up-icon"
-                          onclick="window.location.href = '/wedart/template/follow_up_entry.php?dat=${dat}'"
+                          onclick="window.location.href = 'follow_up_entry.php?dat=${urldat}'"
                           data-feather="external-link"
                           style="cursor: pointer"></i>`
                     ];

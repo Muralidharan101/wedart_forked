@@ -578,7 +578,7 @@
             if (index == 0) {
               datobj = {
                 'name': item.name,
-                'eventdate': item.event_dateTime || item.event_date,
+                'eventdate': item.event_datetime || item.event_date,
                 'service': sval,
                 'info': val,
                 'phone': item.phone,

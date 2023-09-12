@@ -12,13 +12,18 @@
     {
         $table = $lead == 'wedding' ? 'lead_form_wd' : 'lead_form_baby';
 
-        $sql = "SELECT c.*, l.lead_no, l.name, l.phone, bd.blog_name, bd.blog_link, bds.ref_name, bds.days_count FROM closed_leads AS c 
+        $sql = "SELECT c.id,c.lead_category, c.amount, (l.id) AS lead_id, l.lead_no, l.name, l.phone, 
+                bd.blog_name, bd.blog_link, 
+                bds.ref_name, bds.days_count 
+                FROM closed_leads AS c 
                 JOIN `$table` AS l 
                 ON c.lead_id = l.id
-                JOIN `blog_data` AS bd
+                JOIN blog_data AS bd
                 ON c.blog_id = bd.id
-                JOIN `blog_days` AS bds
-                ON c.day_id = bds.id";
+                JOIN blog_days AS bds
+                ON c.day_id = bds.id
+                WHERE c.lead_category = '$lead'";
+
 
         $result = mysqli_query($conn, $sql);
 

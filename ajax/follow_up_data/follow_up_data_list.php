@@ -51,8 +51,10 @@ if ($lead == 'baby') {
                 l.estimated_amount,
                 l.age,
                 l.sex,
-                DATE_FORMAT(l.event_dateTime, '%d-%m-%Y ') AS event_date, 
-                DATE_FORMAT(l.event_dateTime, '%H:%i:%s') AS event_time,
+                CONCAT(
+                    DATE_FORMAT(l.event_dateTime, '%d-%m-%Y '),
+                    DATE_FORMAT(l.event_dateTime, '%H:%i:%s')
+                ) AS event_datetime,
                 l.phone,
                 l.service,
                 sd.service_name,

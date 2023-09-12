@@ -38,7 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 l.lead_no, 
                 l.name, 
                 l.phone,
-                DATE_FORMAT(l.event_dateTime, '%d-%m-%Y') AS event_dateTime, 
+                CONCAT(
+                    DATE_FORMAT(l.event_dateTime, '%d-%m-%Y '),
+                    DATE_FORMAT(l.event_dateTime, '%H:%i:%s')
+                ) AS event_date, 
                 l.estimated_amount,
                 fu.lead_id,
                 fu.follow_up_date, 
