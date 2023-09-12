@@ -13,7 +13,7 @@
     if($result = mysqli_query($conn, $sql))
     {
         $res['status']  = 'Success';
-        $res['remarks'] = 'Referrer created successfully';
+        $res['remarks'] = 'Days Updated successfully';
     }
     else
     {

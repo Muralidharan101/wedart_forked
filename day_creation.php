@@ -63,7 +63,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-6">
-                <h3>Blog Days</h3>
+                <h3>Days</h3>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
 
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>Blog Days Creation</h3>
+                  <h3>Days Creation</h3>
                 </div>
 
                 <div class="card-body">
@@ -116,7 +116,7 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header pb-0">
-                  <h3>All Blogs Days</h3>
+                  <h3>All Days</h3>
                 </div>
 
                 <div class="card-body">

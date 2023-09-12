@@ -11,7 +11,7 @@
         mysqli_query($conn, $sql);
 
         $res['status'] = 'Success';  
-        $res['remarks'] = 'Blog days Removed Successfully';
+        $res['remarks'] = 'Days Removed Successfully';
     }
     else
     {
