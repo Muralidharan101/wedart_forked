@@ -1,9 +1,9 @@
 <?php
 
     $host_name = 'localhost';
-    $db_user = 'root';
-    $db_password = '';
-    $db_name = 'wedart4';
+    $db_user = 'linkwork_wedart_new';
+    $db_password = 'Admin@1234$$';
+    $db_name = 'linkwork_wedart_new';
 
     $conn = new mysqli($host_name, $db_user, $db_password, $db_name);
 

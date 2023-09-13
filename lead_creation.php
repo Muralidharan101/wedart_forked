@@ -9,7 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedart</title>
   <!-- Google font-->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
@@ -70,14 +69,14 @@
                 <hr style="margin-bottom:10px;">
 
                 <div class="card-body">
-                  <div class="row" style="margin-left: 0.5em;">
+                  <div class="mb-3 row" style="margin-left: 0.5em;">
                     <div class="form-check radio radio-primary col-lg-2">
                       <input 
                         class="form-check-input" 
                         name="lead" id="wedding" 
                         checked
                         type="radio" value="true" onchange="radioChange()">
-                      <label class="form-check-label" for="wedding">General Photography</label>
+                      <label class="form-check-label" for="wedding">Leads</label>
                     </div>
 
                     <div class="form-check radio radio-primary col-lg-2">
@@ -85,9 +84,9 @@
                         class="form-check-input" 
                         name="lead" id="baby" 
                         type="radio" value="false" onchange="radioChange()">
-                      <label class="form-check-label" for="baby">Baby Photography</label>
+                      <label class="form-check-label" for="baby">Baby's Event</label>
                     </div>
-                  </div>
+                  </div><br>
 
                   <div class="row">
                     <div class="col-lg-12"><br>

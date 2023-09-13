@@ -7,9 +7,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Koho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, Koho admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="author" content="pixelstrap">
+  <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
   <title>Wedart</title>
   <!-- ico-font-->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
   <!-- Themify icon-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/themify.css">
@@ -72,15 +76,15 @@
                     <h3>Lead Types</h3>
                   </div>
                   <div class="card-body">
-                    <div class="row mb-3" style="margin-left: 0.5em;">
+                    <div class="row" style="margin-left: 0.5em;">
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                        <label class="form-check-label" for="wedding">General Photography</label>
+                        <label class="form-check-label" for="wedding">Leads</label>
                       </div>
 
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
-                        <label class="form-check-label" for="baby">Baby Photography</label>
+                        <label class="form-check-label" for="baby">Baby's Event</label>
                       </div>
                     </div>
 

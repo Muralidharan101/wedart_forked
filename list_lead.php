@@ -9,7 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedart</title>
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css">
   <!-- Themify icon-->
@@ -74,12 +73,12 @@
                     <div class="row" style="margin-left: 0.5em;">
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                        <label class="form-check-label" for="wedding">General Photography</label>
+                        <label class="form-check-label" for="wedding">Leads</label>
                       </div>
 
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
-                        <label class="form-check-label" for="baby">Baby Photography</label>
+                        <label class="form-check-label" for="baby">Baby's Event</label>
                       </div>
                     </div><br>
 
@@ -481,8 +480,6 @@
             dataTableData.push(dataRow);
             feather.replace();
           });
-          document.getElementById('baby').checked = false;
-          document.getElementById('wedding').checked = true;
         } else {
           // document.getElementById('th1').textContent = 'Age';
           // document.getElementById('th2').textContent = 'Gender';
@@ -541,8 +538,6 @@
 
             dataTableData.push(dataRow);
           });
-          document.getElementById('wedding').checked = false;
-          document.getElementById('baby').checked = true;
         }
 
         dataTable.clear().rows.add(dataTableData).draw();

@@ -19,6 +19,7 @@
             
         if ($result = mysqli_query($conn, $sql)) 
         {
+            $data = [];
             while ($data = mysqli_fetch_assoc($result)) 
             { 
                 $count++;
@@ -41,6 +42,7 @@
             AND f.follow_up_date = '$today'";
             
         if ($result = mysqli_query($conn, $sql)) {
+            $data = [];
             while ($data = mysqli_fetch_assoc($result)) 
             { 
                 $count++;
