@@ -135,9 +135,9 @@
                             <th>Booking No</th>
                             <th>Name</th>
                             <th>Mobile No</th>
-                            <th id="th1">Event</th>
-                            <th id="th2">Event Date</th>
-                            <th id="th3">Mandapam</th>
+                            <th id="th1"></th>
+                            <th id="th2"></th>
+                            <th id="th3"></th>
                             <th>Estimated</th>
                             <th>Status</th>
                             <th style="min-width: 80px;">Action</th>
@@ -374,8 +374,40 @@
 
 
   function createTable() {
+    let clmn = [];
+  if (document.getElementById('wedding').checked){
+    clmn = [
+            { title: "Lead ID" },
+            { title: "Booking ID" },
+            { title: "Name" },
+            { title: "Mobile No" },
+            { title: "Event" },
+            { title: "Event Date" },
+            { title: "Mandapam" },
+            { title: "Estimated" },
+            { title: "Status" },
+            { title: "Action", }
+        ]
+  } else {
+    clmn = [
+            { title: "Lead ID" },
+            { title: "Booking ID" },
+            { title: "Name" },
+            { title: "Mobile No" },
+            { title: "Age" },
+            { title: "Gender" },
+            { title: "Event Date/Time" },
+            { title: "Estimated" },
+            { title: "Status" },
+            { title: "Action" }
+        ]
+  }
     dataTable = $('#tbl').DataTable({
-      "pageLength": 10
+      "pageLength": 10,
+      "columnDefs": [
+        { "targets": [0], "minWidth": 70 }  
+      ],
+      columns: clmn
     });
     var fd = new FormData();
     var led_sts = $('#lead_status_select').val();
@@ -392,9 +424,9 @@
         var dataTableData = [];
 
         if (document.getElementById('wedding').checked) {
-          document.getElementById('th1').textContent = 'Event';
-          document.getElementById('th2').textContent = 'Event-Date';
-          document.getElementById('th3').textContent = 'Mandapam';
+          // document.getElementById('th1').textContent = 'Event';
+          // document.getElementById('th2').textContent = 'Event-Date';
+          // document.getElementById('th3').textContent = 'Mandapam';
           leads.forEach(obj => {
             var test = JSON.parse(obj.service);
             var val = test.map(ob => (`
@@ -429,9 +461,9 @@
               obj.lead_no,
               obj.name,
               obj.phone,
-              obj.event,
-              obj.event_date,
-              obj.mandapam,
+              obj.age ? obj.age : obj.event,
+              obj.sex ? obj.sex : obj.event_date,
+              obj.event_dateTime ? obj.event_dateTime : obj.mandapam,
               obj.estimated_amount,
               statusdisplay.outerHTML,
               `<i class="fa-regular fa-pen-to-square" 
@@ -449,9 +481,9 @@
             feather.replace();
           });
         } else {
-          document.getElementById('th1').textContent = 'Age';
-          document.getElementById('th2').textContent = 'Gender';
-          document.getElementById('th3').textContent = 'Date & Time';
+          // document.getElementById('th1').textContent = 'Age';
+          // document.getElementById('th2').textContent = 'Gender';
+          // document.getElementById('th3').textContent = 'Date & Time';
           leads.forEach(obj => {
             var test = JSON.parse(obj.service);
             var val = test.map(ob => (`
@@ -487,9 +519,9 @@
               obj.lead_no,
               obj.name,
               obj.phone,
-              obj.age,
-              obj.sex,
-              obj.event_dateTime,
+              obj.event ? obj.event : obj.age,
+              obj.event_date ? obj.event_date : obj.sex,
+              obj.mandapam ? obj.mandapam : obj.event_dateTime,
               obj.estimated_amount,
               statusdisplay.outerHTML,
               `<i class="fa-regular fa-pen-to-square" 

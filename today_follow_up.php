@@ -101,7 +101,7 @@
                     <div class="table-responsive">
                       <!-- class="table-responsive" -->
                       <table id="tbl">
-                        <thead>
+                        <!-- <thead>
                           <tr style='text-align: center'>
                             <th scope="col">Lead No</th>
                             <th>Booking No</th>
@@ -114,7 +114,7 @@
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
-                        </thead>
+                        </thead> -->
 
                         <tbody>
                           <!--data-->
@@ -295,8 +295,6 @@ function generatePDFMonth() {
   });
 }
 
-
-
 function radioChange() {
     if (document.getElementById('wedding').checked) {
         lead_page = 'wedding';
@@ -311,8 +309,38 @@ function radioChange() {
 
 
 function createTable() {
+  let clmn = [];
+  if (document.getElementById('wedding').checked){
+    clmn = [
+            { title: "Lead ID" },
+            { title: "Booking ID" },
+            { title: "Name" },
+            { title: "Mobile No" },
+            { title: "Event" },
+            { title: "Event Date" },
+            { title: "Mandapam" },
+            { title: "Estimated" },
+            { title: "Status" },
+            { title: "Action" }
+        ]
+  } else {
+    clmn = [
+            { title: "Lead ID" },
+            { title: "Booking ID" },
+            { title: "Name" },
+            { title: "Mobile No" },
+            { title: "Age" },
+            { title: "Gender" },
+            { title: "Event Date/Time" },
+            { title: "Estimated" },
+            { title: "Status" },
+            { title: "Action" }
+        ]
+  }
+    
     dataTable = $('#tbl').DataTable({
-        "pageLength": 10
+        "pageLength": 10,
+        columns: clmn
     });
     var fd = new FormData();
     fd.append('lead', lead_page);
@@ -327,9 +355,9 @@ function createTable() {
             let leads = result.data;
             var dataTableData = [];
             if (document.getElementById('wedding').checked) {
-                document.getElementById('th1').textContent = 'Event';
-                document.getElementById('th2').textContent = 'Event Date';
-                document.getElementById('th3').textContent = 'Mandapam';
+                // document.getElementById('th1').textContent = 'Event';
+                // document.getElementById('th2').textContent = 'Event Date';
+                // document.getElementById('th3').textContent = 'Mandapam';
                 leads.forEach(obj => {
                     var test = JSON.parse(obj.service);
                     var val = test.map(ob => (`
@@ -362,9 +390,9 @@ function createTable() {
                         obj.lead_no,
                         obj.name,
                         obj.phone,
-                        obj.event,
-                        obj.event_date,
-                        obj.mandapam,
+                        obj.event || obj.age,
+                        obj.event_date || obj.sex,
+                        obj.mandapam || obj.event_dateTime,
                         obj.estimated_amount,
                         statusdisplay.outerHTML,
                         `<i class="follow-up-icon"
@@ -377,9 +405,9 @@ function createTable() {
                     feather.replace(); 
                 });
             } else {
-                document.getElementById('th1').textContent = 'Age';
-                document.getElementById('th2').textContent = 'Sex';
-                document.getElementById('th3').textContent = 'Event Date-Time';
+                // document.getElementById('th1').textContent = 'Age';
+                // document.getElementById('th2').textContent = 'Sex';
+                // document.getElementById('th3').textContent = 'Event Date-Time';
                 leads.forEach(obj => {
                     var statusdisplay = document.createElement('span');
                     if (obj.lead_status === 'open') {
@@ -405,9 +433,9 @@ function createTable() {
                         obj.lead_no,
                         obj.name,
                         obj.phone,
-                        obj.age,
-                        obj.sex,
-                        obj.event_dateTime,
+                        obj.age || obj.event,
+                        obj.sex || obj.event_date,
+                        obj.event_dateTime || obj.mandapam,
                         obj.estimated_amount,
                         statusdisplay.outerHTML,
                         `<i class="follow-up-icon"
@@ -426,12 +454,24 @@ function createTable() {
 }
 
 
+  window.addEventListener('popstate', function (event) {
+    window.location.reload();
+  });
+
+  window.addEventListener('beforeunload', function (event) {
+    event.preventDefault();
+    window.location.reload();
+  });
+
+
 
 const observer = new MutationObserver(function(mutationsList, observer) {
     feather.replace();
 });
 const config = { childList: true, subtree: true };
 observer.observe(document.body, config);
+
+
 </script>
 <style>
   i {
