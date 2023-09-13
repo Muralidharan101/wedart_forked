@@ -70,23 +70,23 @@
                     <h3>PDF Generation</h3>
                   </div>
                   <div class="card-body">
-                    <div class="mb-3">
-                      <button class="btn btn-info" id="week"> Weekly FollowUp's &nbsp;&nbsp;<i class="fa-regular fa-circle-down" style="font-size: 1.4em;"></i> </button>
+                    <div >
+                      <button class="btn btn-info" style="margin-bottom: 1em;" id="week"> Weekly FollowUp's &nbsp;&nbsp;<i class="fa-regular fa-circle-down" style="font-size: 1.4em;"></i> </button>
                       &emsp;
-                      <button class="btn btn-info" id="month"> Monthly FollowUp's &nbsp;&nbsp;<i class="fa-regular fa-circle-down" style="font-size: 1.4em;"></i>  </button>
+                      <button class="btn btn-info" style="margin-bottom: 1em;" id="month"> Monthly FollowUp's &nbsp;&nbsp;<i class="fa-regular fa-circle-down" style="font-size: 1.4em;"></i>  </button>
                     </div>
                   </div>
-                  <h3 style="margin-left: 1.7em;">Lead Types</h3>
+                  <h3 style="margin-left: 1.7em;margin-top:0px">Lead Types</h3>
                   <div class="card-body">
                     <div class="row" style="margin-left: 0.5em;">
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                        <label class="form-check-label" for="wedding">Leads</label>
+                        <label class="form-check-label" for="wedding">General Photography</label>
                       </div>
 
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
-                        <label class="form-check-label" for="baby">Baby's Event</label>
+                        <label class="form-check-label" for="baby">Baby Photography</label>
                       </div>
                     </div><br>
                     <div class="table-responsive">
@@ -168,7 +168,7 @@ function generatePDF() {
       let pdfDetails1 = res.data2;
       const content = [];
       
-      content.push({ text: 'WedArt Photography', style: 'header', alignment: 'center', fontSize: 24 });
+      content.push({ text: 'WedArt Photography - Weekly Followup', style: 'header', alignment: 'center', fontSize: 20 });
       content.push({ text: ' ', style: 'header' });
 
       function generateTable(data) {
@@ -184,6 +184,12 @@ function generatePDF() {
             { text: value || '', border: [] }
           ];
         }
+        function createKeyValuePair1(key, value) {
+          return [
+            { text: key, bold: true, border: [false, false, false, true] }, // Add a border at the bottom of the key cell
+            { text: value || '', border: [false, false, false, true] } // Add a border at the bottom of the value cell
+          ];
+        }
         data.forEach((obj) => {
           table.table.body.push(createKeyValuePair('Lead ID', obj.id));
           table.table.body.push(createKeyValuePair('Booking ID', obj.lead_no));
@@ -194,16 +200,16 @@ function generatePDF() {
           table.table.body.push(createKeyValuePair('FollowUp Date', obj.follow_up_date));
           table.table.body.push(createKeyValuePair('Approach Topic', obj.approach));
           table.table.body.push(createKeyValuePair('Response', obj.response));
-          table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
+          table.table.body.push(createKeyValuePair1(' ', " "));
           table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
         });
 
         return table;
       }
 
-      content.push({ text: `Lead FollowUps (Last 7 days) (count: ${pdfDetails.length} )`, style: 'header' });
+      content.push({ text: `General Photography (count: ${pdfDetails.length} )`, style: 'header' });
       content.push(generateTable(pdfDetails));
-      content.push({ text: `Baby Event FollowUps (Last 7 days) (count: ${pdfDetails1.length} )`, style: 'header' });
+      content.push({ text: `Baby Photography (count: ${pdfDetails1.length} )`, style: 'header' });
       content.push(generateTable(pdfDetails1));
 
       const docDefinition = {
@@ -234,7 +240,7 @@ function generatePDFMonth() {
       let pdfDetails1 = res.data2;
       const content = [];
       
-      content.push({ text: 'WedArt Photography', style: 'header', alignment: 'center', fontSize: 24 });
+      content.push({ text: 'WedArt Photography - Monthly Followup', style: 'header', alignment: 'center', fontSize: 20 });
       content.push({ text: ' ', style: 'header' });
 
       function generateTable(data) {
@@ -250,6 +256,12 @@ function generatePDFMonth() {
             { text: value || '', border: [] }
           ];
         }
+        function createKeyValuePair1(key, value) {
+          return [
+            { text: key, bold: true, border: [false, false, false, true] }, // Add a border at the bottom of the key cell
+            { text: value || '', border: [false, false, false, true] } // Add a border at the bottom of the value cell
+          ];
+        }
         data.forEach((obj) => {
           table.table.body.push(createKeyValuePair('Lead ID', obj.id));
           table.table.body.push(createKeyValuePair('Booking ID', obj.lead_no));
@@ -260,14 +272,14 @@ function generatePDFMonth() {
           table.table.body.push(createKeyValuePair('FollowUp Date', obj.follow_up_date));
           table.table.body.push(createKeyValuePair('Approach Topic', obj.approach));
           table.table.body.push(createKeyValuePair('Response', obj.response));
-          table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
+          table.table.body.push(createKeyValuePair1(' ', " "));
           table.table.body.push([{ text: ' ', border: [] }, { text: ' ', border: [] }]);
         });
         return table;
       }
-      content.push({ text: `Lead FollowUps (Last 30 days) (count: ${pdfDetails.length} )`, style: 'header' });
+      content.push({ text: `General Photography (count: ${pdfDetails.length} )`, style: 'header' });
       content.push(generateTable(pdfDetails));
-      content.push({ text: `Baby Event FollowUps (Last 30 days) (count: ${pdfDetails1.length} )`, style: 'header' });
+      content.push({ text: `Baby Photography (count: ${pdfDetails1.length} )`, style: 'header' });
       content.push(generateTable(pdfDetails1));
 
       const docDefinition = {

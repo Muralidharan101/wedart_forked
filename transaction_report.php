@@ -75,11 +75,11 @@
                     <div class="row" style="margin-left: 0.5em;">
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="wedding" checked type="radio" value="true" onchange="radioChange()">
-                        <label class="form-check-label" for="wedding">Leads</label>
+                        <label class="form-check-label" for="wedding">General Photography</label>
                       </div>
                       <div class="form-check radio radio-primary col-lg-2">
                         <input class="form-check-input" name="lead" id="baby" type="radio" value="false" onchange="radioChange()">
-                        <label class="form-check-label" for="baby">Baby's Event</label>
+                        <label class="form-check-label" for="baby">Baby Photography</label>
                       </div>
                     </div><br>
 
