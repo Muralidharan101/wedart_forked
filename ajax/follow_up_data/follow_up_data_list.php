@@ -1,6 +1,9 @@
 <?php
 require_once '../datab.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $res = [];
 $count = 0;
 
@@ -11,7 +14,10 @@ if ($lead == 'baby') {
     $sql = "SELECT 
                 l.lead_no, 
                 l.name, 
-                DATE_FORMAT(L.event_dateTime, '%d-%m-%Y') event_dateTime, 
+                 CONCAT(
+                    DATE_FORMAT(l.event_dateTime, '%d-%m-%Y '),
+                    DATE_FORMAT(l.event_dateTime, '%H:%i:%s')
+                ) AS event_datetime,
                 l.service, 
                 l.main_service, 
                 l.lead_status, 

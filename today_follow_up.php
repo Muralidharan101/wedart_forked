@@ -324,9 +324,8 @@ function createTable() {
         processData: false,
         success: function(response) {
             var result = JSON.parse(response);
-            var leads = result.data;
+            let leads = result.data;
             var dataTableData = [];
-
             if (document.getElementById('wedding').checked) {
                 document.getElementById('th1').textContent = 'Event';
                 document.getElementById('th2').textContent = 'Event Date';
@@ -382,12 +381,6 @@ function createTable() {
                 document.getElementById('th2').textContent = 'Sex';
                 document.getElementById('th3').textContent = 'Event Date-Time';
                 leads.forEach(obj => {
-                    var test = JSON.parse(obj.service);
-                    var val = test.map(ob => (`
-                        <span class="badge badge-pill badge-light"
-                              style="color:black; background-color: lightgrey">
-                              ${ob.service}
-                        </span><br>`)).join('');
                     var statusdisplay = document.createElement('span');
                     if (obj.lead_status === 'open') {
                       statusdisplay.classList.add('badge', 'badge-pill', 'badge-secondary');
@@ -405,7 +398,6 @@ function createTable() {
                       statusdisplay.classList.add('badge', 'badge-pill', 'badge-dark');
                     }
                     statusdisplay.textContent = obj.lead_status;
-                    statusdisplay.style.cursor = 'pointer';
 
                     var dat = encodeURIComponent(JSON.stringify({'lead_id': obj.id, 'lead': 'baby'}))
                     var dataRow = [
@@ -419,7 +411,7 @@ function createTable() {
                         obj.estimated_amount,
                         statusdisplay.outerHTML,
                         `<i class="follow-up-icon"
-                          onclick="window.location.href = 'follow_up_entry.php?dat=${urldat}'"
+                          onclick="window.location.href = 'follow_up_entry.php?dat=${dat}'"
                           data-feather="external-link"
                           style="cursor: pointer"></i>`
                     ];

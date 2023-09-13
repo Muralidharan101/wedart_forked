@@ -28,7 +28,8 @@
                 ON c.day_id = bds.id
                 JOIN transaction_details AS t
                 ON t.closed_leads_id = c.id
-                WHERE t.date >= '$start' AND t.date <= '$end'";
+                WHERE c.lead_category = '$lead'
+                AND DATE(t.date) BETWEEN '$start' AND '$end'  ";
 
         $result = mysqli_query($conn, $sql);
 

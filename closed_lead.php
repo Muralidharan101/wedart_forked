@@ -163,7 +163,7 @@
                 <div class="col-lg-12">
                   <div class="mb-3" id="pay_history">
                     <label class="form-lable">Enter Total Amount</label>
-                    <input class="form-control" id="tot_amt" value="0">
+                    <input class="form-control" oninput="onlynum(this)" id="tot_amt" value="0">
                   </div>
                 </div>
               </div>
@@ -181,7 +181,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Edit Payment</h3>
+              <h3 class="modal-title" id="exampleModalLabel">ADD Payment</h3>
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -189,7 +189,7 @@
                 <div class="col-lg-12">
                   <div class="mb-3">
                     <label class="form-lable">Enter Paid Amount</label>
-                    <input class="form-control" id="paid_amt" value="0">
+                    <input class="form-control" oninput="onlynum(this)" id="paid_amt" value="0">
                   </div>
                 </div>
 
@@ -265,6 +265,11 @@ var editID;
 var arrID;
 var leads = [];
 var newpayid;
+function onlynum(e) {
+  var input = e.value.replace(/[^0-9]/g, '');  
+  e.value = input; 
+}
+
 function radioChange() {
     if (document.getElementById('wedding').checked) {
         lead = 'wedding';
@@ -404,6 +409,10 @@ function postNewPayment(){
       {
         toastr.error('Enter Paid Amount');
       }
+    else if (pay_amt <= 0)
+    {
+      toastr.error('Enter Valid Paid Amount');
+    }
     else if (pay_method == ''){
       toastr.error('Select Payment Method');
     }

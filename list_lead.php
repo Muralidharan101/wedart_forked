@@ -373,16 +373,8 @@
   }
 
 
-
-
-
-
-
-
-
   function createTable() {
     dataTable = $('#tbl').DataTable({
-      "stateSave": false,
       "pageLength": 10
     });
     var fd = new FormData();
