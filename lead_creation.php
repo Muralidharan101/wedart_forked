@@ -145,8 +145,16 @@
 
                     <div class="col-lg-4">
                       <div class="mb-3">
-                        <label class="form-label" for="inpt">Select Source</label>
+                        <label class="form-label">Select Source</label>
                         <select class="form-select" style="border: 1px solid #e0dddd" id="source">
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="mb-3">
+                        <label class="form-label" >Select Branch</label>
+                        <select class="form-select" style="border: 1px solid #e0dddd" id="branch">
                         </select>
                       </div>
                     </div>
@@ -334,6 +342,7 @@
     var arr = []; var selected_services = [];
     var wedding = document.getElementById('wedding');
     var baby = document.getElementById('baby');
+    let branch = document.getElementById('branch');
 
     function onlynum(e) {
       var input = e.value.replace(/[^0-9]/g, '');  
@@ -379,26 +388,26 @@
         });
       }
       })
-      // $.ajax({
-      //   url: 'ajax/follow_up/follow_up_list.php',
-      //   type: 'get',
-      //   contentType: false,
-      //   processData: false,
-      //   success: function (response) {
-      //     var result = JSON.parse(response);
-      //     var follow_category = result.data;
+      $.ajax({
+        url: 'ajax/branch/branch_list.php',
+        type: 'get',
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var result = JSON.parse(response);
+          let branch = result.data;
 
-      //     var slet = document.getElementById('follow_up_cateogry');
-      //     slet.innerHTML = '';  
+          var slet = document.getElementById('branch');
+          slet.innerHTML = '';  
           
-      //     follow_category.forEach(option => {
-      //     const newOption = document.createElement("option");
-      //     newOption.value = option.follow_up_name;
-      //     newOption.text = option.follow_up_name;
-      //     slet.appendChild(newOption);
-      //     });
-      //   }
-      // })
+          branch.forEach(option => {
+          const newOption = document.createElement("option");
+          newOption.value = option.id;
+          newOption.text = option.branch_name;
+          slet.appendChild(newOption);
+          });
+        }
+      })
     }getSource();
 
     function fetfun(){
@@ -553,6 +562,7 @@
       fd.append('lead_status', follow_up_category.value);
       fd.append('follow_up', followup.value);
       fd.append('follow_up_details', follow_up_status.value);
+      fd.append('branch_id', branch.value);
       
       if(wedding.checked){
         fd.append('wedding',true);
@@ -577,7 +587,7 @@
             toastr.success(result.remarks);
             setTimeout(() => {
               window.location.href='list_lead.php'
-            }, 2000)
+            }, 1300)
           } else if (result.status == 'Available') {
             toastr.error(result.remarks);
           } else {
