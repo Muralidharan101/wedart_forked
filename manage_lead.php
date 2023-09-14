@@ -173,6 +173,15 @@
                         </div>
                       </div>
 
+                      <div class="col-lg-4" id="leadDiv">
+                        <div class="mb-3">
+                          <label class="form-label">Sample Send</label>
+                          <select class="form-select" style="border: 1px solid #e0dddd" id="sample_send">
+                            <!--lead status-->
+                          </select>
+                        </div>
+                      </div>
+
                   </div> 
 
                   <hr>
@@ -234,6 +243,7 @@
     var other_info = document.getElementById('otherinfo');
     var EstimatedAmount = document.getElementById('E_Amount');
     var lead_status = document.getElementById('lead_status_select');
+    var sample_send = document.getElementById('sample_send');
     var link;
     var leadDetails;
     
@@ -287,7 +297,8 @@
                 'inpt3': obj.mandapam,
                 'estimated_amount': obj.estimated_amount,
                 'other_info': obj.other_info,
-                'lead_status': obj.lead_status
+                'lead_status': obj.lead_status,
+                'sample_send': obj.sample_send
               }
             }
           })
@@ -311,7 +322,8 @@
                 'inpt3': obj.sex,
                 'estimated_amount': obj.estimated_amount,
                 'other_info': obj.other_info,
-                'lead_status': obj.lead_status
+                'lead_status': obj.lead_status,
+                'sample_send': obj.sample_send
               }
             }
           })
@@ -319,9 +331,9 @@
               `<option value=${leadDetails.inpt3} selected >${leadDetails.inpt3}</option>
                <option value='boy'>boy</option>
                <option value='girl'>girl</option>`;
-          if(leadDetails.lead_status != "converted" || leadDetails.lead_status != "closed"){
+          if(leadDetails.lead_status != "converted" && leadDetails.lead_status != "closed"){
             lead_status.innerHTML = 
-            `<option value=${leadDetails.lead_status} selected >${leadDetails.lead_status}</option>
+            `<option value=${leadDetails.lead_status} selected>${leadDetails.lead_status}</option>
              <option value="cold">Cold</option>
              <option value="hot">Hot</option>
              <option value="ready">Ready</option>`;
@@ -337,6 +349,10 @@
         if(leadDetails.lead_status == "converted" || leadDetails.lead_status == "closed"){
           document.getElementById('leadDiv').style.display = 'none'
         }
+        sample_send.innerHTML = '';
+        sample_send.innerHTML = 
+         `<option value="1" ${leadDetails.sample_send == 1 ? "selected" : ""}>${'Yes'}</option>
+          <option value="0" ${leadDetails.sample_send == 0 ? "selected" : ""}>${'No'}</option>`;
       }
       })
     } 
@@ -357,8 +373,9 @@
       fd.append('phone',contact.value)
       fd.append('other_info',other_info.value)
       fd.append('estimated_amount', EstimatedAmount.value)
+      fd.append('sample_send', sample_send.value)
 
-      if(leadDetails.lead_status != "converted" || leadDetails.lead_status != "closed"){
+      if(leadDetails.lead_status != "converted" && leadDetails.lead_status != "closed"){
         fd.append('lead_status', lead_status.value)
       }
       

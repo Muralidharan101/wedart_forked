@@ -10,6 +10,7 @@
         $phone              = mysqli_real_escape_string($conn, $_POST['phone']);
         $other_info         = mysqli_real_escape_string($conn, $_POST['other_info']);
         $estimated_amount   = mysqli_real_escape_string($conn, $_POST['estimated_amount']);
+        $sample_send        = mysqli_real_escape_string($conn, $_POST['sample_send']);
         
         if(isset($_POST['baby']))
         {
@@ -18,11 +19,11 @@
             $sex            = mysqli_real_escape_string($conn, $_POST['sex']);
 
 
-            if(isset($_POST['lead_status']) !==  '')
+            if(isset($_POST['lead_status']))
             {
                 $lead_status    = mysqli_real_escape_string($conn, $_POST['lead_status']);
 
-                $sql_baby = "UPDATE lead_form_baby SET `name`='$name',`lead_status`='$lead_status', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event_dateTime`='$event_dateTime', `age`='$age', `sex`='$sex' WHERE  `id`='$id' ";
+                $sql_baby = "UPDATE lead_form_baby SET `name`='$name',`lead_status`='$lead_status', `phone`='$phone', `sample_send`= '$sample_send', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event_dateTime`='$event_dateTime', `age`='$age', `sex`='$sex' WHERE  `id`='$id' ";
 
                 if(mysqli_query($conn, $sql_baby))
                 {
@@ -37,7 +38,7 @@
             }
             else
             {
-                $sql_baby = "UPDATE lead_form_baby SET `name`='$name', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event_dateTime`='$event_dateTime', `age`='$age', `sex`='$sex' WHERE  `id`='$id' ";
+                $sql_baby = "UPDATE lead_form_baby SET `name`='$name', `phone`='$phone', `sample_send`= '$sample_send', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event_dateTime`='$event_dateTime', `age`='$age', `sex`='$sex' WHERE  `id`='$id' ";
 
                 if(mysqli_query($conn, $sql_baby))
                 {
@@ -58,11 +59,11 @@
             $event      = mysqli_real_escape_string($conn, $_POST['event']);
             $mandapam   = mysqli_real_escape_string($conn, $_POST['mandapam']);
 
-            if(isset($_POST['lead_status']) !==  '')
+            if(isset($_POST['lead_status']))
             {
                 $lead_status    = mysqli_real_escape_string($conn, $_POST['lead_status']);
 
-                $sql_wed = "UPDATE lead_form_wd SET `name`= '$name', `lead_status`='$lead_status' ,`phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event`='$event', `event_date`='$event_date', `mandapam`='$mandapam' WHERE `id`='$id'";
+                $sql_wed = "UPDATE lead_form_wd SET `name`= '$name', `lead_status`='$lead_status' ,`phone`='$phone', `sample_send`= '$sample_send', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event`='$event', `event_date`='$event_date', `mandapam`='$mandapam' WHERE `id`='$id'";
                 
                 if(mysqli_query($conn, $sql_wed))
                 {
@@ -77,7 +78,7 @@
             }
             else
             {
-                $sql_wed = "UPDATE lead_form_wd SET `name`= '$name', `phone`='$phone', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event`='$event', `event_date`='$event_date', `mandapam`='$mandapam' WHERE `id`='$id'";
+                $sql_wed = "UPDATE lead_form_wd SET `name`= '$name', `phone`='$phone', `sample_send`= '$sample_send', `other_info`='$other_info', `estimated_amount`='$estimated_amount', `event`='$event', `event_date`='$event_date', `mandapam`='$mandapam' WHERE `id`='$id'";
                 
                 if(mysqli_query($conn, $sql_wed))
                 {
