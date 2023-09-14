@@ -159,9 +159,13 @@ document.getElementById('week').addEventListener('click', generatePDF);
 document.getElementById('month').addEventListener('click', generatePDFMonth);
 
 function generatePDF() {
+  let fd = new FormData();
+  fd.append('user_role', UserRole);
+  fd.append('branch_id', UserBranch);
   $.ajax({
     url: 'ajax/today_follow_up/weekly.php',
     type: 'post',
+    data: fd,
     contentType: false,
     processData: false,
     success: (response) => {
@@ -231,9 +235,13 @@ function generatePDF() {
 }
 
 function generatePDFMonth() {
+  let fd = new FormData();
+  fd.append('user_role', UserRole);
+  fd.append('branch_id', UserBranch);
   $.ajax({
     url: 'ajax/today_follow_up/monthly.php',
     type: 'post',
+    data: fd,
     contentType: false,
     processData: false,
     success: (response) => {
