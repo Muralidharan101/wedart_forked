@@ -139,6 +139,7 @@
                             <th id="th1"></th>
                             <th id="th2"></th>
                             <th id="th3"></th>
+                            <th></th>
                             <th>Estimated</th>
                             <th>Status</th>
                             <th style="min-width: 80px;">Action</th>
@@ -402,6 +403,7 @@
             { title: "Event" },
             { title: "Event Date" },
             { title: "Mandapam" },
+            { title: "Sample Send" },
             { title: "Estimated" },
             { title: "Status" },
             { title: "Action", }
@@ -415,6 +417,7 @@
             { title: "Age" },
             { title: "Gender" },
             { title: "Event Date/Time" },
+            { title: "Sample Send" },
             { title: "Estimated" },
             { title: "Status" },
             { title: "Action" }
@@ -494,6 +497,7 @@
               obj.age ? obj.age : obj.event,
               obj.sex ? obj.sex : obj.event_date,
               obj.event_dateTime ? obj.event_dateTime : obj.mandapam,
+              obj.sample_send == 1 ? "Yes" : "No",
               obj.estimated_amount,
               statusdisplay.outerHTML,
               `<i class="fa-regular fa-pen-to-square" 
@@ -554,6 +558,7 @@
               obj.event ? obj.event : obj.age,
               obj.event_date ? obj.event_date : obj.sex,
               obj.mandapam ? obj.mandapam : obj.event_dateTime,
+              obj.sample_send == 1 ? "Yes" : "No",
               obj.estimated_amount,
               statusdisplay.outerHTML,
               `<i class="fa-regular fa-pen-to-square" 

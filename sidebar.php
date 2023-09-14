@@ -51,11 +51,11 @@
                                                             <li class="sidebar-list">
                                                                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                                                         <i class="fa-solid fa-chart-line"></i>
-                                                                        <span> &nbsp;Leads</span>
+                                                                        <span> &nbsp;Leads Management</span>
                                                                   </a>
                                                                   <ul class="sidebar-submenu">
                                                                         <li><a href="lead_creation.php">Lead Creation</a></li>
-                                                                        <li><a href="list_lead.php">Leads </a></li>
+                                                                        <li><a href="list_lead.php">Leads List</a></li>
                                                                         <li><a href="today_follow_up.php">Today's FollowUp</a></li>
                                                                   </ul>
                                                             </li>
