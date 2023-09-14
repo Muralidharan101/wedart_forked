@@ -3,6 +3,7 @@
     include('../datab.php');
 
     $res = [];
+    $res['data'] = [];
     $count = 0;
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);

@@ -195,6 +195,8 @@
 <script>
   var link;
   var dataTable;
+  var UserRole;
+  var UserBranch;
 
   function radioChange() {
     if (document.getElementById('wedding').checked) {
@@ -373,6 +375,21 @@
     pdfMake.createPdf(docDefinition).open();
   }
 
+  // function getCookie(cname) {
+  //   let name = cname + "=";
+  //   let decodedCookie = decodeURIComponent(document.cookie);
+  //   let ca = decodedCookie.split(';');
+  //   for (let i = 0; i < ca.length; i++) {
+  //       let c = ca[i];
+  //       while (c.charAt(0) == ' ') {
+  //           c = c.substring(1);
+  //       }
+  //       if (c.indexOf(name) == 0) {
+  //           return c.substring(name.length, c.length);
+  //       }
+  //   }
+  //   return "";
+  // }
 
   function createTable() {
     let clmn = [];
@@ -410,9 +427,21 @@
       ],
       columns: clmn
     });
+    let role = getCookie('role');
+    let branch = getCookie('branch_id');
+    if(role && branch){
+        UserRole = role;
+        UserBranch = branch;
+    } else {
+        UserRole = sessionStorage.getItem('role');
+        UserBranch = sessionStorage.getItem('branch_id');
+    }
     var fd = new FormData();
     var led_sts = $('#lead_status_select').val();
+    console.log(UserRole, UserBranch);
     fd.append('lead_status', led_sts);
+    fd.append('user_role', UserRole);
+    fd.append('branch_id', UserBranch);
     $.ajax({
       url: link,
       data: fd,

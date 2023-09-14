@@ -168,11 +168,13 @@
                       setCookie('name', obj.name, 365);
                       setCookie('phone', obj.mobile, 365);
                       setCookie('role', obj.role, 365);
+                      setCookie('branch_id', obj.branch_id, 365);
                       window.location.href = 'dashboard.php';
                     } else if ((obj.role === "admin" || obj.role === "branch_user" || obj.role === "corporate_user") && !remember.checked) {
                       sessionStorage.setItem('name', obj.name);
                       sessionStorage.setItem('phone', obj.mobile);
                       sessionStorage.setItem('role', obj.role);
+                      sessionStorage.setItem('branch_id', obj.branch_id);
                       window.location.href = 'dashboard.php';
                     } else {
                       toastr.error('Invalid Role! Contact Admin');

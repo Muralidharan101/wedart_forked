@@ -345,8 +345,19 @@ function createTable() {
         "pageLength": 10,
         columns: clmn
     });
+    let role = getCookie('role');
+    let branch = getCookie('branch_id');
+    if(role && branch){
+        UserRole = role;
+        UserBranch = branch;
+    } else {
+        UserRole = sessionStorage.getItem('role');
+        UserBranch = sessionStorage.getItem('branch_id');
+    }
     var fd = new FormData();
     fd.append('lead', lead_page);
+    fd.append('user_role', UserRole);
+    fd.append('branch_id', UserBranch);
     $.ajax({
         url: 'ajax/today_follow_up/list_today.php',
         type: 'post',
