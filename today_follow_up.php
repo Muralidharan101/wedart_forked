@@ -152,6 +152,8 @@
 <script>
 var dataTable;
 var lead_page;
+var UserBranch;
+var UserRole;
 
 document.getElementById('week').addEventListener('click', generatePDF);
 document.getElementById('month').addEventListener('click', generatePDFMonth);
